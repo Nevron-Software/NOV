@@ -1,5 +1,5 @@
 # About
-<p>Nevron Open Vision is a suite of advanced desktop UI controls that aims to streamline the development of feature-rich Desktop Applications by providing developers with quality UI controls that also work on multiple operating systems.</p>
+<p>Nevron Open Vision is a suite of advanced desktop UI controls that aims to streamline the development of feature-rich Desktop Applications by providing developers with quality UI<sup>*</sup> controls that also work on multiple operating systems.</p>
 <p>The suite includes advanced data visualization and text processing controls including Chart, Diagram, Gauge, Grid, Rich Text Editor and Scheduler controls.</p>
 <p>It supports the following platforms:
 <ul>
@@ -8,6 +8,8 @@
 <li>Xamarin.Mac</li>
 </ul>
 </p>
+<p>____________________<br /
+<sup>*</sup> The basic <a href="https://www.nevron.com/orders-purchase-nov-ui.aspx">NOV UI widgets and NOV framework</a> are free for use in internal or commercial projects.</p>
 
 # How to
 <p>After cloning or downloading the repository open either "Windows" or "Mac" folder depending on your platform, then open "Examples" folder</p><br />
