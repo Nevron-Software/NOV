@@ -6,6 +6,7 @@
 <li>.NET WinForms</li>
 <li>Windows Presentation Foundation (WPF)</li>
 <li>Xamarin.Mac</li>
+<li>Blazor WebAssembly</li>
 </ul>
 </p>
 <p>____________________<br /
