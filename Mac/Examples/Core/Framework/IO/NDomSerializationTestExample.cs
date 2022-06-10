@@ -13,7 +13,7 @@ namespace Nevron.Nov.Examples.Framework
 	/// <summary>
 	/// The example automatically tests all all node types for serialization.
 	/// </summary>
-	public class NDomSerializationTestExample : NTextExampleBase
+	public class NDomSerializationTestExample : NExampleBase
 	{
 		#region Constructors
 
@@ -28,12 +28,12 @@ namespace Nevron.Nov.Examples.Framework
 		/// </summary>
 		static NDomSerializationTestExample()
 		{
-			NDomSerializationTestExampleSchema = NSchema.Create(typeof(NDomSerializationTestExample), NTextExampleBase.NTextExampleBaseSchema);
+			NDomSerializationTestExampleSchema = NSchema.Create(typeof(NDomSerializationTestExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -77,7 +77,7 @@ namespace Nevron.Nov.Examples.Framework
 		private void OnTestSerializationButtonMouseDown(NMouseButtonEventArgs arg)
 		{
 			// Set Wait cursor
-			this.OwnerWindow.Cursor = new NCursor(ENPredefinedCursor.Wait);
+			m_TextBox.DisplayWindow.Cursor = new NCursor(ENPredefinedCursor.Wait);
 		}
 		private void OnTestSerializationButtonClick(NEventArgs arg)
 		{
@@ -141,7 +141,7 @@ namespace Nevron.Nov.Examples.Framework
 			}
 
 			// Restore the default cursor
-			this.OwnerWindow.Cursor = null;
+			this.DisplayWindow.Cursor = null;
 		}
 		private void OnClearLogButtonClick(NEventArgs arg)
 		{

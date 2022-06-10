@@ -33,11 +33,11 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
-			NOTResourceInstalledFont font = Nevron.Nov.Examples.NResources.Font_LiberationMonoBold_ttf;
+			NOTResourceInstalledFont font = NResources.Font_LiberationMonoBold_ttf;
 			NOTFontDescriptor descriptor = font.InstalledFonts[0].Descriptor;
 			m_FontDescriptor = new NFontDescriptor(descriptor.m_FamilyName, descriptor.m_FontVariant);
 			NApplication.FontService.InstalledFontsMap.InstallFont(font);

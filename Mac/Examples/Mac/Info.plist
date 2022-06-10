@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Nevron.Nov.Examples.Mac</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.Nevron.Nov.Examples.Mac</string>
+	<string>com.nevron.novexamples</string>
 	<key>CFBundleName</key>
 	<string>Nevron.Nov.Examples.Mac</string>
 	<key>CFBundleVersion</key>
@@ -18,5 +18,11 @@
 	<string>NSApplication</string>
 	<key>CFBundleIconFile</key>
 	<string>NOVExamples</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>de</string>
+		<string>zh_CN</string>
+	</array>
 </dict>
 </plist>

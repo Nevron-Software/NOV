@@ -2,13 +2,11 @@
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NGeometryArrowheadsExample : NDiagramExampleBase
+    public class NGeometryArrowheadsExample : NExampleBase
     {
         #region Constructors
 
@@ -24,26 +22,43 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NGeometryArrowheadsExample()
         {
-            NGeometryArrowheadsExampleSchema = NSchema.Create(typeof(NGeometryArrowheadsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NGeometryArrowheadsExampleSchema = NSchema.Create(typeof(NGeometryArrowheadsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Public Overrides - Example
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
         protected override string GetExampleDescription()
         {
-            return @"
-<p>
-    Demonstrates the arrowhead styles included in NOV Diagram.
-</p>
-";
+            return @"<p>Demonstrates the arrowhead styles included in NOV Diagram.</p>";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 			activePage.Layout.ContentPadding = new NMargins(20);
 
@@ -84,6 +99,12 @@ namespace Nevron.Nov.Examples.Diagram
 
 			activePage.SizeToContent();
         }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

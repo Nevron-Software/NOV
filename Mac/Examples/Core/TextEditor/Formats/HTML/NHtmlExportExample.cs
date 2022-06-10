@@ -1,17 +1,18 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.IO;
 using Nevron.Nov.Layout;
 using Nevron.Nov.Text;
 using Nevron.Nov.Text.Formats;
+using Nevron.Nov.Text.Formats.Html;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-    public class NHtmlExportExample : NTextExampleBase
+	public class NHtmlExportExample : NExampleBase
     {
         #region Constructors
 
@@ -26,12 +27,12 @@ namespace Nevron.Nov.Examples.Text
         /// </summary>
         static NHtmlExportExample()
         {
-            NHtmlExportExampleSchema = NSchema.Create(typeof(NHtmlExportExample), NTextExampleBase.NTextExampleBaseSchema);
+            NHtmlExportExampleSchema = NSchema.Create(typeof(NHtmlExportExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
         {
@@ -39,15 +40,18 @@ namespace Nevron.Nov.Examples.Text
             splitter.SplitMode = ENSplitterSplitMode.Proportional;
             splitter.SplitFactor = 0.5;
 
-            // Create the command bars manager and the rich text
-			NWidget panel = base.CreateExampleContent();
+            // Create the rich text view
+            NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+            m_RichText = richTextWithRibbon.View;
+            m_RichText.AcceptsTab = true;
+            m_RichText.Content.Sections.Clear();
 
-            // Stack the command bar manager and an export button
+            // Stack the rich text with ribbon and an export button
             NButton exportButton = new NButton("Export");
             exportButton.Content.HorizontalPlacement = ENHorizontalPlacement.Center;
             exportButton.Click += OnExportButtonClick;
 
-            splitter.Pane1.Content = CreatePairBox(panel, exportButton);
+            splitter.Pane1.Content = CreatePairBox(richTextWithRibbon, exportButton);
 
             // Create the HTML rich text box
 			m_HtmlTextBox = new NTextBox();
@@ -66,6 +70,15 @@ namespace Nevron.Nov.Examples.Text
         {
             NStackPanel stack = new NStackPanel();
             stack.VerticalSpacing = 10;
+
+			// Create the export settings check boxes
+			m_InlineStylesCheckBox = new NCheckBox("Inline styles", false);
+			m_InlineStylesCheckBox.CheckedChanged += OnSettingsCheckBoxCheckedChanged;
+			stack.Add(m_InlineStylesCheckBox);
+
+			m_MinifyHtmlCheckBox = new NCheckBox("Minify HTML", false);
+			m_MinifyHtmlCheckBox.CheckedChanged += OnSettingsCheckBoxCheckedChanged;
+			stack.Add(m_MinifyHtmlCheckBox);
 
             // Create the predefined tests list box
             NListBox testListBox = new NListBox();
@@ -109,7 +122,7 @@ namespace Nevron.Nov.Examples.Text
 
             return stack;
         }
-        protected override string GetExampleDescription()
+		protected override string GetExampleDescription()
         {
             return @"
 <p>
@@ -130,7 +143,13 @@ namespace Nevron.Nov.Examples.Text
             NStopwatch stopwatch = NStopwatch.StartNew();
             using (MemoryStream stream = new MemoryStream())
             {
-                m_RichText.SaveToStream(stream, new NHtmlTextFormat());
+				// Create and configure HTML save settings
+				NHtmlSaveSettings saveSettings = new NHtmlSaveSettings();
+				saveSettings.InlineStyles = m_InlineStylesCheckBox.Checked;
+				saveSettings.MinifyHtml = m_MinifyHtmlCheckBox.Checked;
+
+				// Save to HTML
+                m_RichText.SaveToStream(stream, NTextFormat.Html, saveSettings);
                 stopwatch.Stop();
 
                 LoadHtmlSource(stream);
@@ -167,7 +186,11 @@ namespace Nevron.Nov.Examples.Text
         {
             ExportToHtml();
         }
-        private void OnTestListBoxItemSelected(NSelectEventArgs<NListBoxItem> arg1)
+		private void OnSettingsCheckBoxCheckedChanged(NValueChangeEventArgs arg)
+		{
+			ExportToHtml();
+		}
+		private void OnTestListBoxItemSelected(NSelectEventArgs<NListBoxItem> arg1)
         {
             NListBoxItem selectedItem = arg1.Item;
             if (selectedItem == null)
@@ -190,10 +213,11 @@ namespace Nevron.Nov.Examples.Text
         private void OnBrowseButtonClick(NEventArgs arg1)
         {
             NOpenFileDialog openFileDialog = new NOpenFileDialog();
-            openFileDialog.FileTypes = new NFileDialogFileType[] { new NFileDialogFileType("Rich Text Files", "rtf") };
-            openFileDialog.SelectedFilter = 0;
+            openFileDialog.FileTypes = new NFileDialogFileType[] { new NFileDialogFileType("Word Documents and Rich Text Files",
+				new string[] { "docx", "rtf" }) };
+            openFileDialog.SelectedFilterIndex = 0;
             openFileDialog.MultiSelect = false;
-            openFileDialog.InitialDirectory = "";
+            openFileDialog.InitialDirectory = String.Empty;
 
             openFileDialog.Closed += new Function<NOpenFileDialogResult>(
                 delegate(NOpenFileDialogResult result)
@@ -216,17 +240,26 @@ namespace Nevron.Nov.Examples.Text
         private void OnLoadButtonClick(NEventArgs arg1)
         {
             string fileName = m_FileNameTextBox.Text;
-            if (NFile.Exists(m_FileNameTextBox.Text) && LoadRtfFromFile(m_FileNameTextBox.Text))
-            {
-                ExportToHtml();
-            }
+            NFile file = NFileSystem.Current.GetFile(fileName);
+
+            if (file == null)
+                return;
+            
+            file.Exists().Then(delegate (bool exists)
+            { 
+                if(exists && LoadRtfFromFile(fileName))
+                    ExportToHtml();
+            });                        
         }
 
         #endregion
 
         #region Fields
 
+        private NRichTextView m_RichText;
         private NTextBox m_HtmlTextBox;
+		private NCheckBox m_InlineStylesCheckBox;
+		private NCheckBox m_MinifyHtmlCheckBox;
         private NTextBox m_FileNameTextBox;
         private NLabel m_ElapsedTimeLabel;
 

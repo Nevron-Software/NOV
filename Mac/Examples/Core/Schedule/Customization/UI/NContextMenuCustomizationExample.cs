@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NContextMenuCustomizationExample : NScheduleExampleBase
+	public class NContextMenuCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,36 +23,37 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NContextMenuCustomizationExample()
 		{
-			NContextMenuCustomizationExampleSchema = NSchema.Create(typeof(NContextMenuCustomizationExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NContextMenuCustomizationExampleSchema = NSchema.Create(typeof(NContextMenuCustomizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Public Overrides
+		#region Example
 
-		public override void Initialize()
+		protected override NWidget CreateExampleContent()
 		{
-			base.Initialize();
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
 
 			// Add the custom command action to the schedule view's commander
 			m_ScheduleView.Commander.Add(new CustomCommandAction());
 
 			// Change the context menu factory to the custom one
 			m_ScheduleView.ContextMenu = new CustomContextMenu();
-		}
 
-		#endregion
-
-		#region Protected Overrides - Example
-
-		protected override void InitSchedule(NSchedule schedule)
-		{
-			DateTime start = DateTime.Now;
-
-			// Create an appointment
-			NAppointment appointment = new NAppointment("Meeting", start, start.AddHours(2));
-			schedule.Appointments.Add(appointment);
-			schedule.ScrollToTime(start.TimeOfDay);
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -64,13 +65,27 @@ namespace Nevron.Nov.Examples.Schedule
 <p>This example demonstrates how to customize the NOV schedule context menu. A custom command is added
 at the end of the context menu.</p>
 ";
-		}		
+		}
 
 		#endregion
 
-		#region Commands
+		#region Implementation
 
-		public static readonly NCommand CustomCommand = NCommand.Create(typeof(NContextMenuCustomizationExample), "CustomCommand", "Custom Command");
+		private void InitSchedule(NSchedule schedule)
+		{
+			DateTime start = DateTime.Now;
+
+			// Create an appointment
+			NAppointment appointment = new NAppointment("Meeting", start, start.AddHours(2));
+			schedule.Appointments.Add(appointment);
+			schedule.ScrollToTime(start.TimeOfDay);
+		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
 
 		#endregion
 
@@ -83,7 +98,14 @@ at the end of the context menu.</p>
 
 		#endregion
 
-		#region Nested Types - Custom Context Menu Factory
+		#region Constants
+
+		public static readonly NCommand CustomCommand = NCommand.Create(typeof(Nevron.Nov.Examples.Schedule.NContextMenuCustomizationExample),
+			"CustomCommand", "Custom Command");
+
+		#endregion
+
+		#region Nested Types
 
 		public class CustomContextMenu : NScheduleContextMenu
 		{
@@ -117,10 +139,6 @@ at the end of the context menu.</p>
 			/// </summary>
 			public static readonly NSchema CustomContextMenuSchema;
 		}
-
-		#endregion
-
-		#region Nested Types - Custom Command Action
 
 		public class CustomCommandAction : NScheduleCommandAction
 		{
@@ -160,7 +178,7 @@ at the end of the context menu.</p>
 			/// <param name="parameter"></param>
 			public override void Execute(NNode target, object parameter)
 			{
-				NScheduleView scheduleView = GetScheduleView(target);
+				NScheduleView scheduleView = GetView(target);
 
 				NMessageBox.Show("Schedule Custom Command executed!", "Custom Command", ENMessageBoxButtons.OK,
 					ENMessageBoxIcon.Information);

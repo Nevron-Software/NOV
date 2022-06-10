@@ -28,7 +28,7 @@ namespace Nevron.Nov.Examples.Framework
 	/// <summary>
 	/// The example demonstrates how to modify the table borders, spacing etc.
 	/// </summary>
-	public class NDomSerializationExample : NTextExampleBase
+	public class NDomSerializationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -43,27 +43,26 @@ namespace Nevron.Nov.Examples.Framework
 		/// </summary>
 		static NDomSerializationExample()
 		{
-			NDomSerializationExampleSchema = NSchema.Create(typeof(NDomSerializationExample), NTextExampleBase.NTextExampleBaseSchema);
+			NDomSerializationExampleSchema = NSchema.Create(typeof(NDomSerializationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
 		{
-			NSection section = new NSection();
-			m_RichText.Content.Sections.Add(section);
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
 
-			section.Blocks.Add(new NParagraph("Type some text here..."));
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -79,15 +78,19 @@ namespace Nevron.Nov.Examples.Framework
 
 			return stack;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"
 <p>This example demonstrates how to use DOM serialization in order to serialize / deserialize NOV NNode derived objects.</p>
 <p>Press the Save button on the right to save the contents of the document and load to restore the contents to the last saved one.</p>";
+		}
+
+		private void PopulateRichText()
+		{
+			NSection section = new NSection();
+			m_RichText.Content.Sections.Add(section);
+
+			section.Blocks.Add(new NParagraph("Type some text here..."));
 		}
 
 		#endregion
@@ -149,8 +152,9 @@ namespace Nevron.Nov.Examples.Framework
 
 		#region Fields
 
-		NButton m_LoadStateButton;
-		MemoryStream m_MemoryStream;
+		private NRichTextView m_RichText;
+		private NButton m_LoadStateButton;
+		private MemoryStream m_MemoryStream;
 
 		#endregion
 

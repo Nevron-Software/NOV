@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -40,14 +40,46 @@ namespace Nevron.Nov.Examples.UI
 		}
 		protected override NWidget CreateExampleControls()
 		{
-			return null;
+			NStackPanel stack = new NStackPanel();
+
+			// print range mode
+			m_PrintRangeModeComboBox = new NComboBox();
+			m_PrintRangeModeComboBox.FillFromEnum<ENPrintRangeMode>();
+			m_PrintRangeModeComboBox.SelectedIndex = 0;
+			stack.Add(new NPairBox("Print Range Mode:", m_PrintRangeModeComboBox, true));
+
+			// enable current page
+			m_EnableCurrentPageCheckBox = new NCheckBox();
+			stack.Add(new NPairBox("Enable Current Page:", m_EnableCurrentPageCheckBox, true));
+
+			// enable selection
+			m_EnableSelectionCheckBox = new NCheckBox();
+			stack.Add(new NPairBox("Enable Selection:", m_EnableSelectionCheckBox, true));
+
+			// enable custom page range
+			m_EnableCustomPageRangeCheckBox = new NCheckBox();
+			stack.Add(new NPairBox("Enable Custom Page Range:", m_EnableCustomPageRangeCheckBox, true));
+
+			// collate
+			m_CollateCheckBox = new NCheckBox();
+			stack.Add(new NPairBox("Collate:", m_CollateCheckBox, true));
+
+			// number of copies
+			m_NumberOfCopiesUpDown = new NNumericUpDown();
+			m_NumberOfCopiesUpDown.DecimalPlaces = 0;
+			m_NumberOfCopiesUpDown.Step = 1;
+			m_NumberOfCopiesUpDown.Minimum = 1;
+			m_NumberOfCopiesUpDown.Maximum = 100;
+			stack.Add(new NPairBox("Number of Copies:", m_NumberOfCopiesUpDown, true));
+
+			return new NUniSizeBoxGroup(stack);
 		}
 		protected override string GetExampleDescription()
 		{
 			return @"
-<p>
-	This example demonstrates how to create and use the print dialog provided by NOV.
-</p>";
+				<p>
+					This example demonstrates how to create and use the print dialog provided by NOV.
+				</p>";
 		}
 
 		#endregion
@@ -62,17 +94,21 @@ namespace Nevron.Nov.Examples.UI
 			printDocument.PrintPage += new Function<NPrintDocument, NPrintPageEventArgs>(OnPrintPage);
 			printDocument.EndPrint += new Function<NPrintDocument, NEndPrintEventArgs>(OnEndPrint);
 
-			NPrintDialog pd = new NPrintDialog();
-			pd.EnableCustomPageRange = true;
-			pd.EnableCurrentPage = true;
-			pd.PrintRangeMode = ENPrintRangeMode.AllPages;
-			pd.CustomPageRange = new NRangeI(1, 100);
-			pd.NumberOfCopies = 2;
-			pd.Collate = true;
-			pd.PrintDocument = printDocument;
-			pd.Closed += new Function<NPrintDialogResult>(OnPrintDialogClosed);
+			NPrintDialog printDialog = new NPrintDialog();
 
-			pd.RequestShow();
+			printDialog.PrintRangeMode = (ENPrintRangeMode)m_PrintRangeModeComboBox.SelectedItem.Tag;
+			printDialog.EnableCustomPageRange = m_EnableCustomPageRangeCheckBox.Checked;
+			printDialog.EnableCurrentPage = m_EnableCurrentPageCheckBox.Checked;
+			printDialog.EnableSelection = m_EnableSelectionCheckBox.Checked;
+
+			printDialog.CustomPageRange = new NRangeI(1, 100);
+			printDialog.NumberOfCopies = (int)m_NumberOfCopiesUpDown.Value;
+			printDialog.Collate = m_CollateCheckBox.Checked;
+
+			printDialog.PrintDocument = printDocument;
+			printDialog.Closed += new Function<NPrintDialogResult>(OnPrintDialogClosed);
+
+			printDialog.RequestShow();
 		}
 		private void OnBeginPrint(NPrintDocument sender, NBeginPrintEventArgs e)
 		{
@@ -94,7 +130,7 @@ namespace Nevron.Nov.Examples.UI
 				NPaintVisitor visitor = new NPaintVisitor(e.Graphics, 300, transform, clip);
 				
 				// forward traverse the display tree
-				this.OwnerWindow.VisitDisplaySubtree(visitor);
+				m_PrintRangeModeComboBox.DisplayWindow.VisitDisplaySubtree(visitor);
 				
 				e.HasMorePages = false;
 			}
@@ -111,6 +147,17 @@ namespace Nevron.Nov.Examples.UI
 				NMessageBox.Show("Error Message: " + result.ErrorException.Message, "Print Dialog Error", ENMessageBoxButtons.OK, ENMessageBoxIcon.Error);
 			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		NComboBox m_PrintRangeModeComboBox;
+		NCheckBox m_EnableCustomPageRangeCheckBox;
+		NCheckBox m_EnableCurrentPageCheckBox;
+		NCheckBox m_EnableSelectionCheckBox;
+		NCheckBox m_CollateCheckBox;
+		NNumericUpDown m_NumberOfCopiesUpDown;
 
 		#endregion
 

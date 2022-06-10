@@ -1,15 +1,17 @@
 ﻿using System;
+
 using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates how to associate a palette with an indicator
-    /// </summary>
-	public class NIndicatorPaletteExample : NInstrumentationExampleBase
+	/// </summary>
+	public class NIndicatorPaletteExample : NExampleBase
     {
         #region Constructors
 
@@ -24,17 +26,17 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NIndicatorPaletteExample()
         {
-			NIndicatorPaletteExampleSchema = NSchema.Create(typeof(NIndicatorPaletteExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NIndicatorPaletteExampleSchema = NSchema.Create(typeof(NIndicatorPaletteExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
-			stack.HorizontalPlacement = Layout.ENHorizontalPlacement.Left;
+			stack.HorizontalPlacement = ENHorizontalPlacement.Left;
 
 			m_AxisRange = new NRange(80, 130);
 			int indicatorCount = 4;
@@ -65,10 +67,12 @@ namespace Nevron.Nov.Examples.Gauge
 
 			m_RadialGauge.Indicators.Add(CreateRangeIndicator(0));
 
+			stack.Registered += OnStackRegistered;
+			stack.Unregistered += OnStackUnregistered;
+
 			return stack;
 		}
-
-        protected override NWidget CreateExampleControls()
+		protected override NWidget CreateExampleControls()
         {
 			NStackPanel stack = new NStackPanel();
 
@@ -120,12 +124,10 @@ namespace Nevron.Nov.Examples.Gauge
 
 			return stack;
         }
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to associate a palette with an indicator.</p>";
 		}
-
 
 		#endregion 
 
@@ -137,7 +139,7 @@ namespace Nevron.Nov.Examples.Gauge
 
 			m_RadialGauge.PreferredSize = defaultRadialGaugeSize;
 			m_RadialGauge.CapEffect = new NGelCapEffect();
-			m_RadialGauge.Border = base.CreateBorder();
+			m_RadialGauge.Border = CreateBorder();
 			m_RadialGauge.BorderThickness = new NMargins(6);
 			m_RadialGauge.BackgroundFill = new NStockGradientFill(NColor.DarkGray, NColor.Black);
 			m_RadialGauge.NeedleCap.Visible = false;
@@ -153,7 +155,7 @@ namespace Nevron.Nov.Examples.Gauge
 			m_LinearGauge.PreferredWidth = 200;
 			m_LinearGauge.PreferredHeight = 300;
 			m_LinearGauge.CapEffect = new NGlassCapEffect();
-			m_LinearGauge.Border = base.CreateBorder();
+			m_LinearGauge.Border = CreateBorder();
 			m_LinearGauge.Padding = new NMargins(20);
 			m_LinearGauge.BorderThickness = new NMargins(6);
 			m_LinearGauge.BackgroundFill = new NStockGradientFill(NColor.DarkGray, NColor.Black);
@@ -192,29 +194,20 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Override
+		#region Event Handlers
 
-		protected override void OnRegistered()
+		private void OnStackRegistered(NEventArgs arg)
 		{
-			base.OnRegistered();
-
 			m_Timer = new NTimer();
 			m_Timer.Tick += OnTimerTick;
 			m_Timer.Start();
 		}
-
-		protected override void OnUnregistered()
+		private void OnStackUnregistered(NEventArgs arg)
 		{
-			base.OnUnregistered();
-
 			m_Timer.Stop();
 			m_Timer.Tick -= OnTimerTick;
 			m_Timer = null;
 		}
-
-		#endregion
-		
-		#region Event Handlers
 
 		void OnSweepAngleUpDownValueChanged(NValueChangeEventArgs arg)
 		{
@@ -331,13 +324,24 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NIndicatorPaletteExampleSchema;
 
-        #endregion
+		#endregion
 
-		#region Default Values
+		#region Static Methods
+
+		private static NBorder CreateBorder()
+		{
+			return NBorder.CreateThreeColorBorder(NColor.LightGray, NColor.White, NColor.DarkGray, 10, 10);
+		}
+
+		#endregion
+
+		#region Constants
+
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
 
 		#endregion
 	}

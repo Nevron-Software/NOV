@@ -6,7 +6,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NContextMenuCustomizationExample : NDiagramExampleBase
+	public class NContextMenuCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -22,38 +22,36 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NContextMenuCustomizationExample()
 		{
-			NContextMenuCustomizationExampleSchema = NSchema.Create(typeof(NContextMenuCustomizationExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NContextMenuCustomizationExampleSchema = NSchema.Create(typeof(NContextMenuCustomizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Public Overrides
+		#region Example
 
-		public override void Initialize()
+		protected override NWidget CreateExampleContent()
 		{
-			base.Initialize();
+			// Create a simple drawing
+			m_DrawingView = new NDrawingView();
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
 
 			// Add the custom command action to the drawing view's commander
 			m_DrawingView.Commander.Add(new CustomCommandAction());
 
 			// Change the context menu factory to the custom one
 			m_DrawingView.ContextMenu = new CustomContextMenu();
-		}
 
-		#endregion
-
-		#region Protected Overrides - Example
-
-		protected override void InitDiagram()
-		{
-			base.InitDiagram();
-
-			NBasicShapeFactory factory = new NBasicShapeFactory();
-			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
-			shape.SetBounds(100, 100, 150, 100);
-
-			NPage activePage = m_DrawingDocument.Content.ActivePage;
-			activePage.Items.Add(shape);
+			NDiagramRibbonBuilder ribbonBuilder = new NDiagramRibbonBuilder();
+			return ribbonBuilder.CreateUI(m_DrawingView);
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -65,13 +63,21 @@ namespace Nevron.Nov.Examples.Diagram
 <p>This example demonstrates how to customize the NOV drawing view's context menu. A custom command is added
 at the end of the context menu.</p>
 ";
-		}		
+		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			NBasicShapeFactory factory = new NBasicShapeFactory();
+			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
+			shape.SetBounds(100, 100, 150, 100);
+			drawingDocument.Content.ActivePage.Items.Add(shape);
+		}
 
 		#endregion
 
-		#region Commands
+		#region Fields
 
-		public static readonly NCommand CustomCommand = NCommand.Create(typeof(NContextMenuCustomizationExample), "CustomCommand", "Custom Command");
+		private NDrawingView m_DrawingView;
 
 		#endregion
 
@@ -84,7 +90,14 @@ at the end of the context menu.</p>
 
 		#endregion
 
-		#region Nested Types - Custom Context Menu Factory
+		#region Constants
+
+		public static readonly NCommand CustomCommand = NCommand.Create(typeof(Nevron.Nov.Examples.Diagram.NContextMenuCustomizationExample),
+			"CustomCommand", "Custom Command");
+
+		#endregion
+
+		#region Nested Types
 
 		public class CustomContextMenu : NDrawingContextMenu
 		{
@@ -102,12 +115,9 @@ at the end of the context menu.</p>
 				CustomContextMenuSchema = NSchema.Create(typeof(CustomContextMenu), NDrawingContextMenu.NDrawingContextMenuSchema);
 			}
 
-			protected override void CreateCustomCommands(NMenu menu)
+			protected override void CreateCustomCommands(NMenu menu, NContextMenuBuilder builder)
 			{
-				base.CreateCustomCommands(menu);
-
-				// Create a context menu builder
-				NContextMenuBuilder builder = new NContextMenuBuilder();
+				base.CreateCustomCommands(menu, builder);
 
 				// Add a custom command
 				builder.AddMenuItem(menu, NResources.Image_Ribbon_16x16_smiley_png, CustomCommand);
@@ -118,10 +128,6 @@ at the end of the context menu.</p>
 			/// </summary>
 			public static readonly NSchema CustomContextMenuSchema;
 		}
-
-		#endregion
-
-		#region Nested Types - Custom Command Action
 
 		public class CustomCommandAction : NDrawingCommandAction
 		{

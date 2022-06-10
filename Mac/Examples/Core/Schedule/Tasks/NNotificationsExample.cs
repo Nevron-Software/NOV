@@ -1,10 +1,12 @@
 ﻿using System;
+
 using Nevron.Nov.Dom;
 using Nevron.Nov.Schedule;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NNotificationsExample : NScheduleExampleBase
+	public class NNotificationsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -20,14 +22,51 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NNotificationsExample()
 		{
-			NNotificationsExampleSchema = NSchema.Create(typeof(NNotificationsExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NNotificationsExampleSchema = NSchema.Create(typeof(NNotificationsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
+
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>
+    This example demonstrates how to assign notifications to appointments and how to configure NOV Schedule to
+	show notification messages.
+</p>
+";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
 		{
 			schedule.ViewMode = ENScheduleViewMode.Day;
 
@@ -49,15 +88,12 @@ namespace Nevron.Nov.Examples.Schedule
 			// Configure the schedule view to check for pending notifications every 60 seconds
 			m_ScheduleView.NotificationCheckInterval = 60;
 		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-    This example demonstrates how to assign notifications to appointments and how to configure NOV Schedule to
-	show notification messages.
-</p>
-";
-		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
 
 		#endregion
 

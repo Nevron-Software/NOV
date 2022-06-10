@@ -6,79 +6,10 @@ using Nevron.Nov.DataStructures;
 
 namespace Nevron.Nov.Examples.Text
 {
-	class NBookInfo : INDeeplyCloneable
-	{
-		#region Constructors
-
-		/// <summary>
-		/// Initializer contructor
-		/// </summary>
-		/// <param name="name"></param>
-		/// <param name="author"></param>
-		/// <param name="description"></param>
-		/// <param name="image"></param>
-		/// <param name="price"></param>
-		public NBookInfo(string name, string author, string description, NImage image, double price)
-		{
-			Name = name;
-			Author = author;
-			Description = description;
-			Image = image;
-			Price = price;
-		}
-		/// <summary>
-		/// Copy constructor
-		/// </summary>
-		/// <param name="bookInfo"></param>
-		public NBookInfo(NBookInfo bookInfo)
-		{
-			Name = bookInfo.Name;
-			Author = bookInfo.Author;
-			Description = bookInfo.Description;
-			Image = (NImage)bookInfo.Image.DeepClone();
-			Price = bookInfo.Price;
-		}
-
-		#endregion
-
-		#region Fields
-
-		public readonly string Name;
-		public readonly string Author;
-		public readonly string Description;
-		public readonly NImage Image;
-		public readonly double Price;
-
-		#endregion
-
-		#region INDeeplyCloneable
-
-		public object DeepClone()
-		{
-			return new NBookInfo(this);
-		}
-
-		#endregion
-	}
-	/// <summary>
-	/// 
-	/// </summary>
-	class NBookInfoList : NList<NBookInfo>
-	{
-		public NBookInfoList()
-		{
-			this.Add(new NBookInfo("The Name Of The Wind", "Patrick Rothfuss", "This is the riveting first-person narrative of Kvothe, a young man who grows to be one of the most notorious magicians his world has ever seen. From his childhood in a troupe of traveling players, to years spent as a near-feral orphan in a crime-riddled city, to his daringly brazen yet successful bid to enter a legendary school of magic, The Name of the Wind is a masterpiece that transports readers into the body and mind of a wizard.", NResources.Image_Books_NameOfTheWind_jpg, 12.90));
-			this.Add(new NBookInfo("Lord of Ohe Rings", "J.R.R. Tolkien", "In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell by chance into the hands of the hobbit Bilbo Baggins.", NResources.Image_Books_LordOfTheRings_jpg, 13.99));
-			this.Add(new NBookInfo("A Game Of Thrones", "George R.R. Martin", "Long ago, in a time forgotten, a preternatural event threw the seasons out of balance. In a land where summers can last decades and winters a lifetime, trouble is brewing. The cold is returning, and in the frozen wastes to the north of Winterfell, sinister and supernatural forces are massing beyond the kingdom’s protective Wall. At the center of the conflict lie the Starks of Winterfell, a family as harsh and unyielding as the land they were born to.", NResources.Image_Books_AGameOfThrones_jpg, 12.79));
-			this.Add(new NBookInfo("The Way Of Kings", "Brandon Sanderson", "Roshar is a world of stone and storms. Uncanny tempests of incredible power sweep across the rocky terrain so frequently that they have shaped ecology and civilization alike. Animals hide in shells, trees pull in branches, and grass retracts into the soilless ground. Cities are built only where the topography offers shelter.", NResources.Image_Books_TheWayOfKings_jpg, 7.38));
-			this.Add(new NBookInfo("Mistborn", "Brandon Sanderson", "For a thousand years the ash fell and no flowers bloomed. For a thousand years the Skaa slaved in misery and lived in fear. For a thousand years the Lord Ruler, the 'Sliver of Infinity' reigned with absolute power and ultimate terror, divinely invincible. Then, when hope was so long lost that not even its memory remained, a terribly scarred, heart-broken half-Skaa rediscovered it in the depths of the Lord Ruler’s most hellish prison. Kelsier 'snapped' and found in himself the powers of a Mistborn. A brilliant thief and natural leader, he turned his talents to the ultimate caper, with the Lord Ruler himself as the mark. ", NResources.Image_Books_Mistborn_jpg, 6.38));
-		}
-	}
-
 	/// <summary>
 	/// The example demonstrates how to programmatically create inline elements with different formatting
 	/// </summary>
-	public class NWidgetInlinesExample : NTextExampleBase
+	public class NWidgetInlinesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -93,17 +24,42 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NWidgetInlinesExample()
 		{
-			NWidgetInlinesExampleSchema = NSchema.Create(typeof(NWidgetInlinesExample), NTextExampleBase.NTextExampleBaseSchema);
+			NWidgetInlinesExampleSchema = NSchema.Create(typeof(NWidgetInlinesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Overrides
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>This example demonstrates how to use widgets in order to create ""HTML like"" interfaces. The example also demonstrates how to use style sheets.</p>
+<p>Press the ""Show Prev Book"" and ""Show Next Buttons"" buttons to browse through the available books.</p>
+<p>Press the ""Add to Cart"" button to add the currently selected book to the shopping cart.</p>
+<p>Press the ""Delete"" button to remove a book from the shopping cart.</p>
+<p>Use the combo box to select the quantity of books to purchase.</p>
+";
+		}
+
+		private void PopulateRichText()
 		{
 			m_Books = new NBookInfoList();
 			m_CurrentBookIndex = 0;
@@ -147,20 +103,6 @@ namespace Nevron.Nov.Examples.Text
 
 				section.Blocks.Add(m_ShoppingCartPlaceHolder);
 			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>This example demonstrates how to use widgets in order to create ""HTML like"" interfaces. The example also demonstrates how to use style sheets.</p>
-<p>Press the ""Show Prev Book"" and ""Show Next Buttons"" buttons to browse through the available books.</p>
-<p>Press the ""Add to Cart"" button to add the currently selected book to the shopping cart.</p>
-<p>Press the ""Delete"" button to remove a book from the shopping cart.</p>
-<p>Use the combo box to select the quantity of books to purchase.</p>
-";
 		}
 
 		#endregion
@@ -565,17 +507,89 @@ namespace Nevron.Nov.Examples.Text
 
 		#region Fields
 
-		NBookInfoList m_Books;
-		NGroupBlock m_BookInfoPlaceHolder;
-		NGroupBlock m_ShoppingCartPlaceHolder;
-		NTable m_CartTable;
-		int m_CurrentBookIndex;
+		private NRichTextView m_RichText;
+		private NBookInfoList m_Books;
+		private NGroupBlock m_BookInfoPlaceHolder;
+		private NGroupBlock m_ShoppingCartPlaceHolder;
+		private NTable m_CartTable;
+		private int m_CurrentBookIndex;
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NWidgetInlinesExampleSchema;
+
+		#endregion
+
+		#region Nested Types
+
+		private class NBookInfo : INDeeplyCloneable
+		{
+			#region Constructors
+
+			/// <summary>
+			/// Initializer contructor
+			/// </summary>
+			/// <param name="name"></param>
+			/// <param name="author"></param>
+			/// <param name="description"></param>
+			/// <param name="image"></param>
+			/// <param name="price"></param>
+			public NBookInfo(string name, string author, string description, NImage image, double price)
+			{
+				Name = name;
+				Author = author;
+				Description = description;
+				Image = image;
+				Price = price;
+			}
+			/// <summary>
+			/// Copy constructor
+			/// </summary>
+			/// <param name="bookInfo"></param>
+			public NBookInfo(NBookInfo bookInfo)
+			{
+				Name = bookInfo.Name;
+				Author = bookInfo.Author;
+				Description = bookInfo.Description;
+				Image = (NImage)bookInfo.Image.DeepClone();
+				Price = bookInfo.Price;
+			}
+
+			#endregion
+
+			#region Fields
+
+			public readonly string Name;
+			public readonly string Author;
+			public readonly string Description;
+			public readonly NImage Image;
+			public readonly double Price;
+
+			#endregion
+
+			#region INDeeplyCloneable
+
+			public object DeepClone()
+			{
+				return new NBookInfo(this);
+			}
+
+			#endregion
+		}
+
+		private class NBookInfoList : NList<NBookInfo>
+		{
+			public NBookInfoList()
+			{
+				Add(new NBookInfo("The Name Of The Wind", "Patrick Rothfuss", "This is the riveting first-person narrative of Kvothe, a young man who grows to be one of the most notorious magicians his world has ever seen. From his childhood in a troupe of traveling players, to years spent as a near-feral orphan in a crime-riddled city, to his daringly brazen yet successful bid to enter a legendary school of magic, The Name of the Wind is a masterpiece that transports readers into the body and mind of a wizard.", NResources.Image_Books_NameOfTheWind_jpg, 12.90));
+				Add(new NBookInfo("Lord of Ohe Rings", "J.R.R. Tolkien", "In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell by chance into the hands of the hobbit Bilbo Baggins.", NResources.Image_Books_LordOfTheRings_jpg, 13.99));
+				Add(new NBookInfo("A Game Of Thrones", "George R.R. Martin", "Long ago, in a time forgotten, a preternatural event threw the seasons out of balance. In a land where summers can last decades and winters a lifetime, trouble is brewing. The cold is returning, and in the frozen wastes to the north of Winterfell, sinister and supernatural forces are massing beyond the kingdom’s protective Wall. At the center of the conflict lie the Starks of Winterfell, a family as harsh and unyielding as the land they were born to.", NResources.Image_Books_AGameOfThrones_jpg, 12.79));
+				Add(new NBookInfo("The Way Of Kings", "Brandon Sanderson", "Roshar is a world of stone and storms. Uncanny tempests of incredible power sweep across the rocky terrain so frequently that they have shaped ecology and civilization alike. Animals hide in shells, trees pull in branches, and grass retracts into the soilless ground. Cities are built only where the topography offers shelter.", NResources.Image_Books_TheWayOfKings_jpg, 7.38));
+				Add(new NBookInfo("Mistborn", "Brandon Sanderson", "For a thousand years the ash fell and no flowers bloomed. For a thousand years the Skaa slaved in misery and lived in fear. For a thousand years the Lord Ruler, the 'Sliver of Infinity' reigned with absolute power and ultimate terror, divinely invincible. Then, when hope was so long lost that not even its memory remained, a terribly scarred, heart-broken half-Skaa rediscovered it in the depths of the Lord Ruler’s most hellish prison. Kelsier 'snapped' and found in himself the powers of a Mistborn. A brilliant thief and natural leader, he turned his talents to the ultimate caper, with the Lord Ruler himself as the mark. ", NResources.Image_Books_Mistborn_jpg, 6.38));
+			}
+		}
 
 		#endregion
 	}

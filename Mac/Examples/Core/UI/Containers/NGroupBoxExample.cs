@@ -24,7 +24,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -49,6 +49,12 @@ namespace Nevron.Nov.Examples.UI
 			stack1.Add(new NLabel("Label 1 in stack"));
 			stack1.Add(new NLabel("Label 2 in stack"));
 			stack1.Add(new NLabel("Label 3 in stack"));
+
+            // Create the third group box
+            NGroupBox groupBox3 = new NGroupBox("Group Box 3 - Expandable");
+            groupBox3.Expandable = true;
+            groupBox3.Content = new NImageBox(NResources.Image_Artistic_FishBowl_jpg);
+            m_ContentPanel.Add(groupBox3);
 
 			return m_ContentPanel;
 		}

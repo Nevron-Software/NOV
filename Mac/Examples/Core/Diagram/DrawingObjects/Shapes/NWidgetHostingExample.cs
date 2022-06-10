@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NWidgetHostingExample : NDiagramExampleBase
+	public class NWidgetHostingExample : NExampleBase
     {
         #region Constructors
 
@@ -23,24 +23,54 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NWidgetHostingExample()
         {
-            NWidgetHostingExampleSchema = NSchema.Create(typeof(NWidgetHostingExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NWidgetHostingExampleSchema = NSchema.Create(typeof(NWidgetHostingExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
         {
-            base.InitDiagram();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
 
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
+        protected override string GetExampleDescription()
+        {
+            return @"
+<p>
+    This example demonstrates the ability to embed any NOV UI Widget in shapes. This allows the creation of interactive
+    diagrams that are incredibly rich on interaction features.
+</p>
+";
+        }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
             // create the books list
             CreateBooksList();
 
             // create the shopping cart
             m_ShoppingCart = new NShoppingCart();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide the grid
@@ -48,14 +78,6 @@ namespace Nevron.Nov.Examples.Diagram
 
             // create a shape which hosts a widget
             CreateBookStore(activePage);
-        }
-        protected override string GetExampleDescription()
-        {
-            return @"
-<p>
-    This example demonstrates the ability to embed any NOV UI Widget in shapes. This allows the creation of interactive diagrams that are incredibly rich on interaction features.
-</p>
-";
         }
 
         #endregion
@@ -73,7 +95,7 @@ namespace Nevron.Nov.Examples.Diagram
                 "The Name Of The Wind",
                 "Patrick Rothfuss",
                 "This is the riveting first-person narrative of Kvothe, a young man who grows to be one of the most notorious magicians his world has ever seen. From his childhood in a troupe of traveling players, to years spent as a near-feral orphan in a crime-riddled city, to his daringly brazen yet successful bid to enter a legendary school of magic, The Name of the Wind is a masterpiece that transports readers into the body and mind of a wizard.",
-                Nevron.Nov.Examples.NResources.Image_Books_NameOfTheWind_jpg,
+                NResources.Image_Books_NameOfTheWind_jpg,
                 12.90));
             m_Books.Add(new NBook(
                 "Lord of Ohe Rings",
@@ -299,6 +321,8 @@ namespace Nevron.Nov.Examples.Diagram
         #endregion
 
         #region Fields
+
+        private NDrawingView m_DrawingView;
 
         private int m_nSelectedBook = 0;
         private NShape m_SelectedBookImage;

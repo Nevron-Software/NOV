@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Demonstrates how to position polar angle axes
 	/// </summary>
-	public class NPolarAngleAxisPositionExample : NChartExampleBase
+	public class NPolarAngleAxisPositionExample : NExampleBase
 	{
 		#region Constructors
 
@@ -19,24 +19,20 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		public NPolarAngleAxisPositionExample()
 		{
-			
+
 		}
 		/// <summary>
 		/// Static constructor
 		/// </summary>
 		static NPolarAngleAxisPositionExample()
 		{
-			NPolarAngleAxisPositionExampleSchema = NSchema.Create(typeof(NPolarAngleAxisPositionExample), NChartExampleBase.NChartExampleBaseSchema);
+			NPolarAngleAxisPositionExampleSchema = NSchema.Create(typeof(NPolarAngleAxisPositionExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreatePolarChartView();
@@ -113,14 +109,10 @@ namespace Nevron.Nov.Examples.Chart
 			m_RedAxis.Scale.SetColor(NColor.Red);
 			m_GreenAxis.Scale.SetColor(NColor.Green);
 
-			series2.ValueAxis = m_GreenAxis;			
+			series2.ValueAxis = m_GreenAxis;
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -161,13 +153,9 @@ namespace Nevron.Nov.Examples.Chart
 
 			dockGreenAxisCheckBox.Checked = false;
 			m_GreenAxisCrossValueUpDown.Value = 70;
-						
+
 			return group;
 		}
-        /// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to control the polar angle axis position.</p>";
@@ -271,9 +259,20 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NPolarAngleAxisPositionExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreatePolarChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
+			return chartView;
+		}
 
 		#endregion
 	}

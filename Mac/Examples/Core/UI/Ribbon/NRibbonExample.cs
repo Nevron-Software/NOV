@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Layout;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
@@ -29,7 +28,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -119,9 +118,6 @@ namespace Nevron.Nov.Examples.UI
 
 			#region Clipboard Group
 
-			NRibbonGroup ribbonGroup = new NRibbonGroup("Group Title");
-			ribbonGroup.InitialState = (int)ENRibbonGroupState.Medium;
-
 			NRibbonGroup group = new NRibbonGroup("Clipboard");
 			group.Icon = NResources.Image_Ribbon_16x16_clipboard_copy_png;
 			page.Groups.Add(group);
@@ -193,7 +189,7 @@ namespace Nevron.Nov.Examples.UI
 			wrapPanel.Add(stackPanel);
 
 			NFillSplitButton fillSplitButton = new NFillSplitButton();
-			fillSplitButton.Image = NResources.Image_Ribbon_16x16_TextFill_png;
+			fillSplitButton.Image = NResources.Image_Ribbon_16x16_text_fill_png;
 			wrapPanel.Add(fillSplitButton);
 
 			#endregion

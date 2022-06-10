@@ -1,6 +1,6 @@
 ﻿using System;
+
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -150,7 +150,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Contants
+		#region Constants
 
 		private const int W = 400;
 		private const int H = 400;

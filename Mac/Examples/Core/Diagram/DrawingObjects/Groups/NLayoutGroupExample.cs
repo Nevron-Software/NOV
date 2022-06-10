@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NLayoutGroupExample : NDiagramExampleBase
+	public class NLayoutGroupExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,13 +23,31 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NLayoutGroupExample()
 		{
-			NLayoutGroupExampleSchema = NSchema.Create(typeof(NLayoutGroupExample), NDiagramExampleBaseSchema);
+			NLayoutGroupExampleSchema = NSchema.Create(typeof(NLayoutGroupExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
 		protected override NWidget CreateExampleControls()
 		{
 			return null;
@@ -38,13 +56,12 @@ namespace Nevron.Nov.Examples.Diagram
 		{
 			return "Demonstrates how to layout the shapes in a group.";
 		}
-		protected override void InitDiagram()
-		{
-			base.InitDiagram();
 
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
 			// Create a group
 			NGroup group = new NGroup();
-			m_DrawingDocument.Content.ActivePage.Items.Add(group);
+			drawingDocument.Content.ActivePage.Items.Add(group);
 			group.PinX = 300;
 			group.PinY = 300;
 
@@ -77,7 +94,7 @@ namespace Nevron.Nov.Examples.Diagram
 
 			// Create a layout context and configure the area you want the group to be arranged in.
 			// The layout area is in page coordinates
-			NDrawingLayoutContext layoutContext = new NDrawingLayoutContext(m_DrawingDocument, group);
+			NDrawingLayoutContext layoutContext = new NDrawingLayoutContext(drawingDocument, group);
 			layoutContext.LayoutArea = new NRectangle(100, 100, 200, 200);
 
 			// Layout the shapes in the group
@@ -102,6 +119,12 @@ namespace Nevron.Nov.Examples.Diagram
 			connector.GlueBeginToShape(shape1);
 			connector.GlueEndToShape(shape2);
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

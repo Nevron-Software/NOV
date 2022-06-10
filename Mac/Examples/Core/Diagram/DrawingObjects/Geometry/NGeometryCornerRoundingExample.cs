@@ -8,7 +8,7 @@ namespace Nevron.Nov.Examples.Diagram
     /// <summary>
     /// 
     /// </summary>
-    public class NGeometryCornerRoundingExample : NDiagramExampleBase
+    public class NGeometryCornerRoundingExample : NExampleBase
     {
         #region Constructors
 
@@ -24,13 +24,35 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NGeometryCornerRoundingExample()
         {
-            NGeometryCornerRoundingExampleSchema = NSchema.Create(typeof(NGeometryCornerRoundingExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NGeometryCornerRoundingExampleSchema = NSchema.Create(typeof(NGeometryCornerRoundingExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Overrides from NDiagramExampleBase
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -42,11 +64,10 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide the grid
@@ -77,6 +98,12 @@ namespace Nevron.Nov.Examples.Diagram
             connector.GlueEndToShape(pentagramShape);
             activePage.Items.Add(connector);
         }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

@@ -73,7 +73,7 @@ namespace Nevron.Nov.Examples
 				contentArea.Top + 5, length, length);
 
 			// Fill the status bounds with a circle
-			NExamplesHomePage homePage = (NExamplesHomePage)GetFirstAncestor(NExamplesHomePage.NExamplesHomePageSchema);
+			NHomePage homePage = (NHomePage)GetFirstAncestor(NHomePage.NHomePageSchema);
 			NColor color = homePage.GetStatusColor(m_Status);
 			visitor.SetFill(new NColor(color, 160));
 			visitor.PaintEllipse(statusBounds);

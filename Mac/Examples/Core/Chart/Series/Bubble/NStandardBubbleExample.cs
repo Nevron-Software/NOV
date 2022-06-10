@@ -1,6 +1,5 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
@@ -9,7 +8,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Standard Bubble Example
 	/// </summary>
-	public class NStandardBubbleExample : NChartExampleBase
+	public class NStandardBubbleExample : NExampleBase
 	{
 		#region Constructors
 
@@ -25,20 +24,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStandardBubbleExample()
 		{
-			NStandardBubbleExampleSchema = NSchema.Create(typeof(NStandardBubbleExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStandardBubbleExampleSchema = NSchema.Create(typeof(NStandardBubbleExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Standard Bubble";
@@ -86,10 +82,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -122,10 +114,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a standard bubble chart.</p>";
@@ -196,7 +184,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStandardBubbleExampleSchema;
 

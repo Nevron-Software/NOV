@@ -1,11 +1,11 @@
 ﻿using System.IO;
+using System.Text;
 
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.IO;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
-using System.Text;
-using Nevron.Nov.Editors;
 
 namespace Nevron.Nov.Examples.UI
 {
@@ -29,7 +29,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -154,7 +154,7 @@ namespace Nevron.Nov.Examples.UI
 			stack.Add(saveButton);
 
 			NButtonStrip closeButtonStrip = new NButtonStrip();
-			closeButtonStrip.InitCloseButtonStrip();
+			closeButtonStrip.AddCloseButton();
 			stack.Add(closeButtonStrip);
 
 			// create a dialog that is owned by this widget window
@@ -177,7 +177,7 @@ namespace Nevron.Nov.Examples.UI
 				new NFileDialogFileType("XML Files", "xml"),
 				new NFileDialogFileType("All Files", "*")
 			};
-			openFileDialog.SelectedFilter = 0;
+			openFileDialog.SelectedFilterIndex = 0;
 			openFileDialog.MultiSelect = false;
 			openFileDialog.InitialDirectory = "";
 			openFileDialog.Title = "Open Text File";
@@ -190,13 +190,18 @@ namespace Nevron.Nov.Examples.UI
 			switch (result.Result)
 			{
 				case ENCommonDialogResult.OK:
-					string fileName = result.Files[0].Name;
-					using (StreamReader reader = new StreamReader(result.Files[0].OpenRead()))
-					{
-						m_TextBox.Text = reader.ReadToEnd();
-					}
+					NFile file = result.Files[0];
+					file.OpenRead().Then(
+						delegate (Stream stream)
+						{
+							using (stream)
+							{
+								m_TextBox.Text = NStreamHelpers.ReadToEndAsString(stream);
+							}
 
-					m_EventsLog.LogEvent("File opened: " + fileName);
+							m_EventsLog.LogEvent("File opened: " + file.Name);
+						}
+					);
 					break;
 
 				case ENCommonDialogResult.Cancel:
@@ -253,7 +258,7 @@ namespace Nevron.Nov.Examples.UI
 				new NFileDialogFileType("Text Files", "txt"),
 				new NFileDialogFileType("All Files", "*")
 			};
-			saveFileDialog.SelectedFilter = 0;
+			saveFileDialog.SelectedFilterIndex = 0;
 			saveFileDialog.DefaultFileName = "NevronTest";
 			saveFileDialog.DefaultExtension = "txt";
 			saveFileDialog.Title = "Save File As";
@@ -266,16 +271,18 @@ namespace Nevron.Nov.Examples.UI
 			switch (result.Result)
 			{
 				case ENCommonDialogResult.OK:
-					string safeFileName = result.SafeFileName;
-					using (Stream stream = result.File.OpenWrite())
-					{
-						using (StreamWriter writer = new StreamWriter(stream))
+					result.File.Create().Then(
+						delegate (Stream stream)
 						{
-							writer.Write(m_TextBox.Text);
-						}
-					}
+							using (StreamWriter writer = new StreamWriter(stream))
+							{
+								writer.Write(m_TextBox.Text);
+							}
 
-					m_EventsLog.LogEvent("File saved: " + safeFileName);
+							m_EventsLog.LogEvent("File saved: " + result.SafeFileName);
+						}
+					);
+
 					break;
 
 				case ENCommonDialogResult.Cancel:

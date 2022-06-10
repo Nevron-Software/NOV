@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NRasterImageExportExample : NDiagramExampleBase
+    public class NRasterImageExportExample : NExampleBase
     {
         #region Constructors
 
@@ -23,16 +23,34 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NRasterImageExportExample()
         {
-            NRasterImageExportExampleSchema = NSchema.Create(typeof(NRasterImageExportExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NRasterImageExportExampleSchema = NSchema.Create(typeof(NRasterImageExportExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
         protected override NWidget CreateExampleControls()
         {
-			NStackPanel stackPanel = (NStackPanel)base.CreateExampleControls();
+            NStackPanel stackPanel = new NStackPanel();
 
             NButton showImageExportButton = new NButton("Show Raster Image Export Dialog...");
             showImageExportButton.Click += OnShowImageExportButtonClick;
@@ -61,18 +79,17 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
             ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             drawing.ScreenVisibility.ShowGrid = false;
             drawing.ScreenVisibility.ShowPorts = false;
 
             NBasicShapeFactory basisShapes = new NBasicShapeFactory();
-			NFlowchartingShapeFactory flowChartingShapes = new NFlowchartingShapeFactory();
+			NFlowchartShapeFactory flowChartingShapes = new NFlowchartShapeFactory();
             NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
             NShape nonPrintableShape = basisShapes.CreateShape(ENBasicShape.Rectangle);
@@ -124,33 +141,39 @@ namespace Nevron.Nov.Examples.Diagram
 
         private void OnShowImageExportButtonClick(NEventArgs arg)
         {
-			NDrawingRasterImageExporter imageExporter = new NDrawingRasterImageExporter(m_DrawingDocument);
-            imageExporter.ShowDialog(OwnerWindow, true);
+			NDrawingRasterImageExporter imageExporter = new NDrawingRasterImageExporter(m_DrawingView.Drawing);
+            imageExporter.ShowDialog(DisplayWindow, true);
         }
         private void OnCopyImageToClipboardButtonClick(NEventArgs arg)
         {
-			NDrawingRasterImageExporter imageExporter = new NDrawingRasterImageExporter(m_DrawingDocument);
+			NDrawingRasterImageExporter imageExporter = new NDrawingRasterImageExporter(m_DrawingView.Drawing);
             imageExporter.CopyToClipboard();
         }
         private void OnSaveAsRasterImageFileButtonClick(NEventArgs arg)
         {
-			NDrawingRasterImageExporter imageExporter = new NDrawingRasterImageExporter(m_DrawingDocument);
+			NDrawingRasterImageExporter imageExporter = new NDrawingRasterImageExporter(m_DrawingView.Drawing);
             imageExporter.SaveAsImage();
         }
 		private void OnSaveAsVectorImageFileButtonClick(NEventArgs arg)
 		{
-			NDrawingVectorImageExporter imageExporter = new NDrawingVectorImageExporter(m_DrawingDocument);
+			NDrawingVectorImageExporter imageExporter = new NDrawingVectorImageExporter(m_DrawingView.Drawing);
 			imageExporter.SaveAsImage();
 		}
 
-		#endregion
+        #endregion
 
-		#region Schema
+        #region Fields
 
-		/// <summary>
-		/// Schema associated with NRasterImageExportExample.
-		/// </summary>
-		public static readonly NSchema NRasterImageExportExampleSchema;
+        private NDrawingView m_DrawingView;
+
+        #endregion
+
+        #region Schema
+
+        /// <summary>
+        /// Schema associated with NRasterImageExportExample.
+        /// </summary>
+        public static readonly NSchema NRasterImageExportExampleSchema;
 
         #endregion
     }

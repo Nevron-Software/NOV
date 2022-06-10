@@ -1,17 +1,15 @@
-﻿using Nevron.Nov.Diagram;
+﻿using System.Text;
+
+using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
-using System.Text;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NParagraphsExample : NDiagramExampleBase
+	public class NParagraphsExample : NExampleBase
     {
         #region Constructors
 
@@ -27,25 +25,43 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NParagraphsExample()
         {
-            NParagraphsExampleSchema = NSchema.Create(typeof(NParagraphsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NParagraphsExampleSchema = NSchema.Create(typeof(NParagraphsExample), NExampleBaseSchema);
         }
 
-        #endregion
+		#endregion
 
-        #region Overrides from NDiagramExampleBase
+		#region Example
 
-        protected override string GetExampleDescription()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
         {
-            return @"<p>
-						Demonstrates how to modify different aspects of the rich text paragraphs.
-					</p>";
+            return @"<p>Demonstrates how to modify different aspects of the rich text paragraphs.</p>";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
 
             // hide the grid
             drawing.ScreenVisibility.ShowGrid = false;
@@ -60,6 +76,7 @@ namespace Nevron.Nov.Examples.Diagram
 			textBlock.Padding = new NMargins(20);
 			textBlock.Content.Blocks.Clear();
 			AddFormattedTextToContent(textBlock.Content);
+
 			drawing.ActivePage.Items.Add(shape1);
 		}
 
@@ -279,6 +296,12 @@ namespace Nevron.Nov.Examples.Diagram
 
 			return border;
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

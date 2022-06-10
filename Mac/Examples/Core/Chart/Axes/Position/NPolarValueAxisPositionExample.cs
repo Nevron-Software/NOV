@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Demonstrates how to position polar value axes
 	/// </summary>
-	public class NPolarValueAxisPositionExample : NChartExampleBase
+	public class NPolarValueAxisPositionExample : NExampleBase
 	{
 		#region Constructors
 
@@ -19,24 +19,20 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		public NPolarValueAxisPositionExample()
 		{
-			
+
 		}
 		/// <summary>
 		/// Static constructor
 		/// </summary>
 		static NPolarValueAxisPositionExample()
 		{
-			NPolarValueAxisPositionExampleSchema = NSchema.Create(typeof(NPolarValueAxisPositionExample), NChartExampleBase.NChartExampleBaseSchema);
+			NPolarValueAxisPositionExampleSchema = NSchema.Create(typeof(NPolarValueAxisPositionExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreatePolarChartView();
@@ -59,13 +55,13 @@ namespace Nevron.Nov.Examples.Chart
 			linearScale.InflateViewRangeEnd = true;
 			linearScale.Labels.OverlapResolveLayouts = new NDomArray<ENLevelLabelsLayout>(new ENLevelLabelsLayout[] { ENLevelLabelsLayout.AutoScale });
 
-            linearScale.MajorGridLines.Visible = true;
+			linearScale.MajorGridLines.Visible = true;
 			linearScale.MajorGridLines.Stroke.DashStyle = ENDashStyle.Dash;
 
 			// setup polar angle axis
 			NAngularScale angularScale = (NAngularScale)m_Chart.Axes[ENPolarAxis.PrimaryAngle].Scale;
 
-            angularScale.MajorGridLines.Visible = true;
+			angularScale.MajorGridLines.Visible = true;
 			angularScale.Labels.Style.Angle = new NScaleLabelAngle(ENScaleLabelAngleMode.Scale, 0);
 			NScaleStrip strip = new NScaleStrip();
 			strip.Fill = new NColorFill(new NColor(192, 192, 192, 125));
@@ -99,7 +95,7 @@ namespace Nevron.Nov.Examples.Chart
 			series2.CloseContour = true;
 			series2.UseXValues = true;
 			series2.DataLabelStyle = new NDataLabelStyle(false);
-			
+
 			markerStyle = new NMarkerStyle();
 			markerStyle.Visible = false;
 			series2.MarkerStyle = markerStyle;
@@ -119,14 +115,10 @@ namespace Nevron.Nov.Examples.Chart
 			series1.Stroke = new NStroke(2, NColor.DarkRed);
 			series2.Stroke = new NStroke(2, NColor.DarkGreen);
 
-			series2.ValueAxis = m_GreenAxis;			
+			series2.ValueAxis = m_GreenAxis;
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -156,25 +148,25 @@ namespace Nevron.Nov.Examples.Chart
 				dockRedAxisToBottomCheckBox.CheckedChanged += new Function<NValueChangeEventArgs>(OnDockRedAxisToBottomCheckBoxCheckedChanged);
 				stack.Add(dockRedAxisToBottomCheckBox);
 
-                m_RedAxisAngleUpDown = new NNumericUpDown();
+				m_RedAxisAngleUpDown = new NNumericUpDown();
 				m_RedAxisAngleUpDown.Value = 0;
-                m_RedAxisAngleUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnRedAxisAngleUpDownValueChanged);
-                stack.Add(NPairBox.Create("Angle:", m_RedAxisAngleUpDown));
+				m_RedAxisAngleUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnRedAxisAngleUpDownValueChanged);
+				stack.Add(NPairBox.Create("Angle:", m_RedAxisAngleUpDown));
 
-                NCheckBox redAxisPaintRefelectionCheckBox = new NCheckBox("Paint Reflection");
+				NCheckBox redAxisPaintRefelectionCheckBox = new NCheckBox("Paint Reflection");
 				redAxisPaintRefelectionCheckBox.Checked = true;
-                redAxisPaintRefelectionCheckBox.CheckedChanged += OnRedAxisPaintRefelectionCheckBoxCheckedChanged;
-                stack.Add(redAxisPaintRefelectionCheckBox);
+				redAxisPaintRefelectionCheckBox.CheckedChanged += OnRedAxisPaintRefelectionCheckBoxCheckedChanged;
+				stack.Add(redAxisPaintRefelectionCheckBox);
 
-                m_RedAxisScaleLabelAngleMode = new NComboBox();
-                m_RedAxisScaleLabelAngleMode.FillFromEnum<ENScaleLabelAngleMode>();
-                m_RedAxisScaleLabelAngleMode.SelectedIndex = (int)ENScaleLabelAngleMode.View;
-                m_RedAxisScaleLabelAngleMode.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnUpdateRedAxisSaleLabelAngle);
-                stack.Add(NPairBox.Create("Scale Label Angle Mode:", m_RedAxisScaleLabelAngleMode));
+				m_RedAxisScaleLabelAngleMode = new NComboBox();
+				m_RedAxisScaleLabelAngleMode.FillFromEnum<ENScaleLabelAngleMode>();
+				m_RedAxisScaleLabelAngleMode.SelectedIndex = (int)ENScaleLabelAngleMode.View;
+				m_RedAxisScaleLabelAngleMode.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnUpdateRedAxisSaleLabelAngle);
+				stack.Add(NPairBox.Create("Scale Label Angle Mode:", m_RedAxisScaleLabelAngleMode));
 
-                m_RedAxisSaleLabelAngleUpDown = new NNumericUpDown();
-                m_RedAxisSaleLabelAngleUpDown.ValueChanged += OnUpdateRedAxisSaleLabelAngle;
-                stack.Add(NPairBox.Create("Scale Label Angle:", m_RedAxisSaleLabelAngleUpDown));
+				m_RedAxisSaleLabelAngleUpDown = new NNumericUpDown();
+				m_RedAxisSaleLabelAngleUpDown.ValueChanged += OnUpdateRedAxisSaleLabelAngle;
+				stack.Add(NPairBox.Create("Scale Label Angle:", m_RedAxisSaleLabelAngleUpDown));
 
 				NNumericUpDown redAxisBeginPercentUpDown = new NNumericUpDown();
 				redAxisBeginPercentUpDown.Value = m_RedAxis.Anchor.BeginPercent;
@@ -195,25 +187,25 @@ namespace Nevron.Nov.Examples.Chart
 				dockGreenAxisToLeftCheckBox.CheckedChanged += new Function<NValueChangeEventArgs>(OnDockGreenAxisToLeftCheckBoxCheckedChanged);
 				stack.Add(dockGreenAxisToLeftCheckBox);
 
-                m_GreenAxisAngleUpDown = new NNumericUpDown();
+				m_GreenAxisAngleUpDown = new NNumericUpDown();
 				m_GreenAxisAngleUpDown.Value = 90;
-                m_GreenAxisAngleUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnGreenAxisAngleUpDownValueChanged);
-                stack.Add(NPairBox.Create("Angle:", m_GreenAxisAngleUpDown));
+				m_GreenAxisAngleUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnGreenAxisAngleUpDownValueChanged);
+				stack.Add(NPairBox.Create("Angle:", m_GreenAxisAngleUpDown));
 
-                NCheckBox greenAxisPaintRefelectionCheckBox = new NCheckBox("Paint Reflection");
+				NCheckBox greenAxisPaintRefelectionCheckBox = new NCheckBox("Paint Reflection");
 				greenAxisPaintRefelectionCheckBox.Checked = true;
-                greenAxisPaintRefelectionCheckBox.CheckedChanged += OnGreenAxisPaintRefelectionCheckBoxCheckedChanged;
-                stack.Add(greenAxisPaintRefelectionCheckBox);
+				greenAxisPaintRefelectionCheckBox.CheckedChanged += OnGreenAxisPaintRefelectionCheckBoxCheckedChanged;
+				stack.Add(greenAxisPaintRefelectionCheckBox);
 
-                m_GreenAxisScaleLabelAngleMode = new NComboBox();
-                m_GreenAxisScaleLabelAngleMode.FillFromEnum<ENScaleLabelAngleMode>();
-                m_GreenAxisScaleLabelAngleMode.SelectedIndex = (int)ENScaleLabelAngleMode.View;
-                m_GreenAxisScaleLabelAngleMode.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnUpdateGreenAxisSaleLabelAngle);
-                stack.Add(NPairBox.Create("Scale Label Angle Mode:", m_GreenAxisScaleLabelAngleMode));
+				m_GreenAxisScaleLabelAngleMode = new NComboBox();
+				m_GreenAxisScaleLabelAngleMode.FillFromEnum<ENScaleLabelAngleMode>();
+				m_GreenAxisScaleLabelAngleMode.SelectedIndex = (int)ENScaleLabelAngleMode.View;
+				m_GreenAxisScaleLabelAngleMode.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnUpdateGreenAxisSaleLabelAngle);
+				stack.Add(NPairBox.Create("Scale Label Angle Mode:", m_GreenAxisScaleLabelAngleMode));
 
-                m_GreenAxisSaleLabelAngleUpDown = new NNumericUpDown();
-                m_GreenAxisSaleLabelAngleUpDown.ValueChanged += OnUpdateGreenAxisSaleLabelAngle;
-                stack.Add(NPairBox.Create("Scale Label Angle:", m_GreenAxisSaleLabelAngleUpDown));
+				m_GreenAxisSaleLabelAngleUpDown = new NNumericUpDown();
+				m_GreenAxisSaleLabelAngleUpDown.ValueChanged += OnUpdateGreenAxisSaleLabelAngle;
+				stack.Add(NPairBox.Create("Scale Label Angle:", m_GreenAxisSaleLabelAngleUpDown));
 
 				NNumericUpDown greenAxisBeginPercentUpDown = new NNumericUpDown();
 				greenAxisBeginPercentUpDown.Value = m_GreenAxis.Anchor.BeginPercent;
@@ -229,10 +221,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-        /// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to control the polar value axis position.</p>";
@@ -242,16 +230,16 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Event Handlers
 
-        void OnUpdateGreenAxisSaleLabelAngle(NValueChangeEventArgs arg)
-        {
-            (m_GreenAxis.Scale as NLinearScale).Labels.Style.Angle = new NScaleLabelAngle((ENScaleLabelAngleMode)m_GreenAxisScaleLabelAngleMode.SelectedIndex, m_GreenAxisSaleLabelAngleUpDown.Value);
-        }
+		void OnUpdateGreenAxisSaleLabelAngle(NValueChangeEventArgs arg)
+		{
+			(m_GreenAxis.Scale as NLinearScale).Labels.Style.Angle = new NScaleLabelAngle((ENScaleLabelAngleMode)m_GreenAxisScaleLabelAngleMode.SelectedIndex, m_GreenAxisSaleLabelAngleUpDown.Value);
+		}
 
-        void OnGreenAxisPaintRefelectionCheckBoxCheckedChanged(NValueChangeEventArgs arg)
-        {
-            m_GreenAxis.PaintReflection = ((NCheckBox)arg.TargetNode).Checked;
-        }
-        
+		void OnGreenAxisPaintRefelectionCheckBoxCheckedChanged(NValueChangeEventArgs arg)
+		{
+			m_GreenAxis.PaintReflection = ((NCheckBox)arg.TargetNode).Checked;
+		}
+
 		void OnGreenAxisEndPercentUpDownValueChanged(NValueChangeEventArgs arg)
 		{
 			m_GreenAxis.Anchor.EndPercent = (float)((NNumericUpDown)arg.TargetNode).Value;
@@ -264,12 +252,12 @@ namespace Nevron.Nov.Examples.Chart
 
 		void OnGreenAxisAngleUpDownValueChanged(NValueChangeEventArgs arg)
 		{
-			 NValueCrossPolarAxisAnchor valueCrossPolarAnchor = m_GreenAxis.Anchor as NValueCrossPolarAxisAnchor;
+			NValueCrossPolarAxisAnchor valueCrossPolarAnchor = m_GreenAxis.Anchor as NValueCrossPolarAxisAnchor;
 
-			 if (valueCrossPolarAnchor != null)
-			 {
-				 valueCrossPolarAnchor.Value = m_GreenAxisAngleUpDown.Value;
-			 }
+			if (valueCrossPolarAnchor != null)
+			{
+				valueCrossPolarAnchor.Value = m_GreenAxisAngleUpDown.Value;
+			}
 		}
 
 		void OnDockGreenAxisToLeftCheckBoxCheckedChanged(NValueChangeEventArgs arg)
@@ -286,15 +274,15 @@ namespace Nevron.Nov.Examples.Chart
 			}
 		}
 
-        void OnUpdateRedAxisSaleLabelAngle(NValueChangeEventArgs arg)
-        {
-            (m_RedAxis.Scale as NLinearScale).Labels.Style.Angle = new NScaleLabelAngle((ENScaleLabelAngleMode)m_RedAxisScaleLabelAngleMode.SelectedIndex, m_RedAxisSaleLabelAngleUpDown.Value);
-        }
+		void OnUpdateRedAxisSaleLabelAngle(NValueChangeEventArgs arg)
+		{
+			(m_RedAxis.Scale as NLinearScale).Labels.Style.Angle = new NScaleLabelAngle((ENScaleLabelAngleMode)m_RedAxisScaleLabelAngleMode.SelectedIndex, m_RedAxisSaleLabelAngleUpDown.Value);
+		}
 
-        void OnRedAxisPaintRefelectionCheckBoxCheckedChanged(NValueChangeEventArgs arg)
-        {
-            m_RedAxis.PaintReflection = ((NCheckBox)arg.TargetNode).Checked;
-        }
+		void OnRedAxisPaintRefelectionCheckBoxCheckedChanged(NValueChangeEventArgs arg)
+		{
+			m_RedAxis.PaintReflection = ((NCheckBox)arg.TargetNode).Checked;
+		}
 
 		void OnRedAxisEndPercentUpDownValueChanged(NValueChangeEventArgs arg)
 		{
@@ -303,7 +291,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		void OnRedAxisBeginPercentUpDownValueChanged(NValueChangeEventArgs arg)
 		{
-            m_RedAxis.Anchor.BeginPercent = (float)((NNumericUpDown)arg.TargetNode).Value;
+			m_RedAxis.Anchor.BeginPercent = (float)((NNumericUpDown)arg.TargetNode).Value;
 		}
 
 		void OnRedAxisAngleUpDownValueChanged(NValueChangeEventArgs arg)
@@ -412,17 +400,28 @@ namespace Nevron.Nov.Examples.Chart
 		NNumericUpDown m_RedAxisAngleUpDown;
 		NNumericUpDown m_GreenAxisAngleUpDown;
 
-        NNumericUpDown m_RedAxisSaleLabelAngleUpDown;
-        NComboBox m_RedAxisScaleLabelAngleMode;
+		NNumericUpDown m_RedAxisSaleLabelAngleUpDown;
+		NComboBox m_RedAxisScaleLabelAngleMode;
 
-        NNumericUpDown m_GreenAxisSaleLabelAngleUpDown;
-        NComboBox m_GreenAxisScaleLabelAngleMode;
+		NNumericUpDown m_GreenAxisSaleLabelAngleUpDown;
+		NComboBox m_GreenAxisScaleLabelAngleMode;
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NPolarValueAxisPositionExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreatePolarChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
+			return chartView;
+		}
 
 		#endregion
 	}

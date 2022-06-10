@@ -24,7 +24,7 @@ namespace Nevron.Nov.Examples.Grid
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
         {

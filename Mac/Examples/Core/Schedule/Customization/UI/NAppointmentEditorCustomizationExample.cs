@@ -11,7 +11,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NAppointmentEditorCustomizationExample : NScheduleExampleBase
+	public class NAppointmentEditorCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -27,14 +27,48 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NAppointmentEditorCustomizationExample()
 		{
-			NAppointmentEditorCustomizationExampleSchema = NSchema.Create(typeof(NAppointmentEditorCustomizationExample), NScheduleExampleBaseSchema);
+			NAppointmentEditorCustomizationExampleSchema = NSchema.Create(typeof(NAppointmentEditorCustomizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
+
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>This example demonstrates how to replace the appointment edit dialog with a custom one.</p>
+";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
 		{
 			DateTime start = DateTime.Now;
 
@@ -66,16 +100,12 @@ namespace Nevron.Nov.Examples.Schedule
 
 			schedule.ScrollToTime(start.TimeOfDay);
 		}
-		protected override NWidget CreateExampleControls()
-		{
-			return null;
-		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>This example demonstrates how to replace the appointment edit dialog with a custom one.</p>
-";
-		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
 
 		#endregion
 
@@ -88,7 +118,7 @@ namespace Nevron.Nov.Examples.Schedule
 
 		#endregion
 
-		#region Nested Types - Appointment with Location
+		#region Nested Types
 
 		/// <summary>
 		/// A custom appointment class.
@@ -183,10 +213,6 @@ namespace Nevron.Nov.Examples.Schedule
 			#endregion
 		}
 
-		#endregion
-
-		#region Nested Types - Appointment with Image
-
 		/// <summary>
 		/// A custom appointment class.
 		/// </summary>
@@ -252,7 +278,7 @@ namespace Nevron.Nov.Examples.Schedule
 			public override NTopLevelWindow CreateEditDialog()
 			{
 				NSchedule schedule = (NSchedule)GetFirstAncestor(NSchedule.NScheduleSchema);
-				NWindow window = schedule != null ? schedule.OwnerWindow : null;
+				NWindow window = schedule != null ? schedule.DisplayWindow : null;
 
 				// Create a dialog window
 				NTopLevelWindow dialog = NApplication.CreateTopLevelWindow(NWindow.GetFocusedWindowIfNull(window));
@@ -280,7 +306,7 @@ namespace Nevron.Nov.Examples.Schedule
 
 				// Add a button strip with OK and Cancel buttons
 				NButtonStrip buttonStrip = new NButtonStrip();
-				buttonStrip.InitOKCancelButtonStrip();
+				buttonStrip.AddOKCancelButtons();
 				stack.Add(buttonStrip);
 
 				dialog.Content = new NUniSizeBoxGroup(stack);
@@ -309,10 +335,6 @@ namespace Nevron.Nov.Examples.Schedule
 
 			#endregion
 		}
-
-		#endregion
-
-		#region Nested Types - Custom Command Actions and Tools
 
 		public class CustomAddAppointmentCommandAction : NAddAppointmentCommandAction
 		{

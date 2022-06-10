@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Cluster Bar Example
 	/// </summary>
-	public class NClusterBarExample : NChartExampleBase
+	public class NClusterBarExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NClusterBarExample()
 		{
-			NClusterBarExampleSchema = NSchema.Create(typeof(NClusterBarExample), NChartExampleBase.NChartExampleBaseSchema);
+			NClusterBarExampleSchema = NSchema.Create(typeof(NClusterBarExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Cluster Bar Labels";
@@ -77,22 +74,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		private void FillRandomData()
-		{
-			Random random = new Random();
-			for (int i = 0; i < 5; i++)
-			{
-				m_Bar1.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
-				m_Bar2.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel propertyStack = new NStackPanel();
@@ -106,22 +87,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
-		void gapPercentNumericUpDown_ValueChanged(NValueChangeEventArgs arg)
-		{
-			m_Bar1.GapFactor = ((NNumericUpDown)arg.TargetNode).Value / 100.0;
-		}
-
-		
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a cluster bar chart.</p>";
 		}
-
-		#endregion
-
-		#region Event Handlers
-
 
 		#endregion
 
@@ -139,6 +108,24 @@ namespace Nevron.Nov.Examples.Chart
 
 			return dataLabelStyle;
 		}
+		private void FillRandomData()
+		{
+			Random random = new Random();
+			for (int i = 0; i < 5; i++)
+			{
+				m_Bar1.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
+				m_Bar2.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
+			}
+		}
+
+		#endregion
+
+		#region Event Handlers
+
+		void gapPercentNumericUpDown_ValueChanged(NValueChangeEventArgs arg)
+		{
+			m_Bar1.GapFactor = ((NNumericUpDown)arg.TargetNode).Value / 100.0;
+		}
 
 		#endregion
 
@@ -149,7 +136,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NClusterBarExampleSchema;
 

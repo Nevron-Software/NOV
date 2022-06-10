@@ -13,7 +13,7 @@ namespace Nevron.Nov.Examples.Text
 	/// <summary>
 	/// Demonstrates how to use the mail merge functionality of the Nevron Rich Text control.
 	/// </summary>
-	public class NMailMergeExample : NTextExampleBase
+	public class NMailMergeExample : NExampleBase
 	{
 		#region Constructors
 
@@ -28,19 +28,64 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NMailMergeExample()
 		{
-			NMailMergeExampleSchema = NSchema.Create(typeof(NMailMergeExample), NTextExampleBase.NTextExampleBaseSchema);
+			NMailMergeExampleSchema = NSchema.Create(typeof(NMailMergeExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			NStackPanel stack = new NStackPanel();
+
+			if (NApplication.IntegrationPlatform != ENIntegrationPlatform.Silverlight)
+			{
+				NButton mergeAndSaveToFolderButton = new NButton("Merge & Save to Folder");
+				mergeAndSaveToFolderButton.Click += OnMergeAndSaveToFolderButtonClick;
+				stack.Add(mergeAndSaveToFolderButton);
+			}
+
+			return stack;
+		}
+		protected override string GetExampleDescription()
+		{
+			NDataUri previewMailMergeUri = NDataUri.FromImage(NResources.Image_Documentation_PreviewResults_png);
+			return @"
+<p>
+	This example demonstrates how to use the mail merge functionality of the Nevron Rich Text control.
+</p>
+<p>
+	Click the <b>Preview Mail Merge</b> button (&nbsp;<img src=""" + previewMailMergeUri.ToString() +
+	@""" />&nbsp;) from the <b>Mailings</b> ribbon tab to see the values for the currently selected
+    mail merge record. When ready click the <b>Merge & Save</b> button to save all merged documents to a file.
+</p>
+<p>
+	The <b>Merge & Save</b> button saves each of the individual documents result of the mail
+	merge operation to a folder.	
+</p>
+";
+		}
+
+		private void PopulateRichText()
 		{
 			// Create some text
 			NDocumentBlock documentBlock = m_RichText.Content;
 			documentBlock.Layout = ENTextLayout.Print;
- 
+
 			NSection section = new NSection();
 			documentBlock.Sections.Add(section);
 
@@ -79,37 +124,6 @@ namespace Nevron.Nov.Examples.Text
             dataSource.FieldMap = fieldMap;
             documentBlock.MailMerge.DataSource = dataSource;
         }
-		protected override NWidget CreateExampleControls()
-		{
-			NStackPanel stack = (NStackPanel)base.CreateExampleControls();
-
-			if (NApplication.Platform != ENPlatform.Silverlight)
-			{
-				NButton mergeAndSaveToFolderButton = new NButton("Merge & Save to Folder");
-				mergeAndSaveToFolderButton.Click += OnMergeAndSaveToFolderButtonClick;
-				stack.Add(mergeAndSaveToFolderButton);
-			}
-
-			return stack;
-		}
-		protected override string GetExampleDescription()
-		{
-			NDataUri previewMailMergeUri = NDataUri.FromImage(NResources.Image_Documentation_PreviewResults_png);
-			return @"
-<p>
-	This example demonstrates how to use the mail merge functionality of the Nevron Rich Text control.
-</p>
-<p>
-	Click the <b>Preview Mail Merge</b> button (&nbsp;<img src=""" + previewMailMergeUri.ToString() +
-	@""" />&nbsp;) from the <b>Mailings</b> ribbon tab to see the values for the currently selected
-    mail merge record. When ready click the <b>Merge & Save</b> button to save all merged documents to a file.
-</p>
-<p>
-	The <b>Merge & Save</b> button saves each of the individual documents result of the mail
-	merge operation to a folder.	
-</p>
-";
-		}
 
 		#endregion
 
@@ -117,7 +131,9 @@ namespace Nevron.Nov.Examples.Text
 
 		private void MergeAndSaveToFolder(string targetPath)
 		{
-			if (NDirectory.Exists(targetPath) == false)
+			NFolder folder = NFileSystem.Current.GetFolder(targetPath);
+			
+			if (folder == null)
 			{
 				NMessageBox.Show("The entered target path does not exist", "Error",
 					ENMessageBoxButtons.OK, ENMessageBoxIcon.Error);
@@ -139,11 +155,12 @@ namespace Nevron.Nov.Examples.Text
 
 				// Save the merged document to file
 				string fileName = "Document" + i.ToString(CultureInfo.InvariantCulture) + ".docx";
-				clonedRichTextView.SaveToFile(NPath.Combine(targetPath, fileName));
+				clonedRichTextView.SaveToFile(NPath.Current.Combine(targetPath, fileName));
 			}
 
 			NMessageBox.Show("Merged documents saved to \"" + targetPath + "\".", "Mail Merge Complete",
 				ENMessageBoxButtons.OK, ENMessageBoxIcon.Information);
+			
 		}
 
 		#endregion
@@ -154,7 +171,7 @@ namespace Nevron.Nov.Examples.Text
 		{
 			NTextBox textBox = new NTextBox();
 			NButtonStrip buttonStrip = new NButtonStrip();
-			buttonStrip.InitOKCancelButtonStrip();
+			buttonStrip.AddOKCancelButtons();
 			NPairBox pairBox = new NPairBox(textBox, buttonStrip, ENPairBoxRelation.Box1AboveBox2);
 
 			NTopLevelWindow dialog = NApplication.CreateTopLevelWindow();
@@ -172,6 +189,12 @@ namespace Nevron.Nov.Examples.Text
 				MergeAndSaveToFolder(textBox.Text);
 			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
 
 		#endregion
 

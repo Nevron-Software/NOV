@@ -25,7 +25,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -93,7 +93,7 @@ This example demonstrates how to create auto sizable and auto centered windows w
 			}
 
 			// open the window
-			OwnerWindow.Windows.Add(window);
+			DisplayWindow.Windows.Add(window);
 			window.Open();
 		}
 		private void OnOpenYAutoSizeWindowButtonClick(NEventArgs arg)
@@ -119,7 +119,7 @@ This example demonstrates how to create auto sizable and auto centered windows w
 			}
 
 			// open the window
-			OwnerWindow.Windows.Add(window);
+			DisplayWindow.Windows.Add(window);
 			window.Open();
 		}
 		private void OnOpenAutoSizeWindowButtonClick(NEventArgs arg)
@@ -128,7 +128,7 @@ This example demonstrates how to create auto sizable and auto centered windows w
 			window.Modal = true;
 
 			// open the window in the center of its parent, 
-			window.StartPosition = ENWindowStartPosition.CenterOwner;
+			window.StartPosition = ENWindowStartPosition.CenterOwnerWindow;
 
 			// implement auto width and height sizing
 			{
@@ -186,7 +186,7 @@ This example demonstrates how to create auto sizable and auto centered windows w
 			tab.TabPages.Add(page2);
 
 			// open the window
-			OwnerWindow.Windows.Add(window);
+			DisplayWindow.Windows.Add(window);
 			window.Open();
 		}
 		

@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Linear Scale Example
 	/// </summary>
-	public class NLinearScaleExample : NChartExampleBase
+	public class NLinearScaleExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NLinearScaleExample()
 		{
-			NLinearScaleExampleSchema = NSchema.Create(typeof(NLinearScaleExample), NChartExampleBase.NChartExampleBaseSchema);
+			NLinearScaleExampleSchema = NSchema.Create(typeof(NLinearScaleExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Linear Scale";
@@ -96,10 +93,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -139,9 +132,6 @@ namespace Nevron.Nov.Examples.Chart
 			
 			return boxGroup;
 		}
-
-
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a linear (numeric) scale.</p>";
@@ -208,7 +198,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NLinearScaleExampleSchema;
 

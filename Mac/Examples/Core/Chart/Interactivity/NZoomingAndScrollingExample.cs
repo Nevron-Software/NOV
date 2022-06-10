@@ -1,17 +1,17 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Chart.Tools;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Rectangle Zoom Tool Example
 	/// </summary>
-	public class NZoomingAndScrollingExample : NChartExampleBase
+	public class NZoomingAndScrollingExample : NExampleBase
 	{
 		#region Constructors
 
@@ -27,20 +27,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NZoomingAndScrollingExample()
 		{
-			NZoomingAndScrollingExampleSchema = NSchema.Create(typeof(NZoomingAndScrollingExample), NChartExampleBase.NChartExampleBaseSchema);
+			NZoomingAndScrollingExampleSchema = NSchema.Create(typeof(NZoomingAndScrollingExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Rectangle Zoom Tool";
@@ -114,10 +111,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -144,11 +137,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to implement zooming and scrolling. Press the left mouse button over the chart and select an area.</p>";
@@ -205,7 +193,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NZoomingAndScrollingExampleSchema;
 

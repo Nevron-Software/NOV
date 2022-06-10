@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates how to associate a palette with a bar series
-    /// </summary>
-    public class NBarPaletteExample : NChartExampleBase
+	/// </summary>
+	public class NBarPaletteExample : NExampleBase
     {
         #region Constructors
 
@@ -25,16 +25,20 @@ namespace Nevron.Nov.Examples.Chart
         /// </summary>
         static NBarPaletteExample()
         {
-			NBarPaletteExampleSchema = NSchema.Create(typeof(NBarPaletteExample), NChartExampleBase.NChartExampleBaseSchema);
+			NBarPaletteExampleSchema = NSchema.Create(typeof(NBarPaletteExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
 		{
-            NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
+
+			chartView.Registered += OnChartViewRegistered;
+			chartView.Unregistered += OnChartViewUnregistered;
 
             // configure title
             chartView.Surface.Titles[0].Text = "Bar Palette";
@@ -79,8 +83,7 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-
-        protected override NWidget CreateExampleControls()
+		protected override NWidget CreateExampleControls()
         {
 			NStackPanel stack = new NStackPanel();
 
@@ -107,53 +110,23 @@ namespace Nevron.Nov.Examples.Chart
 
 			return stack;
         }
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to associate a palette with a bar series.</p>";
 		}
 
-
 		#endregion 
-
-		#region Implementation
-
-		private NRangeIndicator CreateRangeIndicator(double offsetFromScale)
-		{
-			NRangeIndicator rangeIndicator = new NRangeIndicator();
-			rangeIndicator.Value = 0;
-			rangeIndicator.Stroke = null;
-			rangeIndicator.OffsetFromScale = offsetFromScale;
-			rangeIndicator.BeginWidth = 10;
-			rangeIndicator.EndWidth = 10;
-
-			rangeIndicator.BeginWidth = 10;
-			rangeIndicator.EndWidth = 10;
-
-			// assign palette to the indicator
-			NColorValuePalette palette = new NColorValuePalette(new NColorValuePair[] { new NColorValuePair(80, NColor.Green), new NColorValuePair(100, NColor.Yellow), new NColorValuePair(120, NColor.Red) });
-			rangeIndicator.Palette = palette; 
-
-			return rangeIndicator;
-		}
-
-		#endregion
 
 		#region Override
 
-		protected override void OnRegistered()
+		private void OnChartViewRegistered(NEventArgs arg)
 		{
-			base.OnRegistered();
-
 			m_Timer = new NTimer();
 			m_Timer.Tick += OnTimerTick;
 			m_Timer.Start();
 		}
-
-		protected override void OnUnregistered()
+		private void OnChartViewUnregistered(NEventArgs arg)
 		{
-			base.OnUnregistered();
-
 			m_Timer.Stop();
 			m_Timer.Tick -= OnTimerTick;
 			m_Timer = null;
@@ -225,13 +198,9 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NBarPaletteExampleSchema;
-
-        #endregion
-
-		#region Default Values
 
 		#endregion
 	}

@@ -6,7 +6,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NRecurrenceRulesExample : NScheduleExampleBase
+	public class NRecurrenceRulesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -22,24 +22,35 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NRecurrenceRulesExample()
 		{
-			NRecurrenceRulesExampleSchema = NSchema.Create(typeof(NRecurrenceRulesExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NRecurrenceRulesExampleSchema = NSchema.Create(typeof(NRecurrenceRulesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
 		{
-			DateTime today = DateTime.Today;
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
 
-			NAppointment appointment = new NAppointment("Appoinment", today.AddHours(12), today.AddHours(14));
-			appointment.RecurrenceRule = CreateDailyRule();
-			schedule.Appointments.Add(appointment);
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
+
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
 		}
 		protected override NWidget CreateExampleControls()
 		{
-			NStackPanel stack = (NStackPanel)base.CreateExampleControls();
+			NStackPanel stack = new NStackPanel();
 
 			stack.Add(new NRadioButton("No recurrence"));
 			stack.Add(new NRadioButton("Every 3 hours"));
@@ -73,6 +84,15 @@ namespace Nevron.Nov.Examples.Schedule
 		#endregion
 
 		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
+		{
+			DateTime today = DateTime.Today;
+
+			NAppointment appointment = new NAppointment("Appoinment", today.AddHours(12), today.AddHours(14));
+			appointment.RecurrenceRule = CreateDailyRule();
+			schedule.Appointments.Add(appointment);
+		}
 
 		private NRecurrenceHourlyRule CreateHourlyRule()
 		{
@@ -201,6 +221,12 @@ namespace Nevron.Nov.Examples.Schedule
 					break;
 			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
 
 		#endregion
 

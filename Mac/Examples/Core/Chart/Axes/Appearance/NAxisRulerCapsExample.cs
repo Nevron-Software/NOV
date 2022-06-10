@@ -10,7 +10,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Axis ruler caps example
 	/// </summary>
-	public class NAxisRulerCapsExample : NChartExampleBase
+	public class NAxisRulerCapsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -19,27 +19,24 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		public NAxisRulerCapsExample()
 		{
-			
+
 		}
 		/// <summary>
 		/// Static constructor
 		/// </summary>
 		static NAxisRulerCapsExample()
 		{
-			NAxisRulerCapsExampleSchema = NSchema.Create(typeof(NAxisRulerCapsExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisRulerCapsExampleSchema = NSchema.Create(typeof(NAxisRulerCapsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Axis Ruler Caps";
@@ -50,7 +47,7 @@ namespace Nevron.Nov.Examples.Chart
 
 			// configure axes
 			m_Chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XYLinear);
-	
+
 			// feed some random data 
 			NPointSeries point = new NPointSeries();
 			point.UseXValues = true;
@@ -89,9 +86,9 @@ namespace Nevron.Nov.Examples.Chart
 			NCartesianAxis xAxis = m_Chart.Axes[ENCartesianAxis.PrimaryX];
 			xAxis.Scale = xScale;
 
-//			xAxis.ViewRangeMode = ENAxisViewRangeMode.FixedRange;
-//			xAxis.MinViewRangeValue = 0;
-//			xAxis.MaxViewRangeValue = 100;
+			//			xAxis.ViewRangeMode = ENAxisViewRangeMode.FixedRange;
+			//			xAxis.MinViewRangeValue = 0;
+			//			xAxis.MaxViewRangeValue = 100;
 
 			NDockCartesianAxisAnchor xAxisAnchor = new NDockCartesianAxisAnchor(ENCartesianAxisDockZone.Bottom);
 			xAxisAnchor.BeforeSpace = 10;
@@ -121,9 +118,9 @@ namespace Nevron.Nov.Examples.Chart
 			NCartesianAxis yAxis = m_Chart.Axes[ENCartesianAxis.PrimaryY];
 			yAxis.Scale = yScale;
 
-//			yAxis.ViewRangeMode = ENAxisViewRangeMode.FixedRange;
-//			yAxis.MinViewRangeValue = 0;
-//			yAxis.MaxViewRangeValue = 100;
+			//			yAxis.ViewRangeMode = ENAxisViewRangeMode.FixedRange;
+			//			yAxis.MinViewRangeValue = 0;
+			//			yAxis.MaxViewRangeValue = 100;
 
 			NDockCartesianAxisAnchor yAxisAnchor = new NDockCartesianAxisAnchor(ENCartesianAxisDockZone.Left);
 			yAxisAnchor.BeforeSpace = 10;
@@ -133,11 +130,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -177,7 +169,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to alter the appearance of axis ruler caps.</p>";
@@ -185,19 +176,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Event Handlers
-
-		private void OnRulerStyleChanged(NValueChangeEventArgs arg)
-		{
-			UpdateRulerStyleForAxis(m_Chart.Axes[ENCartesianAxis.PrimaryX]);
-			UpdateRulerStyleForAxis(m_Chart.Axes[ENCartesianAxis.PrimaryY]);
-		}
-
-		#endregion
-
 		#region Implementation
-
-
 
 		private void UpdateRulerStyleForAxis(NCartesianAxis axis)
 		{
@@ -224,6 +203,16 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
+		#region Event Handlers
+
+		private void OnRulerStyleChanged(NValueChangeEventArgs arg)
+		{
+			UpdateRulerStyleForAxis(m_Chart.Axes[ENCartesianAxis.PrimaryX]);
+			UpdateRulerStyleForAxis(m_Chart.Axes[ENCartesianAxis.PrimaryY]);
+		}
+
+		#endregion
+
 		#region Fields
 
 		NCartesianChart m_Chart;
@@ -236,7 +225,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisRulerCapsExampleSchema;
 

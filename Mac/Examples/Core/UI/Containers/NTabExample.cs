@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -52,6 +52,7 @@ namespace Nevron.Nov.Examples.UI
 				m_Tab,
 				NTab.EnabledProperty,
 				NTab.SizeToSelectedPageProperty,
+				NTab.CycleTabPagesProperty,
 				NTab.HeadersPositionProperty,
 				NTab.HeadersModeProperty,
 				NTab.HeadersAlignmentProperty,
@@ -84,7 +85,9 @@ namespace Nevron.Nov.Examples.UI
 	way the tab page headers are position in respect to the tab widget. The possible values are: <b>Left</b>, <b>Top</b>
 	(default), <b>Right</b> and <b>Bottom</b>. You can also specify the spacing between the headers. To do so, use the
 	<b>HeadersSpacing</b> property. The <b>HeadersAlignment</b> property determines how the tab page headers are aligned
-	on the tab widget side they are placed on. The supported values are <b>Near</b> (default), <b>Center</b> and <b>Far</b>.
+	on the tab widget side they are placed on. The supported values are <b>Near</b> (default), <b>Center</b> and <b>Far</b>. 
+	The <b>CycleTablePages</b> instructs the control to cycle pages when the tab has focus and the user presseses the left 
+	or right arrow keys.
 </p>
 ";
 		}
@@ -95,6 +98,10 @@ namespace Nevron.Nov.Examples.UI
 		private NTabPage CreatePage(string name, string content)
 		{
 			NTabPage tabPage = new NTabPage(name, content);
+
+			tabPage.Header.Content = NPairBox.Create("Text With Image:", new NImageBox(NResources.Image__16x16_folderDeleted_png));
+
+
 			return tabPage;
 		}
 

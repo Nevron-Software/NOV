@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -194,7 +194,7 @@ namespace Nevron.Nov.Examples.Framework
 		#endregion
 	}
 
-	public class MyTextureMapping : NTextureMapping
+	public class MyTextureMapping : NCustomTextureMapping
 	{
 		#region Constructors
 

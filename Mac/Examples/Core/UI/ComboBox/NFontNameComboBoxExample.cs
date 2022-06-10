@@ -1,5 +1,4 @@
 ﻿using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
@@ -59,7 +58,7 @@ namespace Nevron.Nov.Examples.UI
 		{
 			return @"
 <p>
-	This example demonstrates how to use the build in font name combo box which allows the user to select a font name from the list of available fonts.
+	This example demonstrates how to use the built-in font name combo box, which allows the user to select a font name from the list of available fonts.
 </p>
 ";
 		}
@@ -71,7 +70,7 @@ namespace Nevron.Nov.Examples.UI
 		private void OnFontNameChanged(NValueChangeEventArgs args)
 		{
 			NFontNameThumbnailComboBox comboBox = (NFontNameThumbnailComboBox)args.TargetNode;
-			m_SelectFontName.Text = comboBox.FontName;
+			m_SelectFontName.Text = comboBox.SelectedFontName;
 		}
 
 		#endregion
@@ -79,7 +78,7 @@ namespace Nevron.Nov.Examples.UI
 		#region Fields
 
 		private NFontNameThumbnailComboBox m_FontNameComboBox;
-		NLabel m_SelectFontName;
+		private NLabel m_SelectFontName;
 
 		#endregion
 

@@ -1,13 +1,18 @@
-using Nevron.Nov.Diagram;
+﻿using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Import.Map;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
+#region InternalCode
+
+// Map data from: http://www.naturalearthdata.com/features/
+
+#endregion
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NWorldMapExample : NDiagramExampleBase
+	public class NWorldMapExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,23 +28,61 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NWorldMapExample()
 		{
-			NWorldMapExampleSchema = NSchema.Create(typeof(NWorldMapExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NWorldMapExampleSchema = NSchema.Create(typeof(NWorldMapExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitDiagram()
+		protected override NWidget CreateExampleContent()
 		{
-			base.InitDiagram();
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
 
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>
+    <b>NOV Diagram</b> makes it easy to import geographical data from ESRI shapefiles. You
+    can control the way the shapes are rendered by applying various fill rules to them. You can
+	also specify a zoom range in which the shapes and/or texts of a shapefile should be visible.
+	For example when you zoom this map to 50% you will notice that labels appear for the countries.
+</p>
+<p>
+	Upon import of a shape additional information from the DBF file that accompanies the shapefile
+	is provided (e.g. Country Name, Population, Currency, GDP, etc.). You can use these values to
+	customize the name, the text and the fill of the shape. You can also provide an INShapeCreatedListener
+	implementation to the shape importer of the map in order to get notified when a shape is imported
+	and use the values from the DBF file for this shape to customize it even further.
+</p>";
+		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
 			// Configure the document
-			NDrawing drawing = m_DrawingDocument.Content;
+			NDrawing drawing = drawingDocument.Content;
 			drawing.ScreenVisibility.ShowGrid = false;
 
 			// Add styles
-			AddStyles(m_DrawingDocument);
+			AddStyles(drawingDocument);
 
 			// Configure the active page
 			NPage page = drawing.ActivePage;
@@ -63,27 +106,10 @@ namespace Nevron.Nov.Examples.Diagram
 			mapImporter.Read();
 
 			// Import the map to the drawing document
-			mapImporter.Import(m_DrawingDocument, page.Bounds);
+			mapImporter.Import(drawingDocument, page.Bounds);
 
 			// Size page to content
 			page.SizeToContent();
-		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-    <b>NOV Diagram</b> makes it easy to import geographical data from ESRI shapefiles. You
-    can control the way the shapes are rendered by applying various fill rules to them. You can
-	also specify a zoom range in which the shapes and/or texts of a shapefile should be visible.
-	For example when you zoom this map to 50% you will notice that labels appear for the countries.
-</p>
-<p>
-	Upon import of a shape additional information from the DBF file that accompanies the shapefile
-	is provided (e.g. Country Name, Population, Currency, GDP, etc.). You can use these values to
-	customize the name, the text and the fill of the shape. You can also provide an INShapeCreatedListener
-	implementation to the shape importer of the map in order to get notified when a shape is imported
-	and use the values from the DBF file for this shape to customize it even further.
-</p>";
 		}
 
 		#endregion
@@ -108,6 +134,12 @@ namespace Nevron.Nov.Examples.Diagram
 			rule.Declarations.Add(new NValueDeclaration<NStroke>(NGeometry.StrokeProperty, new NStroke(new NColor(68, 90, 108))));
 			styleSheet.Add(rule);
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

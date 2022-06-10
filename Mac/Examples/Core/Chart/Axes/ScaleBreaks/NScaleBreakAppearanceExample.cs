@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Scale Break Appearance Examples
 	/// </summary>
-	public class NScaleBreakAppearanceExample : NChartExampleBase
+	public class NScaleBreakAppearanceExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NScaleBreakAppearanceExample()
 		{
-			NScaleBreakAppearanceExampleSchema = NSchema.Create(typeof(NScaleBreakAppearanceExample), NChartExampleBase.NChartExampleBaseSchema);
+			NScaleBreakAppearanceExampleSchema = NSchema.Create(typeof(NScaleBreakAppearanceExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Scale Breaks Appearance";
@@ -93,11 +90,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -131,7 +123,6 @@ namespace Nevron.Nov.Examples.Chart
 			
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to change the appearance of scale breaks.</p>";
@@ -168,21 +159,14 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Implementation
-
-
-
-		#endregion
-
 		#region Fields
 
-		NCartesianChart m_Chart;
-
-		NScaleBreak m_ScaleBreak;
+		private NCartesianChart m_Chart;
+		private NScaleBreak m_ScaleBreak;
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NScaleBreakAppearanceExampleSchema;
 

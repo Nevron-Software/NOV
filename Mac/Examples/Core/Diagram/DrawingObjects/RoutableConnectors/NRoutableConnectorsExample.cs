@@ -6,10 +6,10 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// Summary description for NRoutableConnectors.
-    /// </summary>
-    public class NRoutableConnectorsExample : NDiagramExampleBase
+	/// <summary>
+	/// Summary description for NRoutableConnectors.
+	/// </summary>
+	public class NRoutableConnectorsExample : NExampleBase
     {
         #region Constructors
 
@@ -25,13 +25,35 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NRoutableConnectorsExample()
         {
-            NRoutableConnectorsExampleSchema = NSchema.Create(typeof(NRoutableConnectorsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NRoutableConnectorsExampleSchema = NSchema.Create(typeof(NRoutableConnectorsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Overrides from NDiagramExampleBase
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -67,11 +89,10 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide grid and ports
@@ -80,7 +101,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             // create a stylesheet for styling the different bricks
             NStyleSheet styleSheet = new NStyleSheet();
-            m_DrawingDocument.StyleSheets.AddChild(styleSheet);
+            drawingDocument.StyleSheets.AddChild(styleSheet);
 
             // the first rule fills brichs with UserClass BRICK1
             NRule ruleBrick1 = new NRule();
@@ -146,7 +167,7 @@ namespace Nevron.Nov.Examples.Diagram
             routableConnector.GlueEndToShape(end);
 
             // reroute the connector
-            routableConnector.Reroute();
+            routableConnector.RequestReroute();
 
             // size document to fit the maze
             activePage.SizeToContent();
@@ -168,7 +189,7 @@ namespace Nevron.Nov.Examples.Diagram
             NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
             shape.SetBounds(bounds);
             shape.UserClass = userClass;
-            m_DrawingDocument.Content.ActivePage.Items.Add(shape);
+            m_DrawingView.ActivePage.Items.Add(shape);
             return shape;
         }
         /// <summary>
@@ -183,10 +204,16 @@ namespace Nevron.Nov.Examples.Diagram
             NShape shape = factory.CreateShape(ENBasicShape.Ellipse);
             shape.SetBounds(bounds);
             shape.UserClass = userClass;
-            m_DrawingDocument.Content.ActivePage.Items.Add(shape);
+            m_DrawingView.ActivePage.Items.Add(shape);
             return shape;
         }
- 
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
+
         #endregion
 
         #region Schema

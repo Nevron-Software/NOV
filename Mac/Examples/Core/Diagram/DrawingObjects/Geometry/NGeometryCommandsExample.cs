@@ -1,15 +1,14 @@
 ﻿using Nevron.Nov.Diagram;
-using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NGeometryCommandsExample : NDiagramExampleBase
+	/// <summary>
+	/// 
+	/// </summary>
+	public class NGeometryCommandsExample : NExampleBase
     {
         #region Constructors
 
@@ -25,13 +24,35 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NGeometryCommandsExample()
         {
-            NGeometryCommandsExampleSchema = NSchema.Create(typeof(NGeometryCommandsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NGeometryCommandsExampleSchema = NSchema.Create(typeof(NGeometryCommandsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Overrides from NDiagramExampleBase
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -52,16 +73,14 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
         }
-        protected override void InitDiagram()
+        
+        private void InitDiagram(NDrawingDocument drawingDocument)
         {
-            base.InitDiagram();
-
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
+            NDrawing drawing = drawingDocument.Content;
 
             // switch selected edit mode to geometry
             // this instructs the diagram to show geometry handles for the selected shapes.
-            m_DrawingDocument.Content.ActivePage.SelectionEditMode = ENSelectionEditMode.Geometry;
+            drawingDocument.Content.ActivePage.SelectionEditMode = ENSelectionEditMode.Geometry;
             drawing.ScreenVisibility.ShowGrid = false;
 
             // plotter commands
@@ -81,7 +100,7 @@ namespace Nevron.Nov.Examples.Diagram
             CreateDescriptionPair(1, 6, CreateDrawPath(), "Draw Path");
         }
 
-        protected NShape CreateLineTo()
+        private NShape CreateLineTo()
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -96,7 +115,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             return shape;
         }
-        protected NShape CreateArcTo()
+        private NShape CreateArcTo()
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -112,7 +131,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             return shape;
         }
-        protected NShape CreateCubicBezierTo()
+        private NShape CreateCubicBezierTo()
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -128,7 +147,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             return shape;
         }
-        protected NShape CreateCircularArcTo()
+        private NShape CreateCircularArcTo()
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -144,7 +163,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             return shape;
         }
-        protected NShape CreateEllipticalArcTo()
+        private NShape CreateEllipticalArcTo()
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -162,7 +181,7 @@ namespace Nevron.Nov.Examples.Diagram
             return shape;
         }
 
-        protected NShape CreateDrawRectangle()
+        private NShape CreateDrawRectangle()
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -174,7 +193,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             return shape;
         }
-        protected NShape CreateDrawEllipse()
+        private NShape CreateDrawEllipse()
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -186,7 +205,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             return shape;
         }
-        protected NShape CreateDrawPolygon(double tension)
+        private NShape CreateDrawPolygon(double tension)
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -202,7 +221,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             return shape;
         }
-        protected NShape CreateDrawPolyline(double tension)
+        private NShape CreateDrawPolyline(double tension)
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -224,7 +243,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             return shape;
         }
-        protected NShape CreateDrawPath()
+        private NShape CreateDrawPath()
         {
             NShape shape = new NShape();
             shape.Init2DShape();
@@ -241,7 +260,7 @@ namespace Nevron.Nov.Examples.Diagram
             return shape;
         }
 
-        protected void CreateDescriptionPair(int row, int col, NShape shape, string text)
+        private void CreateDescriptionPair(int row, int col, NShape shape, string text)
         {
             const double startX = 20;
             const double startY = 100;
@@ -249,15 +268,21 @@ namespace Nevron.Nov.Examples.Diagram
             const double height = 100;
             const double spacing = 20;
 
-            m_DrawingDocument.Content.ActivePage.Items.Add(shape);
+            m_DrawingView.ActivePage.Items.Add(shape);
             shape.SetBounds(new NRectangle(startX + col * (width + spacing), startY + row * (height + spacing), width, height / 2));
 
             NShape textShape = new NShape();
             textShape.Init2DShape();
             textShape.Text = text;
             textShape.SetBounds(new NRectangle(startX + col * (width + spacing), startY + row * (height + spacing) + height / 2, width, height / 2));
-            m_DrawingDocument.Content.ActivePage.Items.Add(textShape);
+            m_DrawingView.ActivePage.Items.Add(textShape);
         }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

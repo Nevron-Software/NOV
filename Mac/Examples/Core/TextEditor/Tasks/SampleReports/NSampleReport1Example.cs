@@ -1,16 +1,15 @@
-﻿using Nevron.Nov.Dom;
+﻿using Nevron.Nov.Chart;
+using Nevron.Nov.Dom;
+using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
-using Nevron.Nov.Graphics;
-using Nevron.Nov.Editors;
-using Nevron.Nov.Chart;
 
 namespace Nevron.Nov.Examples.Text
 {
 	/// <summary>
 	/// The example demonstrates how to programmatically create a sample report.
 	/// </summary>
-	public class NSampleReport1Example : NTextExampleBase
+	public class NSampleReport1Example : NExampleBase
 	{
 		#region Constructors
 
@@ -25,20 +24,42 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NSampleReport1Example()
 		{
-			NSampleReport1ExampleSchema = NSchema.Create(typeof(NSampleReport1Example), NTextExampleBase.NTextExampleBaseSchema);
+			NSampleReport1ExampleSchema = NSchema.Create(typeof(NSampleReport1Example), NExampleBaseSchema);
 		}
 
 		#endregion
 
 		#region Protected Overrides
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>The example demonstrates how to programmatically create a sample report.</p>";
+		}
+
+		private void PopulateRichText()
 		{
 			{
 				NSection headerSection = new NSection();
 				m_RichText.Content.Sections.Add(headerSection);
 
-				headerSection.Blocks.Add(CreateTitleParagraph("Welcome to our annual report\nFurther information on Sample Group can be found at:\n www.samplegroup.com"));
+				headerSection.Blocks.Add(CreateTitleParagraph("Welcome to our annual report. Further information on Sample Group can be found at: www.samplegroup.com"));
 				headerSection.Blocks.Add(CreateContentParagraph("Sample Group is a diversified international market infrastructure and capital markets business sitting at the heart of the world’s financial community."));
 				headerSection.Blocks.Add(CreateContentParagraph("The Group operates a broad range of international equity, bond and derivatives markets, including Stock Exchange; Europe’s leading fixed income market; and a pan-European equities MTF. Through its platforms, the Group offers international business and investors unrivalled access to Europe’s capital markets."));
 				headerSection.Blocks.Add(CreateContentParagraph("Post trade and risk management services are a significant part of the Group’s business operations. In addition to majority ownership of multi-asset global CCP operator, Sunset Group, the Group operates G&B, a clearing house; Monte Span, the European settlement business; and AutoSettle, the Group’s newly established central securities depository based in Luxembourg. The Group is a global leader in indexing and analytic solutions. The Group also provides customers with an extensive range of real time and reference data products. The Group is a leading developer of high performance trading platforms and capital markets software for customers around the world, through MillenniumIT. Since December 2014, the Group has owned Bonita Investments, an investment management business."));
@@ -305,19 +326,6 @@ namespace Nevron.Nov.Examples.Text
 				}
 			}
 		}
-		protected override NWidget CreateExampleControls()
-		{
-			NStackPanel stack = new NStackPanel();
-
-			
-			return stack;
-		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>The example demonstrates how to programmatically create a sample report.</p>
-";
-		}
 
 		#endregion
 
@@ -450,6 +458,8 @@ namespace Nevron.Nov.Examples.Text
 		#endregion
 
 		#region Fields
+
+		private NRichTextView m_RichText;
 
 		#endregion
 

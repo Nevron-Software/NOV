@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Radar area example
 	/// </summary>
-	public class NRadarAreaExample : NChartExampleBase
+	public class NRadarAreaExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,17 +26,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NRadarAreaExample()
 		{
-			NRadarAreaExampleSchema = NSchema.Create(typeof(NRadarAreaExample), NChartExampleBase.NChartExampleBaseSchema);
+			NRadarAreaExampleSchema = NSchema.Create(typeof(NRadarAreaExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreateRadarChartView();
@@ -87,11 +83,6 @@ namespace Nevron.Nov.Examples.Chart
 			
 			return chartView;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -115,10 +106,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a radar area chart.</p>";
@@ -197,9 +184,20 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NRadarAreaExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreateRadarChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Radar);
+			return chartView;
+		}
 
 		#endregion
 	}

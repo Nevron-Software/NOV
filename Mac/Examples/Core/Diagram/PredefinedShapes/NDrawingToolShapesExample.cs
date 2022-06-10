@@ -8,7 +8,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NDrawingToolShapesExample : NDiagramExampleBase
+	public class NDrawingToolShapesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -25,104 +25,35 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NDrawingToolShapesExample()
 		{
-			NDrawingToolShapesExampleSchema = NSchema.Create(typeof(NDrawingToolShapesExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NDrawingToolShapesExampleSchema = NSchema.Create(typeof(NDrawingToolShapesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitDiagram()
+		protected override NWidget CreateExampleContent()
 		{
-			base.InitDiagram();
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
 
-			const double XStep = 150;
-			const double YStep = 200;
-
-			m_DrawingDocument.HistoryService.Pause();
-
+			m_DrawingView.Document.HistoryService.Pause();
 			try
 			{
-				NDrawing drawing = m_DrawingDocument.Content;
-				NPage activePage = drawing.ActivePage;
-
-				// Hide grid and ports
-				drawing.ScreenVisibility.ShowGrid = false;
-				drawing.ScreenVisibility.ShowPorts = false;
-
-				// create all shapes
-				NDrawingToolShapeFactory factory = new NDrawingToolShapeFactory();
-				factory.DefaultSize = new NSize(90, 90);
-								
-				double x = 0;
-				double y = 0;
-
-				for (int i = 0; i < factory.ShapeCount; i++)
-				{
-					NShape shape = factory.CreateShape(i);
-					shape.HorizontalPlacement = ENHorizontalPlacement.Center;
-					shape.VerticalPlacement = ENVerticalPlacement.Center;
-					shape.Tooltip = new NTooltip(factory.GetShapeInfo(i).Name);
-					
-					if (i != (int)ENDrawingToolShapes.SectorNumeric &&
-						i != (int)ENDrawingToolShapes.ArcNumeric &&
-						i != (int)ENDrawingToolShapes.RightTriangle)
-					{
-						shape.Text = factory.GetShapeInfo(i).Name;
-						MoveTextBelowShape(shape);
-					}
-					activePage.Items.Add(shape);
-
-					if (shape.ShapeType == ENShapeType.Shape1D)
-					{
-						if (i == (int)ENDrawingToolShapes.CircleRadius)
-						{
-							shape.SetBeginPoint(new NPoint(x + shape.Width / 2, y));							
-						}
-						else
-						{
-							shape.SetBeginPoint(new NPoint(x, y));
-						}
-
-						double width = shape.Width;
-
-						if (i == (int)ENDrawingToolShapes.MultigonEdge)
-						{
-							width = 90;							
-						}
-						else if (i == (int)ENDrawingToolShapes.MultigonCenter)
-						{
-							width = 30;							
-						}
-						
-						shape.SetEndPoint(new NPoint(x + width, y + shape.Height));						
-					}
-					else
-					{
-						shape.SetBounds(x, y, shape.Width, shape.Height);
-						shape.LocPinY = 1;
-					}
-
-					x += XStep;
-					if (x > activePage.Width)
-					{
-						x = 0;
-						y += YStep;
-					}
-				}
-				
-				// size page to content
-                activePage.Layout.ContentPadding = new NMargins(50);
-				activePage.SizeToContent();
-				
+				InitDiagram(m_DrawingView.Document);
 			}
 			finally
 			{
-				m_DrawingDocument.HistoryService.Resume();
+				m_DrawingView.Document.HistoryService.Resume();
 			}
 
+			return drawingViewWithRibbon;
 		}
-
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
 		protected override string GetExampleDescription()
 		{
 			return @"
@@ -132,7 +63,84 @@ namespace Nevron.Nov.Examples.Diagram
 ";
 		}
 
-		protected override void MoveTextBelowShape(NShape shape)
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			const double XStep = 150;
+			const double YStep = 200;
+
+			NDrawing drawing = drawingDocument.Content;
+			NPage activePage = drawing.ActivePage;
+
+			// Hide grid and ports
+			drawing.ScreenVisibility.ShowGrid = false;
+			drawing.ScreenVisibility.ShowPorts = false;
+
+			// create all shapes
+			NDrawingToolShapeFactory factory = new NDrawingToolShapeFactory();
+			factory.DefaultSize = new NSize(90, 90);
+
+			double x = 0;
+			double y = 0;
+
+			for (int i = 0; i < factory.ShapeCount; i++)
+			{
+				NShape shape = factory.CreateShape(i);
+				shape.HorizontalPlacement = ENHorizontalPlacement.Center;
+				shape.VerticalPlacement = ENVerticalPlacement.Center;
+				shape.Tooltip = new NTooltip(factory.GetShapeInfo(i).Name);
+
+				if (i != (int)ENDrawingToolShapes.SectorNumeric &&
+					i != (int)ENDrawingToolShapes.ArcNumeric &&
+					i != (int)ENDrawingToolShapes.RightTriangle)
+				{
+					shape.Text = factory.GetShapeInfo(i).Name;
+					MoveTextBelowShape(shape);
+				}
+				activePage.Items.Add(shape);
+
+				if (shape.ShapeType == ENShapeType.Shape1D)
+				{
+					if (i == (int)ENDrawingToolShapes.CircleRadius)
+					{
+						shape.SetBeginPoint(new NPoint(x + shape.Width / 2, y));
+					}
+					else
+					{
+						shape.SetBeginPoint(new NPoint(x, y));
+					}
+
+					double width = shape.Width;
+
+					if (i == (int)ENDrawingToolShapes.MultigonEdge)
+					{
+						width = 90;
+					}
+					else if (i == (int)ENDrawingToolShapes.MultigonCenter)
+					{
+						width = 30;
+					}
+
+					shape.SetEndPoint(new NPoint(x + width, y + shape.Height));
+				}
+				else
+				{
+					shape.SetBounds(x, y, shape.Width, shape.Height);
+					shape.LocPinY = 1;
+				}
+
+				x += XStep;
+				if (x > activePage.Width)
+				{
+					x = 0;
+					y += YStep;
+				}
+			}
+
+			// size page to content
+			activePage.Layout.ContentPadding = new NMargins(50);
+			activePage.SizeToContent();
+		}
+		private void MoveTextBelowShape(NShape shape)
 		{
 			if (shape.ShapeType == ENShapeType.Shape1D)
 			{
@@ -144,9 +152,15 @@ namespace Nevron.Nov.Examples.Diagram
 			}
 			else
 			{
-				base.MoveTextBelowShape(shape);
-			}			
+				shape.MoveTextBlockBelowShape();
+			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

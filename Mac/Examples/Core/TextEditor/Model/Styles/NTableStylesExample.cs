@@ -5,7 +5,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	public class NTableStylesExample : NTextExampleBase
+	public class NTableStylesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -21,14 +21,36 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NTableStylesExample()
 		{
-			NTableStylesExampleSchema = NSchema.Create(typeof(NTableStylesExample), NTextExampleBase.NTextExampleBaseSchema);
+			NTableStylesExampleSchema = NSchema.Create(typeof(NTableStylesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how to create and apply table styles.</p>";
+		}
+
+		private void PopulateRichText()
 		{
 			NDocumentBlock documentBlock = m_RichText.Content;
 			NSection section = new NSection();
@@ -64,14 +86,6 @@ namespace Nevron.Nov.Examples.Text
 
 			customStyle.Apply(table2);
 		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-	This example demonstrates how to create and apply table styles.
-</p>
-";
-		}
 
 		#endregion
 
@@ -106,13 +120,19 @@ namespace Nevron.Nov.Examples.Text
 					tableCell.Border = NBorder.CreateFilledBorder(NColor.Black);
 					tableCell.BorderThickness = new NMargins(1);
 
-					NParagraph paragraph = new NParagraph("This is table cell [" + row.ToString() + ", " + col.ToString() + "]");
+					NParagraph paragraph = new NParagraph("This is a table cell [" + row.ToString() + ", " + col.ToString() + "]");
 					tableCell.Blocks.Add(paragraph);
 				}
 			}
 
 			return table;
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
 
 		#endregion
 

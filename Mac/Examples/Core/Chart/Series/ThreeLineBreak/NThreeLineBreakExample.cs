@@ -10,7 +10,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Three Line Break Example
 	/// </summary>
-	public class NThreeLineBreakExample : NChartExampleBase
+	public class NThreeLineBreakExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NThreeLineBreakExample()
 		{
-			NThreeLineBreakExampleSchema = NSchema.Create(typeof(NThreeLineBreakExample), NChartExampleBase.NChartExampleBaseSchema);
+			NThreeLineBreakExampleSchema = NSchema.Create(typeof(NThreeLineBreakExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Three Line Break";
@@ -72,10 +69,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -98,10 +91,15 @@ namespace Nevron.Nov.Examples.Chart
 						
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="threeLineBreak"></param>
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates the functionality of the three line break series.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
 		private void GenerateData(NThreeLineBreakSeries threeLineBreak)
 		{
 			NStockDataGenerator dataGenerator = new NStockDataGenerator(new NRange(50, 350), 0.002, 2);
@@ -115,14 +113,6 @@ namespace Nevron.Nov.Examples.Chart
 
 				dt = dt.AddDays(1);
 			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates the functionality of the three line break series.</p>";
 		}
 
 		#endregion
@@ -147,7 +137,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NThreeLineBreakExampleSchema;
 

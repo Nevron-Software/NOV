@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -48,7 +48,10 @@ namespace Nevron.Nov.Examples.Framework
 				"Stretch",
 				"Stretch X, Align Y",
 				"Stretch Y, Align X",
-				"Tile"
+				"Tile",
+				"Tile, FlipX",
+				"Tile, FlipY",
+				"Tile, FlipXY"
 			};
 
 			NTextureMapping[] mappings = new NTextureMapping[]
@@ -59,7 +62,10 @@ namespace Nevron.Nov.Examples.Framework
 				new NStretchTextureMapping(),
 				new NStretchXAlignYTextureMapping(ENVerticalAlignment.Bottom, ENTileMode.None),
 				new NStretchYAlignXTextureMapping(ENHorizontalAlignment.Right, ENTileMode.None),
-				new NTileTextureMapping()
+				new NTileTextureMapping(),
+				new NTileTextureMapping(true, false),
+				new NTileTextureMapping(false, true),
+				new NTileTextureMapping(true, true),
 			};
 
 			// Add widgets with the proper filling and names to the panel

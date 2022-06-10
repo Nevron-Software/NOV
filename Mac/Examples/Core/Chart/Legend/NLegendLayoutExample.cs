@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Legend Layout Example
 	/// </summary>
-	public class NLegendLayoutExample : NChartExampleBase
+	public class NLegendLayoutExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,26 +26,23 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NLegendLayoutExample()
 		{
-			NLegendLayoutExampleSchema = NSchema.Create(typeof(NLegendLayoutExample), NChartExampleBase.NChartExampleBaseSchema);
+			NLegendLayoutExampleSchema = NSchema.Create(typeof(NLegendLayoutExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-            NChartView chartView = CreateCartesianChartView();
+            m_ChartView = new NChartView();
+            m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
             // configure title
-            chartView.Surface.Titles[0].Text = "Legend Layout";
+            m_ChartView.Surface.Titles[0].Text = "Legend Layout";
 
             // configure chart
-            NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
+            NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
             chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
@@ -90,14 +87,10 @@ namespace Nevron.Nov.Examples.Chart
                 bar3.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
             }
 
-            chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+            m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
 
-            return chartView;
+            return m_ChartView;
         }
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -125,7 +118,6 @@ namespace Nevron.Nov.Examples.Chart
 
             return boxGroup;
 		}
-
         protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates different settings related to legend layout.</p>";
@@ -167,19 +159,20 @@ namespace Nevron.Nov.Examples.Chart
             }
         }
 
-		#endregion
+        #endregion
 
         #region Fields
 
-        NNumericUpDown m_ColCountUpDown;
-        NNumericUpDown m_RowCountUpDown;
+        private NChartView m_ChartView;
+        private NNumericUpDown m_ColCountUpDown;
+        private NNumericUpDown m_RowCountUpDown;
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NLegendLayoutExampleSchema;
 
-		#endregion
-	}
+        #endregion
+    }
 }

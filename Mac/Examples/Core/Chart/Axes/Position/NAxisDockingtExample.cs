@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Axis docking example
 	/// </summary>
-	public class NAxisDockingExample : NChartExampleBase
+	public class NAxisDockingExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAxisDockingExample()
 		{
-			NAxisDockingExampleSchema = NSchema.Create(typeof(NAxisDockingExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisDockingExampleSchema = NSchema.Create(typeof(NAxisDockingExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Axis Docking";
@@ -74,6 +71,43 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
+
+		private NComboBox CreateAxisZoneCombo()
+		{
+			NComboBox axisZoneComboBox = new NComboBox();
+
+			axisZoneComboBox.Items.Add(new NComboBoxItem("Left"));
+			axisZoneComboBox.Items.Add(new NComboBoxItem("Right"));
+
+			axisZoneComboBox.SelectedIndex = 0;
+			axisZoneComboBox.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnAxisZoneComboBoxSelectedIndexChanged);
+
+			return axisZoneComboBox;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			NStackPanel stack = new NStackPanel();
+			NUniSizeBoxGroup boxGroup = new NUniSizeBoxGroup(stack);
+
+			m_RedAxisZoneComboBox = CreateAxisZoneCombo();
+			stack.Add(NPairBox.Create("Red Axis Dock Zone:", m_RedAxisZoneComboBox));
+
+			m_GreenAxisZoneComboBox = CreateAxisZoneCombo();
+			stack.Add(NPairBox.Create("Green Axis Dock Zone:", m_GreenAxisZoneComboBox));
+
+			m_BlueAxisZoneComboBox = CreateAxisZoneCombo();
+			stack.Add(NPairBox.Create("Blue Axis Dock Zone:", m_BlueAxisZoneComboBox));
+
+			return boxGroup;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how to dock axes to different axis dock zones.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
 
 		private NCartesianAxis CreateLinearAxis(ENCartesianAxisDockZone dockZone, NColor color)
 		{
@@ -134,47 +168,6 @@ namespace Nevron.Nov.Examples.Chart
 			return line;
 		}
 
-		private NComboBox CreateAxisZoneCombo()
-		{
-			NComboBox axisZoneComboBox = new NComboBox();
-
-			axisZoneComboBox.Items.Add(new NComboBoxItem("Left"));
-			axisZoneComboBox.Items.Add(new NComboBoxItem("Right"));
-
-			axisZoneComboBox.SelectedIndex = 0;
-			axisZoneComboBox.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnAxisZoneComboBoxSelectedIndexChanged);
-
-			return axisZoneComboBox;
-		}
-
-
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override NWidget CreateExampleControls()
-		{
-			NStackPanel stack = new NStackPanel();
-			NUniSizeBoxGroup boxGroup = new NUniSizeBoxGroup(stack);
-
-			m_RedAxisZoneComboBox = CreateAxisZoneCombo();
-			stack.Add(NPairBox.Create("Red Axis Dock Zone:", m_RedAxisZoneComboBox));
-
-			m_GreenAxisZoneComboBox = CreateAxisZoneCombo();
-			stack.Add(NPairBox.Create("Green Axis Dock Zone:", m_GreenAxisZoneComboBox));
-
-			m_BlueAxisZoneComboBox = CreateAxisZoneCombo();
-			stack.Add(NPairBox.Create("Blue Axis Dock Zone:", m_BlueAxisZoneComboBox));
-
-			return boxGroup;
-		}
-
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates how to dock axes to different axis dock zones.</p>";
-		}
-
 		#endregion
 
 		#region Event Handlers
@@ -225,7 +218,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisDockingExampleSchema;
 

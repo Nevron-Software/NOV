@@ -2,15 +2,13 @@
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
-using Nevron.Nov.Editors;
 
 namespace Nevron.Nov.Examples.Gauge
 {
 	/// <summary>
 	/// This example demonstrates how to add tooltips to gauge indicators
 	/// </summary>
-	public class NGaugeTooltipsExample : NInstrumentationExampleBase
+	public class NGaugeTooltipsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -25,12 +23,12 @@ namespace Nevron.Nov.Examples.Gauge
 		/// </summary>
 		static NGaugeTooltipsExample()
 		{
-			NGaugeTooltipsExampleSchema = NSchema.Create(typeof(NGaugeTooltipsExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NGaugeTooltipsExampleSchema = NSchema.Create(typeof(NGaugeTooltipsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -85,7 +83,6 @@ namespace Nevron.Nov.Examples.Gauge
 
 			return stack;
 		}
-
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -118,21 +115,15 @@ namespace Nevron.Nov.Examples.Gauge
 
 			return stack;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates how to assign tooltips to different gauge elements.</p>";
 		}
 
-
 		#endregion
 
-		#region Event Handlers
+		#region Implementation
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="arg"></param>
 		private void UpdateTooltips(NValueChangeEventArgs arg)
 		{
 			if (m_Axis == null)
@@ -142,10 +133,6 @@ namespace Nevron.Nov.Examples.Gauge
 			m_Indicator2.Tooltip = new NTooltip(m_NeedleTooltipTextBox.Text);
 			m_Indicator3.Tooltip = new NTooltip(m_MarkerTooltipTextBox.Text);
 		}
-
-		#endregion
-
-		#region Event Handlers
 
 		#endregion
 
@@ -163,9 +150,15 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NGaugeTooltipsExampleSchema;
+
+		#endregion
+
+		#region Constants
+
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
 
 		#endregion
 	}

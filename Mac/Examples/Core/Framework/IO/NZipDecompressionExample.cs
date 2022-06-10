@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
+
 using Nevron.Nov.Compression;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.IO;
 using Nevron.Nov.Layout;
@@ -31,11 +31,11 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
-			m_HeaderLabel = new NLabel("File: SourceCode.zip");
+			m_HeaderLabel = new NLabel("File: CSharph.zip");
 
 			m_TreeView = new NTreeView();
 			m_TreeView.MinWidth = 300;
@@ -44,7 +44,7 @@ namespace Nevron.Nov.Examples.Framework
 			pairBox.HorizontalPlacement = ENHorizontalPlacement.Left;
 			pairBox.Spacing = NDesign.VerticalSpacing;
 
-			Stream sourceCodeStream = NResources.Instance.GetResourceStream("RBIN_SourceCode_zip");
+			Stream sourceCodeStream = NResources.RBIN_SourceCode_CSharp_zip.Stream;
 			DecompressZip(sourceCodeStream);
 
 			return pairBox;
@@ -100,20 +100,22 @@ namespace Nevron.Nov.Examples.Framework
 			if (arg.Result != ENCommonDialogResult.OK || arg.Files.Length != 1)
 				return;
 
-			try
-			{
-				NFile fileInfo = arg.Files[0];
-				using(Stream stream = fileInfo.OpenRead())
+			NFile file = arg.Files[0];
+			file.OpenRead().Then(
+				delegate (Stream stream)
 				{
-					DecompressZip(stream);
-				}
+					using(stream)
+					{
+						DecompressZip(stream);
+					}
 
-				m_HeaderLabel.Text = "File: " + fileInfo.Path;
-			}
-			catch (Exception ex)
-			{
-				NMessageBox.Show(ex.Message, "Error", ENMessageBoxButtons.OK, ENMessageBoxIcon.Error);
-			}
+					m_HeaderLabel.Text = "File: " + file.Path;
+				},
+				delegate (Exception ex)
+				{
+					NMessageBox.ShowError(ex.Message, "Error");
+				}
+			);
 		}
 
 		#endregion

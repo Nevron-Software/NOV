@@ -11,7 +11,7 @@ namespace Nevron.Nov.Examples.Gauge
     /// <summary>
 	/// This example demonstrates how to control the size of the gauge axes
     /// </summary>
-	public class NScaleSectionsExample : NInstrumentationExampleBase
+	public class NScaleSectionsExample : NExampleBase
     {
         #region Constructors
 
@@ -26,12 +26,12 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NScaleSectionsExample()
         {
-			NScaleSectionsExampleSchema = NSchema.Create(typeof(NScaleSectionsExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NScaleSectionsExampleSchema = NSchema.Create(typeof(NScaleSectionsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
 		/// <summary>
 		/// 
@@ -50,7 +50,7 @@ namespace Nevron.Nov.Examples.Gauge
 			m_LinearGauge.PreferredSize = defaultLinearVerticalGaugeSize;
 			m_LinearGauge.BackgroundFill = new NStockGradientFill(NColor.DarkGray, NColor.Black);
 			m_LinearGauge.CapEffect = new NGelCapEffect();
-			m_LinearGauge.Border = base.CreateBorder();
+			m_LinearGauge.Border = CreateBorder();
 			m_LinearGauge.Padding = new NMargins(20);
 			m_LinearGauge.BorderThickness = new NMargins(6);
 
@@ -318,11 +318,26 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NScaleSectionsExampleSchema;
 
-        #endregion
+		#endregion
 
+		#region Static Methods
+
+		protected NBorder CreateBorder()
+		{
+			return NBorder.CreateThreeColorBorder(NColor.LightGray, NColor.White, NColor.DarkGray, 10, 10);
+		}
+
+		#endregion
+
+		#region Constants
+
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
+		private static readonly NSize defaultLinearVerticalGaugeSize = new NSize(100, 300);
+
+		#endregion
 	}
 }

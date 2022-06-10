@@ -1,4 +1,5 @@
 ﻿using Nevron.Nov.Dom;
+using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.Text.Commands;
 using Nevron.Nov.Text.UI;
@@ -6,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	public class NContextMenuCustomizationExample : NTextExampleBase
+	public class NContextMenuCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -22,16 +23,22 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NContextMenuCustomizationExample()
 		{
-			NContextMenuCustomizationExampleSchema = NSchema.Create(typeof(NContextMenuCustomizationExample), NTextExampleBase.NTextExampleBaseSchema);
+			NContextMenuCustomizationExampleSchema = NSchema.Create(typeof(NContextMenuCustomizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Public Overrides
+		#region Example
 
-		public override void Initialize()
+		protected override NWidget CreateExampleContent()
 		{
-			base.Initialize();
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
 
 			// Add the custom command action to the rich text view's commander
 			m_RichText.Commander.Add(new CustomCommandAction());
@@ -40,23 +47,16 @@ namespace Nevron.Nov.Examples.Text
 			NRichTextContextMenuBuilder builder = m_RichText.ContextMenuBuilder;
 
 			// Remove the common menu group, which contains commands such as Cut, Copy, Paste, etc.
-			builder.RemoveGroup(NRichTextMenuGroup.Common);
+			builder.Groups.RemoveByName(NRichTextMenuGroup.Common);
 
 			// Add the custom context menu group
-			builder.AddGroup(new CustomMenuGroup());
+			builder.Groups.Add(new CustomMenuGroup());
+
+			return richTextWithRibbon;
 		}
-
-		#endregion
-
-		#region Protected Overrides - Example
-
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleControls()
 		{
-			NSection section = new NSection();
-			m_RichText.Content.Sections.Add(section);
-
-			section.Blocks.Add(GetDescriptionBlock("Context Menu Customization",
-				"The example demonstrates how to customize the NOV rich text context menu.", 1));
+			return null;
 		}
 		protected override string GetExampleDescription()
 		{
@@ -68,11 +68,20 @@ selection.</p>
 ";
 		}		
 
+		private void PopulateRichText()
+		{
+			NSection section = new NSection();
+			m_RichText.Content.Sections.Add(section);
+
+			section.Blocks.Add(GetDescriptionBlock("Context Menu Customization",
+				"The example demonstrates how to customize the NOV rich text context menu.", 1));
+		}
+
 		#endregion
 
-		#region Commands
+		#region Fields
 
-		public static readonly NCommand CustomCommand = NCommand.Create(typeof(NContextMenuCustomizationExample), "CustomCommand", "Custom Command");
+		private NRichTextView m_RichText;
 
 		#endregion
 
@@ -85,7 +94,93 @@ selection.</p>
 
 		#endregion
 
-		#region Nested Types - Custom Menu Group
+		#region Constants
+
+		public static readonly NCommand CustomCommand = NCommand.Create(typeof(Nevron.Nov.Examples.Text.NContextMenuCustomizationExample),
+			"CustomCommand", "Custom Command");
+
+		#endregion
+
+		#region Static Methods
+
+		private static NParagraph GetDescriptionParagraph(string text)
+		{
+			return new NParagraph(text);
+		}
+		private static NParagraph GetTitleParagraphNoBorder(string text, int level)
+		{
+			double fontSize = 10;
+			ENFontStyle fontStyle = ENFontStyle.Regular;
+
+			switch (level)
+			{
+				case 1:
+					fontSize = 16;
+					fontStyle = ENFontStyle.Bold;
+					break;
+				case 2:
+					fontSize = 10;
+					fontStyle = ENFontStyle.Bold;
+					break;
+			}
+
+			NParagraph paragraph = new NParagraph();
+
+			paragraph.HorizontalAlignment = ENAlign.Left;
+			paragraph.FontSize = fontSize;
+			paragraph.FontStyle = fontStyle;
+
+			NTextInline textInline = new NTextInline(text);
+
+			textInline.FontStyle = fontStyle;
+			textInline.FontSize = fontSize;
+
+			paragraph.Inlines.Add(textInline);
+
+			return paragraph;
+
+		}
+		private static NGroupBlock GetDescriptionBlock(string title, string description, int level)
+		{
+			NColor color = NColor.Black;
+
+			NParagraph paragraph = GetTitleParagraphNoBorder(title, level);
+
+			NGroupBlock groupBlock = new NGroupBlock();
+
+			groupBlock.ClearMode = ENClearMode.All;
+			groupBlock.Blocks.Add(paragraph);
+			groupBlock.Blocks.Add(GetDescriptionParagraph(description));
+
+			groupBlock.Border = CreateLeftTagBorder(color);
+			groupBlock.BorderThickness = defaultBorderThickness;
+
+			return groupBlock;
+		}
+		/// <summary>
+		/// Creates a left tag border with the specified border
+		/// </summary>
+		/// <param name="color"></param>
+		/// <returns></returns>
+		private static NBorder CreateLeftTagBorder(NColor color)
+		{
+			NBorder border = new NBorder();
+
+			border.LeftSide = new NBorderSide();
+			border.LeftSide.Fill = new NColorFill(color);
+
+			return border;
+		}
+
+		#endregion
+
+		#region Constants
+
+		private static readonly NMargins defaultBorderThickness = new NMargins(5.0, 0.0, 0.0, 0.0);
+
+		#endregion
+
+		#region Nested Types
 
 		/// <summary>
 		/// A custom menu group, which applies to every text element and adds only a Copy menu item
@@ -125,10 +220,6 @@ selection.</p>
 				menu.Items.Add(CreateMenuItem(NResources.Image_Ribbon_16x16_smiley_png, CustomCommand));
 			}
 		}
-
-		#endregion
-
-		#region Nested Types - Custom Command Action
 
 		public class CustomCommandAction : NTextCommandAction
 		{

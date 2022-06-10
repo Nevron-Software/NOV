@@ -2,6 +2,7 @@
 
 using Nevron.Nov.Examples;
 using Nevron.Nov.Mac;
+using CoreGraphics;
 
 #if UNIFIEDAPI
 using Foundation;
@@ -17,19 +18,20 @@ namespace Nevron.Nov.ExamplesApp.Mac
 	{
 		#region Constructors
 
-		// Called when created from unmanaged code
-		public MainWindow(IntPtr handle) : base(handle)
+		public MainWindow()
+			: base(new CGRect(0, 0, 400, 400), NSWindowStyle.Resizable | NSWindowStyle.Titled | NSWindowStyle.Closable, NSBackingStore.Buffered, false)
 		{
 			Initialize();
 		}
-		// Called when created directly from a XIB file
-		[Export("initWithCoder:")]
-		public MainWindow(NSCoder coder) : base(coder)
-		{
-			Initialize();
-		}
-		// Shared initialization code
-		void Initialize()
+
+        #endregion
+
+        #region Implementation
+
+        /// <summary>
+        /// Shared initialization code.
+        /// </summary>
+        private void Initialize()
 		{
 			Title = "Nevron Open Vision Examples";
 			SetFrame(NSScreen.MainScreen.VisibleFrame, true);

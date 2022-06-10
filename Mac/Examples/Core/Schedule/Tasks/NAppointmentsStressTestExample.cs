@@ -1,11 +1,13 @@
 ﻿using System;
+
 using Nevron.Nov.Dom;
 using Nevron.Nov.Globalization;
 using Nevron.Nov.Schedule;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NAppointmentsStressTestExample : NScheduleExampleBase
+	public class NAppointmentsStressTestExample : NExampleBase
 	{
 		#region Constructors
 
@@ -21,14 +23,50 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NAppointmentsStressTestExample()
 		{
-			NAppointmentsStressTestExampleSchema = NSchema.Create(typeof(NAppointmentsStressTestExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NAppointmentsStressTestExampleSchema = NSchema.Create(typeof(NAppointmentsStressTestExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
+
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return String.Format(NCultureInfo.EnglishUS, @"
+<p>
+    This example demonstrates how NOV Schedule handles {0:N0} appointments.
+</p>
+", TotalAppointments);
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
 		{
 			m_Random = new Random();
 
@@ -46,19 +84,6 @@ namespace Nevron.Nov.Examples.Schedule
 			// Switch the schedule to week view
 			schedule.ViewMode = ENScheduleViewMode.Week;
 		}
-		protected override string GetExampleDescription()
-		{
-			return String.Format(NCultureInfo.EnglishUS, @"
-<p>
-    This example demonstrates how NOV Schedule handles {0:N0} appointments.
-</p>
-", TotalAppointments);
-		}
-
-		#endregion
-
-		#region Implementation
-
 		/// <summary>
 		/// Adds some random appointments for the given date.
 		/// </summary>
@@ -88,6 +113,7 @@ namespace Nevron.Nov.Examples.Schedule
 
 		#region Fields
 
+		private NScheduleView m_ScheduleView;
 		private Random m_Random;
 
 		#endregion

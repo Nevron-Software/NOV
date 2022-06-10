@@ -2,11 +2,10 @@
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.UI
 {
-    public class NButtonsExample : NExampleBase
+	public class NButtonsExample : NExampleBase
     {
         #region Constructors
 
@@ -20,7 +19,7 @@ namespace Nevron.Nov.Examples.UI
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
         {
@@ -32,30 +31,30 @@ namespace Nevron.Nov.Examples.UI
 
             // text only push button
             NButton textOnlyButton = new NButton("Text only button");
-            textOnlyButton.Click += new Function<NEventArgs>(OnButtonClicked);
+            textOnlyButton.Click += OnButtonClicked;
             stack.Add(textOnlyButton);
 
             // image only push button
             NButton imageOnlyButton = new NButton(NResources.Image__16x16_Contacts_png);
-            imageOnlyButton.Click += new Function<NEventArgs>(OnButtonClicked);
+            imageOnlyButton.Click += OnButtonClicked;
             stack.Add(imageOnlyButton);
 
             // image and text button
             NImage image2 = NResources.Image__16x16_Mail_png;
             NButton imageAndTextButton = new NButton(new NPairBox("Image before text", image2, ENPairBoxRelation.Box2BeforeBox1, false));
-            imageAndTextButton.Click += new Function<NEventArgs>(OnButtonClicked);
+            imageAndTextButton.Click += OnButtonClicked;
             stack.Add(imageAndTextButton);
 
             // repeat button
             NRepeatButton repeatButton = new NRepeatButton("Repeat button");
-            repeatButton.StartClicking += new Function<NEventArgs>(OnRepeatButtonStartClicking);
-            repeatButton.Click += new Function<NEventArgs>(OnButtonClicked);
-            repeatButton.EndClicking += new Function<NEventArgs>(OnRepeatButtonEndClicking);
+            repeatButton.StartClicking += OnRepeatButtonStartClicking;
+            repeatButton.Click += OnButtonClicked;
+            repeatButton.EndClicking += OnRepeatButtonEndClicking;
             stack.Add(repeatButton);
 
             // toggle button
             NToggleButton toggleButton = new NToggleButton("Toggle button");
-            toggleButton.Click += new Function<NEventArgs>(OnButtonClicked);
+            toggleButton.Click += OnButtonClicked;
             stack.Add(toggleButton);
 
             // disabled button

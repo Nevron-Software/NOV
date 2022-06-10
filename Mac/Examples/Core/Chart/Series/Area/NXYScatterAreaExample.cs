@@ -1,16 +1,16 @@
 ﻿using System;
+
 using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using Nevron.Nov.Editors;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// XY Scatter Area Example
 	/// </summary>
-	public class NXYScatterAreaExample : NChartExampleBase
+	public class NXYScatterAreaExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,26 +26,23 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NXYScatterAreaExample()
 		{
-			NXYScatterAreaExampleSchema = NSchema.Create(typeof(NXYScatterAreaExample), NChartExampleBase.NChartExampleBaseSchema);
+			NXYScatterAreaExampleSchema = NSchema.Create(typeof(NXYScatterAreaExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			m_ChartView = new NChartView();
+			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
-			chartView.Surface.Titles[0].Text = "XY Scatter Area";
+			m_ChartView.Surface.Titles[0].Text = "XY Scatter Area";
 
 			// configure chart
-			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
+			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
 			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XYLinear);
 
@@ -85,12 +82,8 @@ namespace Nevron.Nov.Examples.Chart
 
 			chart.Series.Add(m_Area);
 
-			return chartView;
+			return m_ChartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -115,13 +108,14 @@ namespace Nevron.Nov.Examples.Chart
 		
 			return boxGroup;
 		}
-
-
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create an xy scatter area chart.</p>";
 		}
+
+		#endregion
+
+		#region Implementation
 
 		#endregion
 
@@ -171,21 +165,14 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Implementation
-
-		#endregion
-
 		#region Fields
 
-		NAreaSeries m_Area;
+		private NChartView m_ChartView;
+		private NAreaSeries m_Area;
 
 		#endregion
 
-		#region Static Fields
-
-		#endregion
-
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NXYScatterAreaExampleSchema;
 

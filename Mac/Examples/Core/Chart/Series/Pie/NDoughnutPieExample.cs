@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Doughnut Pie Example
 	/// </summary>
-	public class NDoughnutPieExample : NChartExampleBase
+	public class NDoughnutPieExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,17 +26,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NDoughnutPieExample()
 		{
-			NDoughnutPieExampleSchema = NSchema.Create(typeof(NDoughnutPieExample), NChartExampleBase.NChartExampleBaseSchema);
+			NDoughnutPieExampleSchema = NSchema.Create(typeof(NDoughnutPieExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreatePieChartView();
@@ -95,10 +91,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -123,10 +115,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a doughnut pie chart.</p>";
@@ -160,9 +148,20 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NDoughnutPieExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreatePieChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Pie);
+			return chartView;
+		}
 
 		#endregion
 	}

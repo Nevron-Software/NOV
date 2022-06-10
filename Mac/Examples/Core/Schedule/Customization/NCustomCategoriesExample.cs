@@ -1,11 +1,13 @@
 ﻿using System;
+
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Schedule;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NCustomCategoriesExample : NScheduleExampleBase
+	public class NCustomCategoriesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -21,14 +23,46 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NCustomCategoriesExample()
 		{
-			NCustomCategoriesExampleSchema = NSchema.Create(typeof(NCustomCategoriesExample), NScheduleExampleBaseSchema);
+			NCustomCategoriesExampleSchema = NSchema.Create(typeof(NCustomCategoriesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
+
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how to create and use custom categories.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
 		{
 			// Rename the first predefined category
 			schedule.Categories[0].Name = NLoc.Get("Renamed Category");
@@ -65,10 +99,11 @@ namespace Nevron.Nov.Examples.Schedule
 			schedule.ScrollToTime(start.TimeOfDay);
 		}
 
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates how to create and use custom categories.</p>";
-		}
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
 
 		#endregion
 

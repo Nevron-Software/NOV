@@ -1,13 +1,13 @@
 ﻿using Nevron.Nov.Diagram;
-using Nevron.Nov.Diagram.Expressions;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NArrowShapesExample : NDiagramExampleBase
+	public class NArrowShapesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,83 +23,98 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NArrowShapesExample()
 		{
-			NArrowShapesExampleSchema = NSchema.Create(typeof(NArrowShapesExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NArrowShapesExampleSchema = NSchema.Create(typeof(NArrowShapesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitDiagram()
+		protected override NWidget CreateExampleContent()
 		{
-			base.InitDiagram();
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
 
-			m_DrawingDocument.HistoryService.Pause();
+			m_DrawingView.Document.HistoryService.Pause();
 			try
 			{
-				NDrawing drawing = m_DrawingDocument.Content;
-				NPage activePage = drawing.ActivePage;
-
-				// Hide grid and ports
-				drawing.ScreenVisibility.ShowGrid = false;
-				drawing.ScreenVisibility.ShowPorts = false;
-
-				// Create all shapes
-				NArrowShapeFactory factory = new NArrowShapeFactory();
-				factory.DefaultSize = new NSize(60, 60);
-
-				int row = 0, col = 0;
-				double cellWidth = 180;
-				double cellHeight = 120;
-
-				for (int i = 0; i < factory.ShapeCount; i++, col++)
-				{
-					NShape shape = factory.CreateShape(i);
-					shape.HorizontalPlacement = ENHorizontalPlacement.Center;
-					shape.VerticalPlacement = ENVerticalPlacement.Center;
-					shape.Text = factory.GetShapeInfo(i).Name;
-					MoveTextBelowShape(shape);
-					activePage.Items.Add(shape);
-
-					if (col >= 5)
-					{
-						row++;
-						col = 0;
-					}
-
-					NPoint beginPoint = new NPoint(50 + col * cellWidth, 50 + row * cellHeight);
-					if (shape.ShapeType == ENShapeType.Shape1D)
-					{
-						NPoint endPoint = beginPoint + new NPoint(cellWidth - 100, cellHeight - 100);
-						shape.SetBeginPoint(beginPoint);
-						shape.SetEndPoint(endPoint);
-					}
-					else
-					{
-						shape.SetBounds(beginPoint.X, beginPoint.Y, shape.Width, shape.Height);
-					}
-				}
-
-				// size page to content
-                activePage.Layout.ContentPadding = new NMargins(40);
-				activePage.SizeToContent();
+				InitDiagram(m_DrawingView.Document);
 			}
 			finally
 			{
-				m_DrawingDocument.HistoryService.Resume();
+				m_DrawingView.Document.HistoryService.Resume();
 			}
-		}		
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
 		protected override string GetExampleDescription()
 		{
-			return @"
-<p>
-    This example demonstrates the arrow shapes, which are created by the NArrowShapesFactory.
-</p>
-";
+			return @"<p>This example demonstrates the arrow shapes, which are created by the NArrowShapesFactory.</p>";
+		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			NDrawing drawing = drawingDocument.Content;
+			NPage activePage = drawing.ActivePage;
+
+			// Hide grid and ports
+			drawing.ScreenVisibility.ShowGrid = false;
+			drawing.ScreenVisibility.ShowPorts = false;
+
+			// Create all shapes
+			NArrowShapeFactory factory = new NArrowShapeFactory();
+			factory.DefaultSize = new NSize(60, 60);
+
+			int row = 0, col = 0;
+			double cellWidth = 180;
+			double cellHeight = 120;
+
+			for (int i = 0; i < factory.ShapeCount; i++, col++)
+			{
+				NShape shape = factory.CreateShape(i);
+				shape.HorizontalPlacement = ENHorizontalPlacement.Center;
+				shape.VerticalPlacement = ENVerticalPlacement.Center;
+				shape.Text = factory.GetShapeInfo(i).Name;
+				shape.MoveTextBlockBelowShape();
+				activePage.Items.Add(shape);
+
+				if (col >= 5)
+				{
+					row++;
+					col = 0;
+				}
+
+				NPoint beginPoint = new NPoint(50 + col * cellWidth, 50 + row * cellHeight);
+				if (shape.ShapeType == ENShapeType.Shape1D)
+				{
+					NPoint endPoint = beginPoint + new NPoint(cellWidth - 100, cellHeight - 100);
+					shape.SetBeginPoint(beginPoint);
+					shape.SetEndPoint(endPoint);
+				}
+				else
+				{
+					shape.SetBounds(beginPoint.X, beginPoint.Y, shape.Width, shape.Height);
+				}
+			}
+
+			// size page to content
+			activePage.Layout.ContentPadding = new NMargins(40);
+			activePage.SizeToContent();
 		}
 
 		#endregion
-		
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
+
+		#endregion
+
 		#region Schema
 
 		/// <summary>

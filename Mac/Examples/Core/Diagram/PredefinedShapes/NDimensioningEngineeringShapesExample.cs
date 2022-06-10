@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NDimensioningEngineeringShapesExample : NDiagramExampleBase
+	public class NDimensioningEngineeringShapesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,13 +23,35 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NDimensioningEngineeringShapesExample()
 		{
-			NDimensioningEngineeringShapesExampleSchema = NSchema.Create(typeof(NDimensioningEngineeringShapesExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NDimensioningEngineeringShapesExampleSchema = NSchema.Create(typeof(NDimensioningEngineeringShapesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
 		protected override string GetExampleDescription()
 		{
 			return @"
@@ -39,102 +61,96 @@ namespace Nevron.Nov.Examples.Diagram
 ";
 		}
 
-		protected override void InitDiagram()
+		private void InitDiagram(NDrawingDocument drawingDocument)
 		{
-			base.InitDiagram();
-
 			const double XStep = 150;
 			const double YStep = 200;
 
-			m_DrawingDocument.HistoryService.Pause();
+			NDrawing drawing = drawingDocument.Content;
+			NPage activePage = drawing.ActivePage;
 
-			try
+			// Hide grid and ports
+			drawing.ScreenVisibility.ShowGrid = false;
+			drawing.ScreenVisibility.ShowPorts = false;
+
+			// create all shapes
+			NDimensioningEngineeringShapeFactory factory = new NDimensioningEngineeringShapeFactory();
+			factory.DefaultSize = new NSize(90, 90);
+
+			double x = 0;
+			double y = 0;
+
+			for (int i = 0; i < factory.ShapeCount; i++)
 			{
-				NDrawing drawing = m_DrawingDocument.Content;
-				NPage activePage = drawing.ActivePage;
+				NShape shape = factory.CreateShape(i);
+				shape.HorizontalPlacement = ENHorizontalPlacement.Center;
+				shape.VerticalPlacement = ENVerticalPlacement.Center;
+				shape.Tooltip = new NTooltip(factory.GetShapeInfo(i).Name);
+				activePage.Items.Add(shape);
 
-				// Hide grid and ports
-				drawing.ScreenVisibility.ShowGrid = false;
-				drawing.ScreenVisibility.ShowPorts = false;
-
-				// create all shapes
-				NDimensioningEngineeringShapeFactory factory = new NDimensioningEngineeringShapeFactory();
-				factory.DefaultSize = new NSize(90, 90);
-
-				double x = 0;
-				double y = 0;
-
-				for (int i = 0; i < factory.ShapeCount; i++)
+				if (shape.ShapeType == ENShapeType.Shape1D)
 				{
-					NShape shape = factory.CreateShape(i);
-					shape.HorizontalPlacement = ENHorizontalPlacement.Center;
-					shape.VerticalPlacement = ENVerticalPlacement.Center;
-					shape.Tooltip = new NTooltip(factory.GetShapeInfo(i).Name);
-					activePage.Items.Add(shape);
-
-					if (shape.ShapeType == ENShapeType.Shape1D)
+					ENDimensioningEngineeringShapes shapeType = (ENDimensioningEngineeringShapes)i;
+					switch (shapeType)
 					{
-						ENDimensioningEngineeringShapes shapeType = (ENDimensioningEngineeringShapes)i;
-						switch (shapeType)
-						{
-							case ENDimensioningEngineeringShapes.VerticalBaseline:
-							case ENDimensioningEngineeringShapes.Vertical:
-							case ENDimensioningEngineeringShapes.VerticalOutside:
-							case ENDimensioningEngineeringShapes.OrdinateVertical:
-							case ENDimensioningEngineeringShapes.OrdinateVerticalMultiple:
-								shape.SetBeginPoint(new NPoint(x + shape.Width, y + shape.Height));
-								shape.SetEndPoint(new NPoint(x + shape.Width, y));
-								break;
-							case ENDimensioningEngineeringShapes.OrdinateHorizontalMultiple:
-							case ENDimensioningEngineeringShapes.OrdinateHorizontal:
-								shape.SetBeginPoint(new NPoint(x, y));
-								shape.SetEndPoint(new NPoint(x + shape.Width, y));
-								break;
-							case ENDimensioningEngineeringShapes.Radius:
-							case ENDimensioningEngineeringShapes.RadiusOutside:
-							case ENDimensioningEngineeringShapes.ArcRadius:
-							case ENDimensioningEngineeringShapes.Diameter:
-							case ENDimensioningEngineeringShapes.DiameterOutside:
-								shape.SetBeginPoint(new NPoint(x, y + shape.Height / 2));
-								shape.SetEndPoint(new NPoint(x + shape.Width, y - shape.Height / 2));
-								break;
-							case ENDimensioningEngineeringShapes.AngleCenter:
-							case ENDimensioningEngineeringShapes.AngleEven:
-							case ENDimensioningEngineeringShapes.AngleOutside:
-							case ENDimensioningEngineeringShapes.AngleUneven:
-								shape.SetBeginPoint(new NPoint(x, y + shape.Width / 2));
-								shape.SetEndPoint(new NPoint(x + shape.Width, y + shape.Width / 2));
-								break;
-							default:
-								shape.SetBeginPoint(new NPoint(x, y));
-								shape.SetEndPoint(new NPoint(x + shape.Width, y + shape.Height));
-								break;
-						}
-					}
-					else
-					{
-						shape.SetBounds(x, y, shape.Width, shape.Height);
-						shape.LocPinY = 1;
-					}
-
-					x += XStep;
-					if (x > activePage.Width)
-					{
-						x = 0;
-						y += YStep;
+						case ENDimensioningEngineeringShapes.VerticalBaseline:
+						case ENDimensioningEngineeringShapes.Vertical:
+						case ENDimensioningEngineeringShapes.VerticalOutside:
+						case ENDimensioningEngineeringShapes.OrdinateVertical:
+						case ENDimensioningEngineeringShapes.OrdinateVerticalMultiple:
+							shape.SetBeginPoint(new NPoint(x + shape.Width, y + shape.Height));
+							shape.SetEndPoint(new NPoint(x + shape.Width, y));
+							break;
+						case ENDimensioningEngineeringShapes.OrdinateHorizontalMultiple:
+						case ENDimensioningEngineeringShapes.OrdinateHorizontal:
+							shape.SetBeginPoint(new NPoint(x, y));
+							shape.SetEndPoint(new NPoint(x + shape.Width, y));
+							break;
+						case ENDimensioningEngineeringShapes.Radius:
+						case ENDimensioningEngineeringShapes.RadiusOutside:
+						case ENDimensioningEngineeringShapes.ArcRadius:
+						case ENDimensioningEngineeringShapes.Diameter:
+						case ENDimensioningEngineeringShapes.DiameterOutside:
+							shape.SetBeginPoint(new NPoint(x, y + shape.Height / 2));
+							shape.SetEndPoint(new NPoint(x + shape.Width, y - shape.Height / 2));
+							break;
+						case ENDimensioningEngineeringShapes.AngleCenter:
+						case ENDimensioningEngineeringShapes.AngleEven:
+						case ENDimensioningEngineeringShapes.AngleOutside:
+						case ENDimensioningEngineeringShapes.AngleUneven:
+							shape.SetBeginPoint(new NPoint(x, y + shape.Width / 2));
+							shape.SetEndPoint(new NPoint(x + shape.Width, y + shape.Width / 2));
+							break;
+						default:
+							shape.SetBeginPoint(new NPoint(x, y));
+							shape.SetEndPoint(new NPoint(x + shape.Width, y + shape.Height));
+							break;
 					}
 				}
+				else
+				{
+					shape.SetBounds(x, y, shape.Width, shape.Height);
+					shape.LocPinY = 1;
+				}
 
-				// size page to content
-                activePage.Layout.ContentPadding = new NMargins(50);
-				activePage.SizeToContent();
+				x += XStep;
+				if (x > activePage.Width)
+				{
+					x = 0;
+					y += YStep;
+				}
+			}
 
-			}
-			finally
-			{
-				m_DrawingDocument.HistoryService.Resume();
-			}
+			// size page to content
+			activePage.Layout.ContentPadding = new NMargins(50);
+			activePage.SizeToContent();
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 
@@ -145,6 +161,6 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		public static readonly NSchema NDimensioningEngineeringShapesExampleSchema;
 
-		#endregion		
+		#endregion
 	}
 }

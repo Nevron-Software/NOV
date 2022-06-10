@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Interactive Legend Example
 	/// </summary>
-	public class NInteractiveLegendExample : NChartExampleBase
+	public class NInteractiveLegendExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NInteractiveLegendExample()
 		{
-			NInteractiveLegendExampleSchema = NSchema.Create(typeof(NInteractiveLegendExample), NChartExampleBase.NChartExampleBaseSchema);
+			NInteractiveLegendExampleSchema = NSchema.Create(typeof(NInteractiveLegendExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Interactive Legend";
@@ -100,26 +97,16 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
 			NUniSizeBoxGroup boxGroup = new NUniSizeBoxGroup(stack);
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create an interactive legend.</p>";
 		}
-
-		#endregion
-
-		#region Event Handlers
-
 
 		#endregion
 
@@ -141,12 +128,17 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
+		#region Event Handlers
+
+
+		#endregion
+
 		#region Fields
 
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NInteractiveLegendExampleSchema;
 

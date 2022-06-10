@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
+
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.IO;
 using Nevron.Nov.Layout;
-using Nevron.Nov.Networking;
 using Nevron.Nov.Text;
 using Nevron.Nov.Text.Formats;
 using Nevron.Nov.UI;
@@ -32,7 +31,7 @@ namespace Nevron.Nov.Examples.Text
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -91,7 +90,7 @@ namespace Nevron.Nov.Examples.Text
 
 		#endregion
 
-		#region Implementation - UI Controls
+		#region Implementation
 
 		private NGroupBox CreatePredefinedPageGroupBox()
 		{
@@ -135,23 +134,23 @@ namespace Nevron.Nov.Examples.Text
 			return new NGroupBox("Import from URL", pairBox);
 		}
 
-		#endregion
-
-		#region Implementation - Helper Methods
-
-		private string NormalizeUri(string uri)
+		private bool TryParseUrl(string url, out NUriBase uri)
 		{
-			if (String.IsNullOrEmpty(uri))
-				return uri;
+			uri = null;
 
-			if (uri.StartsWith("http://") == false &&
-				uri.StartsWith("https://") == false &&
-				uri.StartsWith("file:///") == false)
+			url = NStringHelpers.SafeTrim(url);
+			if (String.IsNullOrEmpty(url))
+				return false;
+
+			if (!url.Contains("://") && // URI scheme check
+				url.IndexOf(@":\") != 1 && // Windows file path check
+				url[0] != '/') // Unix file path check
 			{
-				uri = "http://" + uri;
+				// This URL doesn't have a scheme and is not a file path, so add an HTTP URI scheme
+				url = "http://" + url;
 			}
 
-			return uri;
+			return NUri.TryCreate(url, ENUriKind.Absolute, out uri);
 		}
 		private void LoadSource(Stream stream)
 		{
@@ -172,7 +171,7 @@ namespace Nevron.Nov.Examples.Text
 				settings.BaseUri = new NUri(baseUri);
             }
 
-			m_PreviewRichText.LoadFromStream(stream, new NHtmlTextFormat(), settings);
+			m_PreviewRichText.LoadFromStream(stream, NTextFormat.Html, settings);
 		}
 
 		#endregion
@@ -204,33 +203,45 @@ namespace Nevron.Nov.Examples.Text
 		}
 		private void OnGoButtonClick(NEventArgs arg1)
 		{
-			string address = NStringHelpers.SafeTrim(m_NavigationTextBox.Text);
-			if (address == null || address.Length == 0)
+			string url = m_NavigationTextBox.Text;
+			if (String.IsNullOrEmpty(url))
 				return;
 
-			if (NFile.Exists(address))
+			// Normalize the URL
+			NUriBase uri;
+			if (!TryParseUrl(url, out uri))
+			{
+				NMessageBox.ShowError("Invalid URL or file path", "Error");
+				return;
+			}
+
+			if (uri.IsFile)
 			{
 				// Load from file
-				using (Stream stream = NFile.OpenRead(address))
+				NFile file = NFileSystem.Current.GetFile(url);
+				
+				file.OpenRead().Then(delegate (Stream stream)
 				{
-					LoadSource(stream);
-					LoadHtml(stream, address);
+					using (stream)
+					{
+						LoadSource(stream);
+						LoadHtml(stream, url);
+					}
+				});				
+			}
+			else if (uri.IsHTTP)
+			{
+				// Load from URI
+				try
+				{
+					m_Stopwatch = NStopwatch.StartNew();
+					m_PreviewRichText.LoadFromUri((NUri)uri);
 				}
-
-				return;
-			}
-
-			// Load from URI
-			try
-			{
-				address = NormalizeUri(address);
-                m_Stopwatch = NStopwatch.StartNew();
-				m_PreviewRichText.LoadFromUri(new NUri(address, ENUriKind.RelativeOrAbsolute));
-			}
-			catch (Exception ex)
-			{
-                m_Stopwatch.Stop();
-				NMessageBox.Show(ex.Message, "Error", ENMessageBoxButtons.OK, ENMessageBoxIcon.Error);
+				catch (Exception ex)
+				{
+					m_Stopwatch.Stop();
+					NMessageBox.ShowError(ex.Message, "Error");
+				}
 			}
 		}
         private void OnRichTextDocumentLoaded(NEventArgs args)
@@ -242,7 +253,7 @@ namespace Nevron.Nov.Examples.Text
                 m_ElapsedTimeLabel.Text = "Elapsed time: " + m_Stopwatch.ElapsedMilliseconds + " ms";
             }
         }
-		
+
 		#endregion
 
 		#region Fields

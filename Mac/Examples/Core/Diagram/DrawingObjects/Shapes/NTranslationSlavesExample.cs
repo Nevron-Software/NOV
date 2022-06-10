@@ -1,19 +1,14 @@
-﻿using Nevron.Nov.Diagram;
-using Nevron.Nov.Diagram.Batches;
-using Nevron.Nov.Diagram.Expressions;
+﻿using Nevron.Nov.DataStructures;
+using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
-using Nevron.Nov.UI;
-using Nevron.Nov.Graphics;
 using Nevron.Nov.Editors;
-using Nevron.Nov.DataStructures;
+using Nevron.Nov.Graphics;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NTranslationSlavesExample : NDiagramExampleBase
+	public class NTranslationSlavesExample : NExampleBase
     {
         #region Constructors
 
@@ -29,13 +24,36 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NTranslationSlavesExample()
         {
-            NTranslationSlavesExampleSchema = NSchema.Create(typeof(NTranslationSlavesExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NTranslationSlavesExampleSchema = NSchema.Create(typeof(NTranslationSlavesExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Overrides from NDiagramExampleBase
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            m_PropertyEditorHolder = new NContentHolder();
+            return m_PropertyEditorHolder;
+        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -56,10 +74,9 @@ Note that the example will automatically highlight the move slaves of the curren
 </p>
             ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
 			NGraphTemplate template;
 
 			// create rectangular grid template
@@ -67,34 +84,29 @@ Note that the example will automatically highlight the move slaves of the curren
 			template.Origin = new NPoint(10, 23);
 			template.VerticesShape = ENBasicShape.Rectangle;
             template.EdgesUserClass = NDR.StyleSheetNameConnectors;
-            template.Create(m_DrawingDocument);
+            template.Create(drawingDocument);
 
 			// create tree template
 			template = new NGenericTreeTemplate();
 			template.Origin = new NPoint(250, 23);
             template.VerticesShape = ENBasicShape.Triangle;
             template.EdgesUserClass = NDR.StyleSheetNameConnectors;
-            template.Create(m_DrawingDocument);
+            template.Create(drawingDocument);
 
 			// create elliptical grid template
 			template = new NEllipticalGridTemplate();
 			template.Origin = new NPoint(10, 250);
             template.VerticesShape = ENBasicShape.Ellipse;
             template.EdgesUserClass = NDR.StyleSheetNameConnectors;
-			template.Create(m_DrawingDocument);
+			template.Create(drawingDocument);
 
             // hook selection events
-            NPageSelection selection = m_DrawingDocument.Content.ActivePage.Selection;
+            NPageSelection selection = drawingDocument.Content.ActivePage.Selection;
             selection.Mode = Nov.UI.ENSelectionMode.Single;
             selection.Selected += OnSelectionSelected;
             selection.Deselected += OnSelectionDeselected;
         }
 
-        protected override Nov.UI.NWidget CreateExampleControls()
-        {
-            m_PropertyEditorHolder = new NContentHolder();
-            return m_PropertyEditorHolder;
-        }
 
         #endregion
 
@@ -156,7 +168,7 @@ Note that the example will automatically highlight the move slaves of the curren
         /// </summary>
         void ClearHighlights()
         {
-            NList<NShape> shapes = m_DrawingDocument.Content.ActivePage.GetShapes(true);
+            NList<NShape> shapes = m_DrawingView.ActivePage.GetShapes(true);
             for (int i = 0; i < shapes.Count; i++)
             {
                 NShape shape = shapes[i];
@@ -185,7 +197,8 @@ Note that the example will automatically highlight the move slaves of the curren
 
         #region Fields
 
-        NContentHolder m_PropertyEditorHolder;
+        private NDrawingView m_DrawingView;
+        private NContentHolder m_PropertyEditorHolder;
 
         #endregion
 

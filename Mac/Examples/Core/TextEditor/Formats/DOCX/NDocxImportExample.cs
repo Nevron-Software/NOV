@@ -3,11 +3,12 @@ using System.IO;
 
 using Nevron.Nov.Dom;
 using Nevron.Nov.Layout;
+using Nevron.Nov.Text;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	public class NDocxImportExample : NTextExampleBase
+	public class NDocxImportExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,13 +24,23 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NDocxImportExample()
 		{
-			NDocxImportExampleSchema = NSchema.Create(typeof(NDocxImportExample), NTextExampleBase.NTextExampleBaseSchema);
+			NDocxImportExampleSchema = NSchema.Create(typeof(NDocxImportExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			return richTextWithRibbon;
+		}
 		protected override NWidget CreateExampleControls()
 		{
 			NGroupBox predefinedDocumentGroupBox = CreatePredefinedDocumentGroupBox();
@@ -43,7 +54,7 @@ namespace Nevron.Nov.Examples.Text
 
 		#endregion
 
-		#region Implementation - UI Controls
+		#region Implementation
 
 		private NGroupBox CreatePredefinedDocumentGroupBox()
 		{
@@ -89,6 +100,12 @@ namespace Nevron.Nov.Examples.Text
 				m_RichText.LoadFromStream(stream);
 			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
 
 		#endregion
 

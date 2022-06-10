@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -124,7 +124,7 @@ namespace Nevron.Nov.Examples.UI
 
 		private void OnOpenWindowButtonClick(NEventArgs args)
 		{
-			OwnerWindow.Windows.Add(m_Window);
+			DisplayWindow.Windows.Add(m_Window);
 			m_Window.Open();
 			m_SettingsStack.Enabled = false;
 		}

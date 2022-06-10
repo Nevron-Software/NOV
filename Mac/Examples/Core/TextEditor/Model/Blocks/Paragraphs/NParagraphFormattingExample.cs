@@ -1,4 +1,6 @@
-﻿using Nevron.Nov.Dom;
+﻿using System.Text;
+
+using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
@@ -8,7 +10,7 @@ namespace Nevron.Nov.Examples.Text
     /// <summary>
     /// The example demonstrates how to programmatically create paragraphs with differnt formatting
     /// </summary>
-    public class NParagraphFormattingExample : NTextExampleBase
+    public class NParagraphFormattingExample : NExampleBase
     {
         #region Constructors
 
@@ -23,14 +25,40 @@ namespace Nevron.Nov.Examples.Text
         /// </summary>
         static NParagraphFormattingExample()
         {
-            NParagraphFormattingExampleSchema = NSchema.Create(typeof(NParagraphFormattingExample), NTextExampleBase.NTextExampleBaseSchema);
+            NParagraphFormattingExampleSchema = NSchema.Create(typeof(NParagraphFormattingExample), NExampleBaseSchema);
         }
 
-        #endregion
+		#endregion
 
-        #region Protected Overrides - Example
+		#region Example
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>
+	This example demonstrates how to use different paragraph formatting properties.
+</p>
+";
+		}
+
+		private void PopulateRichText()
         {
             NSection section = new NSection();
 			m_RichText.Content.Sections.Add(section);
@@ -126,18 +154,6 @@ namespace Nevron.Nov.Examples.Text
 
             section.Blocks.Add(paragraph);
         }
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-	This example demonstrates how to use different paragraph formatting properties.
-</p>
-";
-		}
 
         #endregion
 
@@ -159,7 +175,7 @@ namespace Nevron.Nov.Examples.Text
 					text += " ";
 				}
 
-                text += "This is " + alignment + " aligned paragraph.";
+                text += "This is a " + alignment + " aligned paragraph.";
             }
 
             return text;
@@ -167,10 +183,134 @@ namespace Nevron.Nov.Examples.Text
 
         #endregion
 
-        #region Static
+        #region Fields
+
+        private NRichTextView m_RichText;
+
+        #endregion
+
+        #region Schema
 
         public static readonly NSchema NParagraphFormattingExampleSchema;
 
-        #endregion
-    }
+		#endregion
+
+		#region Static Methods
+
+		private static NParagraph GetDescriptionParagraph(string text)
+		{
+			return new NParagraph(text);
+		}
+		private static NParagraph GetTitleParagraphNoBorder(string text, int level)
+		{
+			double fontSize = 10;
+			ENFontStyle fontStyle = ENFontStyle.Regular;
+
+			switch (level)
+			{
+				case 1:
+					fontSize = 16;
+					fontStyle = ENFontStyle.Bold;
+					break;
+				case 2:
+					fontSize = 10;
+					fontStyle = ENFontStyle.Bold;
+					break;
+			}
+
+			NParagraph paragraph = new NParagraph();
+
+			paragraph.HorizontalAlignment = ENAlign.Left;
+			paragraph.FontSize = fontSize;
+			paragraph.FontStyle = fontStyle;
+
+			NTextInline textInline = new NTextInline(text);
+
+			textInline.FontStyle = fontStyle;
+			textInline.FontSize = fontSize;
+
+			paragraph.Inlines.Add(textInline);
+
+			return paragraph;
+
+		}
+		/// <summary>
+		/// Gets a paragraph with title formatting
+		/// </summary>
+		/// <param name="text"></param>
+		/// <returns></returns>
+		private static NParagraph GetTitleParagraph(string text, int level)
+		{
+			NColor color = NColor.Black;
+
+			NParagraph paragraph = GetTitleParagraphNoBorder(text, level);
+			paragraph.HorizontalAlignment = ENAlign.Left;
+
+			paragraph.Border = CreateLeftTagBorder(color);
+			paragraph.BorderThickness = defaultBorderThickness;
+
+			return paragraph;
+		}
+		private static NGroupBlock GetDescriptionBlock(string title, string description, int level)
+		{
+			NColor color = NColor.Black;
+
+			NParagraph paragraph = GetTitleParagraphNoBorder(title, level);
+
+			NGroupBlock groupBlock = new NGroupBlock();
+
+			groupBlock.ClearMode = ENClearMode.All;
+			groupBlock.Blocks.Add(paragraph);
+			groupBlock.Blocks.Add(GetDescriptionParagraph(description));
+
+			groupBlock.Border = CreateLeftTagBorder(color);
+			groupBlock.BorderThickness = defaultBorderThickness;
+
+			return groupBlock;
+		}
+		/// <summary>
+		/// Creates a left tag border with the specified border
+		/// </summary>
+		/// <param name="color"></param>
+		/// <returns></returns>
+		private static NBorder CreateLeftTagBorder(NColor color)
+		{
+			NBorder border = new NBorder();
+
+			border.LeftSide = new NBorderSide();
+			border.LeftSide.Fill = new NColorFill(color);
+
+			return border;
+		}
+		/// <summary>
+		/// Gets the specified text repeated
+		/// </summary>
+		/// <param name="text"></param>
+		/// <param name="count"></param>
+		/// <returns></returns>
+		private static string GetRepeatingText(string text, int count)
+		{
+			StringBuilder builder = new StringBuilder();
+
+			for (int i = 0; i < count; i++)
+			{
+				if (builder.Length > 0)
+				{
+					builder.Append(" ");
+				}
+
+				builder.Append(text);
+			}
+
+			return builder.ToString();
+		}
+
+		#endregion
+
+		#region Constants
+
+		private static readonly NMargins defaultBorderThickness = new NMargins(5.0, 0.0, 0.0, 0.0);
+
+		#endregion
+	}
 }

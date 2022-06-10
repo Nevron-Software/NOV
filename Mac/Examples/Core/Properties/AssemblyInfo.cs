@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("Nevron Software")]
 [assembly: AssemblyProduct("Nevron Open Vision")]
-[assembly: AssemblyCopyright("Copyright © 1998 - 2020 Nevron Software")]
+[assembly: AssemblyCopyright("Copyright © 1998 - 2022 Nevron Software")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("20.1.16.12")]
-[assembly: AssemblyFileVersion("20.1.16.12")]
+[assembly: AssemblyVersion("22.6.7.12")]
+[assembly: AssemblyFileVersion("22.6.7.12")]
 
 #endif

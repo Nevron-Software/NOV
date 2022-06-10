@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Custom Scale Breaks Example
 	/// </summary>
-	public class NCustomScaleBreaksExample : NChartExampleBase
+	public class NCustomScaleBreaksExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NCustomScaleBreaksExample()
 		{
-			NCustomScaleBreaksExampleSchema = NSchema.Create(typeof(NCustomScaleBreaksExample), NChartExampleBase.NChartExampleBaseSchema);
+			NCustomScaleBreaksExampleSchema = NSchema.Create(typeof(NCustomScaleBreaksExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Custom Scale Breaks";
@@ -92,11 +89,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -156,11 +148,24 @@ namespace Nevron.Nov.Examples.Chart
 		
 			return boxGroup;
 		}
-
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to add custom scale breaks.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private NCustomScaleBreak CreateCustomScaleBreak(NColor color, NRange range)
+		{
+			NCustomScaleBreak scaleBreak = new NCustomScaleBreak();
+
+			scaleBreak.Fill = new NColorFill(new NColor(color, 124));
+			scaleBreak.Length = 10;
+			scaleBreak.Range = range;
+			
+			return scaleBreak;
 		}
 
 		#endregion
@@ -209,21 +214,6 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Implementation
-
-		private NCustomScaleBreak CreateCustomScaleBreak(NColor color, NRange range)
-		{
-			NCustomScaleBreak scaleBreak = new NCustomScaleBreak();
-
-			scaleBreak.Fill = new NColorFill(new NColor(color, 124));
-			scaleBreak.Length = 10;
-			scaleBreak.Range = range;
-			
-			return scaleBreak;
-		}
-
-		#endregion
-
 		#region Fields
 
 		NCartesianChart m_Chart;
@@ -235,7 +225,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NCustomScaleBreaksExampleSchema;
 

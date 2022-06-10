@@ -298,7 +298,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#region Static
 
-		internal static int Counter = 1;
+		public static int Counter = 1;
 
 		#endregion
 
@@ -357,9 +357,9 @@ namespace Nevron.Nov.Examples.Framework
 
 			protected string m_Name;
 
-			protected const string FillStylesCategory = "Fill Styles";
-			protected const string StrokeStylesCategory = "Stroke Styles";
-			protected const string TextStylesCategory = "Text Styles";
+			protected static readonly NLocalizedString FillStylesCategory = new NLocalizedString("Fill Styles");
+			protected static readonly NLocalizedString StrokeStylesCategory = new NLocalizedString("Stroke Styles");
+			protected static readonly NLocalizedString TextStylesCategory = new NLocalizedString("Text Styles");
 		}
 
 		public class NStyleNodeHStackDesigner : NStyleNodeDesigner
@@ -367,7 +367,7 @@ namespace Nevron.Nov.Examples.Framework
 			public NStyleNodeHStackDesigner()
 			{
 				m_Name = "Horizontal Stack Category Editor";
-				SetCategoryEditor(String.Empty, NStackCategoryEditor.HorizontalEmbedChildEditorsTemplate);
+				SetCategoryEditor(NLocalizedString.Empty, NStackCategoryEditor.HorizontalEmbedChildEditorsTemplate);
 			}
 		}
 
@@ -376,7 +376,7 @@ namespace Nevron.Nov.Examples.Framework
 			public NStyleNodeVStackDesigner()
 			{
 				m_Name = "Vertical Stack Category Editor";
-				SetCategoryEditor(String.Empty, NStackCategoryEditor.VerticalEmbedChildEditorsTemplate);
+				SetCategoryEditor(NLocalizedString.Empty, NStackCategoryEditor.VerticalEmbedChildEditorsTemplate);
 			}
 		}
 
@@ -385,7 +385,7 @@ namespace Nevron.Nov.Examples.Framework
 			public NStyleNodeTabDesigner()
 			{
 				m_Name = "Tab Category Editor";
-				SetCategoryEditor(String.Empty, NTabCategoryEditor.HeadersTopTemplate);
+				SetCategoryEditor(NLocalizedString.Empty, NTabCategoryEditor.HeadersTopTemplate);
 			}
 		}
 
@@ -395,7 +395,7 @@ namespace Nevron.Nov.Examples.Framework
 			{
 				m_Name = "Mixed Category Editor";
 
-				SetCategoryEditor(String.Empty, NStackCategoryEditor.VerticalEmbedChildEditorsTemplate);
+				SetCategoryEditor(NLocalizedString.Empty, NStackCategoryEditor.VerticalEmbedChildEditorsTemplate);
 				SetCategoryEditor(StrokeStylesCategory, NTabCategoryEditor.HeadersTopTemplate);
 			}
 		}

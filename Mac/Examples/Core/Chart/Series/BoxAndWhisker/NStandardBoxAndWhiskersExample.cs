@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
-    /// <summary>
-    /// Standard Box and Whiskers Example
-    /// </summary>
-    public class NStandardBoxAndWhiskersExample : NChartExampleBase
+	/// <summary>
+	/// Standard Box and Whiskers Example
+	/// </summary>
+	public class NStandardBoxAndWhiskersExample : NExampleBase
     {
         #region Constructors
 
@@ -26,12 +26,12 @@ namespace Nevron.Nov.Examples.Chart
         /// </summary>
         static NStandardBoxAndWhiskersExample()
         {
-            NStandardBoxAndWhiskersExampleSchema = NSchema.Create(typeof(NStandardBoxAndWhiskersExample), NChartExampleBase.NChartExampleBaseSchema);
+            NStandardBoxAndWhiskersExampleSchema = NSchema.Create(typeof(NStandardBoxAndWhiskersExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         /// <summary>
         /// 
@@ -39,7 +39,8 @@ namespace Nevron.Nov.Examples.Chart
         /// <returns></returns>
         protected override NWidget CreateExampleContent()
         {
-            NChartView chartView = CreateCartesianChartView();
+            NChartView chartView = new NChartView();
+            chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
             // configure title
             chartView.Surface.Titles[0].Text = "Standard Box and Whiskers";
@@ -205,7 +206,7 @@ namespace Nevron.Nov.Examples.Chart
 
         #endregion
 
-        #region Static
+        #region Schema
 
         public static readonly NSchema NStandardBoxAndWhiskersExampleSchema;
 

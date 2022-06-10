@@ -5,7 +5,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	public class NEpubExportExample : NTextExampleBase
+	public class NEpubExportExample : NExampleBase
 	{
 		#region Constructors
 
@@ -21,17 +21,47 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NEpubExportExample()
 		{
-			NEpubExportExampleSchema = NSchema.Create(typeof(NEpubExportExample), NTextExampleBase.NTextExampleBaseSchema);
+			NEpubExportExampleSchema = NSchema.Create(typeof(NEpubExportExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
 		{
-			base.PopulateRichText();
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
 
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			NStackPanel stack = new NStackPanel();
+
+			NButton exportToEpubButton = new NButton("Export to EPUB...");
+			exportToEpubButton.Click += OnExportToEpubButtonClick;
+			stack.Add(exportToEpubButton);
+
+			return stack;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>
+	This example demonstrates how to import Electronic Publications (EPUB files) in Nevron Rich Text Editor.
+</p>
+";
+		}
+
+		private void PopulateRichText()
+		{
 			NDocumentBlock documentBlock = m_RichText.Content;
 			NRichTextStyle heading1Style = documentBlock.Styles.FindStyleByTypeAndId(
 				ENRichTextStyleType.Paragraph, "Heading1");
@@ -67,24 +97,6 @@ namespace Nevron.Nov.Examples.Text
 			paragraph = new NParagraph("You can also use it to import and edit existing Electronic Publications and books.");
 			section.Blocks.Add(paragraph);
 		}
-		protected override NWidget CreateExampleControls()
-		{
-			NStackPanel stack = (NStackPanel)base.CreateExampleControls();
-
-			NButton exportToEpubButton = new NButton("Export to EPUB...");
-			exportToEpubButton.Click += OnExportToEpubButtonClick;
-			stack.Add(exportToEpubButton);
-
-			return stack;
-		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-	This example demonstrates how to import Electronic Publications (EPUB files) in Nevron Rich Text Editor.
-</p>
-";
-		}
 
 		#endregion
 
@@ -92,14 +104,12 @@ namespace Nevron.Nov.Examples.Text
 
 		private void OnExportToEpubButtonClick(NEventArgs arg)
 		{
-			NEpubTextFormat epubFormat = new NEpubTextFormat();
-
 			// Create and show a save file dialog
 			NSaveFileDialog saveDialog = new NSaveFileDialog();
 			saveDialog.Title = "Export to EPUB";
 			saveDialog.DefaultFileName = "MyBook.epub";
 			saveDialog.FileTypes = new NFileDialogFileType[] {
-				new NFileDialogFileType(epubFormat)
+				new NFileDialogFileType(NTextFormat.Epub)
 			};
 
 			saveDialog.Closed += OnSaveDialogClosed;
@@ -112,6 +122,12 @@ namespace Nevron.Nov.Examples.Text
 				m_RichText.SaveToFile(arg.File);
 			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
 
 		#endregion
 

@@ -5,7 +5,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NGroupingExample : NScheduleExampleBase
+	public class NGroupingExample : NExampleBase
 	{
 		#region Constructors
 
@@ -21,14 +21,63 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NGroupingExample()
 		{
-			NGroupingExampleSchema = NSchema.Create(typeof(NGroupingExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NGroupingExampleSchema = NSchema.Create(typeof(NGroupingExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
+
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			NStackPanel stack = new NStackPanel();
+
+			stack.Add(new NRadioButton("Time grouping first"));
+			stack.Add(new NRadioButton("Group grouping first"));
+
+			NRadioButtonGroup groupingOrderGroup = new NRadioButtonGroup(stack);
+			groupingOrderGroup.SelectedIndexChanged += OnRadioGroupSelectedIndexChanged;
+			groupingOrderGroup.SelectedIndex = 0;
+
+			return groupingOrderGroup;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>
+    This example demonstrates how to create schedule groups, how to associate a group to appointments and
+	how to apply grouping to schedule view modes. Each view mode (except for ""Timeline"") has a default
+	date related grouping, so you can either add a new grouping or insert it before the default one. This
+	will affect the order in which the groupings are applied. Use the radio button on the right to control
+	the grouping order.
+</p>
+";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
 		{
 			const string ActivityGroup = "Activity";
 			const string Work = "Work";
@@ -58,36 +107,6 @@ namespace Nevron.Nov.Examples.Schedule
 			schedule.Appointments.Add(CreateAppointment("Travel back home", today.AddHours(17.5), today.AddHours(19), Travel));
 			schedule.Appointments.Add(CreateAppointment("Family Dinner", today.AddHours(20), today.AddHours(21), Rest));
 		}
-		protected override NWidget CreateExampleControls()
-		{
-			NStackPanel stack = (NStackPanel)base.CreateExampleControls();
-
-			stack.Add(new NRadioButton("Time grouping first"));
-			stack.Add(new NRadioButton("Group grouping first"));
-
-			NRadioButtonGroup groupingOrderGroup = new NRadioButtonGroup(stack);
-			groupingOrderGroup.SelectedIndexChanged += OnRadioGroupSelectedIndexChanged;
-			groupingOrderGroup.SelectedIndex = 0;
-
-			return groupingOrderGroup;
-		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-    This example demonstrates how to create schedule groups, how to associate a group to appointments and
-	how to apply grouping to schedule view modes. Each view mode (except for ""Timeline"") has a default
-	date related grouping, so you can either add a new grouping or insert it before the default one. This
-	will affect the order in which the groupings are applied. Use the radio button on the right to control
-	the grouping order.
-</p>
-";
-		}
-
-		#endregion
-
-		#region Implementation
-
 		private NAppointment CreateAppointment(string subject, DateTime start, DateTime end, string groupItem)
 		{
 			NAppointment appointment = new NAppointment(subject, start, end);
@@ -135,6 +154,12 @@ namespace Nevron.Nov.Examples.Schedule
 				}
 			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
 
 		#endregion
 

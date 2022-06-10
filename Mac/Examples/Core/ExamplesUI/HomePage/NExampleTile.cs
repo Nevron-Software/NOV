@@ -69,16 +69,16 @@ namespace Nevron.Nov.Examples
 
 		#region Properties - Internal
 
-		private NExamplesHomePage HomePage
+		private NHomePage HomePage
 		{
 			get
 			{
-				NExamplesHomePage homePage = (NExamplesHomePage)GetFirstAncestor(NExamplesHomePage.NExamplesHomePageSchema);
+				NHomePage homePage = (NHomePage)GetFirstAncestor(NHomePage.NHomePageSchema);
 				if (homePage != null)
 					return homePage;
 
 				NExamplesContent examplesContent = (NExamplesContent)GetFirstAncestor(NExamplesContent.NExamplesContentSchema);
-				return examplesContent.m_ExamplesHomePage;
+				return examplesContent.m_HomePage;
 			}
 		}
 
@@ -103,7 +103,7 @@ namespace Nevron.Nov.Examples
 
 			NFont font = new NFont(FontName, 5.0, ENFontStyle.Regular);
 			font.RasterizationMode = ENFontRasterizationMode.Aliased;
-			NSize textSize = font.MeasureString(m_Status, this.OwnerDocument);
+			NSize textSize = font.MeasureString(m_Status, this);
 			NRectangle textRect = new NRectangle(bounds.X - 1, bounds.Bottom - textSize.Height,
 				textSize.Width + 3, textSize.Height);
 

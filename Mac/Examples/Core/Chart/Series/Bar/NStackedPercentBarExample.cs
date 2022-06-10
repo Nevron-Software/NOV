@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Stacked Percent Bar Example
 	/// </summary>
-	public class NStackedPercentBarExample : NChartExampleBase
+	public class NStackedPercentBarExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStackedPercentBarExample()
 		{
-			NStackedPercentBarExampleSchema = NSchema.Create(typeof(NStackedPercentBarExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStackedPercentBarExampleSchema = NSchema.Create(typeof(NStackedPercentBarExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Stacked Percent Bar";
@@ -91,22 +88,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		private void FillRandomData()
-		{
-			Random random = new Random();
-			for (int i = 0; i < 5; i++)
-			{
-				m_Bar1.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
-				m_Bar2.DataPoints.Add(new NBarDataPoint(random.Next(10, 100)));
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -130,7 +111,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a stacked percent bar chart.</p>";
@@ -254,7 +234,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStackedPercentBarExampleSchema;
 

@@ -1,13 +1,13 @@
 ﻿using System;
+
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.UI
 {
-    public class NBorderWallExample : NExampleBase
+	public class NBorderWallExample : NExampleBase
     {
         #region Constructors
 
@@ -21,7 +21,7 @@ namespace Nevron.Nov.Examples.UI
 
         #endregion
 
-        #region Protected Overrides - Examples
+        #region Example
 
         protected override NWidget CreateExampleContent()
         {
@@ -260,7 +260,7 @@ Using the controls to the right	you can change the type and appearance of the ge
 
         #endregion
 
-        #region Nested Types - NCustomBorderWallWidget
+        #region Nested Types
 
         /// <summary>
         /// Enumerates the demonstrated border walls

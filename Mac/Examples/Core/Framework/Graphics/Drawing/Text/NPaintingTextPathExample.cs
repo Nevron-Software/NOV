@@ -31,7 +31,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -138,8 +138,7 @@ The example demonstrates how to paint text at bounds. Use the controls to the ri
 			paintVisitor.SetFill(NColor.Black);
 			NFont font = new NFont(NFontDescriptor.DefaultSansFamilyName, 10);
 
-
-			NGraphicsPath path = font.GetTextPath(builder.ToString(), textBounds, this.OwnerDocument, ref settings);
+			NGraphicsPath path = font.GetTextPath(builder.ToString(), textBounds, 96.0f, ref settings);
 			paintVisitor.PaintPath(path);
 		}
 

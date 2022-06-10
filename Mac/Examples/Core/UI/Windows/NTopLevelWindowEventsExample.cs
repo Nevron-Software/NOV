@@ -1,5 +1,4 @@
 ﻿using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
@@ -26,20 +25,12 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Public Overrides - Example
+		#region Example
 
-		public override void Initialize()
+		protected override NWidget CreateExampleContent()
 		{
 			m_ChildWindowIndex = 1;
 
-			base.Initialize();
-		}
-
-		#endregion
-
-		#region Protected Overrides - Example
-		protected override NWidget CreateExampleContent()
-		{
 			// Create the example's content
 			NButton openWindowButton = new NButton("Open Window...");
 			openWindowButton.HorizontalPlacement = ENHorizontalPlacement.Left;
@@ -169,14 +160,14 @@ namespace Nevron.Nov.Examples.UI
 			item.Tag = window;
 			window.Tag = item;
 
-			NTopLevelWindow ownerWindow = window.OwnerWindow as NTopLevelWindow;
-			if (ownerWindow == null)
+			NTopLevelWindow parentWindow = window.ParentWindow as NTopLevelWindow;
+			if (parentWindow == null)
 			{
 				m_TreeView.Items.Add(item);
 			}
 			else
 			{
-				NTreeViewItem parentItem = (NTreeViewItem)ownerWindow.Tag;
+				NTreeViewItem parentItem = (NTreeViewItem)parentWindow.Tag;
 				parentItem.Items.Add(item);
 				parentItem.Expanded = true;
 			}
@@ -193,7 +184,7 @@ namespace Nevron.Nov.Examples.UI
 		private void OnOpenChildWindowButtonClicked(NEventArgs args)
 		{
 			NButton button = (NButton)args.TargetNode;
-			OpenChildWindow(button.OwnerWindow);
+			OpenChildWindow(button.DisplayWindow);
 		}
 		/// <summary>
 		/// 

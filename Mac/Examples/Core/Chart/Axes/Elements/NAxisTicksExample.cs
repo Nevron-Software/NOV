@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
-	/// Axis ticks example
+	/// Axis ticks example.
 	/// </summary>
-	public class NAxisTicksExample : NChartExampleBase
+	public class NAxisTicksExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,12 +26,12 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAxisTicksExample()
 		{
-			NAxisTicksExampleSchema = NSchema.Create(typeof(NAxisTicksExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisTicksExampleSchema = NSchema.Create(typeof(NAxisTicksExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		/// <summary>
 		/// 
@@ -39,7 +39,8 @@ namespace Nevron.Nov.Examples.Chart
 		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			chartView.Surface.Titles[0].Text = "Axis Ticks";
 
@@ -202,7 +203,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisTicksExampleSchema;
 

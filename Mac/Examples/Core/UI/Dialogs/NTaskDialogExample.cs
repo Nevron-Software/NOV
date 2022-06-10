@@ -28,7 +28,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -82,7 +82,7 @@ namespace Nevron.Nov.Examples.UI
 
 		private void OnMessageBoxLikeButtonClick(NEventArgs arg)
 		{
-			NTaskDialog taskDialog = NTaskDialog.Create(OwnerWindow);
+			NTaskDialog taskDialog = NTaskDialog.Create(DisplayWindow);
 			taskDialog.Title = "Task Dialog";
 			taskDialog.Header = new NTaskDialogHeader(ENMessageBoxIcon.Question, "Do you want to save the changes?");
 			taskDialog.Buttons = ENTaskDialogButton.Yes | ENTaskDialogButton.No | ENTaskDialogButton.Cancel;
@@ -101,7 +101,7 @@ namespace Nevron.Nov.Examples.UI
 		}
 		private void OnCustomButtonsButtonClick(NEventArgs arg)
 		{
-			NTaskDialog taskDialog = NTaskDialog.Create(OwnerWindow);
+			NTaskDialog taskDialog = NTaskDialog.Create(DisplayWindow);
 			taskDialog.Title = "Task Dialog";
 			taskDialog.Header = new NTaskDialogHeader(ENMessageBoxIcon.Information, "This is a task dialog with custom buttons.");
 			taskDialog.CustomButtons = new NTaskDialogCustomButtonCollection("Custom Button 1",
@@ -113,7 +113,7 @@ namespace Nevron.Nov.Examples.UI
 		}
 		private void OnAdvancedCustomButtonsButtonClick(NEventArgs arg)
 		{
-			NTaskDialog taskDialog = NTaskDialog.Create(OwnerWindow);
+			NTaskDialog taskDialog = NTaskDialog.Create(DisplayWindow);
 			taskDialog.Title = "Task Dialog";
 			taskDialog.Header = new NTaskDialogHeader(ENMessageBoxIcon.Information, "This is a task dialog with custom buttons.");
 			taskDialog.Content = new NLabel("These custom buttons contain a symbol/image, a title and a description.");
@@ -133,7 +133,7 @@ namespace Nevron.Nov.Examples.UI
 		}
 		private void OnRadioButtonsButtonClick(NEventArgs arg)
 		{
-			NTaskDialog taskDialog = NTaskDialog.Create(OwnerWindow);
+			NTaskDialog taskDialog = NTaskDialog.Create(DisplayWindow);
 			taskDialog.Title = "Task Dialog";
 			taskDialog.Header = new NTaskDialogHeader(ENMessageBoxIcon.Information, "This is a task dialog with radio buttons.");
 			taskDialog.RadioButtonGroup = new NTaskDialogRadioButtonGroup("Radio Button 1", "Radio Button 2");
@@ -145,7 +145,7 @@ namespace Nevron.Nov.Examples.UI
 		}
 		private void OnVerificationButtonClick(NEventArgs arg)
 		{
-			NTaskDialog taskDialog = NTaskDialog.Create(OwnerWindow);
+			NTaskDialog taskDialog = NTaskDialog.Create(DisplayWindow);
 			taskDialog.Title = "Task Dialog";
 			taskDialog.Header = new NTaskDialogHeader(ENMessageBoxIcon.Information, "This is the header.");
 			taskDialog.Content = new NLabel("This is the content.");
@@ -158,7 +158,7 @@ namespace Nevron.Nov.Examples.UI
 		}
 		private void OnAllFeaturesButtonClick(NEventArgs arg)
 		{
-			NTaskDialog taskDialog = NTaskDialog.Create(OwnerWindow);
+			NTaskDialog taskDialog = NTaskDialog.Create(DisplayWindow);
 			taskDialog.Title = "Task Dialog";
 
 			// Add header and content

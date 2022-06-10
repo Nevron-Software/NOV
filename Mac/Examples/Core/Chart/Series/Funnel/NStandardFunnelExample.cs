@@ -9,7 +9,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Standard Funnel Example
 	/// </summary>
-	public class NStandardFunnelExample : NChartExampleBase
+	public class NStandardFunnelExample : NExampleBase
 	{
 		#region Constructors
 
@@ -25,17 +25,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStandardFunnelExample()
 		{
-			NStandardFunnelExampleSchema = NSchema.Create(typeof(NStandardFunnelExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStandardFunnelExampleSchema = NSchema.Create(typeof(NStandardFunnelExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreateFunnelChartView();
@@ -58,10 +54,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -91,10 +83,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a standard funnel chart.</p>";
@@ -132,9 +120,20 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStandardFunnelExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreateFunnelChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Funnel);
+			return chartView;
+		}
 
 		#endregion
 	}

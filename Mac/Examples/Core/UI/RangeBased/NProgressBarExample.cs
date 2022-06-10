@@ -1,5 +1,4 @@
 ﻿using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
@@ -26,7 +25,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -37,7 +36,9 @@ namespace Nevron.Nov.Examples.UI
 			// Horizontal progress bar
 			m_HorizontalProgressBar = new NProgressBar();
 			m_HorizontalProgressBar.Style = ENProgressBarStyle.Horizontal;
-			m_HorizontalProgressBar.Value = DefaultProgress;
+			m_HorizontalProgressBar.Mode = DefaultMode;
+			m_HorizontalProgressBar.Value = DefaultValue;
+			m_HorizontalProgressBar.BufferedValue = DefaultBufferedValue;
 			m_HorizontalProgressBar.PreferredSize = new NSize(300, 30);
 			m_HorizontalProgressBar.VerticalPlacement = ENVerticalPlacement.Top;
 			stack.Add(new NGroupBox("Horizontal", m_HorizontalProgressBar));
@@ -45,7 +46,9 @@ namespace Nevron.Nov.Examples.UI
 			// Vertical progress bar
 			m_VerticalProgressBar = new NProgressBar();
 			m_VerticalProgressBar.Style = ENProgressBarStyle.Vertical;
-			m_VerticalProgressBar.Value = DefaultProgress;
+			m_VerticalProgressBar.Mode = DefaultMode;
+			m_VerticalProgressBar.Value = DefaultValue;
+			m_VerticalProgressBar.BufferedValue = DefaultBufferedValue;
 			m_VerticalProgressBar.PreferredSize = new NSize(30, 300);
 			m_VerticalProgressBar.HorizontalPlacement = ENHorizontalPlacement.Left;			
 			stack.Add(new NGroupBox("Vertical", m_VerticalProgressBar));
@@ -53,13 +56,17 @@ namespace Nevron.Nov.Examples.UI
 			// Circular progress bar - 50% rim
 			m_CircularProgressBar1 = new NProgressBar();
 			m_CircularProgressBar1.Style = ENProgressBarStyle.Circular;
-			m_CircularProgressBar1.Value = DefaultProgress;
+			m_CircularProgressBar1.Mode = DefaultMode;
+			m_CircularProgressBar1.Value = DefaultValue;
+			m_CircularProgressBar1.BufferedValue = DefaultBufferedValue;
 			m_CircularProgressBar1.PreferredSize = new NSize(150, 150);
 
 			// Circular progress bar - 100% rim
 			m_CircularProgressBar2 = new NProgressBar();
 			m_CircularProgressBar2.Style = ENProgressBarStyle.Circular;
-			m_CircularProgressBar2.Value = DefaultProgress;
+			m_CircularProgressBar2.Mode = DefaultMode;
+			m_CircularProgressBar2.Value = DefaultValue;
+			m_CircularProgressBar2.BufferedValue = DefaultBufferedValue;
 			m_CircularProgressBar2.RimWidthPercent = 100;
 			m_CircularProgressBar2.PreferredSize = new NSize(150, 150);
 
@@ -68,37 +75,69 @@ namespace Nevron.Nov.Examples.UI
 
 			stack.Add(new NGroupBox("Circular", pairBox));
 
+			// Create the Progress bars array
+			m_ProgressBars = new NProgressBar[4];
+			m_ProgressBars[0] = m_HorizontalProgressBar;
+			m_ProgressBars[1] = m_VerticalProgressBar;
+			m_ProgressBars[2] = m_CircularProgressBar1;
+			m_ProgressBars[3] = m_CircularProgressBar2;
+
 			return stack;
 		}
 		protected override NWidget CreateExampleControls()
 		{
-			NTableFlowPanel table = new NTableFlowPanel();
-			table.MaxOrdinal = 2;
+			NStackPanel stack = new NStackPanel();
+			stack.HorizontalPlacement = ENHorizontalPlacement.Left;
+			stack.Direction = ENHVDirection.TopToBottom;
 
-			NLabel label = new NLabel("Value:");
-			label.HorizontalPlacement = ENHorizontalPlacement.Right;
-			label.VerticalPlacement = ENVerticalPlacement.Center;
-			table.Add(label);
-
-			NNumericUpDown numericUpDown = new NNumericUpDown();
-			numericUpDown.Minimum = 0;
-			numericUpDown.Maximum = 100;
-			numericUpDown.Value = DefaultProgress;
-			numericUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnValueChanged);
-			table.Add(numericUpDown);
-
-			label = new NLabel("Label Style:");
-			label.HorizontalPlacement = ENHorizontalPlacement.Right;
-			label.VerticalPlacement = ENVerticalPlacement.Center;
-			table.Add(label);
-
+			// The Mode combo box
 			NComboBox comboBox = new NComboBox();
+			comboBox.FillFromEnum<ENProgressBarMode>();
+			comboBox.SelectedIndex = (int)m_HorizontalProgressBar.Mode;
+			comboBox.SelectedIndexChanged += OnModeSelected;
+			stack.Add(NPairBox.Create("Mode:", comboBox));
+
+			// The Label style combo box
+			comboBox = new NComboBox();
 			comboBox.FillFromEnum<ENProgressBarLabelStyle>();
 			comboBox.SelectedIndex = (int)m_HorizontalProgressBar.LabelStyle;
 			comboBox.SelectedIndexChanged += OnLabelStyleSelected;
-			table.Add(comboBox);
+			stack.Add(NPairBox.Create("Label Style:", comboBox));
 
-			return table;
+			// The Value numeric up down
+			NNumericUpDown valueUpDown = new NNumericUpDown(0, 100, DefaultValue);
+			valueUpDown.ValueChanged += OnValueChanged;
+
+			m_ValuePairBox = NPairBox.Create("Value:", valueUpDown);
+			stack.Add(m_ValuePairBox);
+
+			// The Buffered value numeric up down
+			NNumericUpDown bufferedValueUpDown = new NNumericUpDown(0, 100, DefaultBufferedValue);
+			bufferedValueUpDown.ValueChanged += OnBufferedValueChanged;
+
+			m_BufferedValuePairBox = NPairBox.Create("Buffered Value:", bufferedValueUpDown);
+			stack.Add(m_BufferedValuePairBox);
+
+			// The Indeterminate part size numeric up down
+			NNumericUpDown indeterminateSizeUpDown = new NNumericUpDown(1, 100, 25);
+			indeterminateSizeUpDown.ValueChanged += OnIndeterminateSizeUpDownValueChanged;
+
+			m_IndeterminatePartSizePairBox = NPairBox.Create("Indeterminate Size (%):", indeterminateSizeUpDown);
+			stack.Add(m_IndeterminatePartSizePairBox);
+
+			// The Animation speed numeric up down
+			NNumericUpDown animationSpeedUpDown = new NNumericUpDown(0.1, 99, 2);
+			animationSpeedUpDown.DecimalPlaces = 1;
+			animationSpeedUpDown.Step = 0.1;
+			animationSpeedUpDown.ValueChanged += OnAnimationSpeedUpDownValueChanged;
+
+			m_AnimationSpeedPairBox = NPairBox.Create("Animation Speed (%):", animationSpeedUpDown);
+			stack.Add(m_AnimationSpeedPairBox);
+
+			// Update controls visibility
+			UpdateControlsVisibility(DefaultMode);
+
+			return new NUniSizeBoxGroup(stack);
 		}
 		protected override string GetExampleDescription()
 		{
@@ -112,28 +151,102 @@ namespace Nevron.Nov.Examples.UI
 	Circular progress bars let you specify the width of their rim in percent relative to the size of the
 	progress bar as this example demonstrates.
 </p>
+<p>
+	The <b>Mode</b> property determines the progress bar mode and can be:
+</p>
+<ul>
+	<li><b>Determinate</b> - the progress bar shows the progress of an operation from 0 to 100%. This is the default mode.</li>
+	<li><b>Indeterminate</b> - the progress bar shows an animation indicating that a long-running operation is executing. No specific
+		progress is shown. This mode should be used for operations whose progress cannot be estimated, for example a long-running database query.</li>
+	<li><b>Buffered</b> - the progress bar shows the progress of an operation from 0 to 100%. It also additionally shows the buffered
+		value of the operation with a lighter color. The buffered value is specified through the <b>BufferedValue</b> property.</li>
+</ul>
 ";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void UpdateControlsVisibility(ENProgressBarMode mode)
+		{
+			switch (mode)
+			{
+				case ENProgressBarMode.Determinate:
+					m_ValuePairBox.Visibility = ENVisibility.Visible;
+					m_BufferedValuePairBox.Visibility = ENVisibility.Collapsed;
+					m_IndeterminatePartSizePairBox.Visibility = ENVisibility.Collapsed;
+					m_AnimationSpeedPairBox.Visibility = ENVisibility.Collapsed;
+					break;
+				case ENProgressBarMode.Indeterminate:
+					m_ValuePairBox.Visibility = ENVisibility.Collapsed;
+					m_BufferedValuePairBox.Visibility = ENVisibility.Collapsed;
+					m_IndeterminatePartSizePairBox.Visibility = ENVisibility.Visible;
+					m_AnimationSpeedPairBox.Visibility = ENVisibility.Visible;
+					break;
+				case ENProgressBarMode.Buffered:
+					m_ValuePairBox.Visibility = ENVisibility.Visible;
+					m_BufferedValuePairBox.Visibility = ENVisibility.Visible;
+					m_IndeterminatePartSizePairBox.Visibility = ENVisibility.Collapsed;
+					m_AnimationSpeedPairBox.Visibility = ENVisibility.Collapsed;
+					break;
+			}
 		}
 
 		#endregion
 
 		#region Event Handlers
 
-		private void OnValueChanged(NValueChangeEventArgs args)
+		private void OnModeSelected(NValueChangeEventArgs arg)
 		{
-			double value = (double)args.NewValue;
-			m_HorizontalProgressBar.Value = value;
-			m_VerticalProgressBar.Value = value;
-			m_CircularProgressBar1.Value = value;
-			m_CircularProgressBar2.Value = value;
+			ENProgressBarMode mode = (ENProgressBarMode)(int)arg.NewValue;
+			for (int i = 0; i < m_ProgressBars.Length; i++)
+			{
+				m_ProgressBars[i].Mode = mode;
+			}
+
+			UpdateControlsVisibility(mode);
 		}
 		private void OnLabelStyleSelected(NValueChangeEventArgs arg)
 		{
 			ENProgressBarLabelStyle labelStyle = (ENProgressBarLabelStyle)(int)arg.NewValue;
-			m_HorizontalProgressBar.LabelStyle = labelStyle;
-			m_VerticalProgressBar.LabelStyle = labelStyle;
-			m_CircularProgressBar1.LabelStyle = labelStyle;
-			m_CircularProgressBar2.LabelStyle = labelStyle;
+			for (int i = 0; i < m_ProgressBars.Length; i++)
+			{
+				m_ProgressBars[i].LabelStyle = labelStyle;
+			}
+		}
+		private void OnValueChanged(NValueChangeEventArgs args)
+		{
+			double value = (double)args.NewValue;
+			for (int i = 0; i < m_ProgressBars.Length; i++)
+			{
+				m_ProgressBars[i].Value = value;
+			}
+		}
+		private void OnBufferedValueChanged(NValueChangeEventArgs args)
+		{
+			double bufferedValue = (double)args.NewValue;
+			for (int i = 0; i < m_ProgressBars.Length; i++)
+			{
+				m_ProgressBars[i].BufferedValue = bufferedValue;
+			}
+		}
+		private void OnIndeterminateSizeUpDownValueChanged(NValueChangeEventArgs arg)
+		{
+			double indeterminateSize = (double)arg.NewValue;
+			for (int i = 0; i < m_ProgressBars.Length; i++)
+			{
+				m_ProgressBars[i].IndeterminatePartSizePercent = indeterminateSize;
+			}
+
+		}
+		private void OnAnimationSpeedUpDownValueChanged(NValueChangeEventArgs arg)
+		{
+			double animationSpeed = (double)arg.NewValue;
+			for (int i = 0; i < m_ProgressBars.Length; i++)
+			{
+				m_ProgressBars[i].AnimationSpeed = animationSpeed;
+			}
 		}
 
 		#endregion
@@ -144,6 +257,12 @@ namespace Nevron.Nov.Examples.UI
 		private NProgressBar m_VerticalProgressBar;
 		private NProgressBar m_CircularProgressBar1;
 		private NProgressBar m_CircularProgressBar2;
+		private NProgressBar[] m_ProgressBars;
+
+		private NPairBox m_ValuePairBox;
+		private NPairBox m_BufferedValuePairBox;
+		private NPairBox m_IndeterminatePartSizePairBox;
+		private NPairBox m_AnimationSpeedPairBox;
 
 		#endregion
 
@@ -158,7 +277,9 @@ namespace Nevron.Nov.Examples.UI
 
 		#region Constants
 
-		private const double DefaultProgress = 50;
+		private const ENProgressBarMode DefaultMode = ENProgressBarMode.Buffered;
+		private const double DefaultValue = 40;
+		private const double DefaultBufferedValue = 60;
 
 		#endregion
 	}

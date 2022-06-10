@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NVisioDrawingExportExample : NDiagramExampleBase
+	public class NVisioDrawingExportExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,16 +23,34 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NVisioDrawingExportExample()
 		{
-			NVisioDrawingExportExampleSchema = NSchema.Create(typeof(NVisioDrawingExportExample), NDiagramExampleBaseSchema);
+			NVisioDrawingExportExampleSchema = NSchema.Create(typeof(NVisioDrawingExportExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
 		protected override NWidget CreateExampleControls()
 		{
-			NStackPanel stackPanel = (NStackPanel)base.CreateExampleControls();
+			NStackPanel stackPanel = new NStackPanel();
 
 			NButton saveAsButton = new NButton("Save as Visio Drawing...");
 			saveAsButton.Click += OnSaveAsButtonClick;
@@ -48,18 +66,17 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
 		}
-		protected override void InitDiagram()
-		{
-			base.InitDiagram();
 
-			NDrawing drawing = m_DrawingDocument.Content;
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			NDrawing drawing = drawingDocument.Content;
 			NPage activePage = drawing.ActivePage;
 
 			drawing.ScreenVisibility.ShowGrid = false;
 			drawing.ScreenVisibility.ShowPorts = false;
 
 			NBasicShapeFactory basisShapes = new NBasicShapeFactory();
-			NFlowchartingShapeFactory flowChartingShapes = new NFlowchartingShapeFactory();
+			NFlowchartShapeFactory flowChartingShapes = new NFlowchartShapeFactory();
 			NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
 			NShape nonPrintableShape = basisShapes.CreateShape(ENBasicShape.Rectangle);
@@ -111,16 +128,22 @@ namespace Nevron.Nov.Examples.Diagram
 
 		private void OnSaveAsButtonClick(NEventArgs arg)
 		{
-			string fileName = m_DrawingDocument.Content.Information.FileName;
+			string fileName = m_DrawingView.Drawing.Information.FileName;
 			if (String.IsNullOrEmpty(fileName) || !fileName.EndsWith("vsdx", StringComparison.OrdinalIgnoreCase))
 			{
 				// The document has not been saved, yet, so set a file name with VSDX extension
 				// to make the default Save As dialog show Visio Drawing as file save as type
-				m_DrawingDocument.Content.Information.FileName = "Document1.vsdx";
+				m_DrawingView.Drawing.Information.FileName = "Document1.vsdx";
 			}
 
-			m_DrawingView.SaveToFile();
+            m_DrawingView.SaveAs();
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

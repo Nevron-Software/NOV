@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Error Bar Example
 	/// </summary>
-	public class NStandardErrorBarExample : NChartExampleBase
+	public class NStandardErrorBarExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStandardErrorBarExample()
 		{
-			NStandardErrorBarExampleSchema = NSchema.Create(typeof(NStandardErrorBarExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStandardErrorBarExampleSchema = NSchema.Create(typeof(NStandardErrorBarExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Standard Error Bar";
@@ -75,33 +72,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		void GenerateData()
-		{
-			m_ErrorBar.DataPoints.Clear();
-
-			double y;
-			double x = 50.0;
-
-			Random random = new Random();
-
-			for (int i = 0; i < 15; i++)
-			{
-				y = 20 + random.NextDouble() * 30;
-				x += 2.0 + random.NextDouble() * 2;
-
-				double lowerYError = 1 + random.NextDouble();
-				double upperYError = 1 + random.NextDouble();
-
-				double lowerXError = 1 + random.NextDouble();
-				double upperXError = 1 + random.NextDouble();
-
-				m_ErrorBar.DataPoints.Add(new NErrorBarDataPoint(x, y, upperXError, lowerXError, upperYError, lowerYError));
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -144,13 +114,37 @@ namespace Nevron.Nov.Examples.Chart
 						
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates the functionality of the error bar series.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void GenerateData()
+		{
+			m_ErrorBar.DataPoints.Clear();
+
+			double y;
+			double x = 50.0;
+
+			Random random = new Random();
+
+			for (int i = 0; i < 15; i++)
+			{
+				y = 20 + random.NextDouble() * 30;
+				x += 2.0 + random.NextDouble() * 2;
+
+				double lowerYError = 1 + random.NextDouble();
+				double upperYError = 1 + random.NextDouble();
+
+				double lowerXError = 1 + random.NextDouble();
+				double upperXError = 1 + random.NextDouble();
+
+				m_ErrorBar.DataPoints.Add(new NErrorBarDataPoint(x, y, upperXError, lowerXError, upperYError, lowerYError));
+			}
 		}
 
 		#endregion
@@ -200,7 +194,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStandardErrorBarExampleSchema;
 

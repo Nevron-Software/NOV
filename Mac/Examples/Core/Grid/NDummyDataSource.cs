@@ -51,7 +51,7 @@ namespace Nevron.Nov.Examples.Grid
         /// <returns></returns>
         public static NDataSource CreateCompanySalesDataSource()
         {
-            dataTable = new NMemoryDataTable(new NFieldInfo[]{
+            dataTable = new NMemoryDataTable("CompanySales", new NFieldInfo[]{
                 new NFieldInfo("Id", typeof(Int32)),
                 new NFieldInfo("Company", typeof(String)),
                 new NFieldInfo("Sales", typeof(Double)),
@@ -75,7 +75,7 @@ namespace Nevron.Nov.Examples.Grid
         /// </summary>
         public static NDataSource CreateProductsDataSource()
         {
-            NMemoryDataTable dataTable = new NMemoryDataTable(new NFieldInfo[]{
+            NMemoryDataTable dataTable = new NMemoryDataTable("Products", new NFieldInfo[]{
                 new NFieldInfo("Id", typeof(Int32)),
                 new NFieldInfo("Name", typeof(String)),
                 new NFieldInfo("Price", typeof(Double))
@@ -94,7 +94,7 @@ namespace Nevron.Nov.Examples.Grid
         /// </summary>
         public static NDataSource CreatePersonsDataSource()
         {
-            NMemoryDataTable dataTable = new NMemoryDataTable(new NFieldInfo[]{
+            NMemoryDataTable dataTable = new NMemoryDataTable("Persons", new NFieldInfo[]{
                 new NFieldInfo("Id", typeof(Int32)),
                 new NFieldInfo("Name", typeof(String), true),
                 new NFieldInfo("Gender", typeof(ENGender), true),
@@ -125,9 +125,7 @@ namespace Nevron.Nov.Examples.Grid
         /// </summary>
         public static NDataSource CreatePersonsOrdersDataSource()
         {
-            // FIX: Remove
-
-            NMemoryDataTable dataTable = new NMemoryDataTable(new NFieldInfo[]{
+            NMemoryDataTable dataTable = new NMemoryDataTable("PersonsOrders", new NFieldInfo[]{
                 new NFieldInfo("PersonId", typeof(Int32)),
                 new NFieldInfo("Product Name", typeof(String)),
                 new NFieldInfo("Product Name1", typeof(String)),

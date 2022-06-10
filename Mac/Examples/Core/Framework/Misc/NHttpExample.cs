@@ -4,6 +4,7 @@ using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.IO;
 using Nevron.Nov.Layout;
 using Nevron.Nov.Networking;
 using Nevron.Nov.UI;
@@ -24,7 +25,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -34,7 +35,7 @@ namespace Nevron.Nov.Examples.Framework
 
 			stack.Add(CreatePredefinedRequestsWidget());
 			stack.Add(CreateCustomRequestWidget());
-			
+
 			m_ResponseContentHolder = new NContentHolder();
 			stack.Add(m_ResponseContentHolder);
 			return stack;
@@ -57,16 +58,18 @@ namespace Nevron.Nov.Examples.Framework
 
 			return new NGroupBox("Requests", stack);
 		}
-        protected override string GetExampleDescription()
-        {
-            return @"
+		protected override string GetExampleDescription()
+		{
+			return @"
 <p>
 Demonstrates the HTTP protocol wrapper that comes along with. It allows you to make HTTP requests from a single code base.
 </p>
 ";
-        }
+		}
 
 		#endregion
+
+		#region Implementation
 
 		#region Implementation - User Interface
 
@@ -98,11 +101,17 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 			getWikipediaHtmlButton.Click += new Function<NEventArgs>(OnGetWikipediaHtmlClick);
 			stack.Add(getWikipediaHtmlButton);
 
+			// get wikipedia home page HTML
+			NButton getNevronPieChartImage = new NButton("Get Nevron Pie Chart Image");
+			getNevronPieChartImage.Click += OnGetNevronPieChartImageClick;
+			stack.Add(getNevronPieChartImage);
+
 			return groupBox;
 		}
+
 		private NWidget CreateCustomRequestWidget()
 		{
-			NGroupBox groupBox = new NGroupBox("Custom Request");
+			NGroupBox groupBox = new NGroupBox("Request URI");
 
 			NDockPanel dock = new NDockPanel();
 			groupBox.Content = dock;
@@ -112,11 +121,10 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 			NDockLayout.SetDockArea(label, ENDockArea.Left);
 			dock.Add(label);
 
-			m_CustomURITextBox = new NTextBox();
-			m_CustomURITextBox.Text = "http://www.nevron.com/gallery/FullGalleries/chart/pie/images/3D-pie-cut-edge-ring.png";
-			m_CustomURITextBox.Padding = new NMargins(0, 3, 0, 3);
-			NDockLayout.SetDockArea(m_CustomURITextBox, ENDockArea.Center);
-			dock.Add(m_CustomURITextBox);
+			m_URLTextBox = new NTextBox();
+			m_URLTextBox.Padding = new NMargins(0, 3, 0, 3);
+			NDockLayout.SetDockArea(m_URLTextBox, ENDockArea.Center);
+			dock.Add(m_URLTextBox);
 
 			NButton submitButton = new NButton("Submit");
 			NDockLayout.SetDockArea(submitButton, ENDockArea.Right);
@@ -128,202 +136,95 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 
 		#endregion
 
-		#region Implementation - Event Handlers - Predefined Requests
-		
+		#region Implementation - Event Handlers
+
 		private void GetGoogleLogoClick(NEventArgs args)
 		{
 			// create a HTTP request for the Google logo and subscribe for Completed event
-			string googleLogoURI = "http://www.google.com/images/srpr/logo3w.png";
-			NHttpRequest request = new NHttpRequest(googleLogoURI);
+			string googleLogoURI = "https://www.google.com//images//srpr//logo3w.png";
+			NHttpWebRequest request = new NHttpWebRequest(googleLogoURI);
 			request.Headers[NHttpHeaderFieldName.Accept] = "image/png";
-			request.Completed += new Function<NUriRequest, NUriResponse>(OnRequestCompleted);
+			
+			m_URLTextBox.Text = googleLogoURI;
 
 			// create a list box item for the request, prior to submittion and submit the request
-			CreateRequestListBoxItem(request);
+			CreateRequestUIItem(request);
 			request.Submit();
 		}
 		private void GetGoogleHtmlClick(NEventArgs args)
 		{
 			// create a HTTP request for the Google home page
-			string googleHtmlURI = "http://www.google.com";
-			NHttpRequest request = new NHttpRequest(googleHtmlURI);
-			request.Completed += OnRequestCompleted;
+			string googleHtmlURI = "https://www.google.com";
+			NHttpWebRequest request = new NHttpWebRequest(googleHtmlURI);
+
+			m_URLTextBox.Text = googleHtmlURI;
 
 			// create a list box item for the request, prior to submition and submit the request
-			CreateRequestListBoxItem(request);
+			CreateRequestUIItem(request);
 			request.Submit();
 		}
 		private void OnGetWikipediaLogoClick(NEventArgs args)
 		{
 			// create a HTTP request for the Wikipedia logo and subscribe for Completed event
-			string wikipediaLogoURI = "http://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png";
-			NHttpRequest request = new NHttpRequest(wikipediaLogoURI);
-			request.Completed += OnRequestCompleted;
+			string wikipediaLogoURI = "https://upload.wikimedia.org//wikipedia//commons//6//63//Wikipedia-logo.png";
+			NHttpWebRequest request = new NHttpWebRequest(wikipediaLogoURI);
+
+			m_URLTextBox.Text = wikipediaLogoURI;
 
 			// create a list box item for the request, prior to submittion and submit the request
-			CreateRequestListBoxItem(request);
+			CreateRequestUIItem(request);
 			request.Submit();
 		}
 		private void OnGetWikipediaHtmlClick(NEventArgs args)
 		{
 			// create a HTTP request for the Wikipedia home page and subscribe for Completed event
-			string wikipediaHtmlURI = "http://www.wikimedia.org";
-			NHttpRequest request = new NHttpRequest(wikipediaHtmlURI);
-			request.Completed += OnRequestCompleted;
+			string wikipediaHtmlURI = "https://en.wikipedia.org/wiki/Main_Page";
+			NHttpWebRequest request = new NHttpWebRequest(wikipediaHtmlURI);
+
+			m_URLTextBox.Text = wikipediaHtmlURI;
 
 			// create a list box item for the request, prior to submittion and submit the request
-			CreateRequestListBoxItem(request);
+			CreateRequestUIItem(request);
 			request.Submit();
 		}
+		private void OnGetNevronPieChartImageClick(NEventArgs arg)
+		{
+			// create a HTTP request for the Wikipedia home page and subscribe for Completed event
+			string nevronPieChartImage = "https://www.nevron.com//NIMG.axd?i=Chart//ChartTypes//Pie//3D_pie_cut_edge_ring.png";
+			NHttpWebRequest request = new NHttpWebRequest(nevronPieChartImage);
 
-		#endregion
+			m_URLTextBox.Text = nevronPieChartImage;
 
-		#region Implementation - Event Handlers - Custom Requests
-
+			// create a list box item for the request, prior to submittion and submit the request
+			CreateRequestUIItem(request);
+			request.Submit();
+		}
 		private void OnSumbitCustomRequestClick(NEventArgs args)
 		{
 			try
 			{
 				// create a HTTP request for the custom URI and subscribe for Completed event
-				string uri = m_CustomURITextBox.Text;
-				NHttpRequest request = new NHttpRequest(uri);
-				request.AllowCache = false;
-				request.AllowServeFromCache = false;
-				request.Completed += new Function<NUriRequest, NUriResponse>(OnRequestCompleted);
-
+				string uri = m_URLTextBox.Text;
+				NWebRequest request;
+				if (!NWebRequest.TryCreate(new NUri(uri), out request))
+				{
+					NMessageBox.Show("The specified URI string is not valid for a URI request. Expected was an HTTP or File uri.", "Invalid URI", ENMessageBoxButtons.OK, ENMessageBoxIcon.Error);
+					return;
+				}
+				
 				// create a list box item for the request, prior to submittion and submit the request
-				CreateRequestListBoxItem(request);
+				CreateRequestUIItem(request);
 				request.Submit();
 			}
 			catch (Exception ex)
 			{
-				NMessageBox.Show("Failed to submit custom request.\n\nException was: " + ex.Message, "Failed to submit custom request",
-					ENMessageBoxButtons.OK, ENMessageBoxIcon.Error);
-			}
-		}
-
-		#endregion
-
-		#region Implementation - Event Handlers - Request/Response
-
-		/// <summary>
-		/// Called by a NHttpRequest when it has been completed.
-		/// </summary>
-		/// <param name="response"></param>
-		private void OnRequestCompleted(NUriRequest request, NUriResponse response)
-		{
-			NHttpRequest httpRequest = (NHttpRequest)request;
-			NHttpResponse httpResponse = (NHttpResponse)response;
-
-			// update the list box item
-			UpdateRequestListBoxItem(httpRequest, httpResponse);
-
-			// update the response content holder
-			switch (response.Status)
-			{
-				case ENAsyncResponseStatus.Aborted:
-					// request has been aborted by the user -> do nothing.
-					break;
-
-				case ENAsyncResponseStatus.Failed:
-					// request has failed -> fill content with an error message
-					m_ResponseContentHolder.Content = new NLabel("Request for URI: " + request.Uri.ToString() + " failed. Error was: " + response.ErrorException.ToString());
-					break;
-
-				case ENAsyncResponseStatus.Succeeded:
-					// request succeded -> fill content with the response content
-					try
-					{
-						// get the Content-Type Http Header field, and split it to portions
-						// NOTE: the Content-Type is a multi value field. Values are seperated with the ';' char
-						string contentType = httpResponse.HeaderFields[NHttpHeaderFieldName.ContentType];
-						string[] contentTypes = contentType.Split(new char[]{';'});
-
-						// normalize content type values (trim and make lower case)
-						for (int i = 0; i < contentTypes.Length;i++)
-						{
-							contentTypes[i] = contentTypes[i].Trim();
-							contentTypes[i] = contentTypes[i].ToLower();
-						}
-
-						// the first part of the content type is the mime type of the content
-						switch (contentTypes[0])
-						{
-							case "image/png":
-							case "image/jpeg":
-							case "image/bmp":
-								NImage image = new NImage(new NBytesImageSource(response.Data));
-								NImageBox imageBox = new NImageBox(image);
-								m_ResponseContentHolder.Content = new NScrollContent(imageBox);
-								break;
-
-							case "text/html":
-							case "application/json":
-								string charSet = (contentTypes.Length >= 1? contentTypes[1]: "charset=utf-8");
-								string html = "";
-								switch (charSet)
-								{
-									case "charset=utf-8":
-										html = Nevron.Nov.Text.NEncoding.UTF8.GetString(response.Data);
-										break;
-
-									default:
-										html = Nevron.Nov.Text.NEncoding.UTF8.GetString(response.Data);
-										break;
-								}
-
-								NTextBox textBox = new NTextBox();
-								textBox.Text = html;
-								m_ResponseContentHolder.Content = textBox;
-								break;
-
-							default:
-								break;
-						}
-					}
-					catch (Exception ex)
-					{
-						m_ResponseContentHolder.Content = new NLabel("Request for URI: " + request.Uri.ToString() + " decoding failed. Error was: " + ex.Message.ToString());
-					}
-					break;
+				NMessageBox.Show("Failed to submit custom request.\n\nException was: " + ex.Message, "Failed to submit custom request", ENMessageBoxButtons.OK, ENMessageBoxIcon.Error);
 			}
 		}
 		private void OnClearRequestsListBoxButtonClick(NEventArgs args)
 		{
 			m_RequestsListBox.Items.Clear();
-			m_Request2ListBoxItem.Clear();
-		}
-		private void OnAbortRequestButtonClick(NEventArgs args)
-		{
-			// get the request form the button tag (see CreateRequestListBoxItem) and abort it
-			NHttpRequest request = (NHttpRequest)args.TargetNode.Tag;
-			request.Abort();
-		}
-		private void OnViewResponseHeadersButtonClick(NEventArgs args)
-		{
-			// get the response form the button tag (see UpdateRequestListBoxItem) and display its headers
-			object[] array = (object[])args.TargetNode.Tag;
-
-			NHttpRequest request = (NHttpRequest)array[0];
-			NHttpResponse response = (NHttpResponse)array[1];
-
-			// create a top level window, setup as a dialog
-			NTopLevelWindow window = NApplication.CreateTopLevelWindow();
-			window.SetupDialogWindow(request.Uri.ToString(), true);
-
-			// create a list box for the headers
-			NListBox listBox = new NListBox();
-			window.Content = listBox;
-
-			// fill with header fields
-			INIterator<NHttpHeaderField> it = response.HeaderFields.GetIterator();
-			while(it.MoveNext())
-			{
-				listBox.Items.Add(new NListBoxItem(it.Current.ToString()));
-			}
-
-			// open the window
-			window.Open();
+			m_Request2UIItem.Clear();
 		}
 
 		#endregion
@@ -334,72 +235,15 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 		/// Called when a request is about to be submitted. Adds a new entry in the requests list box.
 		/// </summary>
 		/// <param name="request"></param>
-		private void CreateRequestListBoxItem(NHttpRequest request)
+		private void CreateRequestUIItem(NWebRequest request)
 		{
-			NGroupBox groupBox = new NGroupBox(new NLabel("URI: " + request.Uri.ToString()));
-			groupBox.HorizontalPlacement = ENHorizontalPlacement.Fit;
-
-			NStackPanel stack = new NStackPanel();
-			stack.HorizontalPlacement = ENHorizontalPlacement.Fit;
-			groupBox.Content = stack;            
-
-			NStackPanel hstack = new NStackPanel();
-			hstack.Direction = ENHVDirection.LeftToRight;
-			hstack.HorizontalPlacement = ENHorizontalPlacement.Fit;
-			hstack.FillMode = ENStackFillMode.None;
-			hstack.FitMode = ENStackFitMode.Equal;
-			stack.Add(hstack);
-			
-			// create the abort button. 
-			// NOTE: the request is recorded in the button Tag
-			NButton abortButton = new NButton("Abort");
-			abortButton.Click += new Function<NEventArgs>(OnAbortRequestButtonClick);
-			abortButton.Tag = request;
-			hstack.Add(abortButton);
-
-			NButton headersButton = new NButton("View Response Headers");
-			headersButton.Click += new Function<NEventArgs>(OnViewResponseHeadersButtonClick);
-			headersButton.Tag = request;
-			headersButton.Enabled = false;
-			hstack.Add(headersButton);
-
-			// add item
-			NListBoxItem item = new NListBoxItem(groupBox);
-			item.BorderThickness = new NMargins(2);
-			item.Border = null;
-			m_RequestsListBox.Items.Add(item);
-			m_Request2ListBoxItem.Add(request, item);
+			NUriRequestItem item = new NUriRequestItem(request, m_ResponseContentHolder);
+			m_RequestsListBox.Items.Add(item.ListBoxItem);
+			m_Request2UIItem.Add(request, item);
 		}
-		/// <summary>
-		/// Called when a request has been completed. Updates the item for the request.
-		/// </summary>
-		/// <param name="request"></param>
-		private void UpdateRequestListBoxItem(NHttpRequest request, NHttpResponse response)
-		{
-			// first clear the boder of all items
-			for (int i = 0; i < m_RequestsListBox.Items.Count; i++)
-			{
-				m_RequestsListBox.Items[i].Border = null;
-			}
 
-			// highlight the completed item in red
-			NListBoxItem item = m_Request2ListBoxItem[request];
-			item.Border = NBorder.CreateFilledBorder(NColor.LightCoral);
 
-			// update the group box header
-			NGroupBox groupBox = (NGroupBox)item.Content;
-			NLabel headerLabel = (NLabel)groupBox.Header.Content;
-			headerLabel.Text += " Response Status: " + response.Status.ToString() + ", Received In: " + (response.ReceivedAt - request.SentAt).TotalSeconds.ToString() + " seconds";
-
-			// Disable the Abort button (the first button of the item (first descentant of type button))
-			NButton abortButton = (NButton)item.GetFirstDescendant(NIsFilter<NNode, NButton>.Instance);
-			abortButton.Enabled = false;
-
-			// Enable the Headers Button (the last button of the item)
-			NButton headersButton = (NButton)item.GetLastDescendant(NIsFilter<NNode, NButton>.Instance);
-			headersButton.Tag = new object[]{ request, response };
-			headersButton.Enabled = true;
-		}
+		#endregion
 
 		#endregion
 
@@ -412,7 +256,7 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 		/// <summary>
 		/// A text box in which the user enters the URI for a custom request.
 		/// </summary>
-		private NTextBox m_CustomURITextBox;
+		private NTextBox m_URLTextBox;
 		/// <summary>
 		/// The list in which we add information about the sumbitted requests.
 		/// </summary>
@@ -420,13 +264,305 @@ Demonstrates the HTTP protocol wrapper that comes along with. It allows you to m
 		/// <summary>
 		/// A map for the requests 2 list box items.
 		/// </summary>
-		private NMap<NHttpRequest, NListBoxItem> m_Request2ListBoxItem = new NMap<NHttpRequest, NListBoxItem>();
+		private NMap<NWebRequest, NUriRequestItem> m_Request2UIItem = new NMap<NWebRequest, NUriRequestItem>();
 
 		#endregion
 
 		#region Schema
 
 		public static readonly NSchema NHttpExampleSchema;
+
+		#endregion
+
+		#region Nested Types
+
+		public class NUriRequestItem
+		{
+            #region Constructors
+
+            public NUriRequestItem(NWebRequest request, NContentHolder responseContentHolder)
+            {
+				Request = request;
+				ResponseContentHolder = responseContentHolder;
+
+				NGroupBox groupBox = new NGroupBox(new NLabel("URI: " + request.Uri.ToString()));
+				groupBox.Header.MaxWidth = 350;
+				groupBox.HorizontalPlacement = ENHorizontalPlacement.Fit;				
+
+				NStackPanel stack = new NStackPanel();
+				stack.HorizontalPlacement = ENHorizontalPlacement.Fit;
+				groupBox.Content = stack;
+
+				NStackPanel hstack = new NStackPanel();
+				hstack.Direction = ENHVDirection.LeftToRight;
+				hstack.HorizontalPlacement = ENHorizontalPlacement.Fit;
+				hstack.FillMode = ENStackFillMode.None;
+				hstack.FitMode = ENStackFitMode.Equal;
+				stack.Add(hstack);
+
+				// create progress bar
+				ProgressBar = new NProgressBar();
+
+				ProgressBar.PreferredHeight = 20;
+				ProgressBar.Minimum = 0;
+				ProgressBar.Maximum = 100;
+				stack.Add(ProgressBar);
+
+				// create status lable
+				StatusLabel = new NLabel();
+				StatusLabel.Text = " Status: Submitted";
+				stack.Add(StatusLabel);
+
+				// create the abort button.
+				AbortButton = new NButton("Abort");
+				AbortButton.Click += new Function<NEventArgs>(OnAbortRequestButtonClick);
+				hstack.Add(AbortButton);
+
+				// create view response headers button
+				if (Request is NHttpWebRequest)
+				{
+					ViewHeadersButton = new NButton("View Response Headers");
+					ViewHeadersButton.Click += new Function<NEventArgs>(OnViewResponseHeadersButtonClick);
+					hstack.Add(ViewHeadersButton);
+				}
+
+				// add item
+				NListBoxItem item = new NListBoxItem(groupBox);
+				item.BorderThickness = new NMargins(2);
+				item.Border = null;
+				ListBoxItem = item;
+
+				// hook request events
+				request.Completed += new Function<NWebRequestCompletedEventArgs>(OnRequestCompleted);
+                request.StartDownload += OnRequestStartDownload;
+                request.DownloadProgress += OnRequestDownloadProgress;
+                request.EndDownload += OnRequestEndDownload;
+			}
+
+            #endregion
+
+            #region Event Handlers - Request
+			 
+            private void OnRequestEndDownload(NWebRequestDataEventArgs arg)
+            {
+				ProgressBar.Value = 100;
+            }
+
+            private void OnRequestDownloadProgress(NWebRequestDataProgressEventArgs arg)
+            {
+				double factor = (double)arg.ProgressLength / (double)arg.DataLength;
+				ProgressBar.Value = factor * 100.0d;
+			}
+
+            private void OnRequestStartDownload(NWebRequestDataEventArgs arg)
+            {
+				ProgressBar.Value = 0;
+				StatusLabel.Text = " Status: Downloading Data";
+			}
+
+            #endregion
+
+            #region Event Handlers - Buttons
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="args"></param>
+            private void OnAbortRequestButtonClick(NEventArgs args)
+			{
+				Request.Abort();
+			}
+			/// <summary>
+			/// 
+			/// </summary>
+			/// <param name="args"></param>
+			private void OnViewResponseHeadersButtonClick(NEventArgs args)
+			{
+				NHttpResponse httpResponse = Response as NHttpResponse;
+				if (httpResponse == null)
+					return;
+
+				// create a top level window, setup as a dialog
+				NTopLevelWindow window = NApplication.CreateTopLevelWindow();
+				window.SetupDialogWindow(Request.Uri.ToString(), true);
+
+				// create a list box for the headers
+				NListBox listBox = new NListBox();
+				window.Content = listBox;
+
+				// fill with header fields
+				INIterator<NHttpHeaderField> it = httpResponse.HeaderFields.GetIterator();
+				while (it.MoveNext())
+				{
+					listBox.Items.Add(new NListBoxItem(it.Current.ToString()));
+				}
+
+				// open the window
+				window.Open();
+			}
+			/// <summary>
+			/// Called by a NHttpRequest when it has been completed.
+			/// </summary>
+			/// <param name="args"></param>
+			private void OnRequestCompleted(NWebRequestCompletedEventArgs args)
+			{
+				Response = (NHttpResponse)args.Response;
+
+				// highlight the completed item in red
+				ListBoxItem.Border = NBorder.CreateFilledBorder(NColor.LightCoral);
+
+				// update the status
+				StatusLabel.Text += " Status: " + Response.Status.ToString() + ", Received In: " + (Response.ReceivedAt - Request.SentAt).TotalSeconds.ToString() + " seconds";
+
+				// Disable the Abort button
+				AbortButton.Enabled = false;
+
+				// Enable the Headers Button
+				ViewHeadersButton.Enabled = true;
+
+				// update the response content holder
+				switch (args.Response.Status)
+				{
+					case ENAsyncResponseStatus.Aborted:
+						// request has been aborted by the user -> do nothing.
+						break;
+
+					case ENAsyncResponseStatus.Failed:
+						// request has failed -> fill content with an error message
+						ResponseContentHolder.Content = new NLabel("Request for URI: " + args.Request.Uri.ToString() + " failed. Error was: " + args.Response.ErrorException.ToString());
+						break;
+
+					case ENAsyncResponseStatus.Succeeded:
+						// request succeded -> fill content with the response content
+						NHttpResponse httpResponse = Response as NHttpResponse;
+						if (httpResponse != null)
+						{
+							HandleHttpResponse(httpResponse);
+						}
+						else
+						{
+							NFileWebResponse fileResponse = Response as NFileWebResponse;
+							if (fileResponse != null)
+							{
+								HandleFileResponse(fileResponse);
+							}
+						}
+						break;
+				}
+			}
+
+			#endregion
+
+			#region Implementation - Responses
+
+			/// <summary>
+			/// Handles an HTTP response
+			/// </summary>
+			/// <param name="response"></param>
+			private void HandleHttpResponse(NHttpResponse httpResponse)
+			{
+				try
+				{
+					// get the Content-Type Http Header field, and split it to portions
+					// NOTE: the Content-Type is a multi value field. Values are seperated with the ';' char
+					string contentType = httpResponse.HeaderFields[NHttpHeaderFieldName.ContentType];
+					string[] contentTypes = contentType.Split(new char[] { ';' });
+
+					// normalize content type values (trim and make lower case)
+					for (int i = 0; i < contentTypes.Length; i++)
+					{
+						contentTypes[i] = contentTypes[i].Trim();
+						contentTypes[i] = contentTypes[i].ToLower();
+					}
+
+					// the first part of the content type is the mime type of the content
+					switch (contentTypes[0])
+					{
+						case "image/png":
+						case "image/jpeg":
+						case "image/bmp":
+							NImage image = new NImage(new NBytesImageSource(httpResponse.DataArray));
+							NImageBox imageBox = new NImageBox(image);
+							ResponseContentHolder.Content = new NScrollContent(imageBox);
+							break;
+
+						case "text/html":
+						case "application/json":
+							string charSet = (contentTypes.Length >= 1 ? contentTypes[1] : "charset=utf-8");
+							string html = "";
+							switch (charSet)
+							{
+								case "charset=utf-8":
+									html = Nevron.Nov.Text.NEncoding.UTF8.GetString(httpResponse.DataArray);
+									break;
+
+								default:
+									html = Nevron.Nov.Text.NEncoding.UTF8.GetString(httpResponse.DataArray);
+									break;
+							}
+
+							NTextBox textBox = new NTextBox();
+							textBox.Text = html;
+							ResponseContentHolder.Content = textBox;
+							break;
+
+						default:
+							break;
+					}
+				}
+				catch (Exception ex)
+				{
+					ResponseContentHolder.Content = new NLabel("Request for URI: " + Request.Uri.ToString() + " decoding failed. Error was: " + ex.Message.ToString());
+				}
+			}
+			/// <summary>
+			/// Handles a File response
+			/// </summary>
+			/// <param name="fileResponse"></param>
+			private void HandleFileResponse(NFileWebResponse fileResponse)
+			{
+				string extension = NPath.Current.GetExtension(Request.Uri.GetLocalPath());
+
+				switch (extension)
+				{
+					case "png":
+					case "jpeg":
+					case "bmp":
+						NImage image = new NImage(new NBytesImageSource(fileResponse.DataArray));
+						NImageBox imageBox = new NImageBox(image);
+						ResponseContentHolder.Content = new NScrollContent(imageBox);
+						break;
+
+					case "html":
+					case "json":
+					case "txt":
+						string html = Nevron.Nov.Text.NEncoding.UTF8.GetString(fileResponse.DataArray);
+						NTextBox textBox = new NTextBox();
+						textBox.Text = html;
+						ResponseContentHolder.Content = textBox;
+						break;
+
+					default:
+						break;
+				}
+			}
+
+			#endregion
+
+			#region Fields
+
+			public readonly NContentHolder ResponseContentHolder;
+			public readonly NWebRequest Request;
+			public readonly NListBoxItem ListBoxItem;
+			public readonly NProgressBar ProgressBar;
+			public readonly NLabel StatusLabel;
+			public readonly NButton AbortButton;
+			public readonly NButton ViewHeadersButton;
+
+			public NWebResponse Response;
+
+			#endregion
+		}
 
 		#endregion
 	}

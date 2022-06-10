@@ -12,7 +12,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// The example shows how to align different chart areas
 	/// </summary>
-	public class NAligningChartAreasExample : NChartExampleBase
+	public class NAligningChartAreasExample : NExampleBase
 	{
 		#region Constructors
 
@@ -28,17 +28,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAligningChartAreasExample()
 		{
-			NAligningChartAreasExampleSchema = NSchema.Create(typeof(NAligningChartAreasExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAligningChartAreasExampleSchema = NSchema.Create(typeof(NAligningChartAreasExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			m_ChartView = new NChartView();
@@ -122,10 +118,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return m_ChartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -133,30 +125,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
-		private NComboBox CreateProportionComboBox()
-		{
-			NComboBox comboBox = new NComboBox();
-
-			for (int i = 0; i < 5; i++)
-			{
-				comboBox.Items.Add(new NComboBoxItem((i + 1).ToString()));
-			}
-
-			comboBox.SelectedIndex = 0;
-
-			return comboBox;
-		}
-		
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to align different chart areas.</p>";
 		}
-
-		#endregion
-
-		#region Event Handlers
-
 
 		#endregion
 
@@ -236,12 +208,13 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Fields
 
-		NStockSeries m_StockPrice;
-		NAreaSeries m_StockVolume;
+		private NChartView m_ChartView;
+		private NStockSeries m_StockPrice;
+		private NAreaSeries m_StockVolume;
 			
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAligningChartAreasExampleSchema;
 

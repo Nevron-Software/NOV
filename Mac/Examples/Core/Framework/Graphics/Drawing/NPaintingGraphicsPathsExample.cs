@@ -1,9 +1,8 @@
-﻿using Nevron.Nov.Dom;
+﻿using Nevron.Nov.DataStructures;
+using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
-using Nevron.Nov.DataStructures;
-using Nevron.Nov.Editors;
 
 namespace Nevron.Nov.Examples.Framework
 {
@@ -23,51 +22,11 @@ namespace Nevron.Nov.Examples.Framework
 		static NPaintingGraphicsPathsExample()
 		{
 			NPaintingGraphicsPathsExampleSchema = NSchema.Create(typeof(NPaintingGraphicsPathsExample), NExampleBase.NExampleBaseSchema);
-
-			FillProperty = NPaintingGraphicsPathsExampleSchema.AddSlot("Fill", typeof(NFill), defaultFill);
 		}
 
 		#endregion
 
-		#region Properties
-
-		/// <summary>
-		/// Gets or sets the fill style
-		/// </summary>
-		public NFill Fill
-		{
-			get
-			{
-				return (NFill)GetValue(FillProperty);
-			}
-			set
-			{
-				SetValue(FillProperty, value);
-			}
-		}
-
-		#endregion
-
-		#region Protected Overrides - Node
-
-        protected override void OnPropertyValueChanged(NValueChangeData data)
-		{
-            base.OnPropertyValueChanged(data);
-
-			if ((m_Table != null) && (data.Property == FillProperty))
-			{
-				INIterator<NNode> iterator = m_Table.GetSubtreeIterator(ENTreeTraversalOrder.DepthFirstPreOrder, new NInstanceOfSchemaFilter(NCanvas.NCanvasSchema));
-
-				while (iterator.MoveNext())
-				{
-					((NCanvas)iterator.Current).InvalidateDisplay();
-				}
-			}
-		}
-
-		#endregion
-
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -100,7 +59,7 @@ namespace Nevron.Nov.Examples.Framework
 				"Path with Multiple Figures"
 			};
 
-			NGraphicsPath[] paths = CreatePaths(defaultCanvasWidth, defaultCanvasHeight);
+			NGraphicsPath[] paths = CreatePaths(DefaultCanvasWidth, DefaultCanvasHeight);
 
 			int count = paths.Length;
 
@@ -112,7 +71,7 @@ namespace Nevron.Nov.Examples.Framework
 
 				// Create a canvas to draw the graphics path in
 				NCanvas canvas = new NCanvas();
-				canvas.PreferredSize = new NSize(defaultCanvasWidth, defaultCanvasHeight);
+				canvas.PreferredSize = new NSize(DefaultCanvasWidth, DefaultCanvasHeight);
 				canvas.Tag = paths[i];
 				canvas.PrePaint += new Function<NCanvasPaintEventArgs>(OnCanvasPrePaint);
 				canvas.BackgroundFill = new NColorFill(NColor.LightGreen);
@@ -131,7 +90,9 @@ namespace Nevron.Nov.Examples.Framework
 		}
 		protected override NWidget CreateExampleControls()
 		{
-			NEditor fillEditor = NDesigner.GetDesigner(NFill.NFillSchema).CreatePropertyEditor(this, FillProperty);
+			// Fill
+			m_FillSplitButton = new NFillSplitButton();
+			m_FillSplitButton.SelectedValueChanged += OnFillSplitButtonSelectedValueChanged;
 
 			// Stroke color
 			m_StrokeColorBox = new NColorBox();
@@ -151,7 +112,7 @@ namespace Nevron.Nov.Examples.Framework
 			m_CanvasWidthUpDown = new NNumericUpDown();
 			m_CanvasWidthUpDown.Minimum = 100;
 			m_CanvasWidthUpDown.Maximum = 350;
-			m_CanvasWidthUpDown.Value = defaultCanvasWidth;
+			m_CanvasWidthUpDown.Value = DefaultCanvasWidth;
 			m_CanvasWidthUpDown.Step = 1;
 			m_CanvasWidthUpDown.DecimalPlaces = 0;
 			m_CanvasWidthUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnNumericUpDownValueChanged);
@@ -160,7 +121,7 @@ namespace Nevron.Nov.Examples.Framework
 			m_CanvasHeightUpDown = new NNumericUpDown();
 			m_CanvasHeightUpDown.Minimum = 100;
 			m_CanvasHeightUpDown.Maximum = 350;
-			m_CanvasHeightUpDown.Value = defaultCanvasHeight;
+			m_CanvasHeightUpDown.Value = DefaultCanvasHeight;
 			m_CanvasHeightUpDown.Step = 1;
 			m_CanvasHeightUpDown.DecimalPlaces = 0;
 			m_CanvasHeightUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnNumericUpDownValueChanged);
@@ -168,7 +129,7 @@ namespace Nevron.Nov.Examples.Framework
 			NStackPanel stack = new NStackPanel();
 			stack.FillMode = ENStackFillMode.None;
 			stack.FitMode = ENStackFitMode.None;
-			stack.Add(fillEditor);
+			stack.Add(NPairBox.Create("Fill:", m_FillSplitButton));
 			stack.Add(NPairBox.Create("Stroke Color:", m_StrokeColorBox));
 			stack.Add(NPairBox.Create("Stroke Width:", m_StrokeWidthCombo));
 			stack.Add(NPairBox.Create("Canvas Width:", m_CanvasWidthUpDown));
@@ -200,7 +161,7 @@ namespace Nevron.Nov.Examples.Framework
 
 			args.PaintVisitor.ClearStyles();
 			args.PaintVisitor.SetStroke(m_Stroke);
-			args.PaintVisitor.SetFill(Fill);
+			args.PaintVisitor.SetFill(m_Fill);
 			args.PaintVisitor.PaintPath(path, ENFillRule.EvenOdd);
 		}
 		private void OnNumericUpDownValueChanged(NValueChangeEventArgs args)
@@ -228,6 +189,13 @@ namespace Nevron.Nov.Examples.Framework
 				canvas.Tag = paths[index++];
 			}
 		}
+		private void OnFillSplitButtonSelectedValueChanged(NValueChangeEventArgs arg)
+		{
+			NAutomaticValue<NFill> selectedFill = (NAutomaticValue<NFill>)arg.NewValue;
+			m_Fill = selectedFill.Automatic ? null : selectedFill.Value;
+
+			InvalidateCanvases();
+		}
 		private void OnStrokeColorBoxSelectedColorChanged(NValueChangeEventArgs arg)
 		{
 			m_Stroke.Color = m_StrokeColorBox.SelectedColor;
@@ -245,7 +213,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#region Implementation
 
-		void InvalidateCanvases()
+		private void InvalidateCanvases()
 		{
 			if (m_Table == null)
 				return;
@@ -259,7 +227,7 @@ namespace Nevron.Nov.Examples.Framework
 			}
 		}
 
-		NGraphicsPath[] CreatePaths(double w, double h)
+		private NGraphicsPath[] CreatePaths(double w, double h)
 		{
 			NGraphicsPath[] paths = new NGraphicsPath[]
 			{
@@ -283,6 +251,24 @@ namespace Nevron.Nov.Examples.Framework
 
 			return paths;
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NTableFlowPanel m_Table;
+		private NNumericUpDown m_CanvasWidthUpDown;
+		private NNumericUpDown m_CanvasHeightUpDown;
+		private NFillSplitButton m_FillSplitButton;
+		private NColorBox m_StrokeColorBox;
+		private NComboBox m_StrokeWidthCombo;
+
+		private NStroke m_Stroke = new NStroke();
+		private NFill m_Fill;
+
+		#endregion
+
+		#region Static Methods
 
 		private static NGraphicsPath CreateRectangle(double w, double h)
 		{
@@ -473,37 +459,19 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Fields
-
-		NTableFlowPanel m_Table;
-		NNumericUpDown m_CanvasWidthUpDown;
-		NNumericUpDown m_CanvasHeightUpDown;
-		NColorBox m_StrokeColorBox;
-		NComboBox m_StrokeWidthCombo;
-
-		NStroke m_Stroke = new NStroke();
-
-		#endregion
-
-		#region Contants
-
-		const int defaultCanvasWidth = 220;
-		const int defaultCanvasHeight = 220;
-
-		static readonly NFill defaultFill = new NColorFill();
-
-		#endregion
-
 		#region Schema
 
 		/// <summary>
 		/// Schema associated with NPaintingGraphicsPathsExample.
 		/// </summary>
 		public static readonly NSchema NPaintingGraphicsPathsExampleSchema;
-		/// <summary>
-		/// Reference to the Fill property
-		/// </summary>
-		public static readonly NProperty FillProperty;
+
+		#endregion
+
+		#region Constants
+
+		private const int DefaultCanvasWidth = 220;
+		private const int DefaultCanvasHeight = 220;
 
 		#endregion
 	}

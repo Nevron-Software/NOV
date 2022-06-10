@@ -1,9 +1,9 @@
 
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nevron.Nov.Examples.Standard", "..\Core\Nevron.Nov.Examples.Standard.csproj", "{79EC2D4A-AF97-4CD2-8594-4344160D2843}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nevron.Nov.Examples.XamarinMac", "Nevron.Nov.Examples.XamarinMac.csproj", "{09A7C400-3645-4838-9CE9-5A7BFFC035EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nevron.Nov.Examples.Mac", "..\Core\Nevron.Nov.Examples.Mac.csproj", "{EEE0D0A5-8FC3-4083-A67C-9250A36EB077}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,11 +18,11 @@ Global
 		{09A7C400-3645-4838-9CE9-5A7BFFC035EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09A7C400-3645-4838-9CE9-5A7BFFC035EA}.AppStore|Any CPU.ActiveCfg = AppStore|Any CPU
 		{09A7C400-3645-4838-9CE9-5A7BFFC035EA}.AppStore|Any CPU.Build.0 = AppStore|Any CPU
-		{79EC2D4A-AF97-4CD2-8594-4344160D2843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79EC2D4A-AF97-4CD2-8594-4344160D2843}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79EC2D4A-AF97-4CD2-8594-4344160D2843}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79EC2D4A-AF97-4CD2-8594-4344160D2843}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79EC2D4A-AF97-4CD2-8594-4344160D2843}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
-		{79EC2D4A-AF97-4CD2-8594-4344160D2843}.AppStore|Any CPU.Build.0 = Debug|Any CPU
+		{EEE0D0A5-8FC3-4083-A67C-9250A36EB077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE0D0A5-8FC3-4083-A67C-9250A36EB077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE0D0A5-8FC3-4083-A67C-9250A36EB077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE0D0A5-8FC3-4083-A67C-9250A36EB077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE0D0A5-8FC3-4083-A67C-9250A36EB077}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE0D0A5-8FC3-4083-A67C-9250A36EB077}.AppStore|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

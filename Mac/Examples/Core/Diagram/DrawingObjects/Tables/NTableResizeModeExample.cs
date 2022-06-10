@@ -1,17 +1,12 @@
 ﻿using Nevron.Nov.Diagram;
-using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
-using System.Text;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NTableResizeModeExample : NDiagramExampleBase
+	public class NTableResizeModeExample : NExampleBase
     {
         #region Constructors
 
@@ -27,27 +22,48 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NTableResizeModeExample()
         {
-            NTableResizeModeExampleSchema = NSchema.Create(typeof(NTableResizeModeExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NTableResizeModeExampleSchema = NSchema.Create(typeof(NTableResizeModeExample), NExampleBaseSchema);
         }
 
-        #endregion
+		#endregion
 
-        #region Overrides from NDiagramExampleBase
+		#region Example
 
-        protected override string GetExampleDescription()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
         {
             return @"<p>
-					Demonstrates the table resize modes. Table support three resize modes:<br/>
-					AutoSize - The table desired size determines the size of the table containing shape<br/>
-					AutoHeight - The table containing shape defines the table witdth, while the table contents defines the table containing shape height<br/>
-					Stretch - The table is stretched to fit the bounds specified by its containing shape. If the table cannot fit it will resize the table containing shape automatically.<br/>
-					</p>";
+				Demonstrates the table resize modes. Table support three resize modes:<br/>
+				AutoSize - The table desired size determines the size of the table containing shape<br/>
+				AutoHeight - The table containing shape defines the table witdth, while the table contents defines the table containing shape height<br/>
+				Stretch - The table is stretched to fit the bounds specified by its containing shape. If the table cannot fit it will resize the table containing shape automatically.<br/>
+			</p>";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide the grid
@@ -71,7 +87,7 @@ namespace Nevron.Nov.Examples.Diagram
 				tableBlock.ResizeMode = tableBlockResizeMode[i];
 				shape.TextBlock = tableBlock;
 
-				drawing.ActivePage.Items.AddChild(shape);
+				activePage.Items.AddChild(shape);
 			}
 		}
 
@@ -98,7 +114,7 @@ namespace Nevron.Nov.Examples.Diagram
 					NTableCell cell = row.Cells[colIndex];
 
 					cell.Blocks.Clear();
-					cell.Blocks.Add(new NParagraph("This is table cell [" + rowIndex.ToString() + ", " + colIndex.ToString() + "]"));
+					cell.Blocks.Add(new NParagraph("This is a table cell [" + rowIndex.ToString() + ", " + colIndex.ToString() + "]"));
 				}
 			}
 
@@ -120,7 +136,6 @@ namespace Nevron.Nov.Examples.Diagram
 
 			return tableBlock;
 		}
-
 
 		#endregion
 
@@ -260,6 +275,12 @@ namespace Nevron.Nov.Examples.Diagram
 
 			return border;
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

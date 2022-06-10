@@ -1,17 +1,15 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Legend Layout Example
 	/// </summary>
-	public class NMultipleLegendsExample : NChartExampleBase
+	public class NMultipleLegendsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -27,17 +25,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
         static NMultipleLegendsExample()
 		{
-			NMultipleLegendsExampleSchema = NSchema.Create(typeof(NMultipleLegendsExample), NChartExampleBase.NChartExampleBaseSchema);
+			NMultipleLegendsExampleSchema = NSchema.Create(typeof(NMultipleLegendsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
             m_ChartView = new NChartView();
@@ -91,10 +85,6 @@ namespace Nevron.Nov.Examples.Chart
 
             return m_ChartView;
         }
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -107,7 +97,6 @@ namespace Nevron.Nov.Examples.Chart
 
             return boxGroup;
 		}
-
         protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to display series data on different legends.</p>";
@@ -175,19 +164,19 @@ namespace Nevron.Nov.Examples.Chart
             }
         }
 
-		#endregion
+        #endregion
 
         #region Fields
 
-        NPieChart m_PieChart1;
-        NLegend m_Legend1;
-
-        NPieChart m_PieChart2;
-        NLegend m_Legend2;
+        private NChartView m_ChartView;
+        private NPieChart m_PieChart1;
+        private NLegend m_Legend1;
+        private NPieChart m_PieChart2;
+        private NLegend m_Legend2;
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NMultipleLegendsExampleSchema;
 

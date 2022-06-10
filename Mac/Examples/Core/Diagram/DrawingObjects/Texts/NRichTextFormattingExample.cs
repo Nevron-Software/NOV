@@ -7,10 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NRichTextFormattingExample : NDiagramExampleBase
+	public class NRichTextFormattingExample : NExampleBase
     {
         #region Constructors
 
@@ -26,25 +23,43 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NRichTextFormattingExample()
         {
-            NRichTextFormattingExampleSchema = NSchema.Create(typeof(NRichTextFormattingExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NRichTextFormattingExampleSchema = NSchema.Create(typeof(NRichTextFormattingExample), NExampleBaseSchema);
         }
 
-        #endregion
+		#endregion
 
-        #region Overrides from NDiagramExampleBase
+		#region Example
 
-        protected override string GetExampleDescription()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
         {
-            return @"<p>
-						Demonstrates how to apply rich text formatting to texts.
-					</p>";
+            return @"<p>Demonstrates how to apply rich text formatting to texts.</p>";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
 
             // hide the grid
             drawing.ScreenVisibility.ShowGrid = false;
@@ -110,7 +125,7 @@ namespace Nevron.Nov.Examples.Diagram
 				textInline7.FontStyle |= ENFontStyle.Strikethrough;
 				paragraph.Inlines.Add(textInline7);
 
-				NTextInline textInline8 = new NTextInline("and Font Style All.");
+				NTextInline textInline8 = new NTextInline(", and Font Style All.");
 				textInline8.FontStyle = ENFontStyle.Bold | ENFontStyle.Italic | ENFontStyle.Underline | ENFontStyle.Strikethrough;
 				paragraph.Inlines.Add(textInline8);
 
@@ -121,7 +136,7 @@ namespace Nevron.Nov.Examples.Diagram
 				// appearance control
 				NParagraph paragraph = new NParagraph();
 
-				NTextInline textInline1 = new NTextInline("Each text inline element can contain text with differeant fill and background. ");
+				NTextInline textInline1 = new NTextInline("Each text inline element can contain text with different fill and background. ");
 				paragraph.Inlines.Add(textInline1);
 
 				NTextInline textInline2 = new NTextInline("Fill (Red), Background Fill Inherit. ");
@@ -159,7 +174,7 @@ namespace Nevron.Nov.Examples.Diagram
 				NTabInline tabInline = new NTabInline();
 				paragraph.Inlines.Add(tabInline);
 
-				NTextInline textInline1 = new NTextInline("(Tabs) are not supported by HTML, however they are essential when importing text documents.");
+				NTextInline textInline1 = new NTextInline("(Tabs) are not supported by HTML, however, they are essential when importing text documents.");
 				paragraph.Inlines.Add(textInline1);
 
 				content.Blocks.Add(paragraph);
@@ -239,6 +254,12 @@ namespace Nevron.Nov.Examples.Diagram
 				content.Blocks.Add(paragraph);
 			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

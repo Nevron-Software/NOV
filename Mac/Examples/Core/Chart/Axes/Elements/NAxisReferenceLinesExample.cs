@@ -1,16 +1,14 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Axis docking example
 	/// </summary>
-	public class NAxisReferenceLinesExample : NChartExampleBase
+	public class NAxisReferenceLinesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +24,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAxisReferenceLinesExample()
 		{
-			NAxisReferenceLinesExampleSchema = NSchema.Create(typeof(NAxisReferenceLinesExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisReferenceLinesExampleSchema = NSchema.Create(typeof(NAxisReferenceLinesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Axis Reference Lines";
@@ -96,11 +91,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -154,7 +144,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to add axis reference lines.</p>";
@@ -204,7 +193,6 @@ namespace Nevron.Nov.Examples.Chart
 			m_YReferenceLine.TextAlignment = (ENContentAlignment)((NComboBox)arg.TargetNode).SelectedIndex;
 		}
 
-
 		#endregion
 
 		#region Fields
@@ -214,7 +202,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisReferenceLinesExampleSchema;
 

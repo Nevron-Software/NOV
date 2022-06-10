@@ -4,14 +4,13 @@ using Nevron.Nov.DataStructures;
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Layout;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NUmlClassDiagramExample : NDiagramExampleBase
+	public class NUmlClassDiagramExample : NExampleBase
     {
         #region Constructors
 
@@ -27,19 +26,44 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NUmlClassDiagramExample()
         {
-            NUmlClassDiagramExampleSchema = NSchema.Create(typeof(NUmlClassDiagramExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NUmlClassDiagramExampleSchema = NSchema.Create(typeof(NUmlClassDiagramExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
         {
-            base.InitDiagram();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
 
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
+        protected override string GetExampleDescription()
+        {
+            return @"<p>This example demonstrates how to create an UML class diagrams.</p>";
+        }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
             // Get drawing and active page
-            NDrawing drawing = m_DrawingDocument.Content;
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // Hide ports and grid
@@ -50,7 +74,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             NStyleSheet styleSheet = new NStyleSheet();
             styleSheet.Add(rule);
-            m_DrawingDocument.StyleSheets.Add(styleSheet);
+            drawingDocument.StyleSheets.Add(styleSheet);
 
             // Create some UML shapes
             NShape shapeDevice = CreateUmlShape("Device", new NMemberInfo[] {
@@ -97,13 +121,6 @@ namespace Nevron.Nov.Examples.Diagram
             // when the drawing view is registered in its owner document
             m_DrawingView.Registered += OnDrawingViewRegistered;
         }
-        protected override string GetExampleDescription()
-        {
-            return @"
-<p>
-	This example demonstrates how to create an UML class diagrams.
-</p>";
-        }
 
         #endregion
 
@@ -145,7 +162,7 @@ namespace Nevron.Nov.Examples.Diagram
         {
             NRoutableConnector connector = new NRoutableConnector();
             connector.UserClass = ConnectorOneToManyClassName;
-            m_DrawingDocument.Content.ActivePage.Items.Add(connector);
+            m_DrawingView.ActivePage.Items.Add(connector);
 
             // Get or create the ports
             NPort port1 = GetOrCreatePort(shape1, member1);
@@ -289,7 +306,7 @@ namespace Nevron.Nov.Examples.Diagram
         /// <returns></returns>
         private NShape GetShapeByName(string name)
         {
-            NPage activePage = m_DrawingDocument.Content.ActivePage;
+            NPage activePage = m_DrawingView.ActivePage;
             return (NShape)activePage.GetFirstDescendant(new NShapeByNameFilter(name));
         }
 
@@ -302,11 +319,11 @@ namespace Nevron.Nov.Examples.Diagram
             NLayeredGraphLayout layout = new NLayeredGraphLayout();
 
             // Get all top-level shapes that reside in the active page
-            NPage activePage = m_DrawingDocument.Content.ActivePage;
+            NPage activePage = m_DrawingView.ActivePage;
             NList<NShape> shapes = activePage.GetShapes(false);
 
             // Create a layout context and use it to arrange the shapes using the current layout
-            NDrawingLayoutContext layoutContext = new NDrawingLayoutContext(m_DrawingDocument, activePage);
+            NDrawingLayoutContext layoutContext = new NDrawingLayoutContext(m_DrawingView.Document, activePage);
             layout.Arrange(shapes.CastAll<object>(), layoutContext);
 
             // Size the page to the content size
@@ -324,7 +341,7 @@ namespace Nevron.Nov.Examples.Diagram
         private void OnDrawingViewRegistered(NEventArgs arg)
         {
             // Evaluate the drawing document
-            m_DrawingDocument.Evaluate();
+            m_DrawingView.Document.Evaluate();
 
             // Layout the shapes
             ArrangeDiagram();
@@ -338,6 +355,12 @@ namespace Nevron.Nov.Examples.Diagram
         /// Schema associated with NUmlClassDiagramExample.
         /// </summary>
         public static readonly NSchema NUmlClassDiagramExampleSchema;
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

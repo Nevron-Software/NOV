@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
@@ -25,10 +25,21 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
+#region InternalCode
+			//string text1 = "श्रीमद् श्रीमद् श्रीमद् भगवद्गीता अध्याय अर्जुन विषाद योग धृतराष्ट्र उवाच। धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः मामकाः पाण्डवाश्चैव किमकुर्वत संजय";
+//			string text1 = "The LayoutEngine does all the work necessary to display Unicode text written in languages with complex writing systems such as Hindi (हिन्दी) Thai (ไทย) and Arabic (العربية). Here's a sample of some text written in Sanskrit: श्रीमद् श्रीमद् श्रीमद् भगवद्गीता अध्याय अर्जुन विषाद योग धृतराष्ट्र उवाच। धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः मामकाः पाण्डवाश्चैव किमकुर्वत संजय Here's a sample of some text written in Arabic: أساسًا، تتعامل الحواسيب فقط مع الأرقام، وتقوم بتخزين الأحرف والمحارف الأخرى بعد أن تُعطي رقما معينا لكل واحد منها. وقبل اختراع here's a sample of some text written in Thai: บทที่๑พายุไซโคลนโดโรธีอาศัยอยู่ท่ามกลางทุ่งใหญ่ในแคนซัสกับลุงเฮนรีชาวไร่และป้าเอ็มภรรยาชาวไร่บ้านของพวกเขาหลังเล็กเพราะไม้สร้างบ้านต้องขนมาด้วยเกวียนเป็นระยะทางหลายไมล์";
+//			string text1 = "Malyam: ഉൾപ്പെടുന്ന ഒരു ലിപിയാണ് മലയാള ലിപി. മലയാള ഭാഷ എഴുതന്നതിനാണ് മുഖ്യമായും ഈ ലിപി ഉപയോഗിക്കുന്നത്. സംസ്കൃതം, കൊങ്കണി, തുളു എന്നീ ഭാഷകൾ എഴുതുന്നതിനും വളരെക്കുറച്ച് ആളുകൾ മാത്രം സംസാരിക്കുന്ന പണിയ, കുറുമ്പ തുടങ്ങിയ ഭാഷകൾ എഴുതുന്നതിനും മലയാളലിപി ഉപയോഗിക്കാറുണ്ട്";
+//			string text1 = "Once upon a time a Wolf was lapping at a spring on a hillside, when, looking up, what should he see but a Lamb just beginning to drink a little lower down. ‘There’s my supper,’ thought he, ‘if only I can find some excuse to seize it.’ Then he called out to the Lamb, ‘How dare you muddle the water from which I am drinking?’ ‘Nay, master, nay,’ said Lambikin; ‘if the water be muddy up there, I cannot be the cause of it, for it runs down from you to me.’ ‘Well, then,’ said the Wolf, ‘why did you call me bad names this time last year?’ ‘That cannot be,’ said the Lamb; ‘I am only six months old.’ ‘I don’t care,’ snarled the Wolf; ‘if it was not you it was your father;’ and with that he rushed upon the poor little Lamb and .WARRA WARRA WARRA WARRA WARRA .ate her all up. But before she died she gasped out .’Any excuse will serve a tyrant.’";
+//          string text1 = "أساسًا، تتعامل الحواسيب فقط مع الأرقام، وتقوم بتخزين الأحرف والمحارف الأخرى بعد أن تُعطي رقما معينا لكل واحد منها. وقبل اختراع";
+//          string text1 = "CAPITAL" + (char)'A' + (char)0x0301 + (char)'B' + (char)0x0327 + 'C' + (char)0x0308 + (char)'a' + (char)0x0301 + (char)'b' + (char)0x0327 + 'c' + (char)0x0308; ;
+//          string text1 = "T" + (char)0x0327 + 'c' + (char)0x0308; 
+            // string text1 = "C" + (char)0x0308;
+			//string text1 = "This is some text. This is some text. This is some text.";
+#endregion
 
 			m_TextBox = new NTextBox();
 			m_TextBox.Hint = "Enter some text here.";

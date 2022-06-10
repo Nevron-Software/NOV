@@ -1,10 +1,12 @@
 ﻿using System;
+
 using Nevron.Nov.Dom;
 using Nevron.Nov.Schedule;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NCategorizationExample : NScheduleExampleBase
+	public class NCategorizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -20,14 +22,52 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NCategorizationExample()
 		{
-			NCategorizationExampleSchema = NSchema.Create(typeof(NCategorizationExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NCategorizationExampleSchema = NSchema.Create(typeof(NCategorizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
+
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>
+    This example demonstrates how to create and add appointments to a schedule and how to categorize them through code.
+	To categorize an appointment means to assign a category and/or a time marker to it. The schedule contains a collection
+	of default categories and time markers, but you can easily modify them when needed.
+</p>
+";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
 		{
 			DateTime today = DateTime.Today;
 			schedule.ViewMode = ENScheduleViewMode.Day;
@@ -73,16 +113,12 @@ namespace Nevron.Nov.Examples.Schedule
 			schedule.Appointments.Add(new NAppointment("Travel back home", today.AddHours(17.5), today.AddHours(19)));
 			schedule.Appointments.Add(new NAppointment("Family Dinner", today.AddHours(20), today.AddHours(21)));
 		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-    This example demonstrates how to create and add appointments to a schedule and how to categorize them through code.
-	To categorize an appointment means to assign a category and/or a time marker to it. The schedule contains a collection
-	of default categories and time markers, but you can easily modify them when needed.
-</p>
-";
-		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
 
 		#endregion
 

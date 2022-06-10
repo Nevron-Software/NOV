@@ -7,35 +7,35 @@ using Nevron.Nov.Editors;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates how to control the size of the gauge axes
-    /// </summary>
-	public class NGaugeScaleLabelsOrientationExample : NInstrumentationExampleBase
-    {
-        #region Constructors
+	/// </summary>
+	public class NGaugeScaleLabelsOrientationExample : NExampleBase
+	{
+		#region Constructors
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public NGaugeScaleLabelsOrientationExample()
-        {
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        static NGaugeScaleLabelsOrientationExample()
-        {
-			NGaugeScaleLabelsOrientationExampleSchema = NSchema.Create(typeof(NGaugeScaleLabelsOrientationExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
-        }
+		/// <summary>
+		/// 
+		/// </summary>
+		public NGaugeScaleLabelsOrientationExample()
+		{
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		static NGaugeScaleLabelsOrientationExample()
+		{
+			NGaugeScaleLabelsOrientationExampleSchema = NSchema.Create(typeof(NGaugeScaleLabelsOrientationExample), NExampleBaseSchema);
+		}
 
-        #endregion
+		#endregion
 
-        #region Protected Overrides - Example
+		#region Example
 
-        protected override NWidget CreateExampleContent()
+		protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
-			
+
 			NStackPanel controlStack = new NStackPanel();
 			controlStack.Direction = ENHVDirection.LeftToRight;
 			stack.Add(controlStack);
@@ -44,7 +44,7 @@ namespace Nevron.Nov.Examples.Gauge
 			m_LinearGauge.Orientation = ENLinearGaugeOrientation.Vertical;
 			m_LinearGauge.PreferredSize = defaultLinearVerticalGaugeSize;
 			m_LinearGauge.CapEffect = new NGelCapEffect();
-			m_LinearGauge.Border = base.CreateBorder();
+			m_LinearGauge.Border = CreateBorder();
 			m_LinearGauge.Padding = new NMargins(20);
 			m_LinearGauge.BorderThickness = new NMargins(6);
 
@@ -55,56 +55,56 @@ namespace Nevron.Nov.Examples.Gauge
 			advGradient.BackgroundColor = NColor.Black;
 			advGradient.Points.Add(new NAdvancedGradientPoint(NColor.LightGray, new NAngle(10, NUnit.Degree), 0.1f, 0, 1.0f, ENAdvancedGradientPointShape.Circle));
 			m_LinearGauge.BackgroundFill = advGradient;
-//          FIX m_LinearGauge.BorderStyle = new NEdgeBorderStyle(BorderShape.RoundedRect);
+			//          FIX m_LinearGauge.BorderStyle = new NEdgeBorderStyle(BorderShape.RoundedRect);
 
 			NGaugeAxis axis = new NGaugeAxis();
 			m_LinearGauge.Axes.Add(axis);
 			axis.Anchor = new NModelGaugeAxisAnchor(10, ENVerticalAlignment.Center, ENScaleOrientation.Left);
-            ConfigureScale((NLinearScale)axis.Scale);
+			ConfigureScale((NLinearScale)axis.Scale);
 
-            // add some indicators
-            AddRangeIndicatorToGauge(m_LinearGauge);
-            m_LinearGauge.Indicators.Add(new NMarkerValueIndicator(60));
+			// add some indicators
+			AddRangeIndicatorToGauge(m_LinearGauge);
+			m_LinearGauge.Indicators.Add(new NMarkerValueIndicator(60));
 
-            // create the radial gauge
-            m_RadialGauge = new NRadialGauge();
-            m_RadialGauge.CapEffect = new NGlassCapEffect();
-            m_RadialGauge.Dial = new NDial(ENDialShape.Circle, new NEdgeDialRim());
-            controlStack.Add(m_RadialGauge);
+			// create the radial gauge
+			m_RadialGauge = new NRadialGauge();
+			m_RadialGauge.CapEffect = new NGlassCapEffect();
+			m_RadialGauge.Dial = new NDial(ENDialShape.Circle, new NEdgeDialRim());
+			controlStack.Add(m_RadialGauge);
 
-            // create the radial gauge
-            m_RadialGauge.SweepAngle = new NAngle(270, NUnit.Degree);
-            m_RadialGauge.BeginAngle = new NAngle(-90, NUnit.Degree);
+			// create the radial gauge
+			m_RadialGauge.SweepAngle = new NAngle(270, NUnit.Degree);
+			m_RadialGauge.BeginAngle = new NAngle(-90, NUnit.Degree);
 
-            // set some background
+			// set some background
 			advGradient = new NAdvancedGradientFill();
-            advGradient.BackgroundColor = NColor.Black;
-            advGradient.Points.Add(new NAdvancedGradientPoint(NColor.White, new NAngle(10, NUnit.Degree), 0.1f, 0, 1.0f, ENAdvancedGradientPointShape.Circle));
-            m_RadialGauge.Dial = new NDial(ENDialShape.Circle, new NEdgeDialRim());
+			advGradient.BackgroundColor = NColor.Black;
+			advGradient.Points.Add(new NAdvancedGradientPoint(NColor.White, new NAngle(10, NUnit.Degree), 0.1f, 0, 1.0f, ENAdvancedGradientPointShape.Circle));
+			m_RadialGauge.Dial = new NDial(ENDialShape.Circle, new NEdgeDialRim());
 			m_RadialGauge.Dial.BackgroundFill = advGradient;
 
-            // configure the axis
-            axis = new NGaugeAxis();
+			// configure the axis
+			axis = new NGaugeAxis();
 			m_RadialGauge.Axes.Add(axis);
-            axis.Range = new NRange(0, 100);
+			axis.Range = new NRange(0, 100);
 			axis.Anchor.ScaleOrientation = ENScaleOrientation.Right;
 			axis.Anchor = new NDockGaugeAxisAnchor(ENGaugeAxisDockZone.Top, true, ENScaleOrientation.Right, 0.0f, 100.0f);
 
-            ConfigureScale((NLinearScale)axis.Scale);
+			ConfigureScale((NLinearScale)axis.Scale);
 
-            // add some indicators
-            AddRangeIndicatorToGauge(m_RadialGauge);
-            
-            NNeedleValueIndicator needle = new NNeedleValueIndicator(60);
+			// add some indicators
+			AddRangeIndicatorToGauge(m_RadialGauge);
+
+			NNeedleValueIndicator needle = new NNeedleValueIndicator(60);
 			needle.OffsetOriginMode = ENIndicatorOffsetOriginMode.ScaleMiddle;
-            needle.OffsetFromScale = 15.0;
-            m_RadialGauge.Indicators.Add(needle);
+			needle.OffsetFromScale = 15.0;
+			m_RadialGauge.Indicators.Add(needle);
 
 
 			return stack;
 		}
-        protected override NWidget CreateExampleControls()
-        {
+		protected override NWidget CreateExampleControls()
+		{
 			NStackPanel stack = new NStackPanel();
 
 			NStackPanel propertyStack = new NStackPanel();
@@ -140,13 +140,13 @@ namespace Nevron.Nov.Examples.Gauge
 			propertyStack.Add(new NPairBox("Sweep Angle:", m_SweepAngleScrollBar, true));
 
 			return stack;
-        }
+		}
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates how to control the Gauge scale labels orientation.</p>";
 		}
 
-		#endregion 
+		#endregion
 
 		#region Event Handlers
 
@@ -172,7 +172,7 @@ namespace Nevron.Nov.Examples.Gauge
 		{
 			m_RadialGauge.BeginAngle = new NAngle(m_BeginAngleScrollBar.Value, NUnit.Degree);
 		}
-		
+
 		void OnSweepAngleScrollBarValueChanged(NValueChangeEventArgs arg)
 		{
 			m_RadialGauge.SweepAngle = new NAngle(m_SweepAngleScrollBar.Value, NUnit.Degree);
@@ -239,6 +239,21 @@ namespace Nevron.Nov.Examples.Gauge
 
 		public static readonly NSchema NGaugeScaleLabelsOrientationExampleSchema;
 
-        #endregion
+		#endregion
+
+		#region Static Methods
+
+		private static NBorder CreateBorder()
+		{
+			return NBorder.CreateThreeColorBorder(NColor.LightGray, NColor.White, NColor.DarkGray, 10, 10);
+		}
+
+		#endregion
+
+		#region Constants
+
+		private static readonly NSize defaultLinearVerticalGaugeSize = new NSize(100, 300);
+
+		#endregion
 	}
 }

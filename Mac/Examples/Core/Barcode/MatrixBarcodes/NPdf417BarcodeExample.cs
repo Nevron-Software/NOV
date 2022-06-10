@@ -29,7 +29,7 @@ namespace Nevron.Nov.Examples.Barcode
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{

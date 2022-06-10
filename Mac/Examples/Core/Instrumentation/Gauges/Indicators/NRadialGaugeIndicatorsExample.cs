@@ -1,6 +1,7 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Gauge
@@ -8,7 +9,7 @@ namespace Nevron.Nov.Examples.Gauge
     /// <summary>
 	/// This example demonstrates how to add indicators to a radial gauge 
     /// </summary>
-	public class NRadialGaugeIndicatorsExample : NInstrumentationExampleBase
+	public class NRadialGaugeIndicatorsExample : NExampleBase
     {
         #region Constructors
 
@@ -23,17 +24,17 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NRadialGaugeIndicatorsExample()
         {
-			NRadialGaugeIndicatorsExampleSchema = NSchema.Create(typeof(NRadialGaugeIndicatorsExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NRadialGaugeIndicatorsExampleSchema = NSchema.Create(typeof(NRadialGaugeIndicatorsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
-			stack.HorizontalPlacement = Layout.ENHorizontalPlacement.Left;
+			stack.HorizontalPlacement = ENHorizontalPlacement.Left;
 
 			NStackPanel controlStack = new NStackPanel();
 			stack.Add(controlStack);
@@ -83,7 +84,6 @@ namespace Nevron.Nov.Examples.Gauge
 
 			return stack;
 		}
-
         protected override NWidget CreateExampleControls()
         {
 			NStackPanel stack = new NStackPanel();
@@ -159,12 +159,10 @@ namespace Nevron.Nov.Examples.Gauge
 
             return stack;
         }
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates how to create range and needle gauge indicators.</p>";
 		}
-
 
 		#endregion 
 
@@ -210,10 +208,6 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion 
 
-		#region Event Handlers
-
-		#endregion
-
 		#region Fields
 
 		NRadialGauge m_RadialGauge;
@@ -234,13 +228,15 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NRadialGaugeIndicatorsExampleSchema;
 
-        #endregion
+		#endregion
 
-		#region Default Values
+		#region Constants
+
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
 
 		#endregion
 	}

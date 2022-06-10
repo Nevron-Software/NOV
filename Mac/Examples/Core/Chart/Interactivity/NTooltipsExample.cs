@@ -1,7 +1,5 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
-using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Chart
@@ -9,7 +7,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Tooltip Example
 	/// </summary>
-	public class NTooltipsExample : NChartExampleBase
+	public class NTooltipsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -25,17 +23,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NTooltipsExample()
 		{
-			NTooltipsExampleSchema = NSchema.Create(typeof(NTooltipsExample), NChartExampleBase.NChartExampleBaseSchema);
+			NTooltipsExampleSchema = NSchema.Create(typeof(NTooltipsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreatePieChartView();
@@ -74,10 +68,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -97,10 +87,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create tooltips attached to chart objects.</p>";
@@ -147,9 +133,20 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NTooltipsExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreatePieChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Pie);
+			return chartView;
+		}
 
 		#endregion
 	}

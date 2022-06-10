@@ -2,13 +2,11 @@
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NResizeInGroupsExample : NDiagramExampleBase
+    public class NResizeInGroupsExample : NExampleBase
     {
         #region Constructors
 
@@ -24,13 +22,35 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NResizeInGroupsExample()
         {
-            NResizeInGroupsExampleSchema = NSchema.Create(typeof(NResizeInGroupsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NResizeInGroupsExampleSchema = NSchema.Create(typeof(NResizeInGroupsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -56,10 +76,9 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
             // create all shapes
             NBasicShapeFactory basicShapes = new NBasicShapeFactory();
             NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
@@ -72,21 +91,21 @@ namespace Nevron.Nov.Examples.Diagram
             drawRect.Relative = true;
             group.Geometry.Add(drawRect);
             group.Geometry.Fill = new NColorFill(NColor.LightCoral);
-            group.SetBounds(new Nov.Graphics.NRectangle(50, 50, 230, 330));
+            group.SetBounds(new NRectangle(50, 50, 230, 330));
 
             // create a rectangle that is scaled and repositioned
             NShape rect1 = basicShapes.CreateShape(ENBasicShape.Rectangle);
             rect1.Text = "Scale and Reposition";
             group.Shapes.Add(rect1);
             rect1.ResizeInGroup = ENResizeInGroup.ScaleAndReposition;
-            rect1.SetBounds(new Nov.Graphics.NRectangle(10, 10, 100, 100));
+            rect1.SetBounds(new NRectangle(10, 10, 100, 100));
 
             // create a rectangle that is only repositioned
             NShape rect2 = basicShapes.CreateShape(ENBasicShape.Rectangle);
             rect2.Text = "Reposition Only";
             group.Shapes.Add(rect2);
             rect2.ResizeInGroup = ENResizeInGroup.RepositionOnly;
-            rect2.SetBounds(new Nov.Graphics.NRectangle(120, 120, 100, 100));
+            rect2.SetBounds(new NRectangle(120, 120, 100, 100));
 
             // create a 1D shape
 			NShape arrow = connectorShapes.CreateShape(ENConnectorShape.Single45DegreesArrow);
@@ -96,8 +115,14 @@ namespace Nevron.Nov.Examples.Diagram
             arrow.SetEndPoint(new NPoint(220, 290));
 
             // add the group
-            m_DrawingDocument.Content.ActivePage.Items.Add(group);
+            drawingDocument.Content.ActivePage.Items.Add(group);
         }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

@@ -30,7 +30,7 @@ namespace Nevron.Nov.Examples.Grid
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
         {
@@ -116,11 +116,11 @@ namespace Nevron.Nov.Examples.Grid
                 switch (gender)
                 {
                     case ENGender.Male:
-                        image.Image = Nevron.Nov.Examples.NResources.Image__256x256_MaleIcon_jpg;
+                        image.Image = NResources.Image__256x256_MaleIcon_jpg;
                         break;
 
                     case ENGender.Female:
-                        image.Image = Nevron.Nov.Examples.NResources.Image__256x256_FemaleIcon_jpg;
+                        image.Image = NResources.Image__256x256_FemaleIcon_jpg;
                         break;
 
                     default:

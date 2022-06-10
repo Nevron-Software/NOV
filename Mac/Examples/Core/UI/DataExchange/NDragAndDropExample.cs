@@ -19,7 +19,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -31,29 +31,17 @@ namespace Nevron.Nov.Examples.UI
 
 				NContentHolder textSource1 = CreateDemoElement("Drag Source Text 1");
 				NDataObject dataObject1 = new NDataObject();
-				dataObject1.SetData(NDataFormat.TextFormat, "Text string 1");
+				dataObject1.SetData(NDataFormat.TextFormatString, "Text string 1");
 				textSource1.Tag = dataObject1;
 				sourcesStack.Add(textSource1);
 				textSource1.MouseDown += new Function<NMouseButtonEventArgs>(OnSourceMouseDown);
 
 				NContentHolder textSource2 = CreateDemoElement("Drag Source Text 2");
 				NDataObject dataObject2 = new NDataObject();
-				dataObject2.SetData(NDataFormat.TextFormat, "Text string 2");
+				dataObject2.SetData(NDataFormat.TextFormatString, "Text string 2");
 				textSource2.Tag = dataObject2;
 				sourcesStack.Add(textSource2);
 				textSource2.MouseDown += new Function<NMouseButtonEventArgs>(OnSourceMouseDown);
-
-				//NContentHolder widgetSource1 = CreateDemoElement("Drag Button");
-				//widgetSource1.Tag = new NContentDataObject(new NButton("Widget In Drag and Drop"));
-				//sourcesStack.Add(widgetSource1);
-				//widgetSource1.MouseDown += new Function<NMouseEventArgs>(OnSourceMouseDown);
-
-				//NContentHolder compositeSource1 = CreateDemoElement("Composite Data Object");
-				//compositeSource1.Tag = new NCompositeDataObject(
-				//    new NContentDataObject(new NButton("Widget In Drag and Drop")),
-				//    new NContentDataObject("Hello there"));
-				//sourcesStack.Add(compositeSource1);
-				//compositeSource1.MouseDown += new Function<NMouseEventArgs>(OnSourceMouseDown);
 			}
 
 			// targets
@@ -156,7 +144,7 @@ namespace Nevron.Nov.Examples.UI
 		private void OnDragOverTextTarget(NDragActionEventArgs args)
 		{
 			// first you need to check whether the data object is of interest
-			if (args.DataObject.ContainsData(NDataFormat.TextFormat))
+			if (args.DataObject.ContainsData(NDataFormat.TextFormatString))
 			{
 				// if the Ctrl is pressed, you must typically copy the data if you can.
 				if (NKeyboard.DefaultCommandPressed & (args.AllowedEffect & ENDragDropEffects.Copy) == ENDragDropEffects.Copy)
@@ -189,7 +177,7 @@ namespace Nevron.Nov.Examples.UI
 		}
 		private void OnDragDropTextTarget(NDragEventArgs args)
 		{
-			object data = args.DataObject.GetData(NDataFormat.TextFormat);
+			object data = args.DataObject.GetData(NDataFormat.TextFormatString);
 			if (data != null)
 			{
 				NContentHolder contentHolder = args.CurrentTargetNode as NContentHolder;

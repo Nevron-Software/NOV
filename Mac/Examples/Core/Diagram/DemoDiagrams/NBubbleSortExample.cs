@@ -2,10 +2,11 @@
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NBubbleSortExample : NDiagramExampleBase
+    public class NBubbleSortExample : NExampleBase
     {
         #region Constructors
 
@@ -21,19 +22,47 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NBubbleSortExample()
         {
-            NBubbleSortExampleSchema = NSchema.Create(typeof(NBubbleSortExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NBubbleSortExampleSchema = NSchema.Create(typeof(NBubbleSortExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
         {
-            base.InitDiagram();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
 
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+		protected override NWidget CreateExampleControls()
+		{
+            return null;
+		}
+		protected override string GetExampleDescription()
+        {
+            return @"
+<p>
+	Demonstrates how to create a flowchart that describes the Bubble Sort algorithm.
+</p>";
+        }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
             NStyleSheet sheet = new NStyleSheet();
-            m_DrawingDocument.StyleSheets.Add(sheet);
+            drawingDocument.StyleSheets.Add(sheet);
 
             // create a rule that applies to the TextBlocks of all shapes with user class Connectors
 			string connectorClass = NDR.StyleSheetNameConnectors;
@@ -50,7 +79,7 @@ namespace Nevron.Nov.Examples.Diagram
             }
 
             // get drawing and active page
-            NDrawing drawing = m_DrawingDocument.Content;
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide ports and grid
@@ -58,7 +87,7 @@ namespace Nevron.Nov.Examples.Diagram
             drawing.ScreenVisibility.ShowPorts = false;
 
             NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-			NFlowchartingShapeFactory flowChartingShapesFactory = new NFlowchartingShapeFactory();
+			NFlowchartShapeFactory flowChartingShapesFactory = new NFlowchartShapeFactory();
             NConnectorShapeFactory connectorShapesFactory = new NConnectorShapeFactory();
 
             // create title
@@ -230,17 +259,10 @@ namespace Nevron.Nov.Examples.Diagram
             connector13.GlueBeginToPort(shapeDecJ.GetPortByName(("Right")));
             connector13.GlueEndToGeometryContour(connector4, 0.5f);
         }
-        protected override string GetExampleDescription()
-        {
-            return @"
-<p>
-	Demonstrates how to create a flowchart that describes the Bubble Sort algorithm.
-</p>";
-        }
 
         #endregion
 
-        #region Protected - Grid Cells
+        #region Implementation
 
         /// <summary>
         /// 
@@ -285,6 +307,8 @@ namespace Nevron.Nov.Examples.Diagram
         #endregion
 
         #region Fields
+
+        private NDrawingView m_DrawingView;
 
         private NPoint m_GridOrigin = new NPoint(30, 30);
         private NSize m_GridCellSize = new NSize(180, 70);

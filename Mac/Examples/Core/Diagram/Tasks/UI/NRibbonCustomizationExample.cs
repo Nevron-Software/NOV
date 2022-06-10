@@ -1,15 +1,13 @@
-﻿using System;
-
-using Nevron.Nov.Dom;
-using Nevron.Nov.Diagram;
+﻿using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.DrawingCommands;
-using Nevron.Nov.Diagram.UI;
-using Nevron.Nov.UI;
 using Nevron.Nov.Diagram.Shapes;
+using Nevron.Nov.Diagram.UI;
+using Nevron.Nov.Dom;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NRibbonCustomizationExample : NDiagramExampleBase
+	public class NRibbonCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -25,16 +23,30 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NRibbonCustomizationExample()
 		{
-			NRibbonCustomizationExampleSchema = NSchema.Create(typeof(NRibbonCustomizationExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NRibbonCustomizationExampleSchema = NSchema.Create(typeof(NRibbonCustomizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Public Overrides
+		#region Example
 
-		public override void Initialize()
+		protected override NWidget CreateExampleContent()
 		{
-			base.Initialize();
+			// Create a simple drawing
+			m_DrawingView = new NDrawingView();
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			// Create and customize a ribbon UI builder
+			m_RibbonBuilder = new NDiagramRibbonBuilder();
 
 			// Add the custom command action to the drawing view's commander
 			m_DrawingView.Commander.Add(new CustomCommandAction());
@@ -53,25 +65,7 @@ namespace Nevron.Nov.Examples.Diagram
 			// Insert the custom ribbon group at the beginning of the home tab page
 			homeTabBuilder.RibbonGroupBuilders.Insert(0, new CustomRibbonGroupBuilder());
 
-			// Remove the drawing view from its parent and recreate the UI
-			m_DrawingView.ParentNode.RemoveChild(m_DrawingView);
-			m_ExampleTabPage.Content = m_RibbonBuilder.CreateUI(m_DrawingView);
-		}
-
-		#endregion
-
-		#region Protected Overrides - Example
-
-		protected override void InitDiagram()
-		{
-			base.InitDiagram();
-
-			NBasicShapeFactory factory = new NBasicShapeFactory();
-			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
-			shape.SetBounds(100, 100, 150, 100);
-
-			NPage activePage = m_DrawingDocument.Content.ActivePage;
-			activePage.Items.Add(shape);
+			return m_RibbonBuilder.CreateUI(m_DrawingView);
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -79,10 +73,23 @@ namespace Nevron.Nov.Examples.Diagram
 		}
 		protected override string GetExampleDescription()
 		{
-			return @"
-<p>This example demonstrates how to customize the NOV diagram ribbon.</p>
-";
+			return @"<p>This example demonstrates how to customize the NOV diagram ribbon.</p>";
 		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			NBasicShapeFactory factory = new NBasicShapeFactory();
+			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
+			shape.SetBounds(100, 100, 150, 100);
+			drawingDocument.Content.ActivePage.Items.Add(shape);
+		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
+		private NDiagramRibbonBuilder m_RibbonBuilder;
 
 		#endregion
 
@@ -95,20 +102,27 @@ namespace Nevron.Nov.Examples.Diagram
 
 		#endregion
 
-		#region Commands
+		#region Constants
 
-		public static readonly NCommand CustomCommand = NCommand.Create(typeof(NRibbonCustomizationExample), "CustomCommand", "Custom Command");
+		public static readonly NCommand CustomCommand = NCommand.Create(typeof(Nevron.Nov.Examples.Diagram.NRibbonCustomizationExample),
+			"CustomCommand", "Custom Command");
 
 		#endregion
 
-		#region Nested Types - Custom Ribbon Group Builder
+		#region Nested Types
 
 		public class CustomRibbonGroupBuilder : NRibbonGroupBuilder
 		{
+			#region Constructors
+
 			public CustomRibbonGroupBuilder()
 				: base("Custom Group", NResources.Image_Ribbon_16x16_smiley_png)
 			{
 			}
+
+			#endregion
+
+			#region Protected Overrides
 
 			protected override void AddRibbonGroupItems(NRibbonGroupItemCollection items)
 			{
@@ -120,11 +134,9 @@ namespace Nevron.Nov.Examples.Diagram
 				items.Add(CreateRibbonButton(NResources.Image_Ribbon_32x32_smiley_png,
 					NResources.Image_Ribbon_16x16_smiley_png, CustomCommand));
 			}
+
+			#endregion
 		}
-
-		#endregion
-
-		#region Nested Types - Custom Command Action
 
 		public class CustomCommandAction : NDrawingCommandAction
 		{
