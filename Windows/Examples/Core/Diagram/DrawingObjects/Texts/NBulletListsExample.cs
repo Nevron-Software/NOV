@@ -4,14 +4,10 @@ using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
-using System.Text;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NBulletListsExample : NDiagramExampleBase
+	public class NBulletListsExample : NExampleBase
     {
         #region Constructors
 
@@ -27,25 +23,43 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NBulletListsExample()
         {
-            NBulletListsExampleSchema = NSchema.Create(typeof(NBulletListsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NBulletListsExampleSchema = NSchema.Create(typeof(NBulletListsExample), NExampleBaseSchema);
         }
 
-        #endregion
+		#endregion
 
-        #region Overrides from NDiagramExampleBase
+		#region Example
 
-        protected override string GetExampleDescription()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
         {
-            return @"<p>
-						Demonstrates how to add bullets lists in text content.
-					</p>";
+            return @"<p>Demonstrates how to add bullets lists in text content.</p>";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
 
             // hide the grid
             drawing.ScreenVisibility.ShowGrid = false;
@@ -61,18 +75,34 @@ namespace Nevron.Nov.Examples.Diagram
 			textBlock.Content.Blocks.Clear();
 			textBlock.Content.HorizontalAlignment = ENAlign.Left;
 			AddFormattedTextToContent(textBlock.Content);
+
 			drawing.ActivePage.Items.Add(shape1);
 		}
 
 		#endregion
 
-		#region Implementation 
+		#region Fields
+
+		private NDrawingView m_DrawingView;
+
+		#endregion
+
+		#region Schema
+
+		/// <summary>
+		/// Schema associated with NBulletListsExample.
+		/// </summary>
+		public static readonly NSchema NBulletListsExampleSchema;
+
+		#endregion
+
+		#region Static Methods
 
 		/// <summary>
 		/// Adds rich formatted text to the specified text block content
 		/// </summary>
 		/// <param name="content"></param>
-		private void AddFormattedTextToContent(NTextBlockContent content)
+		private static void AddFormattedTextToContent(NTextBlockContent content)
 		{
 			content.Blocks.Add(GetTitleParagraph("Bullet lists allow you to apply automatic numbering on paragraphs or groups of blocks.", 1));
 
@@ -81,8 +111,6 @@ namespace Nevron.Nov.Examples.Diagram
 				content.Blocks.Add(GetTitleParagraph("Following are bullet lists with different formatting", 2));
 
 				ENBulletListTemplateType[] values = NEnum.GetValues<ENBulletListTemplateType>();
-				string[] names = NEnum.GetNames<ENBulletListTemplateType>();
-
 				string itemText = "Bullet List Item";
 
 				for (int i = 0; i < values.Length - 1; i++)
@@ -132,12 +160,6 @@ namespace Nevron.Nov.Examples.Diagram
 				}
 			}
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="text"></param>
-		/// <param name="level"></param>
-		/// <returns></returns>
 		internal static NParagraph GetTitleParagraphNoBorder(string text, int level)
 		{
 			double fontSize = 10;
@@ -204,14 +226,5 @@ namespace Nevron.Nov.Examples.Diagram
 		}
 
 		#endregion
-
-		#region Schema
-
-		/// <summary>
-		/// Schema associated with NBulletListsExample.
-		/// </summary>
-		public static readonly NSchema NBulletListsExampleSchema;
-
-        #endregion
-    }
+	}
 }

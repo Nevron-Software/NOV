@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// XY Scatter Point Example
 	/// </summary>
-	public class NXYScatterPointExample : NChartExampleBase
+	public class NXYScatterPointExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NXYScatterPointExample()
 		{
-			NXYScatterPointExampleSchema = NSchema.Create(typeof(NXYScatterPointExample), NChartExampleBase.NChartExampleBaseSchema);
+			NXYScatterPointExampleSchema = NSchema.Create(typeof(NXYScatterPointExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "XY Scatter Point";
@@ -77,10 +74,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -100,12 +93,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a xy scatter point chart.</p>";
@@ -176,7 +163,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NXYScatterPointExampleSchema;
 

@@ -1,18 +1,17 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Chart.Export;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
-using System.IO;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Pdf Export Example
 	/// </summary>
-	public class NPdfExportExample : NChartExampleBase
+	public class NPdfExportExample : NExampleBase
 	{
 		#region Constructors
 
@@ -28,26 +27,23 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NPdfExportExample()
 		{
-			NPdfExportExampleSchema = NSchema.Create(typeof(NPdfExportExample), NChartExampleBase.NChartExampleBaseSchema);
+			NPdfExportExampleSchema = NSchema.Create(typeof(NPdfExportExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			m_ChartView = new NChartView();
+			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
-			chartView.Surface.Titles[0].Text = "Pdf Export Example";
+			m_ChartView.Surface.Titles[0].Text = "Pdf Export Example";
 
 			// configure chart
-			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
+			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
 			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XYLinear);
 
@@ -94,16 +90,12 @@ namespace Nevron.Nov.Examples.Chart
 				double y2 = value / interval;
 
 				range.DataPoints.Add(new NRangeDataPoint(x1, y1, x2, y2));
-			}			
+			}
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
 
-			return chartView;
+			return m_ChartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -115,10 +107,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to export the chart to Pdf file or stream.</p>";
@@ -128,7 +116,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Event Handlers
 
-		void OnSaveAsPdfFileButtonClick(NEventArgs arg)
+		private void OnSaveAsPdfFileButtonClick(NEventArgs arg)
 		{
 			NChartPdfExporter pdfExporter = new NChartPdfExporter(m_ChartView.Document);
 			pdfExporter.SaveAsPdf(new NRectangle(0, 0, 400, 300));
@@ -141,21 +129,17 @@ namespace Nevron.Nov.Examples.Chart
             // imageExporter.SaveToStream(memoryStream, NImageFormat.Png, new NSize(400, 300), 96);
             // pdfExporter.SaveToStream(memoryStream, new NRectangle(0, 0, 400, 300), 96);
             // byte[] imageBytes = memoryStream.ToArray();
-
 		}
-
-    	#endregion
-
-		#region Implementation
 
 		#endregion
 
 		#region Fields
 
+		private NChartView m_ChartView;
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NPdfExportExampleSchema;
 

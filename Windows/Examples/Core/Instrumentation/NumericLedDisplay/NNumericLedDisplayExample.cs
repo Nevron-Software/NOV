@@ -1,16 +1,18 @@
 ﻿using System;
+
 using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
-using Nevron.Nov.UI;	
+using Nevron.Nov.Layout;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates the functionality of the NNumericDisplayPanel.
-    /// </summary>
-    public class NNumericLedDisplayExample : NInstrumentationExampleBase
+	/// </summary>
+	public class NNumericLedDisplayExample : NExampleBase
     {
         #region Constructors
 
@@ -25,18 +27,19 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NNumericLedDisplayExample()
         {
-			NNumericLedDisplayExampleSchema = NSchema.Create(typeof(NNumericLedDisplayExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NNumericLedDisplayExampleSchema = NSchema.Create(typeof(NNumericLedDisplayExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
+			stack.Unregistered += OnStackUnregistered;
 
-			stack.HorizontalPlacement = Layout.ENHorizontalPlacement.Left;
+			stack.HorizontalPlacement = ENHorizontalPlacement.Left;
 
 			m_NumericDisplay1 = CreateNumericLedDisplay();
 			stack.Add(m_NumericDisplay1);
@@ -53,14 +56,6 @@ namespace Nevron.Nov.Examples.Gauge
 			
 			return stack;
 		}
-
-		protected override void OnUnregistered()
-		{
-			base.OnUnregistered();
-
-			m_DataFeedTimer.Stop();
-		}
-
         protected override NWidget CreateExampleControls()
         {
             NStackPanel stack = new NStackPanel();
@@ -120,7 +115,6 @@ namespace Nevron.Nov.Examples.Gauge
 
 			return stack;
         }
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates the properties of the numeric led display.</p>";
@@ -167,7 +161,6 @@ namespace Nevron.Nov.Examples.Gauge
             }
         }
 
-
 		void OnDataFeedTimerTick()
 		{
 			double value1 = -50 + m_Random.Next(10000) / 100.0;
@@ -193,10 +186,10 @@ namespace Nevron.Nov.Examples.Gauge
 
 		void OnLitFillButtonClick(NEventArgs arg)
 		{
-			NEditorWindow.CreateForType<NFill>(
+			NEditorWindow.CreateForType(
                 (NFill)m_NumericDisplay1.LitFill.DeepClone(), 
                 null,
-                OwnerWindow, 
+                m_NumericDisplay1.DisplayWindow, 
                 false, 
                 OnLitFillEdited).Open();
 		}
@@ -210,10 +203,10 @@ namespace Nevron.Nov.Examples.Gauge
 
 		void OnDimFillButtonClick(NEventArgs arg)
 		{
-			NEditorWindow.CreateForType<NFill>(
+			NEditorWindow.CreateForType(
                 (NFill)m_NumericDisplay1.DimFill.DeepClone(), 
                 null,
-                OwnerWindow, 
+				m_NumericDisplay1.DisplayWindow, 
                 false, 
                 OnDimFillEdited).Open();
 		}
@@ -315,6 +308,11 @@ namespace Nevron.Nov.Examples.Gauge
 			m_NumericDisplay3.AttachSignToNumber = m_AttachSignToNumberCheckBox.Checked;
 		}
 
+		private void OnStackUnregistered(NEventArgs arg)
+		{
+			m_DataFeedTimer.Stop();
+		}
+
 		#endregion
 
 		#region Fields
@@ -336,7 +334,7 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NNumericLedDisplayExampleSchema;
 

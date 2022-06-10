@@ -1,10 +1,12 @@
 ﻿using System;
+
 using Nevron.Nov.Dom;
 using Nevron.Nov.Schedule;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NRecurrenceStressTestExample : NScheduleExampleBase
+	public class NRecurrenceStressTestExample : NExampleBase
 	{
 		#region Constructors
 
@@ -20,14 +22,50 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NRecurrenceStressTestExample()
 		{
-			NRecurrenceStressTestExampleSchema = NSchema.Create(typeof(NRecurrenceStressTestExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NRecurrenceStressTestExampleSchema = NSchema.Create(typeof(NRecurrenceStressTestExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			m_ScheduleView = scheduleViewWithRibbon.View;
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
+
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>
+    This example demonstrates how NOV Schedule deals with a large number of occurrences of recurring appointments.
+</p>
+";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
 		{
 			DateTime today = DateTime.Today;
 			DateTime startDate = new DateTime(today.Year, 1, 1);
@@ -52,14 +90,12 @@ namespace Nevron.Nov.Examples.Schedule
 			// Swicth schedule to week view mode
 			schedule.ViewMode = ENScheduleViewMode.Week;
 		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-    This example demonstrates how NOV Schedule deals with a large number of occurrences of recurring appointments.
-</p>
-";
-		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
 
 		#endregion
 

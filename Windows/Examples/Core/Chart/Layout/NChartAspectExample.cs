@@ -1,16 +1,15 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
-using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Chart Aspect example
 	/// </summary>
-	public class NChartAspectExample : NChartExampleBase
+	public class NChartAspectExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,26 +25,23 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NChartAspectExample()
 		{
-			NChartAspectExampleSchema = NSchema.Create(typeof(NChartAspectExample), NChartExampleBase.NChartExampleBaseSchema);
+			NChartAspectExampleSchema = NSchema.Create(typeof(NChartAspectExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			m_ChartView = new NChartView();
+			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
-			chartView.Surface.Titles[0].Text = "Chart Aspect";
+			m_ChartView.Surface.Titles[0].Text = "Chart Aspect";
 
 			// configure chart
-			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
+			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
 			chart.FitMode = ENCartesianChartFitMode.Aspect;
 
@@ -109,14 +105,10 @@ namespace Nevron.Nov.Examples.Chart
 				point.DataPoints.Add(new NPointDataPoint(x, y));
 			}
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
 
-			return chartView;
+			return m_ChartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -140,6 +132,14 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how change the chart aspect ratio.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
 
 		private NComboBox CreateProportionComboBox()
 		{
@@ -153,11 +153,6 @@ namespace Nevron.Nov.Examples.Chart
 			comboBox.SelectedIndex = 0;
 
 			return comboBox;
-		}
-		
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates how change the chart aspect ratio.</p>";
 		}
 
 		#endregion
@@ -194,12 +189,13 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Fields
 
-		NComboBox m_ProportionXComboBox;
-		NComboBox m_ProportionYComboBox;
+		private NChartView m_ChartView;
+		private NComboBox m_ProportionXComboBox;
+		private NComboBox m_ProportionYComboBox;
 			
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NChartAspectExampleSchema;
 

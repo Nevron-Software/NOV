@@ -1,16 +1,13 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
-using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Axis labels orientation example
 	/// </summary>
-	public class NAxisLabelsOrientationtExample : NChartExampleBase
+	public class NAxisLabelsOrientationtExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,26 +23,23 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAxisLabelsOrientationtExample()
 		{
-			NAxisLabelsOrientationtExampleSchema = NSchema.Create(typeof(NAxisLabelsOrientationtExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisLabelsOrientationtExampleSchema = NSchema.Create(typeof(NAxisLabelsOrientationtExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			m_ChartView = new NChartView();
+			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
-			chartView.Surface.Titles[0].Text = "Axis Labels Orientation";
+			m_ChartView.Surface.Titles[0].Text = "Axis Labels Orientation";
 
 			// configure chart
-			m_Chart = (NCartesianChart)chartView.Surface.Charts[0];
+			m_Chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
 			m_Chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.PrimaryAndSecondaryLinear);
 
@@ -85,15 +79,10 @@ namespace Nevron.Nov.Examples.Chart
 				linearScale.Labels.OverlapResolveLayouts = new NDomArray<ENLevelLabelsLayout>(new ENLevelLabelsLayout[] { ENLevelLabelsLayout.Stagger2 } );
 			}
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
 
-			return chartView;
+			return m_ChartView;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -125,7 +114,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to change the orientation of axis labels.</p>";
@@ -157,6 +145,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Fields
 
+		private NChartView m_ChartView;
 		NCartesianChart m_Chart;
 		NComboBox m_AngleModeComboBox;
 		NNumericUpDown m_CustomAngleNumericUpDown;
@@ -164,7 +153,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisLabelsOrientationtExampleSchema;
 

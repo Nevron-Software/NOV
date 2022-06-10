@@ -4,10 +4,11 @@ using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NInstallProgramExample : NDiagramExampleBase
+    public class NInstallProgramExample : NExampleBase
     {
         #region Constructors
 
@@ -23,19 +24,44 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NInstallProgramExample()
         {
-            NInstallProgramExampleSchema = NSchema.Create(typeof(NInstallProgramExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NInstallProgramExampleSchema = NSchema.Create(typeof(NInstallProgramExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
         {
-            base.InitDiagram();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
 
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
+        protected override string GetExampleDescription()
+        {
+            return @"<p>Demonstrates how to create a flowchart that describes a Software Installation process.</p>";
+        }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
             NStyleSheet sheet = new NStyleSheet();
-            m_DrawingDocument.StyleSheets.Add(sheet);
+            drawingDocument.StyleSheets.Add(sheet);
 
             // create a rule that applies to the geometries of all shapes with user class Connectors
             const string connectorsClass = "Connector";
@@ -84,7 +110,7 @@ namespace Nevron.Nov.Examples.Diagram
             }
 
             // get drawing and active page
-            NDrawing drawing = m_DrawingDocument.Content;
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide ports and grid
@@ -92,7 +118,7 @@ namespace Nevron.Nov.Examples.Diagram
             drawing.ScreenVisibility.ShowPorts = false;
 
             NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-            NFlowchartingShapeFactory flowChartingShapesFactory = new NFlowchartingShapeFactory();
+            NFlowchartShapeFactory flowChartingShapesFactory = new NFlowchartShapeFactory();
             NConnectorShapeFactory connectorShapesFactory = new NConnectorShapeFactory();
 
             NRectangle bounds;
@@ -182,17 +208,10 @@ namespace Nevron.Nov.Examples.Diagram
             CreateConnector(restartNeeded, "Right", restart, "Left", ENConnectorShape.Line, "Yes");
             CreateConnector(restartNeeded, "Bottom", run, "Top", ENConnectorShape.Line, "No");
         }
-        protected override string GetExampleDescription()
-        {
-                    return @"
-<p>
-            Demonstrates how to create a flowchart that describes a Software Installation process.
-</p>";
-        }
 
         #endregion
 
-        #region Implementation - Create Shapes
+        #region Implementation
 
         /// <summary>
         /// Creates a predefined basic shape
@@ -213,7 +232,7 @@ namespace Nevron.Nov.Examples.Diagram
             shape.UserClass = userClass;
 
             // add to active page
-            m_DrawingDocument.Content.ActivePage.Items.Add(shape);
+            m_DrawingView.ActivePage.Items.Add(shape);
             return shape;
         }
         /// <summary>
@@ -227,7 +246,7 @@ namespace Nevron.Nov.Examples.Diagram
         private NShape CreateFlowChartingShape(ENFlowchartingShape flowChartShape, NRectangle bounds, string text, string userClass)
         {
             // create shape
-            NShape shape = new NFlowchartingShapeFactory().CreateShape(flowChartShape);
+            NShape shape = new NFlowchartShapeFactory().CreateShape(flowChartShape);
 
             // set bounds, text and user class
             shape.SetBounds(bounds);
@@ -235,7 +254,7 @@ namespace Nevron.Nov.Examples.Diagram
             shape.UserClass = userClass;
 
             // add to active page
-            m_DrawingDocument.Content.ActivePage.Items.Add(shape);
+            m_DrawingView.ActivePage.Items.Add(shape);
             return shape;
         }
         /// <summary>
@@ -287,7 +306,7 @@ namespace Nevron.Nov.Examples.Diagram
             }
 
             // add to active page
-            m_DrawingDocument.Content.ActivePage.Items.Add(connector);
+            m_DrawingView.ActivePage.Items.Add(connector);
 
             return connector;
         }
@@ -295,6 +314,8 @@ namespace Nevron.Nov.Examples.Diagram
         #endregion
 
         #region Fields
+
+        private NDrawingView m_DrawingView;
 
         private NPoint m_GridOrigin = new NPoint(30, 30);
         private NSize m_GridCellSize = new NSize(180, 70);

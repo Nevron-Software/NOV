@@ -1,17 +1,17 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Chart.Tools;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Hit testing Example
 	/// </summary>
-	public class NHitTestingExample : NChartExampleBase
+	public class NHitTestingExample : NExampleBase
 	{
 		#region Constructors
 
@@ -27,20 +27,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NHitTestingExample()
 		{
-			NHitTestingExampleSchema = NSchema.Create(typeof(NHitTestingExample), NChartExampleBase.NChartExampleBaseSchema);
+			NHitTestingExampleSchema = NSchema.Create(typeof(NHitTestingExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Hit Testing";
@@ -108,23 +105,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-
-		public static void OnDataPointMouseDown(NMouseButtonEventArgs arg)
-		{
-			if (arg.TargetNode is NDataPoint)
-			{
-				((NDataPoint)arg.TargetNode).Fill = new NColorFill(NColor.Blue);
-				((NDataPoint)arg.TargetNode).Stroke = new NStroke(2, NColor.Blue);
-			}
-			else if (arg.TargetNode is NSeries)
-			{
-				((NSeries)arg.TargetNode).Fill = new NColorFill(NColor.Blue);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -148,10 +128,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to implement chart element hit testing.</p>";
@@ -161,10 +137,6 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Event Handlers
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="arg"></param>
 		void OnResetColorsButtonClick(NEventArgs arg)
 		{
 			int seriesCount = m_Chart.Series.Count;
@@ -183,21 +155,26 @@ namespace Nevron.Nov.Examples.Chart
 				}
 			}
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="arg"></param>
 		void OnHitTestModeComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
 		{
 			m_Chart.HitTestMode = (ENHitTestMode)((NComboBox)arg.TargetNode).SelectedIndex;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="arg"></param>
 		void OnOrientationComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
 		{
 			m_Chart.Orientation = (ENCartesianChartOrientation)((NComboBox)arg.TargetNode).SelectedIndex;
+		}
+	
+		public static void OnDataPointMouseDown(NMouseButtonEventArgs arg)
+		{
+			if (arg.TargetNode is NDataPoint)
+			{
+				((NDataPoint)arg.TargetNode).Fill = new NColorFill(NColor.Blue);
+				((NDataPoint)arg.TargetNode).Stroke = new NStroke(2, NColor.Blue);
+			}
+			else if (arg.TargetNode is NSeries)
+			{
+				((NSeries)arg.TargetNode).Fill = new NColorFill(NColor.Blue);
+			}
 		}
 
 		#endregion
@@ -211,7 +188,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NHitTestingExampleSchema;
 

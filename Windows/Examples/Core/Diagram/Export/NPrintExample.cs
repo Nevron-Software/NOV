@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NPrintExample : NDiagramExampleBase
+	public class NPrintExample : NExampleBase
     {
         #region Constructors
 
@@ -23,16 +23,34 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NPrintExample()
         {
-            NPrintExampleSchema = NSchema.Create(typeof(NPrintExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NPrintExampleSchema = NSchema.Create(typeof(NPrintExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
         protected override NWidget CreateExampleControls()
         {
-			NStackPanel stackPanel = (NStackPanel)base.CreateExampleControls();
+            NStackPanel stackPanel = new NStackPanel();
 
             NButton showPrintDialog = new NButton("Show Print Dialog...");
             showPrintDialog.Click += OnShowPrintDialogButtonClick;
@@ -55,18 +73,17 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
             ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             drawing.ScreenVisibility.ShowGrid = false;
             drawing.ScreenVisibility.ShowPorts = false;
 
             NBasicShapeFactory basisShapes = new NBasicShapeFactory();
-			NFlowchartingShapeFactory flowChartingShapes = new NFlowchartingShapeFactory();
+			NFlowchartShapeFactory flowChartingShapes = new NFlowchartShapeFactory();
             NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
             NShape nonPrintableShape = basisShapes.CreateShape(ENBasicShape.Rectangle);
@@ -118,15 +135,21 @@ namespace Nevron.Nov.Examples.Diagram
 
         void OnShowPrintDialogButtonClick(NEventArgs arg)
         {
-            NDrawingPrintExporter imageExporter = new NDrawingPrintExporter(m_DrawingDocument);
-            imageExporter.ShowDialog(OwnerWindow, true);
+            NDrawingPrintExporter imageExporter = new NDrawingPrintExporter(m_DrawingView.Drawing);
+            imageExporter.ShowDialog(DisplayWindow, true);
         }
         void OnPrintButtonClick(NEventArgs arg)
         {
-            NDrawingPrintExporter imageExporter = new NDrawingPrintExporter(m_DrawingDocument);
+            NDrawingPrintExporter imageExporter = new NDrawingPrintExporter(m_DrawingView.Drawing);
             imageExporter.Print();
         }
-        
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
+
         #endregion
 
         #region Schema

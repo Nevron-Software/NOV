@@ -9,12 +9,12 @@
   </statusColors>
   <categories>
     <!--Chart-->
-    <category name="Chart" namespace="Chart" license="Commercial" color="68348C" status="UPD">
+    <category name="Chart" namespace="Chart" license="Commercial" color="68348C">
       <row>
         <label>
-          NOV Chart allows for the visualization of business, scientific, financial and presentation charts.<br />
-          The control features numerous charting types, advanced axes, support for zooming and scrolling, serialization, image export and others.
-        </label>
+					NOV Chart allows for the visualization of business, scientific, financial and presentation charts.<br />
+					The control features numerous charting types, advanced axes, support for zooming and scrolling, serialization, image export and others.
+				</label>
       </row>
       <row>
         <group name="Axes">
@@ -90,7 +90,7 @@
           <tile name="Error Bar" icon="ErrorBarSeries.png">
             <example name="Standard Error Bar" type="NStandardErrorBarExample" />
           </tile>
-          <tile name="Heat Map" icon="HeatMapSeries.png" status="UPD">
+          <tile name="Heat Map" icon="HeatMapSeries.png">
             <example name="Standard Heat Map" type="NStandardHeatMapExample" />
             <example name="Wafer Chart" type="NWaferChartExample" />
             <example name="Contour Chart" type="NContourChartExample" />
@@ -119,6 +119,7 @@
           </tile>
           <tile name="Range" icon="RangeSeries.png">
             <example name="Standard Range" type="NStandardRangeExample" />
+            <example name="Range Fill Styles" type="NRangeFillStylesExample" />
           </tile>
           <tile name="Renko" icon="RenkoSeries.png">
             <example name="Renko" type="NRenkoExample" />
@@ -212,32 +213,35 @@
       </row>
     </category>
     <!--Diagram-->
-    <category name="Diagram" namespace="Diagram" license="Commercial" color="68348C" status="UPD">
+    <category name="Diagram" namespace="Diagram" license="Commercial" color="68348C">
       <row>
         <label>
-          NOV Diagram for .NET is a fully managed, extensible and powerful diagramming framework, which can help you
-          create feature rich diagramming solutions.
-        </label>
+					NOV Diagram for .NET is a fully managed, extensible and powerful diagramming framework, which can help you
+					create feature rich diagramming solutions.
+				</label>
       </row>
       <row>
         <group name="Demo Apps and Diagrams">
-          <tile name="Diagram Designer" icon="DiagramDesigner.png" status="UPD">
-            <example name="Diagram Designer" type="NDiagramDesignerExample" status="UPD" />
+          <tile name="Diagram Designer" icon="DiagramDesigner.png">
+            <example name="Diagram Designer" type="NDiagramDesignerExample" />
           </tile>
           <tile name="Bubble Sort" icon="DemoBubbleSort.png">
             <example name="Bubble Sort" type="NBubbleSortExample" />
+          </tile>
+          <tile name="Family Tree" icon="FamilyTree.png">
+            <example name="Family Tree" type="NFamilyTreeExample" />
           </tile>
           <tile name="Install Program" icon="DemoFlowChart.png">
             <example name="Install Program" type="NInstallProgramExample" />
           </tile>
           <tile name="UML Class Diagram" icon="UML.png">
-            <example name="UML Class Diagram" type="NUmlClassDiagramExample" status="NEW" />
+            <example name="UML Class Diagram" type="NUmlClassDiagramExample" />
           </tile>
         </group>
         <group name="Drawing Objects">
-          <tile name="Shapes" icon="Shape.png" status="UPD">
-            <example name="Custom Shapes" type="NCustomShapesExample" status="UPD" />
-            <example name="Translation Slaves" type="NTranslationSlavesExample" status="NEW" />
+          <tile name="Shapes" icon="Shape.png">
+            <example name="Custom Shapes" type="NCustomShapesExample" />
+            <example name="Translation Slaves" type="NTranslationSlavesExample" />
             <example name="Widget Hosting" type="NWidgetHostingExample" />
           </tile>
           <tile name="Groups" icon="Group.png">
@@ -253,6 +257,7 @@
           <tile name="Ports" icon="Port.png">
             <example name="Input and Output Ports" type="NInputAndOutputPortsExample" />
             <example name="Inward and Outward Ports" type="NInwardAndOutwardPortsExample" />
+            <example name="Ports Glue" type="NPortsGlueExample" />
           </tile>
           <tile name="Connectors" icon="Connector.png">
             <example name="Routable Connectors" type="NRoutableConnectorsExample" />
@@ -265,10 +270,10 @@
             <example name="Paragraphs" type="NParagraphsExample" />
             <example name="Bullet lists" type="NBulletListsExample" />
           </tile>
-          <tile name="Images" icon="Texts.png">
+          <tile name="Images" icon="Image.png">
             <example name="Image Block" type="NImageBlockExample" />
           </tile>
-          <tile name="Tables" icon="Tables.png" status="NEW">
+          <tile name="Tables" icon="Tables.png">
             <example name="Resize Mode" type="NTableResizeModeExample" />
             <example name="Table Ports" type="NTablePortsExample" />
           </tile>
@@ -299,8 +304,8 @@
             <example name="Connector Shapes" type="NConnectorShapesExample" />
           </tile>
           <!--<tile name="Crows Foot Database Shapes" icon="Database.png">
-				<example name="Crows Foot Database Shapes" type="NCrowsFootDatabaseShapesExample" />
-			</tile>-->
+				    <example name="Crows Foot Database Shapes" type="NCrowsFootDatabaseShapesExample"/>
+			    </tile>-->
           <tile name="Country Shapes" icon="ShapesCountry.png">
             <example name="Country Shapes" type="NCountryShapesExample" />
           </tile>
@@ -322,23 +327,14 @@
           <tile name="EPC Shapes" icon="FlowchartingEPC.png">
             <example name="EPC Shapes" type="NEPCShapesExample" />
           </tile>
-          <tile name="File and Folder Shapes" icon="ShapesFilesAndFolders.png">
-            <example name="File and Folder Shapes" type="NFileAndFolderShapesExample" />
-          </tile>
           <tile name="Fishbone Shapes" icon="Fishbone.png">
             <example name="Fishbone Shapes" type="NFishboneShapesExample" />
-          </tile>
-          <tile name="Flag Shapes" icon="ShapesFlag.png">
-            <example name="Flag Shapes" type="NFlagShapesExample" />
           </tile>
           <tile name="Floor Plan Shapes" icon="ShapesFloorPlan.png">
             <example name="Floor Plan Shapes" type="NFloorPlanShapesExample" />
           </tile>
           <tile name="Flow Charting Shapes" icon="ShapesFlowCharting.png">
             <example name="Flow Charting Shapes" type="NFlowChartingShapesExample" />
-          </tile>
-          <tile name="Food Shapes" icon="ShapesFood.png">
-            <example name="Food Shapes" type="NFoodShapesExample" />
           </tile>
           <tile name="Genogram Shapes" icon="ShapesGenogram.png">
             <example name="Genogram Shapes" type="NGenogramShapesExample" />
@@ -348,15 +344,6 @@
           </tile>
           <tile name="SDL Shapes" icon="FlowchartingSDL.png">
             <example name="SDL Shapes" type="NSDLShapesExample" />
-          </tile>
-          <tile name="Symbol Shapes" icon="ShapesSymbol.png">
-            <example name="Symbol Shapes" type="NSymbolShapesExample" />
-          </tile>
-          <tile name="Traffic Signs Shapes" icon="ShapesTrafficSigns.png">
-            <example name="Traffic Signs Shapes" type="NTrafficSignsShapesExample" />
-          </tile>
-          <tile name="Weather Shapes" icon="ShapesWeather.png">
-            <example name="Weather Shapes" type="NWeatherShapesExample" />
           </tile>
         </group>
       </row>
@@ -368,8 +355,8 @@
           </tile>
           <tile name="Graph Layouts" icon="GraphLayout.png">
             <example name="Barycenter Graph Layout" type="NBarycenterGraphLayoutExample" />
-            <example name="Layered Graph Layout" type="NLayeredGraphLayoutExample" />
-            <example name="Orthogonal Graph Layout" type="NOrthogonalGraphLayoutExample" default="true" />
+            <example name="Layered Graph Layout" type="NLayeredGraphLayoutExample" default="true" />
+            <example name="Orthogonal Graph Layout" type="NOrthogonalGraphLayoutExample" />
             <example name="Radial Graph Layout" type="NRadialGraphLayoutExample" />
             <example name="Single Cycle Graph Layout" type="NSingleCycleGraphLayoutExample" />
             <example name="Spring Graph Layout" type="NSpringGraphLayoutExample" />
@@ -397,15 +384,18 @@
           <tile name="Visio" icon="Visio.png">
             <example name="Visio Drawing Import" type="NVisioDrawingImportExample" />
           </tile>
-          <tile name="GEDCOM" icon="DemoBubbleSort.png" status="UPD">
-            <example name="GEDCOM Import" type="NGedcomImportExample" />
+          <tile name="AutoCAD" icon="AutoCAD.png">
+            <example name="AutoCAD DXF Import" type="NAutoCadDxfImportExample" />
+          </tile>
+          <tile name="GEDCOM Family Trees" icon="FamilyTree.png">
+            <example name="GEDCOM Family Tree Import" type="NGedcomImportExample" />
           </tile>
         </group>
         <group name="Export" maxRows="4">
           <tile name="Visio" icon="Visio.png">
             <example name="Visio Drawing Export" type="NVisioDrawingExportExample" />
           </tile>
-          <tile name="AutoCAD" icon="CAD.png">
+          <tile name="AutoCAD" icon="AutoCAD.png">
             <example name="AutoCAD DXF Export" type="NAutoCadDxfExportExample" />
           </tile>
           <tile name="Image" icon="Image.png">
@@ -424,11 +414,20 @@
             <example name="HTML Export" type="NHtmlExportExample" />
           </tile>
         </group>
-        <group name="Tasks">
+        <group name="Tasks and Themes" maxRows="4">
+          <tile name="Themes" icon="..\Chart\Themes.png">
+            <example name="Drawing Themes" type="NDrawingThemesExample" />
+            <example name="Theme Based Shapes" type="NThemeBasedShapesExample" />
+          </tile>
           <tile name="UI Customization" icon="UICustomization.png">
+            <example name="Ribbon and Command Bars" type="NRibbonAndCommandBarsExample" />
             <example name="Command Bars Customization" type="NCommandBarsCustomizationExample" />
             <example name="Context Menu Customization" type="NContextMenuCustomizationExample" />
             <example name="Ribbon Customization" type="NRibbonCustomizationExample" default="true" />
+            <example name="File Dialogs Customization" type="NFileDialogsCustomizationExample" />
+          </tile>
+          <tile name="Libraries" icon="Library.png">
+            <example name="Libraries Example" type="NLibrariesExample" />
           </tile>
           <tile name="Find and Replace" icon="..\Text\Find.png">
             <example name="Find and Replace" type="NFindAndReplaceExample" />
@@ -446,8 +445,8 @@
     <category name="Grid" namespace="Grid" license="Commercial" color="68348C">
       <row>
         <label>
-          NOV Grid for .NET represents a powerful framework for displaying and editing tabular data in versatile ways.
-        </label>
+					NOV Grid for .NET represents a powerful framework for displaying and editing tabular data in versatile ways.
+				</label>
       </row>
       <row>
         <group name="Data Processing">
@@ -531,11 +530,11 @@
       </row>
     </category>
     <!--Rich Text Editor-->
-    <category name="Rich Text Editor" namespace="Text" license="Commercial" color="68348C" status="UPD">
+    <category name="Rich Text Editor" namespace="Text" license="Commercial" color="68348C">
       <row>
         <label>
-          NOV Text Editor for .NET helps you embed state-of-art, Microsoft Word-like abilities in your .NET applications.
-        </label>
+					NOV Text Editor for .NET helps you embed state-of-art, Microsoft Word-like abilities in your .NET applications.
+				</label>
       </row>
       <row>
         <group name="Model">
@@ -547,6 +546,7 @@
           </tile>
           <tile name="Inlines" icon="Inlines.png">
             <example name="Inline Formatting" type="NInlineFormattingExample" />
+            <example name="Character and Word Spacing" type="NCharacterAndWordSpacingExample" />
             <example name="Image Inlines" type="NImageInlinesExample" />
             <example name="Field Inlines" type="NFieldInlinesExample" />
             <example name="Hyperlink Inlines" type="NHyperlinkInlinesExample" />
@@ -561,6 +561,7 @@
             <example name="Line Breaks" type="NLineBreaksExample" />
             <example name="Tab Stops" type="NTabStopsExample" />
             <example name="Page Breaks" type="NPageBreaksExample" />
+            <example name="Column Breaks" type="NColumnBreaksExample" />
           </tile>
           <tile name="Sections" icon="Sections.png">
             <example name="Header and Footer" type="NHeaderAndFooterExample" />
@@ -576,7 +577,7 @@
             <example name="Table" type="NTableExample" />
             <example name="Table Master Cells" type="NTableMasterCellsExample" />
             <example name="Table Column Types" type="NTableColumnTypesExample" />
-            <example name="Table Cell Orientation" type="NTableCellOrientationExample" status="UPD" />
+            <example name="Table Cell Orientation" type="NTableCellOrientationExample" />
             <example name="Table Borders" type="NTableBordersExample" />
           </tile>
           <tile name="Table of Contents" icon="TOC.png">
@@ -599,18 +600,26 @@
           </tile>
           <tile name="Selection" icon="Selection.png">
             <example name="Selection" type="NSelectionExample" />
-            <example name="Multi Range Selection" type="NMultiRangeSelectionExample" status="NEW" />
+            <example name="Multi Range Selection" type="NMultiRangeSelectionExample" />
           </tile>
           <tile name="Spell Check" icon="SpellCheck.png">
             <example name="Spell Check" type="NSpellCheckExample" />
+            <example name="Custom Spell Checker" type="NCustomSpellCheckerExample" />
           </tile>
           <tile name="UI Customization" icon="UICustomization.png">
+            <example name="Ribbon and Command Bars" type="NRibbonAndCommandBarsExample" />
             <example name="Command Bars Customization" type="NCommandBarsCustomizationExample" />
             <example name="Context Menu Customization" type="NContextMenuCustomizationExample" />
             <example name="Ribbon Customization" type="NRibbonCustomizationExample" default="true" />
+            <example name="File Dialogs Customization" type="NFileDialogsCustomizationExample" />
           </tile>
           <tile name="Miscellaneous" icon="Miscellaneous.png">
             <example name="Bottomless Mode" type="NBottomlessModeExample" default="true" />
+            <example name="Nodepad Editor" type="NNotepadEditorExample" />
+            <example name="Document Statistics" type="NDocumentStatisticsExample" />
+            <example name="Selection" type="NSelectionChangedExample" />
+            <example name="Css Styling" type="NCssStylingExample" />
+            <example name="Custom Clipboard Format" type="NCustomClipboardFormatExample" />
           </tile>
         </group>
         <group name="Formats">
@@ -635,20 +644,27 @@
     <category name="Schedule" namespace="Schedule" license="Commercial" color="68348C">
       <row>
         <label>
-          NOV Schedule is a widget for showing and organizing appointments and recurring events.<br />
-          It provides all the features of Microsoft Outlook Calendar and Google Calendar plus many more.
-        </label>
+					NOV Schedule is a widget for showing and organizing appointments and recurring events.<br />
+					It provides all the features of Microsoft Outlook Calendar and Google Calendar plus many more.
+				</label>
       </row>
       <row>
-        <group name="Model" maxRows="5">
+        <group name="Model">
           <tile name="Appointments" icon="Appointment.png">
             <example name="First Look" type="NAppointmentsExample" />
           </tile>
           <tile name="Categorization" icon="Categorization.png">
             <example name="Categorization" type="NCategorizationExample" />
           </tile>
+          <tile name="Time Indicators" icon="TimeIndicator.png">
+            <example name="Current Time Indicator" type="NCurrentTimeIndicatorExample" />
+            <example name="Fixed Time Indicators" type="NFixedTimeIndicatorsExample" />
+          </tile>
           <tile name="Grouping" icon="Grouping.png">
             <example name="Grouping" type="NGroupingExample" />
+          </tile>
+          <tile name="Interactivity" icon="Tools.png">
+            <example name="Interactivity" type="NInteractivityExample" />
           </tile>
           <tile name="Recurrence" icon="Recurrence.png">
             <example name="Recurrence Rules" type="NRecurrenceRulesExample" />
@@ -672,6 +688,9 @@
           <tile name="Tools" icon="Tools.png">
             <example name="Tools" type="NToolsExample" />
           </tile>
+          <tile name="Ribbon and Command Bars" icon="..\UI\Ribbon.png">
+            <example name="Ribbon and Command Bars" type="NRibbonAndCommandBarsExample" />
+          </tile>
         </group>
         <group name="Customization">
           <tile name="Custom Appointments" icon="Tools.png">
@@ -686,10 +705,10 @@
           <tile name="Command Bars" icon="UICustomization.png">
             <example name="Command Bars Customization" type="NCommandBarsCustomizationExample" />
           </tile>
-          <tile name="Context Menu" icon="UICustomization.png">
+          <tile name="Context Menu" icon="..\UI\ContextMenu.png">
             <example name="Context Menu Customization" type="NContextMenuCustomizationExample" />
           </tile>
-          <tile name="Ribbon" icon="UICustomization.png">
+          <tile name="Ribbon" icon="..\UI\Ribbon.png">
             <example name="Ribbon Customization" type="NRibbonCustomizationExample" default="true" />
           </tile>
           <tile name="Appointment Editor" icon="UICustomization.png">
@@ -702,9 +721,9 @@
     <category name="Gauge" namespace="Gauge" license="Commercial" color="68348C">
       <row>
         <label>
-          NOV Gauge for .NET has extensive support for instrumentation widgets such as radial (circular)<br />
-          and linear gauges, knobs, indicators and numeric displays.
-        </label>
+					NOV Gauge for .NET has extensive support for instrumentation widgets such as radial (circular)<br />
+					and linear gauges, knobs, indicators and numeric displays.
+				</label>
       </row>
       <row>
         <group>
@@ -736,9 +755,9 @@
     <category name="Barcode" namespace="Barcode" license="Commercial" color="68348C">
       <row>
         <label>
-          NOV Barcode for .NET helps you embed barcodes in your .NET applications quickly and easily.<br />
-          The solution is fully customizable and provides support for all industry standard barcode formats.
-        </label>
+					NOV Barcode for .NET helps you embed barcodes in your .NET applications quickly and easily.<br />
+					The solution is fully customizable and provides support for all industry standard barcode formats.
+				</label>
       </row>
       <row>
         <group name="1D Barcodes" maxRows="10">
@@ -804,7 +823,7 @@
           </tile>
         </group>
         <group name="2D Barcodes">
-          <tile name="Data Matrix" icon="Barcode2D.png" status="NEW">
+          <tile name="Data Matrix" icon="Barcode2D.png">
             <example name="Data Matrix" type="NDataMatrixBarcodeExample" />
           </tile>
           <tile name="QR Code" icon="Barcode2D.png">
@@ -825,12 +844,12 @@
       </row>
     </category>
     <!--User Interface-->
-    <category name="User Interface" namespace="UI" license="Free!" color="53A4DA" status="UPD">
+    <category name="User Interface" namespace="UI" license="Free!" color="53A4DA">
       <row>
         <label>
-          NOV UI for .NET contains a complete and feature-rich set of cross-platform User Interface elements (widgets),<br />
-          which completely eliminates the need to use any platform specific controls.
-        </label>
+					NOV UI for .NET contains a complete and feature-rich set of cross-platform User Interface elements (widgets),<br />
+					which completely eliminates the need to use any platform specific controls.
+				</label>
       </row>
       <row>
         <group name="Appearance">
@@ -851,6 +870,9 @@
           <tile name="Tooltips" icon="Tooltip.png">
             <example name="Tooltips" type="NTooltipsExample" />
           </tile>
+          <tile name="Theme Builder" icon="ThemeBuilder.png">
+            <example name="Theme Builder" type="NThemeBuilderExample" />
+          </tile>
         </group>
         <group name="Color Pickers">
           <tile name="Color Box" icon="ColorBox.png">
@@ -868,10 +890,10 @@
           <tile name="HSB Wheel Color Picker" icon="WheelColorPicker.png">
             <example name="HSB Wheel Color Picker" type="NHSBWheelColorPickerExample" />
           </tile>
-          <tile name="Hexagon Color Picker" icon="HexagonColorPicker.png" status="NEW">
+          <tile name="Hexagon Color Picker" icon="HexagonColorPicker.png">
             <example name="Hexagon Color Picker" type="NHexagonColorPickerExample" />
           </tile>
-          <tile name="Named Color Picker" icon="NamedColorPicker.png" status="NEW">
+          <tile name="Named Color Picker" icon="NamedColorPicker.png">
             <example name="Named Color Picker" type="NNamedColorPickerExample" />
           </tile>
         </group>
@@ -890,12 +912,17 @@
           </tile>
           <tile name="Ribbon" icon="Ribbon.png">
             <example name="Ribbon" type="NRibbonExample" />
+            <example name="Ribbon Tab Groups" type="NRibbonTabGroupsExample" />
           </tile>
           <tile name="Tool Bar" icon="ToolBar.png">
             <example name="Tool Bar" type="NToolBarExample" />
           </tile>
         </group>
         <group name="Common Controls" maxRows="6">
+          <tile name="Accordion" icon="Accordion.png">
+            <example name="First Look" type="NAccordionFirstLookExample" />
+            <example name="Flex Box" type="NAccordionFlexBoxExample" />
+          </tile>
           <tile name="Auto Complete Box" icon="AutoCompleteBox.png">
             <example name="Auto Complete Box" type="NAutoCompleteBoxExample" />
           </tile>
@@ -908,14 +935,19 @@
           <tile name="Check Box" icon="CheckBox.png">
             <example name="Check Box" type="NCheckBoxExample" />
           </tile>
-          <tile name="Combo Box" icon="ComboBox.png" status="UPD">
+          <tile name="Combo Box" icon="ComboBox.png">
             <example name="First Look" type="NComboBoxFirstLookExample" />
             <example name="Items Manipulation" type="NComboBoxItemsManipulationExample" />
             <example name="Data Binding" type="NComboBoxDataBindingExample" />
             <example name="Font Name" type="NFontNameComboBoxExample" />
+            <example name="Checked Combo Box" type="NCheckedComboBoxExample" />
+            <example name="Masked Enum Drop Down" type="NMaskedEnumDropDownExample" />
           </tile>
           <tile name="Date Time Box" icon="DateTimeBox.png">
             <example name="Date Time Box" type="NDateTimeBoxExample" />
+          </tile>
+          <tile name="Drop Down Button" icon="DropDownButton.png">
+            <example name="Drop Down Button" type="NDropDownButtonExample" />
           </tile>
           <tile name="Image Box" icon="ImageBox.png">
             <example name="Image Box" type="NImageBoxFirstLookExample" />
@@ -924,7 +956,7 @@
           <tile name="Label" icon="Label.png">
             <example name="Label" type="NLabelExample" />
           </tile>
-          <tile name="Link Label" icon="LinkLabel.png" status="NEW">
+          <tile name="Link Label" icon="LinkLabel.png">
             <example name="Link Label" type="NLinkLabelExample" />
           </tile>
           <tile name="List Box" icon="ListBox.png">
@@ -940,14 +972,14 @@
           <tile name="Navigation Bar" icon="NavigationBar.png">
             <example name="Navigation Bar" type="NNavigationBarFirstLookExample" />
           </tile>
+          <tile name="Page Size and Orientation" icon="PageSize.png">
+            <example name="Page Size and Orientation" type="NPageSizeAndOrientationFirstLookExample" />
+          </tile>
           <tile name="Progress Bar" icon="ProgressBar.png">
             <example name="Progress Bar" type="NProgressBarExample" />
           </tile>
           <tile name="Radio Button" icon="RadioButton.png">
             <example name="Radio Button" type="NRadioButtonExample" />
-          </tile>
-          <tile name="Accordion" icon="Accordion.png">
-            <example name="Accordion" type="NAccordionExample" />
           </tile>
           <tile name="Scroll Bar" icon="ScrollBar.png">
             <example name="First Look" type="NScrollBarsExample" />
@@ -976,8 +1008,8 @@
       </row>
       <row>
         <group name="Containers">
-          <tile name="Document Box" icon="DocumentBox.png" status="UPD">
-            <example name="Document Box" type="NDocumentBoxExample" status="UPD" />
+          <tile name="Document Box and Themes" icon="DocumentBox.png">
+            <example name="Document Box and Themes" type="NDocumentBoxAndThemesExample" />
           </tile>
           <tile name="Group Box" icon="GroupBox.png">
             <example name="Group Box" type="NGroupBoxExample" />
@@ -1000,6 +1032,29 @@
             <example name="Transform Content" type="NTransformContentExample" />
           </tile>
         </group>
+        <group name="Panels">
+          <tile name="Dock Panel" icon="DockPanel.png">
+            <example name="Dock Panel" type="NDockPanelExample" />
+          </tile>
+          <tile name="Flex Box Panel" icon="FlexBoxPanel.png">
+            <example name="Flex Box Panel" type="NFlexBoxPanelExample" />
+          </tile>
+          <tile name="Single Visible Panel" icon="SingleVisiblePanel.png">
+            <example name="Single Visible Panel" type="NSingleVisiblePanelExample" />
+          </tile>
+          <tile name="Stack Panel" icon="StackPanel.png">
+            <example name="Stack Panel" type="NStackPanelExample" />
+          </tile>
+          <tile name="Table Flow Panel" icon="TableFlowPanel.png">
+            <example name="Table Flow Panel" type="NTableFlowPanelExample" />
+          </tile>
+          <tile name="User Panel" icon="UserPanel.png">
+            <example name="User Panel" type="NUserPanelExample" />
+          </tile>
+          <tile name="Wrap Flow Panel" icon="WrapFlowPanel.png">
+            <example name="Wrap Flow Panel" type="NWrapFlowPanelExample" />
+          </tile>
+        </group>
         <group name="Data Exchange">
           <tile name="Clipboard" icon="Clipboard.png">
             <example name="Clipboard" type="NClipboardExample" />
@@ -1019,38 +1074,24 @@
           <tile name="Print Dialog" icon="PrintDialog.png">
             <example name="Print Dialog" type="NPrintDialogExample" />
           </tile>
+          <tile name="Progress Window" icon="ProgressWindow.png">
+            <example name="Progress Window" type="NProgressWindowExample" />
+          </tile>
           <tile name="Windows" icon="Windows.png">
             <example name="Top Level Window Properties" type="NTopLevelWindowPropertiesExample" />
             <example name="Top Level Window Events" type="NTopLevelWindowEventsExample" />
             <example name="Top Level Window Auto Sizing" type="NTopLevelWindowAutoSizingExample" />
           </tile>
         </group>
-        <group name="Misc">
+        <group name="User Input">
+          <tile name="Mouse Events" icon="Mouse.png">
+            <example name="Mouse Events" type="NMouseEventsExample" />
+          </tile>
+          <tile name="Keyboard Events" icon="Keyboard.png">
+            <example name="Keyboard Events" type="NKeyboardEventsExample" />
+          </tile>
           <tile name="Touch Support" icon="Touch.png">
             <example name="Touch Support" type="NTouchSupportExample" />
-          </tile>
-          <tile name="Page Size and Orientation" icon="Touch.png">
-            <example name="Page Size and Orientation" type="NPageSizeAndOrientationFirstLookExample" />
-          </tile>
-        </group>
-        <group name="Panels">
-          <tile name="Dock Panel" icon="DockPanel.png">
-            <example name="Dock Panel" type="NDockPanelExample" />
-          </tile>
-          <tile name="Single Visible Panel" icon="SingleVisiblePanel.png">
-            <example name="Single Visible Panel" type="NSingleVisiblePanelExample" />
-          </tile>
-          <tile name="Stack Panel" icon="StackPanel.png">
-            <example name="Stack Panel" type="NStackPanelExample" />
-          </tile>
-          <tile name="Table Flow Panel" icon="TableFlowPanel.png">
-            <example name="Table Flow Panel" type="NTableFlowPanelExample" />
-          </tile>
-          <tile name="User Panel" icon="UserPanel.png">
-            <example name="User Panel" type="NUserPanelExample" />
-          </tile>
-          <tile name="Wrap Flow Panel" icon="WrapFlowPanel.png">
-            <example name="Wrap Flow Panel" type="NWrapFlowPanelExample" />
           </tile>
         </group>
         <group name="Split Buttons">
@@ -1073,7 +1114,7 @@
       </row>
     </category>
     <!--Framework-->
-    <category name="Framework" namespace="Framework" license="Free!" color="53A4DA" status="UPD">
+    <category name="Framework" namespace="Framework" license="Free!" color="53A4DA">
       <row>
         <group name="Editors">
           <tile name="Category Editors" icon="CategoryEdit.png">
@@ -1104,12 +1145,12 @@
             <example name="Image Fill" type="NImageFillExample" />
             <example name="Custom Texture Mapping" type="NCustomTextureMappingExample" />
           </tile>
-          <tile name="Imaging" icon="Images.png" status="UPD">
+          <tile name="Imaging" icon="Images.png">
             <example name="Painting Images" type="NPaintingImagesExample" />
             <example name="BMP Decoder" type="NBmpDecoderExample" />
             <example name="JPEG Decoder" type="NJpegDecoderExample" />
             <example name="PNG Decoder" type="NPngDecoderExample" />
-            <example name="Animated PNG Decoder" type="NApngDecoderExample" status="NEW" />
+            <example name="Animated PNG Decoder" type="NApngDecoderExample" />
             <example name="GIF Decoder" type="NGifDecoderExample" />
           </tile>
           <tile name="Paths &amp; Primitives" icon="Paths.png">

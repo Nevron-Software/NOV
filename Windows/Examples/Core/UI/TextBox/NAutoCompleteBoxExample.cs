@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
+
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
@@ -30,7 +30,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -53,7 +53,7 @@ namespace Nevron.Nov.Examples.UI
 			// Create the advanced auto complete text box
 			m_AdvancedTextBox = new NAutoCompleteBox();
 			m_AdvancedTextBox.PreferredWidth = 300;
-			m_AdvancedTextBox.Image = NResources.Image_Search_png;
+			m_AdvancedTextBox.Image = NResources.Image_ExamplesUI_Icons_Search_png;
 			m_AdvancedTextBox.InitAutoComplete(m_Countries, new NCountryFactory());
 			m_AdvancedTextBox.TextChanged += OnTextBoxTextChanged;
 			pairBox = CreatePairBox("Enter country name:", m_AdvancedTextBox);

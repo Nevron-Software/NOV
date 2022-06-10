@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.UI
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
         {
@@ -39,8 +39,8 @@ namespace Nevron.Nov.Examples.UI
 
             // Page size button
             m_PageSizeDD = new NPageSizeDropDown();
-            m_PageSizeDD.SelectedPageSizeChanged += OnPageSizeDDSelectedPageSizeChanged;
             m_PageSizeDD.HorizontalPlacement = ENHorizontalPlacement.Left;
+            m_PageSizeDD.SelectedPageSizeChanged += OnPageSizeDDSelectedPageSizeChanged;
             stack.Add(m_PageSizeDD);
 
             // Page orientation button
@@ -50,22 +50,16 @@ namespace Nevron.Nov.Examples.UI
 
             return stack;
         }
-
-        void OnPageOrientationDDSelectedPageOrientationChanged(NValueChangeEventArgs arg)
-        {
-            m_EventsLog.LogEvent("Selected page orientation changed to: " + m_PageSizeDD.SelectedPageSize.Kind.ToString());
-        }
-
-        void OnPageSizeDDSelectedPageSizeChanged(NValueChangeEventArgs arg)
-        {
-            m_EventsLog.LogEvent("Selected page size changed to: " + m_PageSizeDD.SelectedPageSize.Kind.ToString());
-        }
-
         protected override NWidget CreateExampleControls()
         {
             NStackPanel stack = new NStackPanel();
             stack.FillMode = ENStackFillMode.Last;
             stack.FitMode = ENStackFitMode.Last;
+
+            NComboBox lookComboBox = new NComboBox();
+            lookComboBox.FillFromEnum<ENExtendedLook>();
+			lookComboBox.SelectedIndexChanged += OnLookComboBoxSelectedIndexChanged;
+            stack.Add(NPairBox.Create("Look:", lookComboBox));
 
             // Add the events log
             m_EventsLog = new NExampleEventsLog();
@@ -73,19 +67,35 @@ namespace Nevron.Nov.Examples.UI
 
             return stack;
         }
-        protected override string GetExampleDescription()
+		protected override string GetExampleDescription()
         {
-            return @"
-<p>
-	This example demonstrates the Page Size selection drop down.
-</p>";
+            return @"<p>This example demonstrates the Page Size selection drop down.</p>";
         }
 
-        #endregion
-        
-        #region Fields
+		#endregion
 
-        private NPageSizeDropDown m_PageSizeDD;
+		#region Event Handlers
+
+		private void OnPageOrientationDDSelectedPageOrientationChanged(NValueChangeEventArgs arg)
+        {
+            m_EventsLog.LogEvent("Selected page orientation changed to: " + m_PageOrientationDD.SelectedPageOrientation.ToString());
+        }
+        private void OnPageSizeDDSelectedPageSizeChanged(NValueChangeEventArgs arg)
+        {
+            m_EventsLog.LogEvent("Selected page size changed to: " + m_PageSizeDD.SelectedPageSize.ToString());
+        }
+		private void OnLookComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
+		{
+            ENExtendedLook look = (ENExtendedLook)arg.NewValue;
+            NStylePropertyEx.SetExtendedLook(m_PageSizeDD, look);
+            NStylePropertyEx.SetExtendedLook(m_PageOrientationDD, look);
+        }
+
+		#endregion
+
+		#region Fields
+
+		private NPageSizeDropDown m_PageSizeDD;
         private NPageOrientationDropDown m_PageOrientationDD;
         private NExampleEventsLog m_EventsLog;
 

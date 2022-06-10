@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Value Timeline Scale Example
 	/// </summary>
-	public class NValueTimelineScaleExample : NChartExampleBase
+	public class NValueTimelineScaleExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NValueTimelineScaleExample()
 		{
-			NValueTimelineScaleExampleSchema = NSchema.Create(typeof(NValueTimelineScaleExample), NChartExampleBase.NChartExampleBaseSchema);
+			NValueTimelineScaleExampleSchema = NSchema.Create(typeof(NValueTimelineScaleExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Value Timeline Scale";
@@ -85,10 +82,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -128,12 +121,56 @@ namespace Nevron.Nov.Examples.Chart
 		
 			return boxGroup;
 		}
-
-
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a value timeline scale.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+		
+		private void GenerateData(DateTime dtStart, DateTime dtEnd, NDateTimeSpan span)
+		{
+			long count = span.GetSpanCountInRange(new NDateTimeRange(dtStart, dtEnd));
+
+			double open, high, low, close;
+
+			m_Stock.DataPoints.Clear();
+			Random random = new Random();
+			DateTime dtNow = dtStart;
+
+			double prevClose = 100;
+
+			for (int nIndex = 0; nIndex < count; nIndex++)
+			{
+				open = prevClose;
+
+				if(prevClose < 25 || random.NextDouble()  > 0.5)
+				{
+					// upward price change
+					close = open + (2 + (random.NextDouble() * 20));
+					high = close + (random.NextDouble() * 10);
+					low = open - (random.NextDouble() * 10);
+				}
+				else
+				{
+					// downward price change
+					close = open - (2 + (random.NextDouble() * 20));
+					high = open + (random.NextDouble() * 10);
+					low = close - (random.NextDouble() * 10);
+				}
+
+				if(low < 1)
+				{ 
+					low = 1; 
+				}
+
+				prevClose = close;
+
+				m_Stock.DataPoints.Add(new NStockDataPoint(NDateTimeHelpers.ToOADate(dtNow), open, close, high, low));
+				dtNow = span.Add(dtNow);
+			}
 		}
 
 		#endregion
@@ -197,53 +234,6 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Implementation
-		
-		private void GenerateData(DateTime dtStart, DateTime dtEnd, NDateTimeSpan span)
-		{
-			long count = span.GetSpanCountInRange(new NDateTimeRange(dtStart, dtEnd));
-
-			double open, high, low, close;
-
-			m_Stock.DataPoints.Clear();
-			Random random = new Random();
-			DateTime dtNow = dtStart;
-
-			double prevClose = 100;
-
-			for (int nIndex = 0; nIndex < count; nIndex++)
-			{
-				open = prevClose;
-
-				if(prevClose < 25 || random.NextDouble()  > 0.5)
-				{
-					// upward price change
-					close = open + (2 + (random.NextDouble() * 20));
-					high = close + (random.NextDouble() * 10);
-					low = open - (random.NextDouble() * 10);
-				}
-				else
-				{
-					// downward price change
-					close = open - (2 + (random.NextDouble() * 20));
-					high = open + (random.NextDouble() * 10);
-					low = close - (random.NextDouble() * 10);
-				}
-
-				if(low < 1)
-				{ 
-					low = 1; 
-				}
-
-				prevClose = close;
-
-				m_Stock.DataPoints.Add(new NStockDataPoint(NDateTimeHelpers.ToOADate(dtNow), open, close, high, low));
-				dtNow = span.Add(dtNow);
-			}
-		}
-
-		#endregion
-
 		#region Fields
 
 		NCartesianChart m_Chart;
@@ -252,7 +242,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NValueTimelineScaleExampleSchema;
 

@@ -87,7 +87,7 @@ namespace Nevron.Nov.Examples
 			string status = Status;
 			if (String.IsNullOrEmpty(status) == false)
 			{
-				NSize statusTextSize = StatusFont.MeasureString(Status, OwnerDocument);
+				NSize statusTextSize = StatusFont.MeasureString(Status, this);
 				padding.Right += statusTextSize.Width + StatusLeftPadding + StatusRightPadding;
 			}
 
@@ -112,17 +112,20 @@ namespace Nevron.Nov.Examples
 
 			// Determine the text bounds
 			NRectangle bounds = GetContentEdge();
-			NSize textSize = Font.MeasureString(((NLabel)Box2).Text);
+			NSize textSize = Font.MeasureString(((NLabel)Box2).Text, this);
 			NRectangle textBounds = NRectangle.FromCenterAndSize(bounds.Center, textSize.Width, textSize.Height);
 			textBounds.X += Box1.Width / 2;
 
 			// Calculate a rectangle for the status text located to the right of the text rectangle
-			textSize = StatusFont.MeasureString(m_Status, OwnerDocument);
-			NRectangle textRect = new NRectangle(textBounds.Right + StatusLeftPadding, textBounds.Top,
-				textSize.Width + StatusRightPadding, textSize.Height);
+			textSize = StatusFont.MeasureString(m_Status, this);
+			NRectangle textRect = new NRectangle(
+				textBounds.Right + StatusLeftPadding, 
+				textBounds.Top,
+				textSize.Width + StatusRightPadding, 
+				textSize.Height);
 
 			// Paint the text background
-			NExamplesHomePage homePage = (NExamplesHomePage)GetFirstAncestor(NExamplesHomePage.NExamplesHomePageSchema);
+			NHomePage homePage = (NHomePage)GetFirstAncestor(NHomePage.NHomePageSchema);
 			NColor color = homePage.GetStatusColor(m_Status);
 			visitor.SetFill(color);
 			visitor.PaintRectangle(textRect);
@@ -142,7 +145,7 @@ namespace Nevron.Nov.Examples
 
 		private NButton CreateHomeButton()
 		{
-			NButton button = new NButton(NResources.Image_Home_png);
+			NButton button = new NButton(NResources.Image_ExamplesUI_Icons_Home_png);
 			button.Cursor = new NCursor(ENPredefinedCursor.Hand);
 			button.FocusDecorator = null;
 			button.Click += OnButtonClick;

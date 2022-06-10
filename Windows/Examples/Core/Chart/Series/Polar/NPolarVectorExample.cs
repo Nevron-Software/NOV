@@ -1,16 +1,14 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Polar vector example
 	/// </summary>
-	public class NPolarVectorExample : NChartExampleBase
+	public class NPolarVectorExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,17 +24,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NPolarVectorExample()
 		{
-			NPolarVectorExampleSchema = NSchema.Create(typeof(NPolarVectorExample), NChartExampleBase.NChartExampleBaseSchema);
+			NPolarVectorExampleSchema = NSchema.Create(typeof(NPolarVectorExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreatePolarChartView();
@@ -86,14 +80,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		private static NColor ColorFromValue(double value)
-		{
-			return NColor.InterpolateColors(NColor.Red, NColor.Blue, value / 100.0);
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -103,20 +89,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a polar line chart.</p>";
 		}
-
-		#endregion
-
-		#region Event Handlers
-
-	
 
 		#endregion
 
@@ -131,9 +107,24 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NPolarVectorExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreatePolarChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
+			return chartView;
+		}
+		private static NColor ColorFromValue(double value)
+		{
+			return NColor.InterpolateColors(NColor.Red, NColor.Blue, value / 100.0);
+		}
 
 		#endregion
 	}

@@ -25,7 +25,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -91,17 +91,19 @@ namespace Nevron.Nov.Examples.UI
 		private void OnShowButtonClick(NEventArgs args)
 		{
 			NButton button = (NButton)args.TargetNode;
-			NMessageBox.Show(
-                OwnerWindow,                                            // the parent window of the message box
-                m_ContentTextBox.Text,                                  // the message box content
-                m_TitleTextBox.Text,                                    // the message box title
-                (ENMessageBoxButtons)m_ButtonsComboBox.SelectedIndex,   // the button configuration of the message box
-                (ENMessageBoxIcon)m_IconComboBox.SelectedIndex,         // the icon to use
-				delegate(NMessageBox msgBox, ENWindowResult result)     // delegate that gets called when the message box is closed
-				{
-					m_EventsLog.LogEvent("Message box result: '" + result.ToString() + "'");
-				}
-			);
+
+			NMessageBoxSettings settings = new NMessageBoxSettings(
+				m_ContentTextBox.Text,                                  // the message box content
+				m_TitleTextBox.Text,                                    // the message box title
+				(ENMessageBoxButtons)m_ButtonsComboBox.SelectedIndex,   // the button configuration of the message box
+				(ENMessageBoxIcon)m_IconComboBox.SelectedIndex,         // the icon to use
+				ENMessageBoxDefaultButton.Button1,						// the default focused button
+				DisplayWindow);                                           // the parent window of the message box
+
+			NMessageBox.Show(settings).Then(delegate(ENWindowResult result)     // delegate that gets called when the message box is closed
+			{
+				m_EventsLog.LogEvent("Message box result: '" + result.ToString() + "'");
+			});
 		}
 
 		#endregion

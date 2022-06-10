@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Three Renko Example
 	/// </summary>
-	public class NRenkoExample : NChartExampleBase
+	public class NRenkoExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NRenkoExample()
 		{
-			NRenkoExampleSchema = NSchema.Create(typeof(NRenkoExample), NChartExampleBase.NChartExampleBaseSchema);
+			NRenkoExampleSchema = NSchema.Create(typeof(NRenkoExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Renko";
@@ -73,10 +70,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -99,11 +92,15 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates the functionality of the renko series.</p>";
+		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="renkoSeries"></param>
+		#endregion
+
+		#region Implementation
+
 		private void GenerateData(NRenkoSeries renkoSeries)
 		{
 			NStockDataGenerator dataGenerator = new NStockDataGenerator(new NRange(50, 350), 0.002, 2);
@@ -117,14 +114,6 @@ namespace Nevron.Nov.Examples.Chart
 
 				dt = dt.AddDays(1);
 			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates the functionality of the renko series.</p>";
 		}
 
 		#endregion
@@ -150,7 +139,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NRenkoExampleSchema;
 

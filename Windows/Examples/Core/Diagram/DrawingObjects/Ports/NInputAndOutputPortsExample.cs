@@ -5,10 +5,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NInputAndOutputPortsExample : NDiagramExampleBase
+	public class NInputAndOutputPortsExample : NExampleBase
     {
         #region Constructors
 
@@ -24,13 +21,35 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NInputAndOutputPortsExample()
         {
-            NInputAndOutputPortsExampleSchema = NSchema.Create(typeof(NInputAndOutputPortsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NInputAndOutputPortsExampleSchema = NSchema.Create(typeof(NInputAndOutputPortsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Overrides from NDiagramExampleBase
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -54,11 +73,10 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide the grid
@@ -142,6 +160,12 @@ namespace Nevron.Nov.Examples.Diagram
             return shape;
  
         }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

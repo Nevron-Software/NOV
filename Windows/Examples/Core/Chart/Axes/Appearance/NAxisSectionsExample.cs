@@ -10,7 +10,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Axis sections example
 	/// </summary>
-	public class NAxisSectionsExample : NChartExampleBase
+	public class NAxisSectionsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAxisSectionsExample()
 		{
-			NAxisSectionsExampleSchema = NSchema.Create(typeof(NAxisSectionsExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisSectionsExampleSchema = NSchema.Create(typeof(NAxisSectionsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Axis Sections";
@@ -141,11 +138,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -176,7 +168,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates axis sections. Axis sections allow you to alter the appearance of different axis elements if they fall in a specified range.</p>";
@@ -237,7 +228,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisSectionsExampleSchema;
 

@@ -4,6 +4,7 @@ using System.Text;
 
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
+using Nevron.Nov.IO;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 using Nevron.Nov.Xml;
@@ -31,7 +32,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -142,22 +143,21 @@ namespace Nevron.Nov.Examples.Framework
 			if (arg.Result != ENCommonDialogResult.OK)
 				return;
 
-			try
-			{
-				using (Stream stream = arg.Files[0].OpenRead())
+			arg.Files[0].OpenRead().Then(
+				delegate (Stream stream)
 				{
-					using (StreamReader reader = new StreamReader(stream))
+					using (stream)
 					{
-						m_XmlTextBox.Text = reader.ReadToEnd();
-						reader.BaseStream.Position = 0;
-						Parse(reader.BaseStream);
+						m_XmlTextBox.Text = NStreamHelpers.ReadToEndAsString(stream);
+						stream.Position = 0;
+						Parse(stream);
 					}
+				},
+				delegate (Exception ex)
+				{
+					NMessageBox.ShowError(ex.Message, "Error");
 				}
-			}
-			catch (Exception ex)
-			{
-				NMessageBox.Show(ex.Message, "Error");
-			}
+			);
 		}
 
 		#endregion

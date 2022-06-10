@@ -2,16 +2,11 @@
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
-using Nevron.Nov.Text;
 using Nevron.Nov.UI;
-using System.Text;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NSpellCheckExample : NDiagramExampleBase
+	public class NSpellCheckExample : NExampleBase
     {
         #region Constructors
 
@@ -27,27 +22,52 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NSpellCheckExample()
         {
-            NSpellCheckExampleSchema = NSchema.Create(typeof(NSpellCheckExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NSpellCheckExampleSchema = NSchema.Create(typeof(NSpellCheckExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Overrides from NDiagramExampleBase
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+		protected override NWidget CreateExampleControls()
+		{
+			NStackPanel stack = new NStackPanel();
+
+			NCheckBox enableSpellCheck = new NCheckBox("Enable Spell Check");
+			enableSpellCheck.Click += new Function<NEventArgs>(OnEnableSpellCheckButtonClick);
+			stack.Add(enableSpellCheck);
+
+			return stack;
+		}
         protected override string GetExampleDescription()
         {
             return @"<p>
 						Demonstrates how to enable the build in spell check.
 					</p>";
         }
-        protected override void InitDiagram()
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
         {
-            base.InitDiagram();
-
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
-
-            // hide the grid
+            // Hide the grid
+            NDrawing drawing = drawingDocument.Content;
             drawing.ScreenVisibility.ShowGrid = false;
 
 			NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
@@ -58,16 +78,6 @@ namespace Nevron.Nov.Examples.Diagram
 			shape1.TextBlock.Padding = new NMargins(20);
 			shape1.TextBlock.Text = "This text cantains many typpos. This text contuins manyy typos.";
 			drawing.ActivePage.Items.Add(shape1);
-		}
-		protected override NWidget CreateExampleControls()
-		{
-			NStackPanel stack = new NStackPanel();
-
-			NCheckBox enableSpellCheck = new NCheckBox("Enable Spell Check");
-			enableSpellCheck.Click += new Function<NEventArgs>(OnEnableSpellCheckButtonClick);
-			stack.Add(enableSpellCheck);
-
-			return stack;
 		}
 
 		#endregion
@@ -83,14 +93,20 @@ namespace Nevron.Nov.Examples.Diagram
 			m_DrawingView.SpellChecker.Enabled = ((NCheckBox)arg.TargetNode).Checked;
 		}
 
-		#endregion
+        #endregion
 
-		#region Schema
+        #region Fields
 
-		/// <summary>
-		/// Schema associated with NSpellCheckExample.
-		/// </summary>
-		public static readonly NSchema NSpellCheckExampleSchema;
+        private NDrawingView m_DrawingView;
+
+        #endregion
+
+        #region Schema
+
+        /// <summary>
+        /// Schema associated with NSpellCheckExample.
+        /// </summary>
+        public static readonly NSchema NSpellCheckExampleSchema;
 
         #endregion
     }

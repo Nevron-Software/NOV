@@ -1,17 +1,20 @@
-﻿using Nevron.Nov.Barcode;
+﻿using System;
+using System.Drawing;
+using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
+
+using Nevron.Nov.Barcode;
 using Nevron.Nov.Chart;
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Grid;
+using Nevron.Nov.IO;
 using Nevron.Nov.Schedule;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
 using Nevron.Nov.Windows.Forms;
-using System;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
 
 namespace Nevron.Nov.Examples.WinForm
 {
@@ -25,10 +28,12 @@ namespace Nevron.Nov.Examples.WinForm
 		{
             try
             {
+                // In .NET core apps high dpi awareness is controlled from code
+                Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-				// install Nevron Open Vision for Windows Forms
+				// Install Nevron Open Vision for Windows Forms
 				NNovApplicationInstaller.Install(
 					NTextModule.Instance,
 					NChartModule.Instance,
@@ -36,6 +41,21 @@ namespace Nevron.Nov.Examples.WinForm
 					NScheduleModule.Instance,
 					NGridModule.Instance,
                     NBarcodeModule.Instance);
+
+                // use this to Enable/Disable GPU rendering of all NOV Content
+                NApplication.EnableGPURendering = true;
+
+#if !DEBUG
+				// Change the Resources folder to the one where the NOV installer places the resources, which is by default:
+				// C:\Program Files (x86)\Nevron Software\Nevron Open Vision 2021.1\Resources
+                string resourcesPath = NPath.Current.Normalize(NPath.Current.Combine(NApplication.ResourcesFolder.Path, @"..\..\..\..\..\Resources"));
+                NApplication.ResourcesFolder = NFileSystem.Current.GetFolder(resourcesPath);
+
+                if (!Directory.Exists(resourcesPath))
+                {
+                    Console.Write("Failed to locate resources path ["  + resourcesPath + "]");
+                }
+#endif
 
                 // show the main form
                 bool startWithNovWindow = false;
@@ -64,11 +84,23 @@ namespace Nevron.Nov.Examples.WinForm
                     // create a WinForms form  
                     Form form = new Form();
 
+                    var resourceUris = Assembly.GetEntryAssembly().GetCustomAttributes();
+
                     // set form icon
-                    using (Stream stream = typeof(Program).Assembly.GetManifestResourceStream("Nevron.Nov.Examples.WinForm.Resources.NevronOpenVision.ico"))
+                    try
                     {
-                        Icon icon = new Icon(stream);
-                        form.Icon = icon;
+                        using (Stream stream = typeof(Program).Assembly.GetManifestResourceStream("Nevron.Nov.Examples.WinForm.Resources.NevronOpenVision.ico"))
+                        {
+                            if (stream != null)
+                            {
+                                Icon icon = new Icon(stream);
+                                form.Icon = icon;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        NTrace.WriteLine("Failed to load application icon.");
                     }
 
                     // set form title and state
@@ -89,8 +121,6 @@ namespace Nevron.Nov.Examples.WinForm
                 NTrace.WriteException("Exception in Main", ex);
             }
 		}
-
-        
 
         private static void OnWindowClosed(NEventArgs arg)
         {

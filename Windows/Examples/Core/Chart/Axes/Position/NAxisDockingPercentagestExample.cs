@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Axis docking example
 	/// </summary>
-	public class NAxisDockingPercentagestExample : NChartExampleBase
+	public class NAxisDockingPercentagestExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAxisDockingPercentagestExample()
 		{
-			NAxisDockingPercentagestExampleSchema = NSchema.Create(typeof(NAxisDockingPercentagestExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisDockingPercentagestExampleSchema = NSchema.Create(typeof(NAxisDockingPercentagestExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Axis Docking Percentages";
@@ -74,12 +71,37 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="dockZone"></param>
-		/// <param name="color"></param>
-		/// <returns></returns>
+		protected override NWidget CreateExampleControls()
+		{
+			NStackPanel stack = new NStackPanel();
+			NUniSizeBoxGroup boxGroup = new NUniSizeBoxGroup(stack);
+
+			m_RedAxisEndPercentUpDown = new NNumericUpDown();
+			m_RedAxisEndPercentUpDown.Minimum = 10;
+			m_RedAxisEndPercentUpDown.Maximum = 60;
+			m_RedAxisEndPercentUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnRedAxisEndPercentUpDownValueChanged);
+			stack.Add(NPairBox.Create("Red Axis End Percent:", m_RedAxisEndPercentUpDown));
+
+			m_BlueAxisBeginPercentUpDown = new NNumericUpDown();
+			m_BlueAxisBeginPercentUpDown.Minimum = 20;
+			m_BlueAxisBeginPercentUpDown.Maximum = 90;
+			m_BlueAxisBeginPercentUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnBlueAxisEndPercentUpDownValueChanged);
+			stack.Add(NPairBox.Create("Blue Axis Begin Percent:", m_BlueAxisBeginPercentUpDown));
+
+			m_RedAxisEndPercentUpDown.Value = 30;
+			m_BlueAxisBeginPercentUpDown.Value = 70;
+
+			return boxGroup;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how to change the area occupied by an axis when docked in an axis dock zone.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
 		private NCartesianAxis CreateLinearAxis(ENCartesianAxisDockZone dockZone, NColor color)
 		{
 			NCartesianAxis axis = new NCartesianAxis();
@@ -90,11 +112,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return axis;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="color"></param>
-		/// <returns></returns>
 		private NLinearScale CreateLinearScale(NColor color)
 		{
 			NLinearScale linearScale = new NLinearScale();
@@ -117,14 +134,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return linearScale;
 		}
- 		/// <summary>
- 		/// 
- 		/// </summary>
- 		/// <param name="lightColor"></param>
- 		/// <param name="color"></param>
- 		/// <param name="begin"></param>
- 		/// <param name="end"></param>
- 		/// <returns></returns>
 		private NLineSeries CreateLineSeries(NColor lightColor, NColor color, int begin, int end)
 		{
 			// Add a line series
@@ -160,37 +169,6 @@ namespace Nevron.Nov.Examples.Chart
 			line.MarkerStyle = markerStyle;
 
 			return line;
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override NWidget CreateExampleControls()
-		{
-			NStackPanel stack = new NStackPanel();
-			NUniSizeBoxGroup boxGroup = new NUniSizeBoxGroup(stack);
-
-			m_RedAxisEndPercentUpDown = new NNumericUpDown();
-			m_RedAxisEndPercentUpDown.Minimum = 10;
-			m_RedAxisEndPercentUpDown.Maximum = 60;
-			m_RedAxisEndPercentUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnRedAxisEndPercentUpDownValueChanged);
-			stack.Add(NPairBox.Create("Red Axis End Percent:", m_RedAxisEndPercentUpDown));
-
-			m_BlueAxisBeginPercentUpDown = new NNumericUpDown();
-			m_BlueAxisBeginPercentUpDown.Minimum = 20;
-			m_BlueAxisBeginPercentUpDown.Maximum = 90;
-			m_BlueAxisBeginPercentUpDown.ValueChanged += new Function<NValueChangeEventArgs>(OnBlueAxisEndPercentUpDownValueChanged);
-			stack.Add(NPairBox.Create("Blue Axis Begin Percent:", m_BlueAxisBeginPercentUpDown));
-
-			m_RedAxisEndPercentUpDown.Value = 30;
-			m_BlueAxisBeginPercentUpDown.Value = 70;
-
-			return boxGroup;
-		}
-
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates how to change the area occupied by an axis when docked in an axis dock zone.</p>";
 		}
 
 		#endregion
@@ -240,7 +218,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisDockingPercentagestExampleSchema;
 

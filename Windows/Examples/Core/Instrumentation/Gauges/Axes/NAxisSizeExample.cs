@@ -1,15 +1,14 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates how to control the size of the gauge axes
-    /// </summary>
-	public class NAxisSizeExample : NInstrumentationExampleBase
+	/// </summary>
+	public class NAxisSizeExample : NExampleBase
     {
         #region Constructors
 
@@ -24,17 +23,13 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NAxisSizeExample()
         {
-			NAxisSizeExampleSchema = NSchema.Create(typeof(NAxisSizeExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NAxisSizeExampleSchema = NSchema.Create(typeof(NAxisSizeExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
         protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -112,10 +107,6 @@ namespace Nevron.Nov.Examples.Gauge
 			
 			return stack;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
         protected override NWidget CreateExampleControls()
         {
 			NStackPanel stack = new NStackPanel();
@@ -130,18 +121,16 @@ namespace Nevron.Nov.Examples.Gauge
 
 			return stack;
         }
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates how use the begin and end percent properties of the anchor in order to change the gauge axis size.</p>";
 		}
 
-
 		#endregion 
 
 		#region Event Handlers
 
-		void OnScrollBarValueChanged(NValueChangeEventArgs arg)
+		private void OnScrollBarValueChanged(NValueChangeEventArgs arg)
 		{
 			 NGaugeAxis axis1 = (NGaugeAxis)m_RadialGauge.Axes[0];
 			 NGaugeAxis axis2 = (NGaugeAxis)m_RadialGauge.Axes[1];
@@ -160,11 +149,16 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisSizeExampleSchema;
 
-        #endregion
+		#endregion
 
+		#region Constants
+
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
+
+		#endregion
 	}
 }

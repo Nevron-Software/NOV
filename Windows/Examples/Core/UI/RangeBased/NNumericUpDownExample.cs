@@ -20,7 +20,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -48,7 +48,8 @@ namespace Nevron.Nov.Examples.UI
 				NNumericUpDown.MaximumProperty,
 				NNumericUpDown.StepProperty,
 				NNumericUpDown.DecimalPlacesProperty,
-                NNumericUpDown.WheelIncDecModeProperty
+                NNumericUpDown.WheelIncDecModeProperty,
+				NNumericUpDown.TextSelectionModeProperty
 			);
 
 			NStackPanel stack = new NStackPanel();
@@ -75,6 +76,8 @@ namespace Nevron.Nov.Examples.UI
 	The current value is stored in the <b>Value</b> property. The <b>Step</b> property defines how
 	much to increase/decrease the current value when the user clicks on the increase/decrease spinner
 	button or presses the up/down key from the keyboard while the numeric up down text box is focused.
+	The <b>TextSelectionMode</b> controls how the text selection mode is changed when the user presses 
+	the numeric up-down spin buttons.
 </p>
 ";
 		}

@@ -2,18 +2,16 @@
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
-using System.Text;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NFindAndReplaceExample : NDiagramExampleBase
+	/// <summary>
+	/// 
+	/// </summary>
+	public class NFindAndReplaceExample : NExampleBase
     {
         #region Constructors
 
@@ -29,55 +27,34 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NFindAndReplaceExample()
         {
-            NFindAndReplaceExampleSchema = NSchema.Create(typeof(NFindAndReplaceExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NFindAndReplaceExampleSchema = NSchema.Create(typeof(NFindAndReplaceExample), NExampleBaseSchema);
         }
 
-        #endregion
+		#endregion
 
-        #region Overrides from NDiagramExampleBase
+		#region Example
 
-        protected override string GetExampleDescription()
-        {
-			return @"
-<p>This example demonstrates how to find and replace text.</p>
-<p>Press the ""Find All"" button to highlight all occurrences of ""Find"".</p>
-<p>Press the ""Replace All"" button to replace and highlight all occurrences of ""Find"" with ""Replace""</p>
-<p>Press the ""Clear Highlight"" button to clear all highlighting</p>
-";
-		}
-		protected override void InitDiagram()
-        {
-            base.InitDiagram();
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
 
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
-
-            // hide the grid
-            drawing.ScreenVisibility.ShowGrid = false;
-
-			NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
-
-			double padding = 10;
-			double sizeX = 160;
-			double sizeY = 160;
-
-			for (int x = 0; x < 4; x++)
+			m_DrawingView.Document.HistoryService.Pause();
+			try
 			{
-				for (int y = 0; y < 4; y++)
-				{
-					NShape shape1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
-					shape1.SetBounds(padding + x * (padding + sizeX), padding + y * (padding + sizeY), sizeX, sizeY);
-					shape1.TextBlock = new NTextBlock();
-					shape1.TextBlock.Padding = new NMargins(20);
-					shape1.TextBlock.Text = "The quick brown fox jumps over the lazy dog";
-					drawing.ActivePage.Items.Add(shape1);
-				}
+				InitDiagram(m_DrawingView.Document);
 			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
 		}
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
-
 			
 			m_FindTextBox = new NTextBox();
 			m_FindTextBox.Text = "quick";
@@ -101,6 +78,42 @@ namespace Nevron.Nov.Examples.Diagram
 
 			return stack;
 		}
+        protected override string GetExampleDescription()
+        {
+			return @"
+<p>This example demonstrates how to find and replace text.</p>
+<p>Press the ""Find All"" button to highlight all occurrences of ""Find"".</p>
+<p>Press the ""Replace All"" button to replace and highlight all occurrences of ""Find"" with ""Replace""</p>
+<p>Press the ""Clear Highlight"" button to clear all highlighting</p>
+";
+		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
+
+            // hide the grid
+            drawing.ScreenVisibility.ShowGrid = false;
+
+			NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
+
+			double padding = 10;
+			double sizeX = 160;
+			double sizeY = 160;
+
+			for (int x = 0; x < 4; x++)
+			{
+				for (int y = 0; y < 4; y++)
+				{
+					NShape shape1 = basicShapesFactory.CreateShape(ENBasicShape.Rectangle);
+					shape1.SetBounds(padding + x * (padding + sizeX), padding + y * (padding + sizeY), sizeX, sizeY);
+					shape1.TextBlock = new NTextBlock();
+					shape1.TextBlock.Padding = new NMargins(20);
+					shape1.TextBlock.Text = "The quick brown fox jumps over the lazy dog";
+					drawing.ActivePage.Items.Add(shape1);
+				}
+			}
+		}
 
 		#endregion
 
@@ -115,11 +128,9 @@ namespace Nevron.Nov.Examples.Diagram
 			// init find settings
 			NFindTextSettings settings = new NFindTextSettings();
 			settings.FindWhat = m_FindTextBox.Text;
-			settings.SearchDirection = ENSearchDirection.Forward;
+			settings.SearchDirection = ENDiagramTextSearchDirection.ForwardReading;
 
-			// loop through all occurances
-			NRangeI textRange = NRangeI.Zero;
-
+			// loop through all occurrences
 			NTextSearcher searcher = new NTextSearcher(m_DrawingView, settings);
 			searcher.ActivateEditor = false;
 			NShapeTextSearchState state;
@@ -138,9 +149,9 @@ namespace Nevron.Nov.Examples.Diagram
 			// init find settings
 			NFindTextSettings settings = new NFindTextSettings();
 			settings.FindWhat = m_FindTextBox.Text;
-			settings.SearchDirection = ENSearchDirection.Forward;
+			settings.SearchDirection = ENDiagramTextSearchDirection.ForwardReading;
 
-			// find all occurances 
+			// find all occurrences 
 			NTextSearcher searcher = new NTextSearcher(m_DrawingView, settings);
 			searcher.ActivateEditor = false;
 			NShapeTextSearchState state;
@@ -193,8 +204,10 @@ namespace Nevron.Nov.Examples.Diagram
 
 		#region Fields
 
-		NTextBox m_FindTextBox;
-		NTextBox m_ReplaceTextBox;
+		private NDrawingView m_DrawingView;
+
+		private NTextBox m_FindTextBox;
+		private NTextBox m_ReplaceTextBox;
 
 		#endregion
 

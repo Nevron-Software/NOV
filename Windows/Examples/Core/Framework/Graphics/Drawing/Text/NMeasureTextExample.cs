@@ -32,7 +32,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -101,9 +101,9 @@ The example demonstrates how to measure text. Type some text in the text box on 
 			string text = m_TextBox.Text;
 
 			// calculate the text bounds the text bounds
-			double resolution = canvas.OwnerDocument.GetEffectiveResolution();
+			double resolution = canvas.GetResolution();
 			NFont font = new NFont(NFontDescriptor.DefaultSansFamilyName, 10, ENFontStyle.Regular);
-			NSize textSize = font.MeasureString(text.ToCharArray(), resolution, contentEge.Width, false, ref settings);
+			NSize textSize = font.MeasureString(text.ToCharArray(), resolution, contentEge.Width, ref settings);
 
 			NPoint center = contentEge.Center;
 			NRectangle textBounds = new NRectangle(

@@ -25,7 +25,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleControls()
 		{
@@ -72,27 +72,6 @@ This example demonstrates how to create auto sizable and auto centered windows w
 			public static readonly NSchema MyCommandableWidgetSchema;
 			public static readonly NCommand MyActionCommand;
 			public static readonly NCommand MyToggleCommand;
-		}
-
-		public class MyToggleCommandAction : NToggleCommandAction
-		{
-			public override bool IsChecked(NNode target)
-			{
-				MyCommandableWidget w = this.OwnerInputElement as MyCommandableWidget;
-				return false;
-			}
-			public override void Execute(NNode target, object parameter)
-			{
-				throw new System.NotImplementedException();
-			}
-			public override NCommand GetCommand()
-			{
-				return MyCommandableWidget.MyActionCommand;
-			}
-			public override bool IsEnabled(NNode target)
-			{
-				throw new System.NotImplementedException();
-			}
 		}
 	}
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Nevron.Nov.Diagram;
 using Nevron.Nov.Dom;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NFishboneShapesExample : NDiagramExampleBase
+	public class NFishboneShapesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -22,19 +20,35 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NFishboneShapesExample()
 		{
-			NFishboneShapesExampleSchema = NSchema.Create(typeof(NFishboneShapesExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NFishboneShapesExampleSchema = NSchema.Create(typeof(NFishboneShapesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitDiagram()
+		protected override NWidget CreateExampleContent()
 		{
-			base.InitDiagram();
-			m_DrawingView.LoadFromResource(NResources.RBIN_NDX_FishboneDiagram_ndx);
-		}
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
 
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
 		protected override string GetExampleDescription()
 		{
 			return @"
@@ -43,6 +57,17 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
 		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			m_DrawingView.LoadFromResource(NResources.RBIN_NDX_FishboneDiagram_ndx);
+		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

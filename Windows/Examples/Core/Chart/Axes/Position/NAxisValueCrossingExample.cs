@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Axis value crossing example
 	/// </summary>
-	public class NAxisValueCrossingExample : NChartExampleBase
+	public class NAxisValueCrossingExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,12 +26,12 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAxisValueCrossingExample()
 		{
-			NAxisValueCrossingExampleSchema = NSchema.Create(typeof(NAxisValueCrossingExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisValueCrossingExampleSchema = NSchema.Create(typeof(NAxisValueCrossingExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		/// <summary>
 		/// 
@@ -39,7 +39,8 @@ namespace Nevron.Nov.Examples.Chart
 		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			chartView.Surface.Titles[0].Text = "Axis Value Crossing";
 
@@ -135,6 +136,23 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
+		#region Implementation
+
+		private NScaleGridLines CreateDottedGrid()
+		{
+			NScaleGridLines scaleGrid = new NScaleGridLines();
+
+			scaleGrid.Visible = true;
+			scaleGrid.Stroke.Width = 1;
+			scaleGrid.Stroke.DashStyle = ENDashStyle.Dot;
+			scaleGrid.Stroke.Color = NColor.Gray;
+
+			return scaleGrid;
+
+		}
+
+		#endregion
+
 		#region Event Handlers
 
 		void OnHorizontalAxisUsePositionCheckBoxCheckedChanged(NValueChangeEventArgs arg)
@@ -193,23 +211,6 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Implementation
-
-		private NScaleGridLines CreateDottedGrid()
-		{
-			NScaleGridLines scaleGrid = new NScaleGridLines();
-
-			scaleGrid.Visible = true;
-			scaleGrid.Stroke.Width = 1;
-			scaleGrid.Stroke.DashStyle = ENDashStyle.Dot;
-			scaleGrid.Stroke.Color = NColor.Gray;
-
-			return scaleGrid;
-
-		}
-
-		#endregion
-
 		#region Fields
 
 		NCartesianChart m_Chart;
@@ -219,7 +220,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisValueCrossingExampleSchema;
 

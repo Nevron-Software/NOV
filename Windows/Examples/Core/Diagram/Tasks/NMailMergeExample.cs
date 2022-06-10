@@ -5,10 +5,11 @@ using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.Text.Data;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NMailMergeExample : NDiagramExampleBase
+    public class NMailMergeExample : NExampleBase
     {
         #region Constructors
 
@@ -24,18 +25,57 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NMailMergeExample()
         {
-            NMailMergeExampleSchema = NSchema.Create(typeof(NMailMergeExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NMailMergeExampleSchema = NSchema.Create(typeof(NMailMergeExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
         {
-            base.InitDiagram();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
 
-            NDrawing drawing = m_DrawingDocument.Content;
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
+        protected override string GetExampleDescription()
+        {
+            NDataUri previewMailMergeUri = NDataUri.FromImage(NResources.Image_Documentation_PreviewResults_png);
+            return @"
+<p>
+	This example demonstrates how to use the mail merge functionality of the Nevron Diagram control.
+</p>
+<p>
+	Click the <b>Preview Mail Merge</b> button (&nbsp;<img src=""" + previewMailMergeUri.ToString() +
+    @""" />&nbsp;) from the <b>Mailings</b> ribbon tab to see the values for the currently selected
+    mail merge record. When ready click the <b>Merge & Save</b> button to save all merged documents to a file.
+</p>
+<p>
+	The <b>Merge & Save</b> button saves each of the individual documents result of the mail
+	merge operation to a folder.	
+</p>
+";
+        }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // Hide the grid and the ports
@@ -115,24 +155,12 @@ namespace Nevron.Nov.Examples.Diagram
             // Configure the drawing's mail merge
             drawing.MailMerge.DataSource = dataSource;
         }
-        protected override string GetExampleDescription()
-        {
-            NDataUri previewMailMergeUri = NDataUri.FromImage(NResources.Image_Documentation_PreviewResults_png);
-            return @"
-<p>
-	This example demonstrates how to use the mail merge functionality of the Nevron Diagram control.
-</p>
-<p>
-	Click the <b>Preview Mail Merge</b> button (&nbsp;<img src=""" + previewMailMergeUri.ToString() +
-    @""" />&nbsp;) from the <b>Mailings</b> ribbon tab to see the values for the currently selected
-    mail merge record. When ready click the <b>Merge & Save</b> button to save all merged documents to a file.
-</p>
-<p>
-	The <b>Merge & Save</b> button saves each of the individual documents result of the mail
-	merge operation to a folder.	
-</p>
-";
-        }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

@@ -29,7 +29,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -244,11 +244,11 @@ namespace Nevron.Nov.Examples.Framework
 			double value = Convert.ToDouble(node.GetValue(property));
 			if (value < min)
 			{
-				node.SetValue(property, Convert.ChangeType(editor.Minimum, property.DomType.Type, CultureInfo.InvariantCulture));
+				node.SetValue(property, Convert.ChangeType(editor.Minimum, property.DomType.CLRType, CultureInfo.InvariantCulture));
 			}
 			if (value > max)
 			{
-				node.SetValue(property, Convert.ChangeType(editor.Maximum, property.DomType.Type, CultureInfo.InvariantCulture));
+				node.SetValue(property, Convert.ChangeType(editor.Maximum, property.DomType.CLRType, CultureInfo.InvariantCulture));
 			}
 
 			return editor;

@@ -28,7 +28,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -173,8 +173,6 @@ namespace Nevron.Nov.Examples.Framework
 			NRadialGradientFill rgf = new NRadialGradientFill();
 			rgf.GradientStops.Add(new NGradientStop(0, NColor.AliceBlue));
 			rgf.GradientStops.Add(new NGradientStop(1, NColor.DarkSlateBlue));
-            // FIX: Gradient Transform
-            // rgf.MappingMode = ENGradientMappingMode.Stretch;
 			return rgf;
 		}
 		NRadialGradientFill TwoGradientStops_Zoom()
@@ -182,8 +180,7 @@ namespace Nevron.Nov.Examples.Framework
 			NRadialGradientFill rgf = new NRadialGradientFill();
 			rgf.GradientStops.Add(new NGradientStop(0, NColor.AliceBlue));
 			rgf.GradientStops.Add(new NGradientStop(1, NColor.DarkSlateBlue));
-            // FIX: Gradient Transform
-            // rgf.MappingMode = ENGradientMappingMode.ZoomToFill;
+			// rgf.TextureMapping = new NFitAndAlignTextureMapping();
 			return rgf;
 		}
 		NRadialGradientFill FiveGradientStops_Stretch()
@@ -194,8 +191,6 @@ namespace Nevron.Nov.Examples.Framework
 			rgf.GradientStops.Add(new NGradientStop(0.50f, NColor.LimeGreen));
 			rgf.GradientStops.Add(new NGradientStop(0.75f, NColor.MediumBlue));
 			rgf.GradientStops.Add(new NGradientStop(1.00f, NColor.DarkViolet));
-            // FIX: Gradient Transform
-            // rgf.MappingMode = ENGradientMappingMode.Stretch;
 			return rgf;
 		}
 		NRadialGradientFill FiveGradientStops_Zoom()
@@ -217,8 +212,6 @@ namespace Nevron.Nov.Examples.Framework
 			rgf.GradientStops.Add(new NGradientStop(0.5f, NColor.Goldenrod));
 			rgf.GradientStops.Add(new NGradientStop(0.6f, NColor.Indigo));
 			rgf.GradientStops.Add(new NGradientStop(1.0f, NColor.Thistle));
-            // FIX: Gradient Transform
-            // rgf.MappingMode = ENGradientMappingMode.Stretch;
 
 			// The center coordinates are specified with values between 0 and 1
             // FIX: Radial Gradient
@@ -234,7 +227,8 @@ namespace Nevron.Nov.Examples.Framework
 			rgf.GradientStops.Add(new NGradientStop(0.5f, NColor.Goldenrod));
 			rgf.GradientStops.Add(new NGradientStop(0.6f, NColor.Indigo));
 			rgf.GradientStops.Add(new NGradientStop(1.0f, NColor.Thistle));
-            // FIX: Gradient Transform
+            
+			// FIX: Gradient Transform
             // rgf.MappingMode = ENGradientMappingMode.ZoomToFill;
 
 			// The center coordinates are specified with values between 0 and 1
@@ -252,8 +246,6 @@ namespace Nevron.Nov.Examples.Framework
 			rgf.GradientStops.Add(new NGradientStop(1.0f, NColor.Black));
 			rgf.FocusFactorX = -0.6f;
 			rgf.FocusFactorY = -0.6f;
-            // FIX: Radial Gradient
-            // rgf.MappingMode = ENGradientMappingMode.Stretch;
 			return rgf;
 		}
 		NRadialGradientFill ShiftedFocus_Zoom()

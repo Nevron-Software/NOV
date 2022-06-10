@@ -1,8 +1,8 @@
 using System;
-using Nevron.Nov.Graphics;
+
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
-
+using Nevron.Nov.Graphics;
 
 namespace Nevron.Nov.Examples.Diagram
 {

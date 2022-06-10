@@ -1,18 +1,18 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Text
 {
 	/// <summary>
 	/// The example demonstrates how to programmatically manipulate text documents, find content etc.
 	/// </summary>
-	public class NSampleReport2Example : NTextExampleBase
+	public class NSampleReport2Example : NExampleBase
 	{
 		#region Constructors
 
@@ -27,32 +27,44 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NSampleReport2Example()
 		{
-			NSampleReport2ExampleSchema = NSchema.Create(typeof(NSampleReport2Example), NTextExampleBase.NTextExampleBaseSchema);
+			NSampleReport2ExampleSchema = NSchema.Create(typeof(NSampleReport2Example), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
-
 			
-			NButton highlightAllChartsButton = new NButton("Highligh All Charts");
+			NButton highlightAllChartsButton = new NButton("Highlight All Charts");
 			highlightAllChartsButton.Click += OnHighlightAllChartsButtonClick;
 			stack.Add(highlightAllChartsButton);
 
 			return stack;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		protected override void PopulateRichText()
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>This example demonstrates how to programmatically create reports as well as how to collect text elements of different type.</p>
+";
+		}
+
+		private void PopulateRichText()
 		{
 			NSection section = new NSection();
 			m_RichText.Content.Sections.Add(section);
@@ -160,6 +172,71 @@ namespace Nevron.Nov.Examples.Text
 				table.Rows.Add(tableRow);
 			}
 		}
+
+		#endregion
+
+		#region Event Handlers
+
+		void OnHighlightAllChartsButtonClick(NEventArgs arg)
+		{
+
+			
+			NList<NNode> charts = m_RichText.Content.GetDescendants(NChartView.NChartViewSchema);
+
+			for (int i = 0; i < charts.Count; i++)
+			{
+				NChartView chartView = (NChartView)charts[i];
+
+				((NCartesianChart)chartView.Surface.Charts[0]).PlotFill = new NColorFill(NColor.LightBlue);
+			}
+		}
+
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
+
+		#endregion
+
+		#region Schema
+
+		public static readonly NSchema NSampleReport2ExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static double GetTotal(double[] values)
+		{
+			double total = 0.0;
+
+			for (int i = 0; i < values.Length; i++)
+			{
+				total += values[i];
+			}
+
+			return total;
+		}
+		private static NTextInline CreateHeaderText(string text)
+		{
+			NTextInline inline = new NTextInline(text);
+
+			inline.FontSize = 14;
+			inline.FontStyle = ENFontStyle.Bold;
+
+			return inline;
+		}
+		private static NTextInline CreateNormalText(string text)
+		{
+			NTextInline inline = new NTextInline(text);
+
+			inline.FontSize = 9;
+
+			return inline;
+		}
+
 		/// <summary>
 		/// Creates a sample bar chart given title, values and labels
 		/// </summary>
@@ -169,7 +246,7 @@ namespace Nevron.Nov.Examples.Text
 		/// <param name="values"></param>
 		/// <param name="labels"></param>
 		/// <returns></returns>
-		private NParagraph CreateBarChart(bool area, NSize size, string title, double[] values, string[] labels)
+		private static NParagraph CreateBarChart(bool area, NSize size, string title, double[] values, string[] labels)
 		{
 			NChartView chartView = new NChartView();
 
@@ -230,76 +307,6 @@ namespace Nevron.Nov.Examples.Text
 
 			return paragraph;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>This example demonstrates how to programmatically create reports as well as how to collect text elements of different type.</p>
-";
-		}
-
-		#endregion
-
-		#region Event Handlers
-
-		void OnHighlightAllChartsButtonClick(NEventArgs arg)
-		{
-
-			
-			NList<NNode> charts = m_RichText.Content.GetDescendants(NChartView.NChartViewSchema);
-
-			for (int i = 0; i < charts.Count; i++)
-			{
-				NChartView chartView = (NChartView)charts[i];
-
-				((NCartesianChart)chartView.Surface.Charts[0]).PlotFill = new NColorFill(NColor.LightBlue);
-			}
-		}
-
-
-		#endregion
-
-		#region Implementation
-
-		internal static double GetTotal(double[] values)
-		{
-			double total = 0.0;
-
-			for (int i = 0; i < values.Length; i++)
-			{
-				total += values[i];
-			}
-
-			return total;
-		}
-
-		internal static NTextInline CreateHeaderText(string text)
-		{
-			NTextInline inline = new NTextInline(text);
-
-			inline.FontSize = 14;
-			inline.FontStyle = ENFontStyle.Bold;
-
-			return inline;
-		}
-
-		internal static NTextInline CreateNormalText(string text)
-		{
-			NTextInline inline = new NTextInline(text);
-
-			inline.FontSize = 9;
-
-			return inline;
-		}
-
-		#endregion
-
-		#region Schema
-
-		public static readonly NSchema NSampleReport2ExampleSchema;
 
 		#endregion
 	}

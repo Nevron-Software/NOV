@@ -6,12 +6,13 @@ using Nevron.Nov.Diagram.Batches;
 using Nevron.Nov.Diagram.Layout;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
+using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NBarycenterGraphLayoutExample : NLayoutExampleBase<NBarycenterGraphLayout>
+	public class NBarycenterGraphLayoutExample : NExampleBase
     {
         #region Constructors
 
@@ -29,26 +30,13 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NBarycenterGraphLayoutExample()
         {
-            NBarycenterGraphLayoutExampleSchema = NSchema.Create(typeof(NBarycenterGraphLayoutExample), NLayoutExampleBase<NBarycenterGraphLayout>.NLayoutExampleBaseSchema);
+            NBarycenterGraphLayoutExampleSchema = NSchema.Create(typeof(NBarycenterGraphLayoutExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides
+        #region Example
 
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
-
-            // create a random diagram 
-            CreateRandomBarycenterDiagram(8, 10);
-
-            // arrange the diagram
-            ArrangeDiagram();
-
-            // fit active page
-            m_DrawingDocument.Content.ActivePage.ZoomMode = ENZoomMode.Fit;
-        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -74,32 +62,79 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
         }
-        protected override ENBasicShape GetDefaultShapeType()
+        protected override NWidget CreateExampleContent()
         {
-            return ENBasicShape.Circle;
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
         }
-        protected override void CreateItemsControls(NStackPanel stack)
+        protected override NWidget CreateExampleControls()
         {
+            m_Layout.Changed += OnLayoutChanged;
+
+            NStackPanel stack = new NStackPanel();
+
+            // property editor
+            NEditor editor = NDesigner.GetDesigner(m_Layout).CreateInstanceEditor(m_Layout);
+            stack.Add(new NGroupBox("Properties", editor));
+
+            NButton arrangeButton = new NButton("Arrange Diagram");
+            arrangeButton.Click += OnArrangeButtonClick;
+            stack.Add(arrangeButton);
+
+            // items stack
+            NStackPanel itemsStack = new NStackPanel();
             NButton triangularGrid6 = new NButton("Create Triangular Grid (levels 6)");
-            triangularGrid6.Click += delegate(NEventArgs args) { this.CreateTriangularGridDiagram(6); };
+            triangularGrid6.Click += delegate(NEventArgs args) { CreateTriangularGridDiagram(6); };
             stack.AddChild(triangularGrid6);
 
             NButton triangularGrid8 = new NButton("Create Triangular Grid (levels 8)");
-            triangularGrid8.Click += delegate(NEventArgs args) { this.CreateTriangularGridDiagram(8); };
+            triangularGrid8.Click += delegate(NEventArgs args) { CreateTriangularGridDiagram(8); };
             stack.AddChild(triangularGrid8);
 
             NButton random10 = new NButton("Random (fixed 10, free 10)");
-            random10.Click += delegate(NEventArgs args) { this.CreateRandomBarycenterDiagram(10, 10); };
+            random10.Click += delegate(NEventArgs args) { CreateRandomBarycenterDiagram(10, 10); };
             stack.AddChild(random10);
 
             NButton random15 = new NButton("Random (fixed 15, free 15)");
-            random15.Click += delegate(NEventArgs args) { this.CreateRandomBarycenterDiagram(15, 15); };
+            random15.Click += delegate(NEventArgs args) { CreateRandomBarycenterDiagram(15, 15); };
             stack.AddChild(random15);
+
+            stack.Add(new NGroupBox("Items", itemsStack));
+
+            return stack;
+        }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            // Hide ports
+            drawingDocument.Content.ScreenVisibility.ShowPorts = false;
+
+            // Create a random diagram 
+            CreateRandomBarycenterDiagram(8, 10);
+
+            // Arrange the diagram
+            ArrangeDiagram(drawingDocument);
+
+            // Fit active page
+            drawingDocument.Content.ActivePage.ZoomMode = ENZoomMode.Fit;
         }
 
         #endregion
 
-        #region Implementation - Random Diagrams for Barycenter layout
+        #region Implementation
 
         /// <summary>
         /// Creates a random barycenter diagram with the specified settings
@@ -112,17 +147,15 @@ namespace Nevron.Nov.Examples.Diagram
                 throw new ArgumentException("Needs at least three fixed vertices");
 
             // clean up the active page
-            NPage activePage = m_DrawingDocument.Content.ActivePage;
+            NPage activePage = m_DrawingView.ActivePage;
             activePage.Items.Clear();
 
             // we will be using basic circle shapes with default size of (30, 30)
             NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
             basicShapesFactory.DefaultSize = new NSize(30, 30);
 
-            NConnectorShapeFactory connectorsShapesFactory = new NConnectorShapeFactory();
-
-            // create the fixed vertices
-            NShape[] fixedShapes = new NShape[fixedCount];
+			// create the fixed vertices
+			NShape[] fixedShapes = new NShape[fixedCount];
 
             for (int i = 0; i < fixedCount; i++)
             {
@@ -205,12 +238,12 @@ namespace Nevron.Nov.Examples.Diagram
             }
 
             // send all edges to back
-            NBatchReorder batchReorder = new NBatchReorder(m_DrawingDocument);
+            NBatchReorder batchReorder = new NBatchReorder(m_DrawingView.Document);
             batchReorder.Build(activePage.GetShapes(false, NDiagramFilters.ShapeType1D).CastAll<NDiagramItem>());
             batchReorder.SendToBack(activePage);
 
             // arrange the elements
-            ArrangeDiagram();
+            ArrangeDiagram(m_DrawingView.Document);
         }
         /// <summary>
         /// Creates a triangular grid diagram with the specified count of levels
@@ -219,44 +252,41 @@ namespace Nevron.Nov.Examples.Diagram
         private void CreateTriangularGridDiagram(int levels)
         {
             // clean up the active page
-            NPage activePage = m_DrawingDocument.Content.ActivePage;
+            NPage activePage = m_DrawingView.ActivePage;
             activePage.Items.Clear();
 
             // we will be using basic circle shapes with default size of (30, 30)
             NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
             basicShapesFactory.DefaultSize = new NSize(30, 30);
 
-            NConnectorShapeFactory connectorShapesFactory = new NConnectorShapeFactory();
-
-            NShape cur = null, prev = null;
-            NRoutableConnector edge = null;
-            NList<NShape> curRowShapes = null;
-            NList<NShape> prevRowShapes = null;
+			NShape prev = null;
+			NList<NShape> prevRowShapes = null;
 
             for (int level = 1; level < levels; level++)
             {
-                curRowShapes = new NList<NShape>();
+				NList<NShape> curRowShapes = new NList<NShape>();
 
-                for (int i = 0; i < level; i++)
+				for (int i = 0; i < level; i++)
                 {
-                    cur = basicShapesFactory.CreateShape(ENBasicShape.Circle);
-                    cur.Geometry.Fill = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant3, new NColor(192, 194, 194), new NColor(129, 133, 133));
+					NShape cur = basicShapesFactory.CreateShape(ENBasicShape.Circle);
+					cur.Geometry.Fill = new NStockGradientFill(ENGradientStyle.Horizontal, ENGradientVariant.Variant3, new NColor(192, 194, 194), new NColor(129, 133, 133));
                     cur.Geometry.Stroke = new NStroke(1, new NColor(68, 90, 108));
                     activePage.Items.Add(cur);
 
-                    // connect with prev
-                    if (i > 0)
-                    {
-                        edge = new NRoutableConnector();
-                        edge.MakeLine();
-                        activePage.Items.Add(edge);
+					NRoutableConnector edge;
+					// connect with prev
+					if (i > 0)
+					{
+						edge = new NRoutableConnector();
+						edge.MakeLine();
+						activePage.Items.Add(edge);
 
-                        edge.GlueBeginToShape(prev);
-                        edge.GlueEndToShape(cur);
-                    }
+						edge.GlueBeginToShape(prev);
+						edge.GlueEndToShape(cur);
+					}
 
-                    // connect with ancestors
-                    if (level > 1)
+					// connect with ancestors
+					if (level > 1)
                     {
                         if (i < prevRowShapes.Count)
                         {
@@ -297,13 +327,50 @@ namespace Nevron.Nov.Examples.Diagram
             }
 
             // send all edges to back
-            NBatchReorder batchReorder = new NBatchReorder(m_DrawingDocument);
+            NBatchReorder batchReorder = new NBatchReorder(m_DrawingView.Document);
             batchReorder.Build(activePage.GetShapes(false, NDiagramFilters.ShapeType1D).CastAll<NDiagramItem>());
             batchReorder.SendToBack(activePage);
 
             // arrange the elements
-            ArrangeDiagram();
+            ArrangeDiagram(m_DrawingView.Document);
         }
+        /// <summary>
+        /// Arranges the shapes in the active page.
+        /// </summary>
+        /// <param name="drawingDocument"></param>
+        private void ArrangeDiagram(NDrawingDocument drawingDocument)
+        {
+            // get all top-level shapes that reside in the active page
+            NPage activePage = drawingDocument.Content.ActivePage;
+            NList<NShape> shapes = activePage.GetShapes(false);
+
+            // create a layout context and use it to arrange the shapes using the current layout
+            NDrawingLayoutContext layoutContext = new NDrawingLayoutContext(drawingDocument, activePage);
+            m_Layout.Arrange(shapes.CastAll<object>(), layoutContext);
+
+            // size the page to the content size
+            activePage.SizeToContent();
+        }
+
+        #endregion
+
+        #region Event Handlers
+
+        private void OnLayoutChanged(NEventArgs arg)
+        {
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+        protected virtual void OnArrangeButtonClick(NEventArgs arg)
+        {
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
+        private NBarycenterGraphLayout m_Layout = new NBarycenterGraphLayout();
 
         #endregion
 

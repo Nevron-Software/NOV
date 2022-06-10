@@ -5,8 +5,8 @@ using Nevron.Nov.Barcode;
 using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Editors;
+using Nevron.Nov.Formats.Svg;
 using Nevron.Nov.Layout;
-using Nevron.Nov.Svg;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Barcode
@@ -32,7 +32,7 @@ namespace Nevron.Nov.Examples.Barcode
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -97,14 +97,19 @@ namespace Nevron.Nov.Examples.Barcode
 				return;
 
 			// Generate an SVG document from the barcode
-			NImageMediaDocument<NBarcode> svgExporter = new NImageMediaDocument<NBarcode>();
-			NSvgDocument svgDocument = svgExporter.CreateSvg(m_Barcode);
+			NContinuousMediaDocument<NBarcode> svgExporter = new NContinuousMediaDocument<NBarcode>(m_Barcode);
+			NSvgDocument svgDocument = svgExporter.CreateSvg(m_Barcode, 0);
 
 			// Save the SVG document to a file
-			using (Stream stream = arg.File.Create())
-			{
-				svgDocument.SaveToStream(stream);
-			}
+			arg.File.Create().Then(
+				delegate (Stream stream)
+				{
+					using (stream)
+					{
+						svgDocument.SaveToStream(stream);
+					}
+				}
+			);
 		}
 
 		#endregion

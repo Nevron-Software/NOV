@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Stacked Area Example
 	/// </summary>
-	public class NStackedAreaExample : NChartExampleBase
+	public class NStackedAreaExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,26 +26,23 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStackedAreaExample()
 		{
-			NStackedAreaExampleSchema = NSchema.Create(typeof(NStackedAreaExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStackedAreaExampleSchema = NSchema.Create(typeof(NStackedAreaExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			m_ChartView = new NChartView();
+			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
-			chartView.Surface.Titles[0].Text = "Stacked Area";
+			m_ChartView.Surface.Titles[0].Text = "Stacked Area";
 
 			// configure chart
-			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
+			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
 			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
@@ -93,14 +90,8 @@ namespace Nevron.Nov.Examples.Chart
 				m_Area3.DataPoints.Add(new NAreaDataPoint(random.Next(20, 50)));
 			}
 
-			return chartView;
+			return m_ChartView;
 		}
-
-		
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -133,8 +124,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a stacked area chart.</p>";
@@ -246,21 +235,19 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Fields
 
-		NAreaSeries m_Area1;
-		NAreaSeries m_Area2;
-		NAreaSeries m_Area3;
+		private NChartView m_ChartView;
 
-		NComboBox m_Area1LabelFormatCombox;
-		NComboBox m_Area2LabelFormatCombox;
-		NComboBox m_Area3LabelFormatCombox;
+		private NAreaSeries m_Area1;
+		private NAreaSeries m_Area2;
+		private NAreaSeries m_Area3;
 
-		#endregion
-
-		#region Static Fields
+		private NComboBox m_Area1LabelFormatCombox;
+		private NComboBox m_Area2LabelFormatCombox;
+		private NComboBox m_Area3LabelFormatCombox;
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStackedAreaExampleSchema;
 

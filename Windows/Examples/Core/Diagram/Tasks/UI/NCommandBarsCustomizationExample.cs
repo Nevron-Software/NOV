@@ -6,7 +6,7 @@ using Nevron.Nov.Diagram.Shapes;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NCommandBarsCustomizationExample : NDiagramExampleBase
+	public class NCommandBarsCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -22,16 +22,30 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NCommandBarsCustomizationExample()
 		{
-			NCommandBarsCustomizationExampleSchema = NSchema.Create(typeof(NCommandBarsCustomizationExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NCommandBarsCustomizationExampleSchema = NSchema.Create(typeof(NCommandBarsCustomizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Public Overrides
+		#region Example
 
-		public override void Initialize()
+		protected override NWidget CreateExampleContent()
 		{
-			base.Initialize();
+			// Create a simple drawing
+			m_DrawingView = new NDrawingView();
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			// Create and customize a command bar UI builder
+			m_CommandBarBuilder = new NDiagramCommandBarBuilder();
 
 			// Add the custom command action to the drawing view's commander
 			m_DrawingView.Commander.Add(new CustomCommandAction());
@@ -45,25 +59,7 @@ namespace Nevron.Nov.Examples.Diagram
 			m_CommandBarBuilder.ToolBarBuilders.Remove(NDiagramCommandBarBuilder.ToolbarStandardName);
 			m_CommandBarBuilder.ToolBarBuilders.Insert(0, new CustomToolBarBuilder());
 
-			// Remove the drawing view from its parent and recreate the command bar UI
-			m_DrawingView.ParentNode.RemoveChild(m_DrawingView);
-			m_ExampleTabPage.Content = m_CommandBarBuilder.CreateUI(m_DrawingView);
-		}
-
-		#endregion
-
-		#region Protected Overrides - Example
-
-		protected override void InitDiagram()
-		{
-			base.InitDiagram();
-
-			NBasicShapeFactory factory = new NBasicShapeFactory();
-			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
-			shape.SetBounds(100, 100, 150, 100);
-
-			NPage activePage = m_DrawingDocument.Content.ActivePage;
-			activePage.Items.Add(shape);
+			return m_CommandBarBuilder.CreateUI(m_DrawingView);
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -76,6 +72,21 @@ namespace Nevron.Nov.Examples.Diagram
 ";
 		}
 
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			NBasicShapeFactory factory = new NBasicShapeFactory();
+			NShape shape = factory.CreateShape(ENBasicShape.Rectangle);
+			shape.SetBounds(100, 100, 150, 100);
+			drawingDocument.Content.ActivePage.Items.Add(shape);
+		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
+		private NDiagramCommandBarBuilder m_CommandBarBuilder;
+
 		#endregion
 
 		#region Schema
@@ -87,13 +98,14 @@ namespace Nevron.Nov.Examples.Diagram
 
 		#endregion
 
-		#region Commands
+		#region Constants
 
-		public static readonly NCommand CustomCommand = NCommand.Create(typeof(NCommandBarsCustomizationExample), "CustomCommand", "Custom Command");
+		public static readonly NCommand CustomCommand = NCommand.Create(typeof(Nevron.Nov.Examples.Diagram.NCommandBarsCustomizationExample),
+			"CustomCommand", "Custom Command");
 
 		#endregion
 
-		#region Nested Types - Custom Menu Builder
+		#region Nested Types
 
 		public class CustomMenuBuilder : NMenuDropDownBuilder
 		{
@@ -112,10 +124,6 @@ namespace Nevron.Nov.Examples.Diagram
 			}
 		}
 
-		#endregion
-
-		#region Nested Types - Custom ToolBar Builder
-
 		public class CustomToolBarBuilder : NToolBarBuilder
 		{
 			public CustomToolBarBuilder()
@@ -132,10 +140,6 @@ namespace Nevron.Nov.Examples.Diagram
 				items.Add(CreateButton(NResources.Image_Ribbon_16x16_smiley_png, CustomCommand));
 			}
 		}
-
-		#endregion
-
-		#region Nested Types - Custom Command Action
 
 		public class CustomCommandAction : NDrawingCommandAction
 		{

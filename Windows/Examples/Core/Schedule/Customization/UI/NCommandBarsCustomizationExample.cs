@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NCommandBarsCustomizationExample : NScheduleExampleBase
+	public class NCommandBarsCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,46 +23,42 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NCommandBarsCustomizationExample()
 		{
-			NCommandBarsCustomizationExampleSchema = NSchema.Create(typeof(NCommandBarsCustomizationExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NCommandBarsCustomizationExampleSchema = NSchema.Create(typeof(NCommandBarsCustomizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Public Overrides
+		#region Example
 
-		public override void Initialize()
+		protected override NWidget CreateExampleContent()
 		{
-			base.Initialize();
+			// Create a simple schedule
+			m_ScheduleView = new NScheduleView();
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
 
 			// Add the custom command action to the schedule view's commander
 			m_ScheduleView.Commander.Add(new CustomCommandAction());
 
+			// Create and configure command bars UI builder
 			// Remove the "Edit" menu and insert a custom one
-			m_CommandBarBuilder = new NScheduleCommandBarBuilder();
-			m_CommandBarBuilder.MenuDropDownBuilders.Remove(NScheduleCommandBarBuilder.MenuEditName);
-			m_CommandBarBuilder.MenuDropDownBuilders.Insert(1, new CustomMenuBuilder());
+			NScheduleCommandBarBuilder commandBarBuilder = new NScheduleCommandBarBuilder();
+			commandBarBuilder.MenuDropDownBuilders.Remove(NScheduleCommandBarBuilder.MenuEditName);
+			commandBarBuilder.MenuDropDownBuilders.Insert(1, new CustomMenuBuilder());
 
 			// Remove the "Standard" toolbar and insert a custom one
-			m_CommandBarBuilder.ToolBarBuilders.Remove(NScheduleCommandBarBuilder.ToolbarStandardName);
-			m_CommandBarBuilder.ToolBarBuilders.Insert(0, new CustomToolBarBuilder());
+			commandBarBuilder.ToolBarBuilders.Remove(NScheduleCommandBarBuilder.ToolbarStandardName);
+			commandBarBuilder.ToolBarBuilders.Insert(0, new CustomToolBarBuilder());
 
-			// Remove the schedule view from its parent and recreate the command bar UI
-			m_ScheduleView.ParentNode.RemoveChild(m_ScheduleView);
-			m_ExampleTabPage.Content = m_CommandBarBuilder.CreateUI(m_ScheduleView);
-		}
-
-		#endregion
-
-		#region Protected Overrides - Example
-
-		protected override void InitSchedule(NSchedule schedule)
-		{
-			DateTime start = DateTime.Now;
-
-			// Create an appointment
-			NAppointment appointment = new NAppointment("Meeting", start, start.AddHours(2));
-			schedule.Appointments.Add(appointment);
-			schedule.ScrollToTime(start.TimeOfDay);
+			return commandBarBuilder.CreateUI(m_ScheduleView);
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -77,6 +73,26 @@ namespace Nevron.Nov.Examples.Schedule
 
 		#endregion
 
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
+		{
+			DateTime start = DateTime.Now;
+
+			// Create an appointment
+			NAppointment appointment = new NAppointment("Meeting", start, start.AddHours(2));
+			schedule.Appointments.Add(appointment);
+			schedule.ScrollToTime(start.TimeOfDay);
+		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
+
+		#endregion
+
 		#region Schema
 
 		/// <summary>
@@ -86,13 +102,14 @@ namespace Nevron.Nov.Examples.Schedule
 
 		#endregion
 
-		#region Commands
+		#region Constants
 
-		public static readonly NCommand CustomCommand = NCommand.Create(typeof(NCommandBarsCustomizationExample), "CustomCommand", "Custom Command");
+		public static readonly NCommand CustomCommand = NCommand.Create(typeof(Nevron.Nov.Examples.Schedule.NCommandBarsCustomizationExample),
+			"CustomCommand", "Custom Command");
 
 		#endregion
 
-		#region Nested Types - Custom Menu Builder
+		#region Nested Types
 
 		public class CustomMenuBuilder : NMenuDropDownBuilder
 		{
@@ -111,10 +128,6 @@ namespace Nevron.Nov.Examples.Schedule
 			}
 		}
 
-		#endregion
-
-		#region Nested Types - Custom ToolBar Builder
-
 		public class CustomToolBarBuilder : NToolBarBuilder
 		{
 			public CustomToolBarBuilder()
@@ -131,10 +144,6 @@ namespace Nevron.Nov.Examples.Schedule
 				items.Add(CreateButton(NResources.Image_Ribbon_16x16_smiley_png, CustomCommand));
 			}
 		}
-
-		#endregion
-
-		#region Nested Types - Custom Command Action
 
 		public class CustomCommandAction : NScheduleCommandAction
 		{
@@ -174,7 +183,7 @@ namespace Nevron.Nov.Examples.Schedule
 			/// <param name="parameter"></param>
 			public override void Execute(NNode target, object parameter)
 			{
-				NScheduleView scheduleView = GetScheduleView(target);
+				NScheduleView scheduleView = GetView(target);
 
 				NMessageBox.Show("Schedule Custom Command executed!", "Custom Command", ENMessageBoxButtons.OK,
 					ENMessageBoxIcon.Information);

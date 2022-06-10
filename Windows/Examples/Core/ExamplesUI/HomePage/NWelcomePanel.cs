@@ -37,7 +37,7 @@ namespace Nevron.Nov.Examples
 			VerticalSpacingProperty.SetDefaultValue(NWelcomePanelSchema, LaneSpacing);		
 		}
 
-		#endregion
+		#endregion@
 
 		#region Properties - Private
 
@@ -45,7 +45,7 @@ namespace Nevron.Nov.Examples
 		{
 			get
 			{
-				NExamplesHomePage homePage = (NExamplesHomePage)GetFirstAncestor(NExamplesHomePage.NExamplesHomePageSchema);
+				NHomePage homePage = (NHomePage)GetFirstAncestor(NHomePage.NHomePageSchema);
 				return homePage.m_EmfDecompressor;
 			}
 		}
@@ -78,10 +78,10 @@ namespace Nevron.Nov.Examples
 		private NLabel CreateHeaderLabel()
 		{
 			NColor transparentWhite = new NColor(NColor.White, 0);
-			NColor textColor = NExamplesHomePage.HeaderColor;
+			NColor textColor = NHomePage.HeaderColor;
 			NColor transparentTextColor = new NColor(textColor, 0);
 
-            NLabel headerLabel = new NLabel("Enterprise-grade UI controls suite for .NET development on Windows and Mac");
+            NLabel headerLabel = new NLabel("Leading User Interface components for Blazor, WinForms, WPF and Xamarin.Mac");
 
 			// Background and border
 			headerLabel.BackgroundFill = new NLinearGradientFill(NAngle.Zero, new NColor[] {
@@ -177,7 +177,7 @@ namespace Nevron.Nov.Examples
 			NComponentImageBox imageBox = new NComponentImageBox();
             imageBox.Image = new NImage(new NBytesImageSource(metaImage));
 			imageBox.Status = categoryElement.GetAttributeValue("status");
-			imageBox.Tag = categoryElement;
+			imageBox.Tag = categoryElement.GetAttributeValue("name");
 
 			return imageBox;
 		}

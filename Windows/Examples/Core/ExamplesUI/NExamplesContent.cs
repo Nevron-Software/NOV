@@ -3,7 +3,6 @@
 using Nevron.Nov.Dom;
 using Nevron.Nov.UI;
 using Nevron.Nov.Xml;
-using Nevron.Nov.Graphics;
 
 namespace Nevron.Nov.Examples
 {
@@ -19,26 +18,32 @@ namespace Nevron.Nov.Examples
 		/// </summary>
 		public NExamplesContent()
 		{
-			// Create the navigation panel
-			m_ExamplesHomePage = new NExamplesHomePage();
-			m_ExamplesHomePage.LoadFromStream(NResources.Instance.GetResourceStream("RSTR_Examples_xml"));
-			m_ExamplesHomePage.TileSelected += OnTileSelected;
+			// Load the examples XML
+			NXmlDocument xmlDocument;
+			using (MemoryStream memoryStream = new MemoryStream(NResources.RSTR_Examples_xml.Data))
+			{
+				xmlDocument = NXmlDocument.LoadFromStream(memoryStream);
+			}
+
+			// Create the Examples' home page
+			m_HomePage = new NHomePage();
+			m_HomePage.InitializeFromXml(xmlDocument);
+			m_HomePage.TileSelected += OnTileSelected;
 
 			// Host it
-			Content = m_ExamplesHomePage;
+			Content = m_HomePage;
 
-			// Create the example panel
-			m_ExampleHost = new NExampleHost();
-			m_ExampleHost.HomeButton.Click += OnHomeButtonClick;
-
-           
+			// Create the Example host page
+			m_ExamplePage = new NExamplePage(m_HomePage.m_ExamplesMap);
+			m_ExamplePage.InitializeFromXml(xmlDocument);
 		}
+
 		/// <summary>
 		/// Static constructor
 		/// </summary>
 		static NExamplesContent()
 		{
-			NExamplesContentSchema = NSchema.Create(typeof(NExamplesContent), NContentHolder.NContentHolderSchema);
+			NExamplesContentSchema = NSchema.Create(typeof(NExamplesContent), NContentHolderSchema);
 		}
 
 		#endregion
@@ -52,17 +57,43 @@ namespace Nevron.Nov.Examples
 		{
 			get
 			{
-				return m_ExampleHost.ExamplesPath;
+				return m_ExamplePage.ExamplesPath;
 			}
 			set
 			{
-				m_ExampleHost.ExamplesPath = value;
+				m_ExamplePage.ExamplesPath = value;
 			}
 		}
 
 		#endregion
 
-		#region Public Methods
+		#region Public Methods - Navigation
+
+		/// <summary>
+		/// Navigates to the welcome screen of examples home page.
+		/// </summary>
+		public void NavigateToHomePageWelcomeScreen()
+		{
+			// Show the home page
+			m_HomePage.NavigateToWelcomeScreen();
+			Content = m_HomePage;
+
+			// Clear the text of the search box
+			m_HomePage.m_SearchBox.Text = null;
+		}
+		/// <summary>
+		/// Navigates to the given category of the examples home page.
+		/// </summary>
+		/// <param name="categoryName"></param>
+		public void NavigateToHomePageCategory(string categoryName)
+		{
+			// Show the home page
+			m_HomePage.NavigateToCategory(categoryName);
+			Content = m_HomePage;
+
+			// Clear the text of the search box
+			m_HomePage.m_SearchBox.Text = null;
+		}
 
 		/// <summary>
 		/// Navigates to the given example. This is used by the Silverlight examples when
@@ -78,24 +109,46 @@ namespace Nevron.Nov.Examples
 				document = NXmlDocument.LoadFromStream(stream);				
 			}
 
-			// Find the XML element with the given example type:
-			NXmlElement element = GetExampleElement(document, exampleType);
-			if (element != null)
+			// Find the XML element with the given example type
+			// FIX: use map like in NExamplesAccordion
+			NXmlElement xmlElement = GetExampleElement(document, exampleType);
+			if (xmlElement != null)
 			{
-				NavigateToExample(element);
+				NavigateToExample(xmlElement);
 			}
 		}
 		/// <summary>
-		/// Navigates to the given element.
+		/// Navigates to the given example XML element.
 		/// </summary>
-		/// <param name="element"></param>
-		public void NavigateToExample(NXmlElement element)
+		/// <param name="xmlElement"></param>
+		public void NavigateToExample(NXmlElement xmlElement)
 		{
-			if (this.Content != m_ExampleHost)
+			if (this.Content != m_ExamplePage)
 			{
-				this.Content = m_ExampleHost;
-				m_ExampleHost.InitForElement(element, true);
+				this.Content = m_ExamplePage;
+				m_ExamplePage.NavigateToExample(xmlElement);
 			}
+		}
+
+		#endregion
+
+		#region Protected Overrides - Examples Lifetime
+
+		/// <summary>
+		/// Called when the example content has been created, which is on Examples' application launch.
+		/// </summary>
+		protected override void OnRegistered()
+		{
+			base.OnRegistered();
+
+			// Load examples options
+			NExamplesOptions.Instance.Load().Then(
+				delegate (NUndefined ud)
+				{
+					// Example options has been loaded
+					m_ExamplePage.UpdateFromOptions();
+				}
+			);
 		}
 
 		#endregion
@@ -106,21 +159,13 @@ namespace Nevron.Nov.Examples
 		{
 			NavigateToExample(element);
 		}
-		private void OnHomeButtonClick(NEventArgs arg)
-		{
-			// Show the home page
-			this.Content = m_ExamplesHomePage;
-
-			// Clear the text of the search box
-			m_ExamplesHomePage.m_SearchBox.Text = null;
-		}
 
 		#endregion
 
 		#region Fields
 
-		internal NExamplesHomePage m_ExamplesHomePage;
-		private NExampleHost m_ExampleHost;
+		internal NHomePage m_HomePage;
+		private NExamplePage m_ExamplePage;
 
 		#endregion
 

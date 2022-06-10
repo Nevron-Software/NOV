@@ -1,16 +1,17 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
-using System;
-using Nevron.Nov.Editors;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates how to control the paint order of gauge indicators
-    /// </summary>
-	public class NIndicatorPaintOrderExample : NInstrumentationExampleBase
+	/// </summary>
+	public class NIndicatorPaintOrderExample : NExampleBase
     {
         #region Constructors
 
@@ -25,17 +26,17 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NIndicatorPaintOrderExample()
         {
-			NIndicatorPaintOrderExampleSchema = NSchema.Create(typeof(NIndicatorPaintOrderExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NIndicatorPaintOrderExampleSchema = NSchema.Create(typeof(NIndicatorPaintOrderExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
-			stack.HorizontalPlacement = Layout.ENHorizontalPlacement.Left;
+			stack.HorizontalPlacement = ENHorizontalPlacement.Left;
 
 			NStackPanel controlStack = new NStackPanel();
 			stack.Add(controlStack);
@@ -142,7 +143,6 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion 
 
-
 		#region Event Handlers
 
 		/// <summary>
@@ -181,13 +181,15 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NIndicatorPaintOrderExampleSchema;
 
-        #endregion
+		#endregion
 
-		#region Default Values
+		#region Constants
+
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
 
 		#endregion
 	}

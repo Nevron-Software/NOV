@@ -5,7 +5,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	public class NParagraphStylesExample : NTextExampleBase
+	public class NParagraphStylesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -21,14 +21,36 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NParagraphStylesExample()
 		{
-			NParagraphStylesExampleSchema = NSchema.Create(typeof(NParagraphStylesExample), NTextExampleBase.NTextExampleBaseSchema);
+			NParagraphStylesExampleSchema = NSchema.Create(typeof(NParagraphStylesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how to create and apply paragraph styles.</p>";
+		}
+
+		private void PopulateRichText()
 		{
 			NDocumentBlock documentBlock = m_RichText.Content;
 			NSection section = new NSection();
@@ -59,14 +81,12 @@ namespace Nevron.Nov.Examples.Text
 			customStyle.Apply(paragraph2);
 			paragraph2.MarginTop = 30;
 		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-	This example demonstrates how to create and apply paragraph styles.
-</p>
-";
-		}
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
 
 		#endregion
 

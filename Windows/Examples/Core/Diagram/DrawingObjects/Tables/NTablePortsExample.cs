@@ -4,14 +4,13 @@ using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Text;
 using Nevron.Nov.UI;
-using System.Text;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// The example demonstrates how to connect table ports
-    /// </summary>
-    public class NTablePortsExample : NDiagramExampleBase
+	/// <summary>
+	/// The example demonstrates how to connect table ports
+	/// </summary>
+	public class NTablePortsExample : NExampleBase
     {
         #region Constructors
 
@@ -27,24 +26,43 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NTablePortsExample()
         {
-            NTablePortsExampleSchema = NSchema.Create(typeof(NTablePortsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NTablePortsExampleSchema = NSchema.Create(typeof(NTablePortsExample), NExampleBaseSchema);
         }
 
-        #endregion
+		#endregion
 
-        #region Overrides from NDiagramExampleBase
+		#region Example
 
-        protected override string GetExampleDescription()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
         {
-            return @"<p>
-					The example demonstrates how to connect table ports to other shapes.
-					</p>";
+            return @"<p>The example demonstrates how to connect table ports to other shapes.</p>";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide the grid
@@ -56,8 +74,7 @@ namespace Nevron.Nov.Examples.Diagram
 
 			double margin = 40;
 			double tableSize = 200;
-			double gap = (drawing.ActivePage.Width - margin * 2 - tableSize * 2);
-
+			double gap = activePage.Width - margin * 2 - tableSize * 2;
 			
 			double yPos = margin;
 			int portDistributionModeIndex = 0;
@@ -95,7 +112,7 @@ namespace Nevron.Nov.Examples.Diagram
 			centerShape.TextBlock.FontStyleBold = true;
 			((NTextBlock)centerShape.TextBlock).VerticalAlignment = ENVerticalAlignment.Center;
 			((NTextBlock)centerShape.TextBlock).HorizontalAlignment = ENAlign.Center;
-			drawing.ActivePage.Items.AddChild(centerShape);
+			activePage.Items.AddChild(centerShape);
 
 			double center = drawing.ActivePage.Width / 2.0;
 			double shapeSize = 100;
@@ -129,17 +146,15 @@ namespace Nevron.Nov.Examples.Diagram
 				Connect(rowPort1, centerShape.GetPortByName("Right"));
 			}
 		}
-
 		private void Connect(NPort beginPort, NPort endPort)
 		{
 			NRoutableConnector connector = new NRoutableConnector();
 			connector.RerouteMode = ENRoutableConnectorRerouteMode.Always;
-			m_DrawingDocument.Content.ActivePage.Items.AddChild(connector);
+			m_DrawingView.ActivePage.Items.AddChild(connector);
 
 			connector.GlueBeginToPort(beginPort);
 			connector.GlueEndToPort(endPort);
 		}
-
 		private NTableBlock CreateTableBlock(string description)
 		{
 			NTableBlock tableBlock = new NTableBlock(4, 3, NBorder.CreateFilledBorder(NColor.Black), new NMargins(1));
@@ -163,7 +178,7 @@ namespace Nevron.Nov.Examples.Diagram
 					NTableCell cell = row.Cells[colIndex];
 
 					cell.Blocks.Clear();
-					cell.Blocks.Add(new NParagraph("This is table cell [" + rowIndex.ToString() + ", " + colIndex.ToString() + "]"));
+					cell.Blocks.Add(new NParagraph("This is a table cell [" + rowIndex.ToString() + ", " + colIndex.ToString() + "]"));
 				}
 			}
 
@@ -177,7 +192,6 @@ namespace Nevron.Nov.Examples.Diagram
 
 			return tableBlock;
 		}
-
 
 		#endregion
 
@@ -317,6 +331,12 @@ namespace Nevron.Nov.Examples.Diagram
 
 			return border;
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

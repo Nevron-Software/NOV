@@ -11,7 +11,7 @@ namespace Nevron.Nov.Examples.Diagram
     /// <summary>
     /// 
     /// </summary>
-    public class NGroupsExample : NDiagramExampleBase
+    public class NGroupsExample : NExampleBase
     {
         #region Constructors
 
@@ -27,13 +27,31 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NGroupsExample()
         {
-            NGroupsExampleSchema = NSchema.Create(typeof(NGroupsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NGroupsExampleSchema = NSchema.Create(typeof(NGroupsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
         protected override NWidget CreateExampleControls()
         {
             return null;
@@ -42,10 +60,9 @@ namespace Nevron.Nov.Examples.Diagram
         {
             return "Demonstrates how to create and use groups.";
         }
-        protected override void InitDiagram()
+        
+        private void InitDiagram(NDrawingDocument drawingDocument)
         {
-            base.InitDiagram();
-
             // create networks
             NGroup network1 = CreateNetwork(new NPoint(200, 20), "Network 1");
             NGroup network2 = CreateNetwork(new NPoint(400, 250), "Network 2");
@@ -58,8 +75,8 @@ namespace Nevron.Nov.Examples.Diagram
             ConnectNetworks(network1, network4);
 
             // hide some elements
-            m_DrawingDocument.Content.ScreenVisibility.ShowPorts = false;
-            m_DrawingDocument.Content.ScreenVisibility.ShowGrid = false;
+            drawingDocument.Content.ScreenVisibility.ShowPorts = false;
+            drawingDocument.Content.ScreenVisibility.ShowGrid = false;
         }
 
         #endregion
@@ -68,29 +85,29 @@ namespace Nevron.Nov.Examples.Diagram
 
         protected NGroup CreateNetwork(NPoint location, string labelText)
         {
-bool rectValid = false;
-NRectangle rect = NRectangle.Zero;
-NPage activePage = m_DrawingDocument.Content.ActivePage;
+            bool rectValid = false;
+            NRectangle rect = NRectangle.Zero;
+            NPage activePage = m_DrawingView.ActivePage;
 
-NList<NShape> shapes = activePage.GetShapes(false);
-for (int i = 0; i < shapes.Count; i++)
-{
-    NRectangle bounds = shapes[i].GetAlignBoxInPage();
-    if (rectValid)
-    {
-        rect = NRectangle.Union(rect, bounds);
-    }
-    else
-    {
-        rect = bounds;
-        rectValid = true;
-    }
-}
+            NList<NShape> shapes = activePage.GetShapes(false);
+            for (int i = 0; i < shapes.Count; i++)
+            {
+                NRectangle bounds = shapes[i].GetAlignBoxInPage();
+                if (rectValid)
+                {
+                    rect = NRectangle.Union(rect, bounds);
+                }
+                else
+                {
+                    rect = bounds;
+                    rectValid = true;
+                }
+            }
 
-if (rectValid)
-{
-    // determine how much is out of layout area
-}
+            if (rectValid)
+            {
+                // determine how much is out of layout area
+            }
 
             // create computer1
             NShape computer1 = CreateComputer();
@@ -106,9 +123,9 @@ if (rectValid)
 
             // create the group that contains the comptures
             NGroup group = new NGroup();
-            NBatchGroup batchGroup = new NBatchGroup(m_DrawingDocument);
+            NBatchGroup batchGroup = new NBatchGroup(m_DrawingView.Document);
             batchGroup.Build(computer1, computer2, computer3);
-            batchGroup.Group(m_DrawingDocument.Content.ActivePage, out group);
+            batchGroup.Group(m_DrawingView.ActivePage, out group);
 
             // connect the computers in the network
             ConnectComputers(computer1, computer2, group);
@@ -129,7 +146,7 @@ if (rectValid)
             // set label text
             group.TextBlock.Text = labelText;
 
-            
+
 
             return group;
         }
@@ -147,7 +164,7 @@ if (rectValid)
             NShape lineShape = connectorShapes.CreateShape((int)ENConnectorShape.Line);
             lineShape.GlueBeginToShape(fromNetwork);
             lineShape.GlueEndToShape(toNetwork);
-            m_DrawingDocument.Content.ActivePage.Items.Add(lineShape);
+            m_DrawingView.ActivePage.Items.Add(lineShape);
         }
 
         private void ConnectComputers(NShape fromComputer, NShape toComputer, NGroup group)
@@ -161,6 +178,12 @@ if (rectValid)
 
         #endregion
 
+        #region Fields
+
+        private NDrawingView m_DrawingView;
+
+        #endregion
+
         #region Schema
 
         /// <summary>
@@ -169,7 +192,5 @@ if (rectValid)
         public static readonly NSchema NGroupsExampleSchema;
 
         #endregion
-
-        public object NList { get; set; }
     }
 }

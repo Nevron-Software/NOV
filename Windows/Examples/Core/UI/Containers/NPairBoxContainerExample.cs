@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -39,6 +39,7 @@ namespace Nevron.Nov.Examples.UI
 			for (int i = 0; i < m_PairBoxes.Length; i++)
 			{
 				NPairBox pairBox = new NPairBox(new NLabel(Texts[i * 2]), new NLabel(Texts[i * 2 + 1]), true);
+				
 				pairBox.Box1.Border = NBorder.CreateFilledBorder(NColor.Blue);
 				pairBox.Box1.BorderThickness = new NMargins(1);
 				pairBox.Box2.Border = NBorder.CreateFilledBorder(NColor.Red);

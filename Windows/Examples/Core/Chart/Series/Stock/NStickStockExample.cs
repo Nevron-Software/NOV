@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Stick Stock Example
 	/// </summary>
-	public class NStickStockExample : NChartExampleBase
+	public class NStickStockExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStickStockExample()
 		{
-			NStickStockExampleSchema = NSchema.Create(typeof(NStickStockExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStickStockExampleSchema = NSchema.Create(typeof(NStickStockExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Stick Stock";
@@ -81,10 +78,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -93,19 +86,10 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a stick stock chart.</p>";
 		}
-
-		#endregion
-
-		#region Event Handlers
-
 
 		#endregion
 
@@ -161,6 +145,11 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
+		#region Event Handlers
+
+
+		#endregion
+
 		#region Fields
 
 		NStockSeries m_Stock;
@@ -168,7 +157,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStickStockExampleSchema;
 

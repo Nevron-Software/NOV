@@ -7,39 +7,35 @@ using Nevron.Nov.Editors;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates how to control the size of the gauge axes
-    /// </summary>
-	public class NGaugeCustomRangeLabelsExample : NInstrumentationExampleBase
-    {
-        #region Constructors
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public NGaugeCustomRangeLabelsExample()
-        {
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        static NGaugeCustomRangeLabelsExample()
-        {
-			NGaugeCustomRangeLabelsExampleSchema = NSchema.Create(typeof(NGaugeCustomRangeLabelsExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
-        }
-
-        #endregion
-
-        #region Protected Overrides - Example
+	/// </summary>
+	public class NGaugeCustomRangeLabelsExample : NExampleBase
+	{
+		#region Constructors
 
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <returns></returns>
-        protected override NWidget CreateExampleContent()
+		public NGaugeCustomRangeLabelsExample()
+		{
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		static NGaugeCustomRangeLabelsExample()
+		{
+			NGaugeCustomRangeLabelsExampleSchema = NSchema.Create(typeof(NGaugeCustomRangeLabelsExample), NExampleBaseSchema);
+		}
+
+		#endregion
+
+		#region Example
+
+		protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
-			
+
 			NStackPanel controlStack = new NStackPanel();
 			controlStack.Direction = ENHVDirection.LeftToRight;
 			stack.Add(controlStack);
@@ -48,7 +44,7 @@ namespace Nevron.Nov.Examples.Gauge
 			m_LinearGauge.Orientation = ENLinearGaugeOrientation.Vertical;
 			m_LinearGauge.PreferredSize = defaultLinearVerticalGaugeSize;
 			m_LinearGauge.CapEffect = new NGelCapEffect();
-			m_LinearGauge.Border = base.CreateBorder();
+			m_LinearGauge.Border = CreateBorder();
 			m_LinearGauge.Padding = new NMargins(20);
 			m_LinearGauge.BorderThickness = new NMargins(6);
 			controlStack.Add(m_LinearGauge);
@@ -75,7 +71,7 @@ namespace Nevron.Nov.Examples.Gauge
 
 			m_RadialGauge.CapEffect = new NGlassCapEffect();
 			m_RadialGauge.Dial = new NDial(ENDialShape.Circle, new NEdgeDialRim());
-			
+
 			// set some background
 			advGradient = new NAdvancedGradientFill();
 			advGradient.BackgroundColor = NColor.Black;
@@ -112,12 +108,8 @@ namespace Nevron.Nov.Examples.Gauge
 
 			return stack;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-        protected override NWidget CreateExampleControls()
-        {
+		protected override NWidget CreateExampleControls()
+		{
 			NStackPanel stack = new NStackPanel();
 
 			NStackPanel propertyStack = new NStackPanel();
@@ -155,12 +147,15 @@ namespace Nevron.Nov.Examples.Gauge
 			UpdateAxisRanges();
 
 			return stack;
-        }
-
+		}
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates how to create range labels on the gauge scale.</p>";
 		}
+
+		#endregion
+
+		#region Implementation
 
 		private void ConfigureScale(NLinearScale scale)
 		{
@@ -172,7 +167,6 @@ namespace Nevron.Nov.Examples.Gauge
 			scale.Labels.Style.TextStyle.Font = new NFont("Arimo", 10.0, ENFontStyle.Bold);
 			scale.Labels.Style.TextStyle.Fill = new NColorFill(NColor.White);
 		}
-
 		private void UpdateAxisRanges()
 		{
 			NLinearScale linearGaugeScale = ((NGaugeAxis)m_LinearGauge.Axes[0]).Scale as NLinearScale;
@@ -196,14 +190,13 @@ namespace Nevron.Nov.Examples.Gauge
 				ApplyScaleSectionToAxis(radialGaugeScale, "Max", new NRange(80, 100), NColor.Red);
 			}
 		}
-
 		private void ApplyScaleSectionToAxis(NLinearScale scale, string text, NRange range, NColor color)
 		{
 			NScaleSection scaleSection = new NScaleSection();
 
 			scaleSection.Range = range;
 			scaleSection.LabelTextStyle = new NTextStyle();
-			scaleSection.LabelTextStyle.Fill = new  NColorFill(color);
+			scaleSection.LabelTextStyle.Fill = new NColorFill(color);
 			scaleSection.LabelTextStyle.Font = new NFont("Arimo", 10, ENFontStyle.Bold | ENFontStyle.Italic);
 			scaleSection.MajorTickStroke = new NStroke(color);
 
@@ -221,7 +214,7 @@ namespace Nevron.Nov.Examples.Gauge
 			scale.CustomLabels.Add(rangeLabel);
 		}
 
-		#endregion 
+		#endregion
 
 		#region Event Handlers
 
@@ -244,10 +237,6 @@ namespace Nevron.Nov.Examples.Gauge
 		{
 			m_RadialGauge.BeginAngle = new NAngle(m_BeginAngleScrollBar.Value, NUnit.Degree);
 		}
-	
-		#endregion
-
-		#region Implementation
 
 		#endregion
 
@@ -264,11 +253,25 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NGaugeCustomRangeLabelsExampleSchema;
 
-        #endregion
+		#endregion
 
+		#region Static Methods
+
+		protected NBorder CreateBorder()
+		{
+			return NBorder.CreateThreeColorBorder(NColor.LightGray, NColor.White, NColor.DarkGray, 10, 10);
+		}
+
+		#endregion
+
+		#region Constants
+
+		private static readonly NSize defaultLinearVerticalGaugeSize = new NSize(100, 300);
+
+		#endregion
 	}
 }

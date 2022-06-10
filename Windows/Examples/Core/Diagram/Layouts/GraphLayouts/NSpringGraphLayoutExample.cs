@@ -3,12 +3,13 @@ using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Layout;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
+using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NSpringGraphLayoutExample : NLayoutExampleBase<NSpringGraphLayout>
+    public class NSpringGraphLayoutExample : NExampleBase
     {
         #region Constructors
 
@@ -24,26 +25,106 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NSpringGraphLayoutExample()
         {
-            NSpringGraphLayoutExampleSchema = NSchema.Create(typeof(NSpringGraphLayoutExample), NLayoutExampleBase<NSpringGraphLayout>.NLayoutExampleBaseSchema);
+            NSpringGraphLayoutExampleSchema = NSchema.Create(typeof(NSpringGraphLayoutExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
         {
-            base.InitDiagram();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
 
-            NPage activePage = m_DrawingDocument.Content.ActivePage;
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
 
-            // we will be using basic shapes for this example
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            m_Layout.Changed += OnLayoutChanged;
+
+            NStackPanel stack = new NStackPanel();
+
+            // property editor
+            NEditor editor = NDesigner.GetDesigner(m_Layout).CreateInstanceEditor(m_Layout);
+            stack.Add(new NGroupBox("Properties", editor));
+
+            NButton arrangeButton = new NButton("Arrange Diagram");
+            arrangeButton.Click += OnArrangeButtonClick;
+            stack.Add(arrangeButton);
+
+            // items stack
+            NStackPanel itemsStack = new NStackPanel();
+
+            // NOTE: For Graph layouts we provide the user with the ability to generate random graph diagrams so that he/she can test the layouts
+            NButton randomGraph1Button = new NButton("Random Graph (10 vertices, 15 edges)");
+            randomGraph1Button.Click += OnRandomGraph1ButtonClick;
+            itemsStack.Add(randomGraph1Button);
+
+            NButton randomGraph2Button = new NButton("Random Graph (20 vertices, 30 edges)");
+            randomGraph2Button.Click += OnRandomGraph2ButtonClick;
+            itemsStack.Add(randomGraph2Button);
+
+            stack.Add(new NGroupBox("Items", itemsStack));
+
+            return stack;
+        }
+        protected override string GetExampleDescription()
+        {
+            return @"
+<p>
+    The spring layout method is a classical force directed layout, which uses spring and electrical forces.
+</p>
+<p>
+    Graph edges are treated as springs. Springs aim to ensure that the distance between adjacent vertices is
+	approximately equal to the spring length. The parameters of the spring force are controlled by an instance
+	of the <b>NSpringForce</b> class, accessible from the SpringForce property.
+</p>
+<p>
+    Graph vertices are treated as electrically charged particles, which repel each other. The electrical 
+	force aims to ensure that vertices should not be close together. The parameters of the electrical force
+	are controlled by an instance of the <b>NElectricalForce</b> class, accessible from the ElectricalForce property.
+</p>
+<p>
+	The spring force accepts per edge defined spring lengths and spring stiffness. In this example the red
+	connectors are with smaller spring length are with greater stiffness than the blue connectors. Because
+	of that they tend to be displayed closer to each other.
+</p>
+<p> 
+	The electrical force accepts per vertex provided electric charges. Thus some vertices may be more repulsive than others.
+</p>
+<p>
+	To experiment with the layout behavior just change the properties of the layout in the property grid and
+	click the <b>Layout</b> button.
+</p>
+            ";
+        }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            // Hide ports
+            drawingDocument.Content.ScreenVisibility.ShowPorts = false;
+
+            NPage activePage = drawingDocument.Content.ActivePage;
+
+            // We will be using basic shapes for this example
             NBasicShapeFactory basicShapesFactory = new NBasicShapeFactory();
             basicShapesFactory.DefaultSize = new NSize(80, 80);
 
             NList<NPerson> persons = new NList<NPerson>();
 
-            // create persons
+            // Create persons
             NPerson personEmil = new NPerson("Emil Moore", basicShapesFactory.CreateShape(ENBasicShape.Circle));
             NPerson personAndre = new NPerson("Andre Smith", basicShapesFactory.CreateShape(ENBasicShape.Circle));
             NPerson personRobert = new NPerson("Robert Johnson", basicShapesFactory.CreateShape(ENBasicShape.Circle));
@@ -66,12 +147,12 @@ namespace Nevron.Nov.Examples.Diagram
             persons.Add(personSamantha);
             persons.Add(personIsabella);
 
-            // create family relashionships
+            // Create family relashionships
             personEmil.m_Family = personSilvia;
             personAndre.m_Family = personEmily;
             personRobert.m_Family = personMonica;
 
-            // create friend relationships
+            // Create friend relationships
             personEmily.m_Friends.Add(personBob);
             personEmily.m_Friends.Add(personMonica);
 
@@ -93,7 +174,7 @@ namespace Nevron.Nov.Examples.Diagram
                 activePage.Items.Add(persons[i].m_Shape);
             }
 
-            // creeate the family relations
+            // Create the family relations
             for (int i = 0; i < persons.Count; i++)
             {
                 NPerson currentPerson = persons[i];
@@ -133,46 +214,106 @@ namespace Nevron.Nov.Examples.Diagram
                 }
             }
 
-            // arrange diagram
-            ArrangeDiagram();
+            // Arrange diagram
+            ArrangeDiagram(drawingDocument);
 
-            // fit active page
-            m_DrawingDocument.Content.ActivePage.ZoomMode = ENZoomMode.Fit;
+            // Fit active page
+            drawingDocument.Content.ActivePage.ZoomMode = ENZoomMode.Fit;
         }
-        protected override string GetExampleDescription()
+
+        #endregion
+
+        #region Implementation
+
+        /// <summary>
+        /// Arranges the shapes in the active page.
+        /// </summary>
+        /// <param name="drawingDocument"></param>
+        private void ArrangeDiagram(NDrawingDocument drawingDocument)
         {
-            return @"
-<p>
-    The spring layout method is a classical force directed layout, which uses spring and electrical forces.
-</p>
-<p>
-    Graph edges are treated as springs. Springs aim to ensure that the distance between adjacent vertices is
-	approximately equal to the spring length. The parameters of the spring force are controlled by an instance
-	of the <b>NSpringForce</b> class, accessible from the SpringForce property.
-</p>
-<p>
-    Graph vertices are treated as electrically charged particles, which repel each other. The electrical 
-	force aims to ensure that vertices should not be close together. The parameters of the electrical force
-	are controlled by an instance of the <b>NElectricalForce</b> class, accessible from the ElectricalForce property.
-</p>
-<p>
-	The spring force accepts per edge defined spring lengths and spring stiffness. In this example the red
-	connectors are with smaller spring length are with greater stiffness than the blue connectors. Because
-	of that they tend to be displayed closer to each other.
-</p>
-<p> 
-	The electrical force accepts per vertex provided electric charges. Thus some vertices may be more repulsive than others.
-</p>
-<p>
-	To experiment with the layout behavior just change the properties of the layout in the property grid and
-	click the <b>Layout</b> button.
-</p>
-            ";
+            // get all top-level shapes that reside in the active page
+            NPage activePage = drawingDocument.Content.ActivePage;
+            NList<NShape> shapes = activePage.GetShapes(false);
+
+            // create a layout context and use it to arrange the shapes using the current layout
+            NDrawingLayoutContext layoutContext = new NDrawingLayoutContext(drawingDocument, activePage);
+            m_Layout.Arrange(shapes.CastAll<object>(), layoutContext);
+
+            // size the page to the content size
+            activePage.SizeToContent();
         }
-        protected override ENBasicShape GetDefaultShapeType()
+
+        #endregion
+
+        #region Event Handlers
+
+        private void OnRandomGraph1ButtonClick(NEventArgs arg)
         {
-            return ENBasicShape.Circle;
+            NDrawingDocument drawingDocument = m_DrawingView.Document;
+
+            drawingDocument.StartHistoryTransaction("Create Random Graph 1");
+            try
+            {
+                m_DrawingView.ActivePage.Items.Clear();
+
+                // create a test tree
+                NRandomGraphTemplate graph = new NRandomGraphTemplate();
+                graph.EdgesUserClass = "Connector";
+                graph.VertexCount = 10;
+                graph.EdgeCount = 15;
+                graph.VerticesShape = VertexShape;
+                graph.VerticesSize = VertexSize;
+                graph.Create(drawingDocument);
+
+                // layout the tree
+                ArrangeDiagram(drawingDocument);
+            }
+            finally
+            {
+                drawingDocument.CommitHistoryTransaction();
+            }
         }
+        private void OnRandomGraph2ButtonClick(NEventArgs arg)
+        {
+            NDrawingDocument drawingDocument = m_DrawingView.Document;
+
+            drawingDocument.StartHistoryTransaction("Create Random Graph 2");
+            try
+            {
+                m_DrawingView.ActivePage.Items.Clear();
+
+                // create a test tree
+                NRandomGraphTemplate graph = new NRandomGraphTemplate();
+                graph.EdgesUserClass = "Connector";
+                graph.VertexCount = 20;
+                graph.EdgeCount = 30;
+                graph.VerticesShape = VertexShape;
+                graph.VerticesSize = VertexSize;
+                graph.Create(drawingDocument);
+
+                // layout the tree
+                ArrangeDiagram(drawingDocument);
+            }
+            finally
+            {
+                drawingDocument.CommitHistoryTransaction();
+            }
+        }
+        private void OnLayoutChanged(NEventArgs arg)
+        {
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+        protected virtual void OnArrangeButtonClick(NEventArgs arg)
+        {
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
+        private NSpringGraphLayout m_Layout = new NSpringGraphLayout();
 
         #endregion
 
@@ -185,9 +326,16 @@ namespace Nevron.Nov.Examples.Diagram
 
         #endregion
 
-		#region Nested Types
+        #region Constants
 
-		public class NPerson
+        private const ENBasicShape VertexShape = ENBasicShape.Circle;
+        private static readonly NSize VertexSize = new NSize(50, 50);
+
+        #endregion
+
+        #region Nested Types
+
+        public class NPerson
         {
             public NPerson(string name, NShape shape)
             {

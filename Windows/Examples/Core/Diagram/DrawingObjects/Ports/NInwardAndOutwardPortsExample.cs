@@ -1,10 +1,11 @@
 ﻿using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NInwardAndOutwardPortsExample : NDiagramExampleBase
+    public class NInwardAndOutwardPortsExample : NExampleBase
     {
         #region Constructors
 
@@ -20,13 +21,35 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NInwardAndOutwardPortsExample()
         {
-            NInwardAndOutwardPortsExampleSchema = NSchema.Create(typeof(NInwardAndOutwardPortsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NInwardAndOutwardPortsExampleSchema = NSchema.Create(typeof(NInwardAndOutwardPortsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -51,11 +74,10 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             // hide the grid
@@ -64,18 +86,24 @@ namespace Nevron.Nov.Examples.Diagram
             // plotter commands
             NBasicShapeFactory basicShapes = new NBasicShapeFactory();
            
-            // create a rounded rect
+            // create a rectangle with an outward port
             NShape rectShape = basicShapes.CreateShape(ENBasicShape.Rectangle);
             rectShape.SetBounds(50, 50, 100, 100);
             rectShape.Text = "Move me close to the star";
             rectShape.GetPortByName("Top").GlueMode = ENPortGlueMode.Outward;
             activePage.Items.Add(rectShape);
 
-            // create a star
+            // create a pentagram
             NShape pentagramShape = basicShapes.CreateShape(ENBasicShape.Pentagram);
             pentagramShape.SetBounds(310, 310, 100, 100);
             activePage.Items.Add(pentagramShape);
         }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

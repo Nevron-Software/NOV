@@ -8,7 +8,7 @@ namespace Nevron.Nov.Examples.Text
 	/// <summary>
 	/// The example demonstrates how to programmatically create inline elements with different formatting
 	/// </summary>
-	public class NInlineFormattingExample : NTextExampleBase
+	public class NInlineFormattingExample : NExampleBase
 	{
 		#region Constructors
 
@@ -23,14 +23,40 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NInlineFormattingExample()
 		{
-			NInlineFormattingExampleSchema = NSchema.Create(typeof(NInlineFormattingExample), NTextExampleBase.NTextExampleBaseSchema);
+			NInlineFormattingExampleSchema = NSchema.Create(typeof(NInlineFormattingExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Overrides
+		#region Example
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>
+	This example demonstrates how to modify the text style and the appearance settings of inline elements as well as how to add line breaks and tabs to paragraphs.
+</p>
+";
+		}
+
+		private void PopulateRichText()
 		{
 			NSection section = new NSection();
 			m_RichText.Content.Sections.Add(section);
@@ -68,7 +94,7 @@ namespace Nevron.Nov.Examples.Text
                 textInline7.FontStyle |= ENFontStyle.Strikethrough;
 				paragraph.Inlines.Add(textInline7);
 
-				NTextInline textInline8 = new NTextInline("and Font Style All.");
+				NTextInline textInline8 = new NTextInline(", and Font Style All.");
                 textInline8.FontStyle = ENFontStyle.Bold | ENFontStyle.Italic | ENFontStyle.Underline | ENFontStyle.Strikethrough;
 				paragraph.Inlines.Add(textInline8);
 
@@ -79,7 +105,7 @@ namespace Nevron.Nov.Examples.Text
 				// appearance control
 				NParagraph paragraph = new NParagraph();
 
-				NTextInline textInline1 = new NTextInline("Each text inline element can contain text with differeant fill and background. ");
+				NTextInline textInline1 = new NTextInline("Each text inline element can contain text with different fill and background. ");
 				paragraph.Inlines.Add(textInline1);
 
 				NTextInline textInline2 = new NTextInline("Fill (Red), Background Fill Inherit. ");
@@ -117,30 +143,103 @@ namespace Nevron.Nov.Examples.Text
 				NTabInline tabInline = new NTabInline();
 				paragraph.Inlines.Add(tabInline);
 
-				NTextInline textInline1 = new NTextInline("(Tabs) are not supported by HTML, however they are essential when importing text documents.");
+				NTextInline textInline1 = new NTextInline("(Tabs) are not supported by HTML, however, they are essential when importing text documents.");
 				paragraph.Inlines.Add(textInline1);
 
 				section.Blocks.Add(paragraph);
 			}
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override string GetExampleDescription()
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
+
+		#endregion
+
+		#region Schema
+
+		public static readonly NSchema NInlineFormattingExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NParagraph GetDescriptionParagraph(string text)
 		{
-			return @"
-<p>
-	This example demonstrates how to text style and appearance settings of inline elements as well as how to add line breaks and tabs to paragraphs.
-</p>
-";
+			return new NParagraph(text);
+		}
+		private static NParagraph GetTitleParagraphNoBorder(string text, int level)
+		{
+			double fontSize = 10;
+			ENFontStyle fontStyle = ENFontStyle.Regular;
+
+			switch (level)
+			{
+				case 1:
+					fontSize = 16;
+					fontStyle = ENFontStyle.Bold;
+					break;
+				case 2:
+					fontSize = 10;
+					fontStyle = ENFontStyle.Bold;
+					break;
+			}
+
+			NParagraph paragraph = new NParagraph();
+
+			paragraph.HorizontalAlignment = ENAlign.Left;
+			paragraph.FontSize = fontSize;
+			paragraph.FontStyle = fontStyle;
+
+			NTextInline textInline = new NTextInline(text);
+
+			textInline.FontStyle = fontStyle;
+			textInline.FontSize = fontSize;
+
+			paragraph.Inlines.Add(textInline);
+
+			return paragraph;
+
+		}
+		private static NGroupBlock GetDescriptionBlock(string title, string description, int level)
+		{
+			NColor color = NColor.Black;
+
+			NParagraph paragraph = GetTitleParagraphNoBorder(title, level);
+
+			NGroupBlock groupBlock = new NGroupBlock();
+
+			groupBlock.ClearMode = ENClearMode.All;
+			groupBlock.Blocks.Add(paragraph);
+			groupBlock.Blocks.Add(GetDescriptionParagraph(description));
+
+			groupBlock.Border = CreateLeftTagBorder(color);
+			groupBlock.BorderThickness = defaultBorderThickness;
+
+			return groupBlock;
+		}
+		/// <summary>
+		/// Creates a left tag border with the specified border
+		/// </summary>
+		/// <param name="color"></param>
+		/// <returns></returns>
+		private static NBorder CreateLeftTagBorder(NColor color)
+		{
+			NBorder border = new NBorder();
+
+			border.LeftSide = new NBorderSide();
+			border.LeftSide.Fill = new NColorFill(color);
+
+			return border;
 		}
 
 		#endregion
 
-		#region Static
+		#region Constants
 
-		public static readonly NSchema NInlineFormattingExampleSchema;
+		private static readonly NMargins defaultBorderThickness = new NMargins(5.0, 0.0, 0.0, 0.0);
 
 		#endregion
 	}

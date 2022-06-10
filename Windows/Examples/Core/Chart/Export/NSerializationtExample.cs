@@ -1,20 +1,19 @@
-﻿using Nevron.Nov.Chart;
-using Nevron.Nov.Chart.Export;
+﻿using System;
+using System.IO;
+
+using Nevron.Nov.Chart;
+using Nevron.Nov.Chart.Formats;
+using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using Nevron.Nov.Chart.Formats;
-using System;
-using System.IO;
-using Nevron.Nov.DataStructures;
-using Nevron.Nov.Editors;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Serialization Example
 	/// </summary>
-	public class NSerializationExample : NChartExampleBase
+	public class NSerializationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -30,26 +29,23 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NSerializationExample()
 		{
-			NSerializationExampleSchema = NSchema.Create(typeof(NSerializationExample), NChartExampleBase.NChartExampleBaseSchema);
+			NSerializationExampleSchema = NSchema.Create(typeof(NSerializationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			m_ChartView = new NChartView();
+			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
-			chartView.Surface.Titles[0].Text = "Serialization";
+			m_ChartView.Surface.Titles[0].Text = "Serialization";
 
 			// configure chart
-			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
+			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
 			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
@@ -80,16 +76,12 @@ namespace Nevron.Nov.Examples.Chart
 			m_Bar3.DataLabelStyle = new NDataLabelStyle(false);
 			chart.Series.Add(m_Bar3);
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
 
 			FillRandomData();
 
-			return chartView;
+			return m_ChartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -117,47 +109,9 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to save / load the chart state from a file or stream.</p>";
-		}
-
-		#endregion
-
-		#region Event Handlers
-
-		void OnLoadStateFromFileButtonClick(NEventArgs arg)
-		{
-			m_ChartView.LoadFromFile();
-		}
-
-		void OnSaveStateToFileButtonClick(NEventArgs arg)
-		{
-			m_ChartView.SaveToFile();
-		}
-
-		void OnLoadStateFromStreamButtonClick(NEventArgs arg)
-		{
-			if (m_Stream != null)
-			{
-				m_Stream.Seek(0, SeekOrigin.Begin);
-				m_ChartView.LoadFromStream(m_Stream);
-			}
-		}
-
-		void OnSaveStateToStreamButtonClick(NEventArgs arg)
-		{
-			m_Stream = new MemoryStream();
-			m_ChartView.SaveToStream(m_Stream, new NNevronXmlChartFormat());
-		}
-
-		void OnChangeDataButtonClick(NEventArgs arg)
-		{
-			FillRandomData();
 		}
 
 		#endregion
@@ -202,17 +156,51 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Fields
+		#region Event Handlers
 
-		NBarSeries m_Bar1;
-		NBarSeries m_Bar2;
-		NBarSeries m_Bar3;
+		void OnLoadStateFromFileButtonClick(NEventArgs arg)
+		{
+			m_ChartView.OpenFile();
+		}
 
-		MemoryStream m_Stream;
+		void OnSaveStateToFileButtonClick(NEventArgs arg)
+		{
+            m_ChartView.SaveAs();
+		}
+
+		void OnLoadStateFromStreamButtonClick(NEventArgs arg)
+		{
+			if (m_Stream != null)
+			{
+				m_Stream.Seek(0, SeekOrigin.Begin);
+				m_ChartView.LoadFromStream(m_Stream);
+			}
+		}
+
+		void OnSaveStateToStreamButtonClick(NEventArgs arg)
+		{
+			m_Stream = new MemoryStream();
+			m_ChartView.SaveToStream(m_Stream, NChartFormat.NevronXml);
+		}
+
+		void OnChangeDataButtonClick(NEventArgs arg)
+		{
+			FillRandomData();
+		}
 
 		#endregion
 
-		#region Static
+		#region Fields
+
+		private NChartView m_ChartView;
+		private NBarSeries m_Bar1;
+		private NBarSeries m_Bar2;
+		private NBarSeries m_Bar3;
+		private MemoryStream m_Stream;
+
+		#endregion
+
+		#region Schema
 
 		public static readonly NSchema NSerializationExampleSchema;
 

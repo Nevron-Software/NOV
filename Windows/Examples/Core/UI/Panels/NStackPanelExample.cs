@@ -28,7 +28,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -66,7 +66,17 @@ namespace Nevron.Nov.Examples.UI
 			NStackPanel propertiesStack = new NStackPanel();
 			for (int i = 0; i < editors.Count; i++)
 			{
-				propertiesStack.Add(editors[i]);
+				NPropertyEditor editor = editors[i];
+				if (editor.EditedProperty == NStackPanel.HorizontalSpacingProperty)
+				{
+					editor.SetEditedLocalValue(NDesign.HorizontalSpacing);
+				}
+				else if (editor.EditedProperty == NStackPanel.VerticalSpacingProperty)
+				{
+					editor.SetEditedLocalValue(NDesign.VerticalSpacing);
+				}
+
+				propertiesStack.Add(editor);
 			}
 
 			stack.Add(new NGroupBox("Properties", new NUniSizeBoxGroup(propertiesStack)));

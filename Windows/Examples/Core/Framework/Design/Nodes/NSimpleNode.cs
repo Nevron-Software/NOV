@@ -468,7 +468,7 @@ namespace Nevron.Nov.Examples.Framework
 				SetPropertyCategory(VRadioGroupEnumProperty, EnumsCategory);
 
 				// Category Editors
-				SetCategoryEditor(String.Empty, NTabCategoryEditor.HeadersTopTemplate);
+				SetCategoryEditor(NLocalizedString.Empty, NTabCategoryEditor.HeadersTopTemplate);
 
 				// Property Editors
 				SetPropertyEditor(SpecifiedDoubleValueProperty, NSpecifiedDoublePropertyEditor.ZeroTemplate);
@@ -477,8 +477,8 @@ namespace Nevron.Nov.Examples.Framework
 				SetPropertyEditor(VRadioGroupEnumProperty, NEnumPropertyEditor.VerticalRadioGroupTemplate);
 			}
 
-			private const string ColorsCategory = "Colors";
-			private const string EnumsCategory = "Enums";
+			private static readonly NLocalizedString ColorsCategory = new NLocalizedString("Colors");
+			private static readonly NLocalizedString EnumsCategory = new NLocalizedString("Enums");
 		}
 
 		#endregion

@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Step Line Example
 	/// </summary>
-	public class NStepLineExample : NChartExampleBase
+	public class NStepLineExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStepLineExample()
 		{
-			NStepLineExampleSchema = NSchema.Create(typeof(NStepLineExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStepLineExampleSchema = NSchema.Create(typeof(NStepLineExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Step Line";
@@ -73,10 +70,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -96,6 +89,14 @@ namespace Nevron.Nov.Examples.Chart
 			
 			return group;
 		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how to create step line charts.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
 
 		void OnLineSegmentModeComboBoxSelectedIndexChanged(NValueChangeEventArgs arg)
 		{
@@ -116,11 +117,6 @@ namespace Nevron.Nov.Examples.Chart
 			}
 		}
 
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates how to create step line charts.</p>";
-		}
-
 		#endregion
 
 		#region Event Handlers
@@ -135,7 +131,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStepLineExampleSchema;
 

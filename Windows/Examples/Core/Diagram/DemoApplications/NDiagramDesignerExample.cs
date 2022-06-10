@@ -1,15 +1,13 @@
 ﻿using Nevron.Nov.Diagram;
-using Nevron.Nov;
-using Nevron.Nov.DataStructures;
 using Nevron.Nov.Diagram.UI;
 using Nevron.Nov.Dom;
+using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
-using Nevron.Nov.Graphics;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NDiagramDesignerExample : NExampleBase
+	public class NDiagramDesignerExample : NExampleBase
     {
         #region Constructors
 
@@ -29,20 +27,17 @@ namespace Nevron.Nov.Examples.Diagram
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
         {
             // create a library browser that displays all predefined shape factories
 			m_LibraryBrowser = new NLibraryBrowser();
-            m_LibraryBrowser.AddPredefinedShapeFactories();
-            m_LibraryBrowser.NavigationBar.SelectedIndex = 2;
             m_LibraryBrowser.LibraryViewType = ENLibraryViewType.Thumbnails;
-            m_LibraryBrowser.LibrariesFolder = @"E:\Nevron.MyDrawClipartTest\LibrariesNDX";
 
             // create pan and zoom
             m_PanAndZoom = new NPanAndZoomView();
-            m_PanAndZoom.PreferredSize = new Nov.Graphics.NSize(150, 150);
+            m_PanAndZoom.PreferredSize = new NSize(150, 150);
             
             // create side bar
             m_SideBar = new NSideBar();
@@ -51,12 +46,12 @@ namespace Nevron.Nov.Examples.Diagram
 			m_DrawingView = new NDrawingView();
 			m_DrawingView.HorizontalPlacement = ENHorizontalPlacement.Fit;
 			m_DrawingView.VerticalPlacement = ENVerticalPlacement.Fit;
-			m_DrawingDocument = m_DrawingView.Document;
 
             // bind components to drawing view
 			m_LibraryBrowser.DrawingView = m_DrawingView;
+            m_LibraryBrowser.ResetLibraries();
             m_PanAndZoom.DrawingView = m_DrawingView;
-            m_SideBar.DrawingView = m_DrawingView;
+            m_SideBar.DrawingView = m_DrawingView;            
 
             // create splitters
             NSplitter libraryPanSplitter = new NSplitter();
@@ -83,7 +78,6 @@ namespace Nevron.Nov.Examples.Diagram
 			NDiagramRibbonBuilder builder = new NDiagramRibbonBuilder();
             return builder.CreateUI(rightSplitter, m_DrawingView);
 		}
-        
         protected override NWidget CreateExampleControls()
         {
             return null;
@@ -99,7 +93,6 @@ namespace Nevron.Nov.Examples.Diagram
 
         private NLibraryBrowser m_LibraryBrowser;
         private NDrawingView m_DrawingView;
-        private NDrawingDocument m_DrawingDocument;
         private NPanAndZoomView m_PanAndZoom;
         private NSideBar m_SideBar;
 

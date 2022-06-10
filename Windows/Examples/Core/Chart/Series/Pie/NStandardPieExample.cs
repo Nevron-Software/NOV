@@ -1,7 +1,5 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
-using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Chart
@@ -9,7 +7,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Standard Pie Example
 	/// </summary>
-	public class NStandardPieExample : NChartExampleBase
+	public class NStandardPieExample : NExampleBase
 	{
 		#region Constructors
 
@@ -18,24 +16,20 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		public NStandardPieExample()
 		{
-			
+
 		}
 		/// <summary>
 		/// Static constructor
 		/// </summary>
 		static NStandardPieExample()
 		{
-			NStandardPieExampleSchema = NSchema.Create(typeof(NStandardPieExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStandardPieExampleSchema = NSchema.Create(typeof(NStandardPieExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreatePieChartView();
@@ -67,20 +61,16 @@ namespace Nevron.Nov.Examples.Chart
 
 			// detach airplanes
 			m_PieSeries.DataPoints[1].DetachmentPercent = 10;
-			
+
 			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, true));
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
 			NUniSizeBoxGroup group = new NUniSizeBoxGroup(stack);
-			
+
 			NNumericUpDown beginAngleUpDown = new NNumericUpDown();
 			beginAngleUpDown.Value = m_PieChart.BeginAngle;
 			beginAngleUpDown.ValueChanged += OnBeginAngleUpDownValueChanged;
@@ -95,10 +85,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a standard pie chart.</p>";
@@ -132,9 +118,20 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStandardPieExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreatePieChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Pie);
+			return chartView;
+		}
 
 		#endregion
 	}

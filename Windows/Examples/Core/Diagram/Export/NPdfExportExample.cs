@@ -7,7 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NPdfExportExample : NDiagramExampleBase
+	public class NPdfExportExample : NExampleBase
     {
         #region Constructors
 
@@ -23,16 +23,34 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NPdfExportExample()
         {
-            NPdfExportExampleSchema = NSchema.Create(typeof(NPdfExportExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NPdfExportExampleSchema = NSchema.Create(typeof(NPdfExportExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
         protected override NWidget CreateExampleControls()
         {
-			NStackPanel stackPanel = (NStackPanel)base.CreateExampleControls();
+            NStackPanel stackPanel = new NStackPanel();
 
             NButton showPdfDialog = new NButton("Show Export to PDF Dialog...");
             showPdfDialog.Click += OnShowPdfDialogButtonClick;
@@ -55,18 +73,17 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
             ";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
             NPage activePage = drawing.ActivePage;
 
             drawing.ScreenVisibility.ShowGrid = false;
             drawing.ScreenVisibility.ShowPorts = false;
 
             NBasicShapeFactory basisShapes = new NBasicShapeFactory();
-			NFlowchartingShapeFactory flowChartingShapes = new NFlowchartingShapeFactory();
+			NFlowchartShapeFactory flowChartingShapes = new NFlowchartShapeFactory();
             NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
             NShape nonPrintableShape = basisShapes.CreateShape(ENBasicShape.Rectangle);
@@ -118,23 +135,29 @@ namespace Nevron.Nov.Examples.Diagram
 
         private void OnShowPdfDialogButtonClick(NEventArgs arg)
         {
-            NDrawingPdfExporter imageExporter = new NDrawingPdfExporter(m_DrawingDocument);
-            imageExporter.ShowDialog(OwnerWindow, true);
+            NDrawingPdfExporter imageExporter = new NDrawingPdfExporter(m_DrawingView.Drawing);
+            imageExporter.ShowDialog(DisplayWindow, true);
         }
         private void OnSaveAsPdfButtonClick(NEventArgs arg)
         {
-            NDrawingPdfExporter imageExporter = new NDrawingPdfExporter(m_DrawingDocument);
+            NDrawingPdfExporter imageExporter = new NDrawingPdfExporter(m_DrawingView.Drawing);
             imageExporter.SaveAsPdf();
         }
 
-		#endregion
+        #endregion
 
-		#region Schema
+        #region Fields
 
-		/// <summary>
-		/// Schema associated with NPdfExportExample.
-		/// </summary>
-		public static readonly NSchema NPdfExportExampleSchema;
+        private NDrawingView m_DrawingView;
+
+        #endregion
+
+        #region Schema
+
+        /// <summary>
+        /// Schema associated with NPdfExportExample.
+        /// </summary>
+        public static readonly NSchema NPdfExportExampleSchema;
 
         #endregion
     }

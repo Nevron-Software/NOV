@@ -1,7 +1,6 @@
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Import.Map;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
@@ -9,7 +8,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NMapProjectionsExample : NDiagramExampleBase
+	public class NMapProjectionsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -50,48 +49,30 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NMapProjectionsExample()
 		{
-			NMapProjectionsExampleSchema = NSchema.Create(typeof(NMapProjectionsExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NMapProjectionsExampleSchema = NSchema.Create(typeof(NMapProjectionsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitDiagram()
+		protected override NWidget CreateExampleContent()
 		{
-			base.InitDiagram();
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
 
-			// Configure the document
-			NDrawing drawing = m_DrawingDocument.Content;
-			drawing.ScreenVisibility.ShowGrid = false;
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
 
-			// Add styles
-			AddStyles(m_DrawingDocument);
-
-			// Configure the active page
-			NPage page = drawing.ActivePage;
-			page.BackgroundFill = new NColorFill(NColor.LightBlue);
-			page.Bounds = new NRectangle(0, 0, 10000, 10000);
-			page.ZoomMode = ENZoomMode.Fit;
-
-			// Create a map importer
-			m_MapImporter = new NEsriMapImporter();
-			m_MapImporter.MapBounds = NMapBounds.World;
-
-			m_MapImporter.MeridianSettings.RenderMode = ENArcRenderMode.BelowObjects;
-			m_MapImporter.ParallelSettings.RenderMode = ENArcRenderMode.BelowObjects;
-			m_MapImporter.Projection = m_Projections[DefaultProjectionIndex];
-
-			// Add an ESRI shapefile
-			NEsriShapefile countries = new NEsriShapefile(Nevron.Nov.Diagram.NResources.RBIN_countries_zip);
-			countries.NameColumn = "name_long";
-			countries.FillRule = new NMapFillRuleValue("mapcolor8", Colors);
-			m_MapImporter.AddShapefile(countries);
-
-			// Read the map data
-			m_MapImporter.Read();
-
-			ImportMap();
+			return drawingViewWithRibbon;
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -131,12 +112,8 @@ namespace Nevron.Nov.Examples.Diagram
 			m_CenterMeridianNumericUpDown.ValueChanged += OnCenterMeridianNumericUpDownValueChanged;
 			stack.Add(NPairBox.Create("Central meridian:", m_CenterMeridianNumericUpDown));
 
-			// Add the settings group box to the parent stack
-			NStackPanel parentStack = (NStackPanel)base.CreateExampleControls();
 			NGroupBox settingsGroupBox = new NGroupBox("Settings", new NUniSizeBoxGroup(stack));
-			parentStack.Add(settingsGroupBox);
-
-			return parentStack;
+			return settingsGroupBox;
 		}
 		protected override string GetExampleDescription()
 		{
@@ -156,6 +133,41 @@ namespace Nevron.Nov.Examples.Diagram
 	implementation to the shape importer of the map in order to get notified when a shape is imported
 	and use the values from the DBF file for this shape to customize it even further.
 </p>";
+		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			// Configure the document
+			NDrawing drawing = drawingDocument.Content;
+			drawing.ScreenVisibility.ShowGrid = false;
+
+			// Add styles
+			AddStyles(drawingDocument);
+
+			// Configure the active page
+			NPage page = drawing.ActivePage;
+			page.BackgroundFill = new NColorFill(NColor.LightBlue);
+			page.Bounds = new NRectangle(0, 0, 10000, 10000);
+			page.ZoomMode = ENZoomMode.Fit;
+
+			// Create a map importer
+			m_MapImporter = new NEsriMapImporter();
+			m_MapImporter.MapBounds = NMapBounds.World;
+
+			m_MapImporter.MeridianSettings.RenderMode = ENArcRenderMode.BelowObjects;
+			m_MapImporter.ParallelSettings.RenderMode = ENArcRenderMode.BelowObjects;
+			m_MapImporter.Projection = m_Projections[DefaultProjectionIndex];
+
+			// Add an ESRI shapefile
+			NEsriShapefile countries = new NEsriShapefile(Nevron.Nov.Diagram.NResources.RBIN_countries_zip);
+			countries.NameColumn = "name_long";
+			countries.FillRule = new NMapFillRuleValue("mapcolor8", Colors);
+			m_MapImporter.AddShapefile(countries);
+
+			// Read the map data
+			m_MapImporter.Read();
+
+			ImportMap();
 		}
 
 		#endregion
@@ -182,11 +194,11 @@ namespace Nevron.Nov.Examples.Diagram
 		}
 		private void ImportMap()
 		{
-			NPage page = m_DrawingDocument.Content.ActivePage;
+			NPage page = m_DrawingView.ActivePage;
 			page.Items.Clear();
 
 			// Import the map to the drawing document
-			m_MapImporter.Import(m_DrawingDocument, page.Bounds);
+			m_MapImporter.Import(m_DrawingView.Document, page.Bounds);
 		}
 
 		#endregion
@@ -260,6 +272,8 @@ namespace Nevron.Nov.Examples.Diagram
 		#endregion
 
 		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		private NMapProjection[] m_Projections;
 		private NEsriMapImporter m_MapImporter;

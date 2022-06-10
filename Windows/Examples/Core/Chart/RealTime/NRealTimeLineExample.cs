@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
-	/// Real Time Line Example
+	/// Real Time Line Example.
 	/// </summary>
-	public class NRealTimeLineExample : NChartExampleBase
+	public class NRealTimeLineExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,20 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NRealTimeLineExample()
 		{
-			NRealTimeLineExampleSchema = NSchema.Create(typeof(NRealTimeLineExample), NChartExampleBase.NChartExampleBaseSchema);
+			NRealTimeLineExampleSchema = NSchema.Create(typeof(NRealTimeLineExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
+
+			chartView.Registered += OnChartViewRegistered;
+			chartView.Unregistered += OnChartViewUnregistered;
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Real Time Line";
@@ -74,10 +74,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -94,7 +90,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a line chart that updates in real time.</p>";
@@ -102,57 +97,23 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Override
+		#region Event Handlers
 
-		protected override void OnRegistered()
+		private void OnChartViewRegistered(NEventArgs arg)
 		{
-			base.OnRegistered();
-
 			m_Timer = new NTimer();
 			m_Timer.Tick += OnTimerTick;
 			m_Timer.Start();
 		}
 
-		protected override void OnUnregistered()
+		private void OnChartViewUnregistered(NEventArgs arg)
 		{
-			base.OnUnregistered();
-
 			m_Timer.Stop();
 			m_Timer.Tick -= OnTimerTick;
 			m_Timer = null;
 		}
 
-		#endregion
-
-		#region Event Handlers
-
-		void OnResetButtonClick(NEventArgs arg)
-		{
-			m_Line.DataPoints.Clear();
-			m_Line.OriginIndex = 0;
-			m_CurXValue = 0;
-		}
-
-		void OnToggleTimerButtonClick(NEventArgs arg)
-		{
-			NButton button = (NButton)arg.TargetNode;
-			if ((int)button.Tag == 0)
-			{
-				m_Timer.Stop();
-
-				button.Content = new NLabel("Start Timer");
-				button.Tag = 1;
-			}
-			else
-			{
-				m_Timer.Start();
-				button.Content = new NLabel("Stop Timer");
-				button.Tag = 0;
-			}
-		}
-
-
-		void OnTimerTick()
+		private void OnTimerTick()
 		{
 			const int dataPointCount = 40;
 			if (m_Line.DataPoints.Count < dataPointCount)
@@ -173,6 +134,31 @@ namespace Nevron.Nov.Examples.Chart
 			}			
 		}
 
+		private void OnResetButtonClick(NEventArgs arg)
+		{
+			m_Line.DataPoints.Clear();
+			m_Line.OriginIndex = 0;
+			m_CurXValue = 0;
+		}
+
+		private void OnToggleTimerButtonClick(NEventArgs arg)
+		{
+			NButton button = (NButton)arg.TargetNode;
+			if ((int)button.Tag == 0)
+			{
+				m_Timer.Stop();
+
+				button.Content = new NLabel("Start Timer");
+				button.Tag = 1;
+			}
+			else
+			{
+				m_Timer.Start();
+				button.Content = new NLabel("Stop Timer");
+				button.Tag = 0;
+			}
+		}
+
 		#endregion
 
 		#region Fields
@@ -186,7 +172,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NRealTimeLineExampleSchema;
 

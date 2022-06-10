@@ -1,10 +1,12 @@
 ﻿using System;
+
 using Nevron.Nov.Dom;
 using Nevron.Nov.Text;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	public class NTableOfContentsExample : NTextExampleBase
+	public class NTableOfContentsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -20,14 +22,38 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NTableOfContentsExample()
 		{
-			NTableOfContentsExampleSchema = NSchema.Create(typeof(NTableOfContentsExample), NTextExampleBase.NTextExampleBaseSchema);
+			NTableOfContentsExampleSchema = NSchema.Create(typeof(NTableOfContentsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>This example demonstrates how to programmatically create and add a table of contents block to a document.</p>
+";
+		}
+
+		private void PopulateRichText()
 		{
 			// Get references to the heading styles
 			NDocumentBlock documentBlock = m_RichText.Content;
@@ -79,12 +105,6 @@ namespace Nevron.Nov.Examples.Text
 			m_RichText.Document.Evaluate();
 			tableOfContents.Update();
 		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>This example demonstrates how to programmatically create and add a table of contents block to a document.</p>
-";
-		}
 
 		#endregion
 
@@ -101,6 +121,12 @@ namespace Nevron.Nov.Examples.Text
 				section.Blocks.Add(new NParagraph(text));
 			}
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
 
 		#endregion
 

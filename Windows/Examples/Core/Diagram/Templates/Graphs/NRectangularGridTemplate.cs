@@ -1,7 +1,6 @@
 using System;
 
 using System.Collections;
-using System.Diagnostics;
 
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;

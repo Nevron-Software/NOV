@@ -28,7 +28,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -67,7 +67,7 @@ namespace Nevron.Nov.Examples.Framework
 		{
 			NButton button = new NButton(NDesigner.GetDesigner(node).ToString());
 			button.Tag = node;
-			button.Click += new Function<NEventArgs>(OnShowDesignerClick);
+			button.Click += OnShowDesignerClick;
 			return button;
 		}
 		private NStyleNodeCollectionList CreateStyleNodesList()
@@ -101,11 +101,12 @@ namespace Nevron.Nov.Examples.Framework
 		{
 			try
 			{
-				NNode node = (NNode)args.TargetNode.Tag;
+				NButton button = (NButton)args.TargetNode;
+				NNode node = (NNode)button.Tag;
 				NEditorWindow editorWindow = NEditorWindow.CreateForInstance(
                     node, 
                     null,
-                    OwnerWindow, 
+                    button.DisplayWindow, 
                     null);
 
 				if (node is NStyleNodeCollectionTree)

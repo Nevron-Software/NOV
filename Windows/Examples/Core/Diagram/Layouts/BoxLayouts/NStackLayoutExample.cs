@@ -1,12 +1,17 @@
-﻿using Nevron.Nov.Diagram;
+﻿using System;
+
+using Nevron.Nov.DataStructures;
+using Nevron.Nov.Diagram;
+using Nevron.Nov.Diagram.Layout;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
+using Nevron.Nov.Editors;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NStackLayoutExample : NLayoutExampleBase<NStackLayout>
+    public class NStackLayoutExample : NExampleBase
     {
         #region Constructors
 
@@ -22,34 +27,69 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NStackLayoutExample()
         {
-            NStackLayoutExampleSchema = NSchema.Create(typeof(NStackLayoutExample), NLayoutExampleBase<NStackLayout>.NLayoutExampleBaseSchema);
+            NStackLayoutExampleSchema = NSchema.Create(typeof(NStackLayoutExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
         {
-            base.InitDiagram();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
 
-            // create some shapes
-            NPage activePage = m_DrawingDocument.Content.ActivePage;
-            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
-
-            for (int i = 0; i < 20; i++)
+            m_DrawingView.Document.HistoryService.Pause();
+            try
             {
-                NShape shape = basicShapes.CreateShape(ENBasicShape.Rectangle);
-                activePage.Items.Add(shape);
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
             }
 
-            // arrange diagram
-            ArrangeDiagram();
-
-            // fit page
-            m_DrawingDocument.Content.ActivePage.ZoomMode = ENZoomMode.Fit;
+            return drawingViewWithRibbon;
         }
+        protected override NWidget CreateExampleControls()
+        {
+            m_Layout.Changed += OnLayoutChanged;
 
+            NStackPanel stack = new NStackPanel();
+
+            // property editor
+            NEditor editor = NDesigner.GetDesigner(m_Layout).CreateInstanceEditor(m_Layout);
+            stack.Add(new NGroupBox("Properties", editor));
+
+            NButton arrangeButton = new NButton("Arrange Diagram");
+            arrangeButton.Click += OnArrangeButtonClick;
+            stack.Add(arrangeButton);
+
+            // items stack
+            NStackPanel itemsStack = new NStackPanel();
+
+            // NOTE: For Cells layout we provide the user with the ability to add shapes with different sizes so that he/she can test the layouts
+            NButton addSmallItemButton = new NButton("Add Small Shape");
+            addSmallItemButton.Click += new Function<NEventArgs>(OnAddSmallItemButtonClick);
+            itemsStack.Add(addSmallItemButton);
+
+            NButton addLargeItemButton = new NButton("Add Large Shape");
+            addLargeItemButton.Click += new Function<NEventArgs>(OnAddLargeItemButtonClick);
+            itemsStack.Add(addLargeItemButton);
+
+            NButton addRandomItemButton = new NButton("Add Random Shape");
+            addRandomItemButton.Click += new Function<NEventArgs>(OnAddRandomItemButtonClick);
+            itemsStack.Add(addRandomItemButton);
+
+            NButton removeAllItemsButton = new NButton("Remove All Shapes");
+            removeAllItemsButton.Click += new Function<NEventArgs>(OnRemoveAllItemsButtonClick);
+            itemsStack.Add(removeAllItemsButton);
+
+            stack.Add(new NGroupBox("Items", itemsStack));
+
+            return stack;
+        }
         protected override string GetExampleDescription()
         {
             return @"
@@ -106,6 +146,117 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
             ";
         }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            // Hide ports
+            drawingDocument.Content.ScreenVisibility.ShowPorts = false;
+
+            // Create some shapes
+            NPage activePage = drawingDocument.Content.ActivePage;
+            NBasicShapeFactory basicShapes = new NBasicShapeFactory();
+
+            for (int i = 0; i < 20; i++)
+            {
+                NShape shape = basicShapes.CreateShape(ENBasicShape.Rectangle);
+                activePage.Items.Add(shape);
+            }
+
+            // Arrange diagram
+            ArrangeDiagram(drawingDocument);
+
+            // Fit page
+            drawingDocument.Content.ActivePage.ZoomMode = ENZoomMode.Fit;
+        }
+
+        #endregion
+
+        #region Implementation
+
+        /// <summary>
+        /// Arranges the shapes in the active page.
+        /// </summary>
+        /// <param name="drawingDocument"></param>
+        private void ArrangeDiagram(NDrawingDocument drawingDocument)
+        {
+            // get all top-level shapes that reside in the active page
+            NPage activePage = drawingDocument.Content.ActivePage;
+            NList<NShape> shapes = activePage.GetShapes(false);
+
+            // create a layout context and use it to arrange the shapes using the current layout
+            NDrawingLayoutContext layoutContext = new NDrawingLayoutContext(drawingDocument, activePage);
+            m_Layout.Arrange(shapes.CastAll<object>(), layoutContext);
+
+            // size the page to the content size
+            activePage.SizeToContent();
+        }
+        private NShape CreateShape()
+        {
+            NBasicShapeFactory factory = new NBasicShapeFactory();
+            return factory.CreateShape(ENBasicShape.Rectangle);
+        }
+        private void OnAddSmallItemButtonClick(NEventArgs args)
+        {
+            NShape shape = CreateShape();
+            shape.Width = 25;
+            shape.Height = 25;
+
+            m_DrawingView.ActivePage.Items.Add(shape);
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+        private void OnAddLargeItemButtonClick(NEventArgs args)
+        {
+            NShape shape = CreateShape();
+            shape.Width = 60;
+            shape.Height = 60;
+
+            m_DrawingView.ActivePage.Items.Add(shape);
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+        private void OnAddRandomItemButtonClick(NEventArgs args)
+        {
+            int range = 30;
+            Random rnd = new Random();
+
+            NShape shape = CreateShape();
+            shape.Width = rnd.Next(range) + range;
+            shape.Height = rnd.Next(range) + range;
+
+            m_DrawingView.ActivePage.Items.Add(shape);
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+        private void OnRemoveAllItemsButtonClick(NEventArgs args)
+        {
+            m_DrawingView.Document.StartHistoryTransaction("Remove All Items");
+            try
+            {
+                m_DrawingView.Document.Content.ActivePage.Items.Clear();
+            }
+            finally
+            {
+                m_DrawingView.Document.CommitHistoryTransaction();
+            }
+        }
+
+        #endregion
+
+        #region Event Handlers
+
+        private void OnLayoutChanged(NEventArgs arg)
+        {
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+        protected virtual void OnArrangeButtonClick(NEventArgs arg)
+        {
+            ArrangeDiagram(m_DrawingView.Document);
+        }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
+        private NStackLayout m_Layout = new NStackLayout();
 
         #endregion
 

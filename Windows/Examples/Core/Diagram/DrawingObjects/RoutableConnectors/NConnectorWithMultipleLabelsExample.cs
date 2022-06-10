@@ -6,7 +6,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NConnectorWithMultipleLabelsExample : NDiagramExampleBase
+	public class NConnectorWithMultipleLabelsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -22,16 +22,46 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NConnectorWithMultipleLabelsExample()
 		{
-			NConnectorWithMultipleLabelsExampleSchema = NSchema.Create(typeof(NConnectorWithMultipleLabelsExample), NDiagramExampleBaseSchema);
+			NConnectorWithMultipleLabelsExampleSchema = NSchema.Create(typeof(NConnectorWithMultipleLabelsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitDiagram()
+		protected override NWidget CreateExampleContent()
 		{
-			NDrawing drawing = m_DrawingDocument.Content;
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"
+<p>This example demonstrates how to create a connector with multiple labels. This can be done by adding
+outward ports to a connector and then gluing shapes that only have text to these outward ports.</p>
+";
+		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			NDrawing drawing = drawingDocument.Content;
 			NPage activePage = drawing.ActivePage;
 
 			// 1. Create some shape factories
@@ -71,13 +101,6 @@ namespace Nevron.Nov.Examples.Diagram
 			activePage.Items.Add(labelShape2);
 			labelShape2.GlueMasterPortToPort(labelShape2.Ports[0], port2);
 		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>This example demonstrates how to create a connector with multiple labels. This can be done by adding
-outward ports to a connector and then gluing shapes that only have text to these outward ports.</p>
-";
-		}
 
 		#endregion
 
@@ -110,6 +133,12 @@ outward ports to a connector and then gluing shapes that only have text to these
 
 			return labelShape;
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

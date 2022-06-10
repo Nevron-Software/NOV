@@ -45,6 +45,7 @@ namespace Nevron.Nov.Examples.Barcode
 
 			m_BarcodeTextBox = new NTextBox("Nevron Software" +
 				Environment.NewLine + Environment.NewLine + "https://www.nevron.com");
+
 			m_BarcodeTextBox.Multiline = true;
 			m_BarcodeTextBox.AcceptsEnter = true;
 			m_BarcodeTextBox.PreferredHeight = 100;

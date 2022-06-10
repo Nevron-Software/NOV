@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Point and Figure Example
 	/// </summary>
-	public class NPointAndFigureExample : NChartExampleBase
+	public class NPointAndFigureExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NPointAndFigureExample()
 		{
-			NPointAndFigureExampleSchema = NSchema.Create(typeof(NPointAndFigureExample), NChartExampleBase.NChartExampleBaseSchema);
+			NPointAndFigureExampleSchema = NSchema.Create(typeof(NPointAndFigureExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Point And Figure";
@@ -91,10 +88,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -116,28 +109,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="threeLineBreak"></param>
-		private void GenerateData(NPointAndFigureSeries threeLineBreak)
-		{
-			NStockDataGenerator dataGenerator = new NStockDataGenerator(new NRange(50, 350), 0.002, 2);
-			dataGenerator.Reset();
-
-			DateTime dt = DateTime.Now;
-
-			for (int i = 0; i < 100; i++)
-			{
-				threeLineBreak.DataPoints.Add(new NPointAndFigureDataPoint(NDateTimeHelpers.ToOADate(dt), dataGenerator.GetNextValue()));
-
-				dt = dt.AddDays(1);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates the functionality of the point and figure series.</p>";
@@ -165,7 +136,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NPointAndFigureExampleSchema;
 

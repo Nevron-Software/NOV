@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Nevron.Nov.Diagram;
 using Nevron.Nov.Diagram.Shapes;
 using Nevron.Nov.Dom;
@@ -9,10 +10,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class NEndPointsGlueExample : NDiagramExampleBase
+	public class NEndPointsGlueExample : NExampleBase
     {
         #region Constructors
 
@@ -28,16 +26,37 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NEndPointsGlueExample()
         {
-            NEndPointsGlueExampleSchema = NSchema.Create(typeof(NEndPointsGlueExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NEndPointsGlueExampleSchema = NSchema.Create(typeof(NEndPointsGlueExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Overrides from NDiagramExampleBase
+        #region Example
 
-        protected override NWidget CreateExampleControls()
+        protected override NWidget CreateExampleContent()
         {
-			NStackPanel stack = (NStackPanel)base.CreateExampleControls();
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+			m_DrawingView.Registered += OnDrawingViewRegistered;
+            m_DrawingView.Unregistered += OnDrawingViewUnregistered;
+
+            return drawingViewWithRibbon;
+        }
+		protected override NWidget CreateExampleControls()
+        {
+            NStackPanel stack = new NStackPanel();
 			stack.FillMode = ENStackFillMode.Last;
 
             // selection mode
@@ -121,16 +140,15 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
             ";
         }
-        protected override void InitDiagram()
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
         {
-            base.InitDiagram();
+            NDrawing drawing = drawingDocument.Content;
 
-            NDrawing drawing = m_DrawingDocument.Content;
-
-            // hide the grid
+            // Hide the grid
             drawing.ScreenVisibility.ShowGrid = false;
 
-            // create two shapes and a line connector between them
+            // Create two shapes and a line connector between them
             NBasicShapeFactory basicShapes = new NBasicShapeFactory();
             NConnectorShapeFactory connectorShapes = new NConnectorShapeFactory();
 
@@ -147,32 +165,25 @@ namespace Nevron.Nov.Examples.Diagram
             m_Connector.GlueEndToNearestPort(m_EndShape);
             drawing.ActivePage.Items.Add(m_Connector);
 
-            // perform inital layout of shapes
+            // Perform inital layout of shapes
             OnTimerTick();
         }
         
         #endregion
 
-        #region Register/Unregister
+        #region Event Handlers
 
-        protected override void OnRegistered()
+        private void OnDrawingViewRegistered(NEventArgs arg)
         {
-            base.OnRegistered();
             m_Timer.Start();
         }
-        protected override void OnUnregistered()
+        private void OnDrawingViewUnregistered(NEventArgs arg)
         {
-            base.OnUnregistered();
             m_Timer.Stop();
         }
-
-        #endregion
-
-        #region Implementation
-
-        void OnTimerTick()
+        private void OnTimerTick()
         {
-            NPoint centerOfRotation = new NPoint(m_DrawingDocument.Content.ActivePage.Bounds.CenterX, 300);
+            NPoint centerOfRotation = new NPoint(m_DrawingView.ActivePage.Bounds.CenterX, 300);
             const double radius = 150;
 
             NPoint beginCenter = centerOfRotation + new NPoint(Math.Cos(m_dAngle) * radius, Math.Sin(m_dAngle) * radius);
@@ -183,7 +194,7 @@ namespace Nevron.Nov.Examples.Diagram
 
             m_dAngle += NMath.PI / 180;
         }
-        void OnRadioGroupSelectedIndexChanged(NValueChangeEventArgs arg)
+        private void OnRadioGroupSelectedIndexChanged(NValueChangeEventArgs arg)
         {
             switch (m_RadioGroup.SelectedIndex)
             {
@@ -243,19 +254,21 @@ namespace Nevron.Nov.Examples.Diagram
             }
             
         }
-        double m_dAngle = 0;
 
         #endregion
 
         #region Fields
 
-        NShape m_BeginShape;
-        NShape m_EndShape;
-        NShape m_Connector;
-        NTimer m_Timer = new NTimer(50);
-        NRadioButtonGroup m_RadioGroup;
-        NGroupBox m_BeginGlueHolder;
-        NGroupBox m_EndGlueHolder;
+        private NDrawingView m_DrawingView;
+
+        private NShape m_BeginShape;
+        private NShape m_EndShape;
+        private NShape m_Connector;
+        private NTimer m_Timer = new NTimer(50);
+        private NRadioButtonGroup m_RadioGroup;
+        private NGroupBox m_BeginGlueHolder;
+        private NGroupBox m_EndGlueHolder;
+        private double m_dAngle = 0;
 
         #endregion
 

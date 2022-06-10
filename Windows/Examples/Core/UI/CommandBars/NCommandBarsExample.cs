@@ -1,8 +1,6 @@
 ﻿using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
-using Nevron.Nov.Text;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.UI
@@ -27,7 +25,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 		
 		protected override NWidget CreateExampleContent()
 		{
@@ -268,8 +266,8 @@ namespace Nevron.Nov.Examples.UI
 			else
 			{
 				NImageBox imageBox = new NImageBox(image);
-				imageBox.HorizontalPlacement = Layout.ENHorizontalPlacement.Center;
-				imageBox.VerticalPlacement = Layout.ENVerticalPlacement.Center;
+				imageBox.HorizontalPlacement = ENHorizontalPlacement.Center;
+				imageBox.VerticalPlacement = ENVerticalPlacement.Center;
 				return new NMenuItem(imageBox, text);
 			}
 		}
@@ -282,8 +280,8 @@ namespace Nevron.Nov.Examples.UI
 			if (image != null)
 			{				
 				NImageBox imageBox = new NImageBox(image);
-				imageBox.HorizontalPlacement = Layout.ENHorizontalPlacement.Center;
-				imageBox.VerticalPlacement = Layout.ENVerticalPlacement.Center;
+				imageBox.HorizontalPlacement = ENHorizontalPlacement.Center;
+				imageBox.VerticalPlacement = ENVerticalPlacement.Center;
 				item.Header = imageBox;
 				item.Content = new NLabel(text);
 			}

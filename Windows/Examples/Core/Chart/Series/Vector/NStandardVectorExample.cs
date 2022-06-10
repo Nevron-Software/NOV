@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Standard Vector Example
 	/// </summary>
-	public class NStandardVectorExample : NChartExampleBase
+	public class NStandardVectorExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStandardVectorExample()
 		{
-			NStandardVectorExampleSchema = NSchema.Create(typeof(NStandardVectorExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStandardVectorExampleSchema = NSchema.Create(typeof(NStandardVectorExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Standard Vector";
@@ -71,6 +68,22 @@ namespace Nevron.Nov.Examples.Chart
 		
 			return chartView;
 		}
+		protected override NWidget CreateExampleControls()
+		{
+			NStackPanel stack = new NStackPanel();
+			NUniSizeBoxGroup group = new NUniSizeBoxGroup(stack);
+			
+
+			return group;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how to create a standard 2D vector chart.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
 
 		private void FillData(NVectorSeries vectorSeries)
 		{
@@ -107,23 +120,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return NColor.FromRGB((byte)r, (byte)g, (byte)b);
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override NWidget CreateExampleControls()
-		{
-			NStackPanel stack = new NStackPanel();
-			NUniSizeBoxGroup group = new NUniSizeBoxGroup(stack);
-			
-
-			return group;
-		}
-
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates how to create a standard 2D vector chart.</p>";
-		}
 
 		#endregion
 
@@ -138,7 +134,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NStandardVectorExampleSchema;
 

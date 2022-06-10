@@ -7,10 +7,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public class NImageBlockExample : NDiagramExampleBase
+	public class NImageBlockExample : NExampleBase
     {
         #region Constructors
 
@@ -26,25 +23,43 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NImageBlockExample()
         {
-            NImageBlockExampleSchema = NSchema.Create(typeof(NImageBlockExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NImageBlockExampleSchema = NSchema.Create(typeof(NImageBlockExample), NExampleBaseSchema);
         }
 
-        #endregion
+		#endregion
 
-        #region Overrides from NDiagramExampleBase
+		#region Example
 
-        protected override string GetExampleDescription()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
+
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
         {
-            return @"<p>
-						Demonstrates image blocks.
-					</p>";
+            return @"<p>Demonstrates image blocks.</p>";
         }
-        protected override void InitDiagram()
-        {
-            base.InitDiagram();
 
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
 
             // hide the grid
             drawing.ScreenVisibility.ShowGrid = false;
@@ -199,6 +214,12 @@ namespace Nevron.Nov.Examples.Diagram
 
 			return border;
 		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

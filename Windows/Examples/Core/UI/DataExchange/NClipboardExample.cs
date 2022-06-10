@@ -25,7 +25,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -82,7 +82,7 @@ goes for the rich text and the images examples.</p>";
 		private void OnGetTextButtonClick(NEventArgs args)
 		{
 			NDataObject dataObject = NClipboard.GetDataObject();
-			object data = dataObject.GetData(NDataFormat.TextFormat);
+			object data = dataObject.GetData(NDataFormat.TextFormatString);
 			if (data != null)
 			{
 				m_TextBox.Text = (string)data;
@@ -91,7 +91,7 @@ goes for the rich text and the images examples.</p>";
 		private void OnSetTextButtonClick(NEventArgs args)
 		{
 			NDataObject dataObject = new NDataObject();
-			dataObject.SetData(NDataFormat.TextFormat, m_TextBox.Text);
+			dataObject.SetData(NDataFormat.TextFormatString, m_TextBox.Text);
 			NClipboard.SetDataObject(dataObject);
 
 			m_TextBox.Text = "Text box content moved to clipboard.";
@@ -147,7 +147,7 @@ goes for the rich text and the images examples.</p>";
 			byte[] data = dataObject.GetRTF();
 			if (data != null)
 			{
-				m_RichText.LoadFromStream(new MemoryStream(data), new NRtfTextFormat());
+				m_RichText.LoadFromStream(new MemoryStream(data), NTextFormat.Rtf);
 			}
 		}
 		private void OnSetRTFButtonClick(NEventArgs args)
@@ -155,7 +155,7 @@ goes for the rich text and the images examples.</p>";
 			NDataObject dataObject = new NDataObject();
 			using (MemoryStream stream = new MemoryStream())
 			{
-				m_RichText.SaveToStream(stream, new NRtfTextFormat());
+				m_RichText.SaveToStream(stream, NTextFormat.Rtf);
 				dataObject.SetData(NDataFormat.RTFFormat, stream.ToArray());
 				NClipboard.SetDataObject(dataObject);
 			}

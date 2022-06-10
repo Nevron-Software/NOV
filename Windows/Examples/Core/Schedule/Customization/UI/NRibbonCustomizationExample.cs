@@ -8,7 +8,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NRibbonCustomizationExample : NScheduleExampleBase
+	public class NRibbonCustomizationExample : NExampleBase
 	{
 		#region Constructors
 
@@ -24,22 +24,36 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NRibbonCustomizationExample()
 		{
-			NRibbonCustomizationExampleSchema = NSchema.Create(typeof(NRibbonCustomizationExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NRibbonCustomizationExampleSchema = NSchema.Create(typeof(NRibbonCustomizationExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Public Overrides
+		#region Example
 
-		public override void Initialize()
+		protected override NWidget CreateExampleContent()
 		{
-			base.Initialize();
+			// Create a simple schedule
+			m_ScheduleView = new NScheduleView();
+
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
 
 			// Add the custom command action to the schedule view's commander
 			m_ScheduleView.Commander.Add(new CustomCommandAction());
 
+			// Create and configure a ribbon UI builder
+			NScheduleRibbonBuilder ribbonBuilder = new NScheduleRibbonBuilder();
+
 			// Rename the "Home" ribbon tab page
-			NRibbonTabPageBuilder homeTabBuilder = m_RibbonBuilder.TabPageBuilders[NScheduleRibbonBuilder.TabPageHomeName];
+			NRibbonTabPageBuilder homeTabBuilder = ribbonBuilder.TabPageBuilders[NScheduleRibbonBuilder.TabPageHomeName];
 			homeTabBuilder.Name = "Start";
 
 			// Rename the "Font" ribbon group of the "Home" tab page
@@ -52,23 +66,7 @@ namespace Nevron.Nov.Examples.Schedule
 			// Insert the custom ribbon group at the beginning of the home tab page
 			homeTabBuilder.RibbonGroupBuilders.Insert(0, new CustomRibbonGroupBuilder());
 
-			// Remove the schedule view from its parent and recreate the UI
-			m_ScheduleView.ParentNode.RemoveChild(m_ScheduleView);
-			m_ExampleTabPage.Content = m_RibbonBuilder.CreateUI(m_ScheduleView);
-		}
-
-		#endregion
-
-		#region Protected Overrides - Example
-
-		protected override void InitSchedule(NSchedule schedule)
-		{
-			DateTime start = DateTime.Now;
-
-			// Create an appointment
-			NAppointment appointment = new NAppointment("Meeting", start, start.AddHours(2));
-			schedule.Appointments.Add(appointment);
-			schedule.ScrollToTime(start.TimeOfDay);
+			return ribbonBuilder.CreateUI(m_ScheduleView);
 		}
 		protected override NWidget CreateExampleControls()
 		{
@@ -83,6 +81,26 @@ namespace Nevron.Nov.Examples.Schedule
 
 		#endregion
 
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
+		{
+			DateTime start = DateTime.Now;
+
+			// Create an appointment
+			NAppointment appointment = new NAppointment("Meeting", start, start.AddHours(2));
+			schedule.Appointments.Add(appointment);
+			schedule.ScrollToTime(start.TimeOfDay);
+		}
+
+		#endregion
+
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
+
+		#endregion
+
 		#region Schema
 
 		/// <summary>
@@ -92,13 +110,14 @@ namespace Nevron.Nov.Examples.Schedule
 
 		#endregion
 
-		#region Commands
+		#region Constants
 
-		public static readonly NCommand CustomCommand = NCommand.Create(typeof(NRibbonCustomizationExample), "CustomCommand", "Custom Command");
+		public static readonly NCommand CustomCommand = NCommand.Create(typeof(Nevron.Nov.Examples.Schedule.NRibbonCustomizationExample),
+			"CustomCommand", "Custom Command");
 
 		#endregion
 
-		#region Nested Types - Custom Ribbon Group Builder
+		#region Nested Types
 
 		public class CustomRibbonGroupBuilder : NRibbonGroupBuilder
 		{
@@ -118,10 +137,6 @@ namespace Nevron.Nov.Examples.Schedule
 					NResources.Image_Ribbon_16x16_smiley_png, CustomCommand));
 			}
 		}
-
-		#endregion
-
-		#region Nested Types - Custom Command Action
 
 		public class CustomCommandAction : NScheduleCommandAction
 		{
@@ -161,7 +176,7 @@ namespace Nevron.Nov.Examples.Schedule
 			/// <param name="parameter"></param>
 			public override void Execute(NNode target, object parameter)
 			{
-				NScheduleView scheduleView = GetScheduleView(target);
+				NScheduleView scheduleView = GetView(target);
 
 				NMessageBox.Show("Schedule Custom Command executed!", "Custom Command", ENMessageBoxButtons.OK,
 					ENMessageBoxIcon.Information);

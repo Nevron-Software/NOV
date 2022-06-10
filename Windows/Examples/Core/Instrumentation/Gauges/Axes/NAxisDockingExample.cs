@@ -9,7 +9,7 @@ namespace Nevron.Nov.Examples.Gauge
     /// <summary>
 	/// This example demonstrates how to control the size of the gauge axes
     /// </summary>
-	public class NAxisDockingExample : NInstrumentationExampleBase
+	public class NAxisDockingExample : NExampleBase
     {
         #region Constructors
 
@@ -24,12 +24,12 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NAxisDockingExample()
         {
-			NAxisDockingExampleSchema = NSchema.Create(typeof(NAxisDockingExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NAxisDockingExampleSchema = NSchema.Create(typeof(NAxisDockingExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
 		/// <summary>
 		/// 
@@ -134,10 +134,17 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NAxisDockingExampleSchema;
 
-        #endregion
+		#endregion
+
+		#region Constants
+
+		private static readonly NSize defaultLinearHorizontalGaugeSize = new NSize(300, 100);
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
+
+		#endregion
 	}
 }

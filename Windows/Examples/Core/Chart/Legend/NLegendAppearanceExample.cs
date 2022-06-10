@@ -1,7 +1,7 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Chart
@@ -9,7 +9,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Legend Appearance Example
 	/// </summary>
-	public class NLegendAppearanceExample : NChartExampleBase
+	public class NLegendAppearanceExample : NExampleBase
 	{
 		#region Constructors
 
@@ -25,23 +25,20 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NLegendAppearanceExample()
 		{
-			NLegendAppearanceExampleSchema = NSchema.Create(typeof(NLegendAppearanceExample), NChartExampleBase.NChartExampleBaseSchema);
+			NLegendAppearanceExampleSchema = NSchema.Create(typeof(NLegendAppearanceExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+            NChartView chartView = new NChartView();
+            chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
-			// configure title
-			chartView.Surface.Titles[0].Text = "Legend Appearance";
+            // configure title
+            chartView.Surface.Titles[0].Text = "Legend Appearance";
 
             m_Legend = chartView.Surface.Legends[0];
             m_Legend.ExpandMode = ENLegendExpandMode.ColsFixed;
@@ -50,7 +47,7 @@ namespace Nevron.Nov.Examples.Chart
             m_Legend.Border = NBorder.CreateFilledBorder(NColor.Black);
             m_Legend.BorderThickness = new NMargins(2);
             m_Legend.BackgroundFill = new NStockGradientFill(NColor.White, NColor.LightGray);
-            m_Legend.VerticalPlacement = Layout.ENVerticalPlacement.Top;
+            m_Legend.VerticalPlacement = ENVerticalPlacement.Top;
 
             // configure chart
             NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
@@ -89,10 +86,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -128,69 +121,10 @@ namespace Nevron.Nov.Examples.Chart
 
             return boxGroup;
 		}
-
-        private void OnShowVerticalGridLinesCheckBoxCheckedChanged(NValueChangeEventArgs arg)
-        {
-            if (((NCheckBox)arg.TargetNode).Checked)
-            {
-                m_Legend.ClearLocalValue(NLegend.VerticalGridStrokeProperty);
-            }
-            else
-            {
-                m_Legend.VerticalGridStroke = null;
-            }
-        }
-
-        private void OnShowHorizontalGridLinesCheckBoxCheckedChanged(NValueChangeEventArgs arg)
-        {
-            if (((NCheckBox)arg.TargetNode).Checked)
-            {
-                m_Legend.ClearLocalValue(NLegend.HorizontalGridStrokeProperty);
-            }
-            else
-            {
-                m_Legend.HorizontalGridStroke = null;
-            }
-        }
-
         protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to modify the legend appearance.</p>";
 		}
-
-		#endregion
-
-		#region Event Handlers
-
-        void OnLegendHeaderTextBoxChanged(NValueChangeEventArgs arg)
-        {
-            NLabel header = new NLabel(((NTextBox)arg.TargetNode).Text);
-            header.HorizontalPlacement = Layout.ENHorizontalPlacement.Center;
-            header.TextAlignment = ENContentAlignment.MiddleCenter;
-            header.Font = new NFont("Arimo", 14, ENFontStyle.Bold);
-
-            m_Legend.Header = header;
-        }
-
-        void OnLegendFooterTextBoxChanged(NValueChangeEventArgs arg)
-        {
-            NLabel footer = new NLabel(((NTextBox)arg.TargetNode).Text);
-            footer.HorizontalPlacement = Layout.ENHorizontalPlacement.Center;
-            footer.TextAlignment = ENContentAlignment.MiddleCenter;
-            footer.Font = new NFont("Arimo", 14, ENFontStyle.Bold);
-
-            m_Legend.Footer = footer;
-        }
-
-        void OnVerticalInterlaceStripesCheckBoxCheckedChanged(NValueChangeEventArgs arg)
-        {
-            ApplyInterlaceStyles();
-        }
-
-        void OnHorizontalInterlaceStripesCheckBoxCheckedChanged(NValueChangeEventArgs arg)
-        {
-            ApplyInterlaceStyles();
-        }
 
 		#endregion
 
@@ -227,6 +161,64 @@ namespace Nevron.Nov.Examples.Chart
 
         #endregion
 
+		#region Event Handlers
+
+        private void OnShowVerticalGridLinesCheckBoxCheckedChanged(NValueChangeEventArgs arg)
+        {
+            if (((NCheckBox)arg.TargetNode).Checked)
+            {
+                m_Legend.ClearLocalValue(NLegend.VerticalGridStrokeProperty);
+            }
+            else
+            {
+                m_Legend.VerticalGridStroke = null;
+            }
+        }
+
+        private void OnShowHorizontalGridLinesCheckBoxCheckedChanged(NValueChangeEventArgs arg)
+        {
+            if (((NCheckBox)arg.TargetNode).Checked)
+            {
+                m_Legend.ClearLocalValue(NLegend.HorizontalGridStrokeProperty);
+            }
+            else
+            {
+                m_Legend.HorizontalGridStroke = null;
+            }
+        }
+
+        void OnLegendHeaderTextBoxChanged(NValueChangeEventArgs arg)
+        {
+            NLabel header = new NLabel(((NTextBox)arg.TargetNode).Text);
+            header.HorizontalPlacement = ENHorizontalPlacement.Center;
+            header.TextAlignment = ENContentAlignment.MiddleCenter;
+            header.Font = new NFont("Arimo", 14, ENFontStyle.Bold);
+
+            m_Legend.Header = header;
+        }
+
+        void OnLegendFooterTextBoxChanged(NValueChangeEventArgs arg)
+        {
+            NLabel footer = new NLabel(((NTextBox)arg.TargetNode).Text);
+            footer.HorizontalPlacement = ENHorizontalPlacement.Center;
+            footer.TextAlignment = ENContentAlignment.MiddleCenter;
+            footer.Font = new NFont("Arimo", 14, ENFontStyle.Bold);
+
+            m_Legend.Footer = footer;
+        }
+
+        void OnVerticalInterlaceStripesCheckBoxCheckedChanged(NValueChangeEventArgs arg)
+        {
+            ApplyInterlaceStyles();
+        }
+
+        void OnHorizontalInterlaceStripesCheckBoxCheckedChanged(NValueChangeEventArgs arg)
+        {
+            ApplyInterlaceStyles();
+        }
+
+		#endregion
+
         #region Fields
 
         NLegend m_Legend;
@@ -236,10 +228,10 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NLegendAppearanceExampleSchema;
 
-		#endregion
-	}
+        #endregion
+    }
 }

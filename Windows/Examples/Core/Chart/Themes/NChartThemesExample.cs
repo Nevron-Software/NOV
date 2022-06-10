@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Chart Themes Example
 	/// </summary>
-	public class NChartThemesExample : NChartExampleBase
+	public class NChartThemesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,26 +26,23 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NChartThemesExample()
 		{
-			NChartThemesExampleSchema = NSchema.Create(typeof(NChartThemesExample), NChartExampleBase.NChartExampleBaseSchema);
+			NChartThemesExampleSchema = NSchema.Create(typeof(NChartThemesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			m_ChartView = new NChartView();
+			m_ChartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
-			chartView.Surface.Titles[0].Text = "Chart Themes";
+			m_ChartView.Surface.Titles[0].Text = "Chart Themes";
 
 			// configure chart
-			NCartesianChart chart = (NCartesianChart)chartView.Surface.Charts[0];
+			NCartesianChart chart = (NCartesianChart)m_ChartView.Surface.Charts[0];
 
 			chart.SetPredefinedCartesianAxes(ENPredefinedCartesianAxis.XOrdinalYLinear);
 
@@ -72,14 +69,10 @@ namespace Nevron.Nov.Examples.Chart
                 }
             }
 
-			chartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
+			m_ChartView.Document.StyleSheets.ApplyTheme(new NChartTheme(ENChartPalette.Bright, false));
 
-			return chartView;
+			return m_ChartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -98,8 +91,7 @@ namespace Nevron.Nov.Examples.Chart
             m_ColorDataPointsCheckBox.Checked = true;
 
             return boxGroup;
-		}
-		
+		}		
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to apply different chart color themes.</p>";
@@ -123,12 +115,13 @@ namespace Nevron.Nov.Examples.Chart
 
 		#region Fields
 
-        NComboBox m_ChartThemesComboBox;
-        NCheckBox m_ColorDataPointsCheckBox;
+		private NChartView m_ChartView;
+		private NComboBox m_ChartThemesComboBox;
+        private NCheckBox m_ColorDataPointsCheckBox;
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NChartThemesExampleSchema;
 

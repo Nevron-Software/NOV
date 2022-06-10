@@ -6,35 +6,35 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates how to configure the gauge so that the user can drag gauge indicators
-    /// </summary>
-	public class NDraggingGaugeIndicatorsExample : NInstrumentationExampleBase
-    {
-        #region Constructors
+	/// </summary>
+	public class NDraggingGaugeIndicatorsExample : NExampleBase
+	{
+		#region Constructors
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public NDraggingGaugeIndicatorsExample()
-        {
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        static NDraggingGaugeIndicatorsExample()
-        {
-			NDraggingGaugeIndicatorsExampleSchema = NSchema.Create(typeof(NDraggingGaugeIndicatorsExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
-        }
+		/// <summary>
+		/// 
+		/// </summary>
+		public NDraggingGaugeIndicatorsExample()
+		{
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		static NDraggingGaugeIndicatorsExample()
+		{
+			NDraggingGaugeIndicatorsExampleSchema = NSchema.Create(typeof(NDraggingGaugeIndicatorsExample), NExampleBaseSchema);
+		}
 
-        #endregion
+		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
-			
+
 			NStackPanel controlStack = new NStackPanel();
 			stack.Add(controlStack);
 
@@ -91,15 +91,15 @@ namespace Nevron.Nov.Examples.Gauge
 			return stack;
 		}
 
-        protected override NWidget CreateExampleControls()
-        {
+		protected override NWidget CreateExampleControls()
+		{
 			NStackPanel stack = new NStackPanel();
 
 			NStackPanel propertyStack = new NStackPanel();
 			stack.Add(new NUniSizeBoxGroup(propertyStack));
 
 			m_IndicatorSnapModeComboBox = new NComboBox();
-			m_IndicatorSnapModeComboBox.FillFromArray(new string[] {	"None",
+			m_IndicatorSnapModeComboBox.FillFromArray(new string[] {    "None",
 																		"Ruler",
 																		"Major ticks",
 																		"Minor ticks",
@@ -108,7 +108,7 @@ namespace Nevron.Nov.Examples.Gauge
 			m_IndicatorSnapModeComboBox.SelectedIndex = 0;
 			m_IndicatorSnapModeComboBox.SelectedIndexChanged += new Function<NValueChangeEventArgs>(OnUdpdateIndicatorValueSnapper);
 			propertyStack.Add(new NPairBox("Indicator Snap Mode:", m_IndicatorSnapModeComboBox, true));
-			
+
 			m_StepNumericUpDown = new NNumericUpDown();
 			m_StepNumericUpDown.Enabled = false;
 			m_StepNumericUpDown.Value = 5.0;
@@ -130,11 +130,40 @@ namespace Nevron.Nov.Examples.Gauge
 			m_AllowDraggingMarkerIndicator.CheckedChanged += new Function<NValueChangeEventArgs>(OnAllowDraggingMarkerIndicator);
 			propertyStack.Add(m_AllowDraggingMarkerIndicator);
 
-            return stack;
-        }
+			return stack;
+		}
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates how to enable dragging of gauge indicators.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		/// <summary>
+		/// Creates an indicator value snapper
+		/// </summary>
+		/// <returns></returns>
+		private NValueSnapper CreateValueSnapper()
+		{
+			switch (m_IndicatorSnapModeComboBox.SelectedIndex)
+			{
+				case 0: //None, snapping is disabled
+					return null;
+				case 1: // Ruler, values are constrained to the ruler begin and end values.
+					return new NAxisRulerClampSnapper();
+				case 2: // Major ticks, values are snapped to axis major ticks
+					return new NAxisMajorTickSnapper();
+				case 3: // Minor ticks, values are snapped to axis minor ticks
+					return new NAxisMinorTickSnapper();
+				case 4: // Ruler Min Max, values are snapped to the ruler min and max values
+					return new NAxisRulerMinMaxSnapper();
+				case 5:
+					return new NNumericValueSnapper(0.0, m_StepNumericUpDown.Value);
+				default:
+					return null;
+			}
 		}
 
 		#endregion
@@ -168,35 +197,6 @@ namespace Nevron.Nov.Examples.Gauge
 			// m_Indicator1.AllowDragging = m_AllowDragRangeIndicatorsCheckBox.Checked;
 		}
 
-		#endregion 
-
-		#region Implementation
-
-		/// <summary>
-		/// Creates an indicator value snapper
-		/// </summary>
-		/// <returns></returns>
-		NValueSnapper CreateValueSnapper()
-		{
-			switch (m_IndicatorSnapModeComboBox.SelectedIndex)
-			{
-				case 0: //None, snapping is disabled
-					return null;
-				case 1: // Ruler, values are constrained to the ruler begin and end values.
-					return new NAxisRulerClampSnapper();
-				case 2: // Major ticks, values are snapped to axis major ticks
-					return new NAxisMajorTickSnapper();
-				case 3: // Minor ticks, values are snapped to axis minor ticks
-					return new NAxisMinorTickSnapper();
-				case 4: // Ruler Min Max, values are snapped to the ruler min and max values
-					return new NAxisRulerMinMaxSnapper();
-				case 5:
-					return new NNumericValueSnapper(0.0, m_StepNumericUpDown.Value);
-				default:
-					return null;
-			}
-		}
-
 		#endregion
 
 		#region Fields
@@ -214,10 +214,16 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NDraggingGaugeIndicatorsExampleSchema;
 
-        #endregion
+		#endregion
+
+		#region Constants
+
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
+
+		#endregion
 	}
 }

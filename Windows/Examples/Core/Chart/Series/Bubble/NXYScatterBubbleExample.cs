@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Standard Bubble Example
 	/// </summary>
-	public class NXYScatterBubbleExample : NChartExampleBase
+	public class NXYScatterBubbleExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NXYScatterBubbleExample()
 		{
-			NXYScatterBubbleExampleSchema = NSchema.Create(typeof(NXYScatterBubbleExample), NChartExampleBase.NChartExampleBaseSchema);
+			NXYScatterBubbleExampleSchema = NSchema.Create(typeof(NXYScatterBubbleExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "XY Scatter Bubble";
@@ -86,10 +83,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -126,13 +119,36 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a xy scatter bubble chart.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private NComboBox CreateLegendFormatCombo()
+		{
+			NComboBox comboBox = new NComboBox();
+
+			NComboBoxItem item = new NComboBoxItem("Value and Label");
+			item.Tag = "<value> <label>";
+			comboBox.Items.Add(item);
+
+			item = new NComboBoxItem("Value");
+			item.Tag = "<value>";
+			comboBox.Items.Add(item);
+
+			item = new NComboBoxItem("Label");
+			item.Tag = "<label>";
+			comboBox.Items.Add(item);
+
+			item = new NComboBoxItem("Size");
+			item.Tag = "<size>";
+			comboBox.Items.Add(item);
+
+			return comboBox;
 		}
 
 		#endregion
@@ -182,33 +198,6 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Implementation
-
-		private NComboBox CreateLegendFormatCombo()
-		{
-			NComboBox comboBox = new NComboBox();
-
-			NComboBoxItem item = new NComboBoxItem("Value and Label");
-			item.Tag = "<value> <label>";
-			comboBox.Items.Add(item);
-
-			item = new NComboBoxItem("Value");
-			item.Tag = "<value>";
-			comboBox.Items.Add(item);
-
-			item = new NComboBoxItem("Label");
-			item.Tag = "<label>";
-			comboBox.Items.Add(item);
-
-			item = new NComboBoxItem("Size");
-			item.Tag = "<size>";
-			comboBox.Items.Add(item);
-
-			return comboBox;
-		}
-
-		#endregion
-
 		#region Fields
 
 		NBubbleSeries m_Bubble;
@@ -216,7 +205,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NXYScatterBubbleExampleSchema;
 

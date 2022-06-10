@@ -11,7 +11,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Schedule
 {
-	public class NCustomAppointmentsExample : NScheduleExampleBase
+	public class NCustomAppointmentsExample : NExampleBase
 	{
 		#region Constructors
 
@@ -27,40 +27,36 @@ namespace Nevron.Nov.Examples.Schedule
 		/// </summary>
 		static NCustomAppointmentsExample()
 		{
-			NCustomAppointmentsExampleSchema = NSchema.Create(typeof(NCustomAppointmentsExample), NScheduleExampleBase.NScheduleExampleBaseSchema);
+			NCustomAppointmentsExampleSchema = NSchema.Create(typeof(NCustomAppointmentsExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void InitSchedule(NSchedule schedule)
+		protected override NWidget CreateExampleContent()
 		{
-			DateTime today = DateTime.Today;
-			schedule.ViewMode = ENScheduleViewMode.Day;
+			// Create a simple schedule
+			NScheduleViewWithRibbon scheduleViewWithRibbon = new NScheduleViewWithRibbon();
+			scheduleViewWithRibbon.Registered += OnScheduleViewWithRibbonRegistered;
+			m_ScheduleView = scheduleViewWithRibbon.View;
 
-			schedule.Appointments.Add(new CustomAppointment("Travel to Work", today.AddHours(6.5), today.AddHours(7.5)));
-			schedule.Appointments.Add(new CustomAppointment("Meeting with John", today.AddHours(8), today.AddHours(10)));
-			schedule.Appointments.Add(new CustomAppointment("Conference", today.AddHours(10.5), today.AddHours(11.5)));
-			schedule.Appointments.Add(new CustomAppointment("Lunch", today.AddHours(12), today.AddHours(14)));
-			schedule.Appointments.Add(new CustomAppointment("News Reading", today.AddHours(12.5), today.AddHours(13.5)));
-			schedule.Appointments.Add(new CustomAppointment("Video Presentation", today.AddHours(14.5), today.AddHours(15.5)));
-			schedule.Appointments.Add(new CustomAppointment("Web Meeting", today.AddHours(16), today.AddHours(17)));
-			schedule.Appointments.Add(new CustomAppointment("Travel back home", today.AddHours(17.5), today.AddHours(19)));
-			schedule.Appointments.Add(new CustomAppointment("Family Dinner", today.AddHours(20), today.AddHours(21)));
+			m_ScheduleView.Document.PauseHistoryService();
+			try
+			{
+				InitSchedule(m_ScheduleView.Content);
+			}
+			finally
+			{
+				m_ScheduleView.Document.ResumeHistoryService();
+			}
 
-			// Increase the height of the day view mode
-			schedule.DayViewMode.Height = 2000;
+			// Return the commanding widget
+			return scheduleViewWithRibbon;
 		}
-		protected override void OnRegistered()
+		protected override NWidget CreateExampleControls()
 		{
-			base.OnRegistered();
-
-			// Evaluate the document
-			OwnerDocument.Evaluate();
-
-			// Scroll the schedule to 6 AM
-			m_ScheduleView.Content.ScrollToTime(TimeSpan.FromHours(6));
+			return null;
 		}
 		protected override string GetExampleDescription()
 		{
@@ -79,6 +75,46 @@ namespace Nevron.Nov.Examples.Schedule
 
 		#endregion
 
+		#region Implementation
+
+		private void InitSchedule(NSchedule schedule)
+		{
+			DateTime today = DateTime.Today;
+			schedule.ViewMode = ENScheduleViewMode.Day;
+
+			schedule.Appointments.Add(new CustomAppointment("Travel to Work", today.AddHours(6.5), today.AddHours(7.5)));
+			schedule.Appointments.Add(new CustomAppointment("Meeting with John", today.AddHours(8), today.AddHours(10)));
+			schedule.Appointments.Add(new CustomAppointment("Conference", today.AddHours(10.5), today.AddHours(11.5)));
+			schedule.Appointments.Add(new CustomAppointment("Lunch", today.AddHours(12), today.AddHours(14)));
+			schedule.Appointments.Add(new CustomAppointment("News Reading", today.AddHours(12.5), today.AddHours(13.5)));
+			schedule.Appointments.Add(new CustomAppointment("Video Presentation", today.AddHours(14.5), today.AddHours(15.5)));
+			schedule.Appointments.Add(new CustomAppointment("Web Meeting", today.AddHours(16), today.AddHours(17)));
+			schedule.Appointments.Add(new CustomAppointment("Travel back home", today.AddHours(17.5), today.AddHours(19)));
+			schedule.Appointments.Add(new CustomAppointment("Family Dinner", today.AddHours(20), today.AddHours(21)));
+
+			// Increase the height of the day view mode
+			schedule.DayViewMode.Height = 2000;
+		}
+
+		#endregion
+
+		#region Event Handlers
+
+		/// <summary>
+		/// Called when the schedule view with ribbon is added to a document.
+		/// </summary>
+		/// <param name="arg"></param>
+		private void OnScheduleViewWithRibbonRegistered(NEventArgs arg)
+		{
+			// Evaluate the document
+			((NDocumentNode)arg.TargetNode).OwnerDocument.Evaluate();
+
+			// Scroll the schedule to 6 AM
+			m_ScheduleView.Content.ScrollToTime(TimeSpan.FromHours(6));
+		}
+
+		#endregion
+
 		#region Schema
 
 		/// <summary>
@@ -88,7 +124,13 @@ namespace Nevron.Nov.Examples.Schedule
 
 		#endregion
 
-		#region Nested Type - Custom Appointment
+		#region Fields
+
+		private NScheduleView m_ScheduleView;
+
+		#endregion
+
+		#region Nested Types
 
 		public class CustomAppointment : NAppointment
 		{
@@ -165,10 +207,6 @@ namespace Nevron.Nov.Examples.Schedule
 
 			#endregion
 		}
-
-		#endregion
-
-		#region Nested Type - Custom Appointment Widget
 
 		public class CustomAppointmentWidget : NAppointmentWidget
 		{
@@ -247,9 +285,8 @@ namespace Nevron.Nov.Examples.Schedule
 				if (appointment == null)
 					return;
 
-				// Serialize the appointment to string
-				NIcalFormat format = new NIcalFormat();
-				string text = format.SerializeAppointment(appointment, false);
+				// Serialize the appointment to a string
+				string text = NScheduleFormat.iCalendar.SerializeAppointment(appointment, false);
 
 				// Update the text of the matrix barcode widget
 				NMatrixBarcode barcode = (NMatrixBarcode)GetFirstDescendant(NMatrixBarcode.NMatrixBarcodeSchema);

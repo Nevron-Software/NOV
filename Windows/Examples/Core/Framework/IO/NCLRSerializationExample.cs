@@ -1,9 +1,10 @@
 ﻿using System;
 using System.IO;
+
 using Nevron.Nov.Dom;
-using Nevron.Nov.UI;
+using Nevron.Nov.Layout;
 using Nevron.Nov.Serialization;
-using Nevron.Nov.Editors;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Framework
 {
@@ -36,8 +37,8 @@ namespace Nevron.Nov.Examples.Framework
 		{
 			NStackPanel stack = new NStackPanel();
 			
-			stack.HorizontalPlacement = Layout.ENHorizontalPlacement.Left;
-			stack.VerticalPlacement = Layout.ENVerticalPlacement.Top;
+			stack.HorizontalPlacement = ENHorizontalPlacement.Left;
+			stack.VerticalPlacement = ENVerticalPlacement.Top;
 			stack.MinWidth = 400;
 			
 			m_NameTextBox = new NTextBox();

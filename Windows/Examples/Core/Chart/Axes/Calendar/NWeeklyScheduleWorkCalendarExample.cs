@@ -11,7 +11,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Weekly Schdule Wrok Calendar Example
 	/// </summary>
-	public class NWeeklyScheduleWorkCalendarExample : NChartExampleBase
+	public class NWeeklyScheduleWorkCalendarExample : NExampleBase
 	{
 		#region Constructors
 
@@ -27,20 +27,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NWeeklyScheduleWorkCalendarExample()
 		{
-			NWeeklyScheduleWorkCalendarExampleSchema = NSchema.Create(typeof(NWeeklyScheduleWorkCalendarExample), NChartExampleBase.NChartExampleBaseSchema);
+			NWeeklyScheduleWorkCalendarExampleSchema = NSchema.Create(typeof(NWeeklyScheduleWorkCalendarExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Weekly Schedule Work Calendar";
@@ -95,10 +92,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -111,7 +104,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates the ability of the timeline and date/time scales to skip date time ranges, when it is expected that there is no data for them. Common applications of this feature are financial charts that usually display only working week days as stock markets are closed on weekends.</p>";
@@ -156,7 +148,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NWeeklyScheduleWorkCalendarExampleSchema;
 

@@ -1,6 +1,7 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Gauge
@@ -8,7 +9,7 @@ namespace Nevron.Nov.Examples.Gauge
     /// <summary>
 	/// This example demonstrates how to add create a knob indicator
     /// </summary>
-	public class NKnobIndicatorExample : NInstrumentationExampleBase
+	public class NKnobIndicatorExample : NExampleBase
     {
         #region Constructors
 
@@ -23,17 +24,17 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NKnobIndicatorExample()
         {
-			NKnobIndicatorExampleSchema = NSchema.Create(typeof(NKnobIndicatorExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NKnobIndicatorExampleSchema = NSchema.Create(typeof(NKnobIndicatorExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
-			stack.HorizontalPlacement = Layout.ENHorizontalPlacement.Left;
+			stack.HorizontalPlacement = ENHorizontalPlacement.Left;
 
 			NStackPanel controlStack = new NStackPanel();
 			stack.Add(controlStack);
@@ -232,11 +233,16 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NKnobIndicatorExampleSchema;
 
-        #endregion
+		#endregion
 
+		#region Constants
+
+		private static readonly NSize defaultRadialGaugeSize = new NSize(300, 300);
+
+		#endregion
 	}
 }

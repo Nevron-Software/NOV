@@ -6,7 +6,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NLineJumpsExample : NDiagramExampleBase
+	public class NLineJumpsExample : NExampleBase
     {
         #region Constructors
 
@@ -22,31 +22,36 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NLineJumpsExample()
         {
-            NLineJumpsExampleSchema = NSchema.Create(typeof(NLineJumpsExample), NDiagramExampleBaseSchema);
+            NLineJumpsExampleSchema = NSchema.Create(typeof(NLineJumpsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
         {
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
 
-            activePage.Items.Add(CreateSampleLine1());
-            activePage.Items.Add(CreateSampleLine2());
-            activePage.Items.Add(CreateSamplePolyline1());
-            activePage.Items.Add(CreateSamplePolyline2());
-            activePage.Items.Add(CreateSampleLineDoubleBridge());
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
         }
         protected override NWidget CreateExampleControls()
         {
-            NStackPanel stack = (NStackPanel)base.CreateExampleControls();
+            NStackPanel stack = new NStackPanel();
 
-            NDrawing drawing = m_DrawingDocument.Content;
-            NPage activePage = drawing.ActivePage;
-
+            NPage activePage = m_DrawingView.ActivePage;
             NEditor editor = NDesigner.GetDesigner(activePage.LineJumps).CreateStateEditor(activePage.LineJumps);
             stack.Add(editor);
 
@@ -59,9 +64,21 @@ namespace Nevron.Nov.Examples.Diagram
 ";
         }
 
+        private void InitDiagram(NDrawingDocument drawingDocument)
+        {
+            NDrawing drawing = drawingDocument.Content;
+            NPage activePage = drawing.ActivePage;
+
+            activePage.Items.Add(CreateSampleLine1());
+            activePage.Items.Add(CreateSampleLine2());
+            activePage.Items.Add(CreateSamplePolyline1());
+            activePage.Items.Add(CreateSamplePolyline2());
+            activePage.Items.Add(CreateSampleLineDoubleBridge());
+        }
+
         #endregion
 
-        #region Implementation - Connectors
+        #region Implementation
 
         private NRoutableConnector CreateSampleLine1()
 		{
@@ -147,6 +164,12 @@ namespace Nevron.Nov.Examples.Diagram
 
             return connector;
 		}
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

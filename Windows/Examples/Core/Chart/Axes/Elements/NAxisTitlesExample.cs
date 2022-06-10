@@ -1,16 +1,16 @@
 ﻿using System;
+
 using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
-	/// Axis titles example
+	/// Axis titles example.
 	/// </summary>
-	public class NAxisTitlesExample : NChartExampleBase
+	public class NAxisTitlesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NAxisTitlesExample()
 		{
-			NAxisTitlesExampleSchema = NSchema.Create(typeof(NAxisTitlesExample), NChartExampleBase.NChartExampleBaseSchema);
+			NAxisTitlesExampleSchema = NSchema.Create(typeof(NAxisTitlesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			chartView.Surface.Titles[0].Text = "Axis Titles";
 
@@ -72,11 +69,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -119,10 +111,31 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates the most important features of the axis titles.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
+		private static void SetAlignment(NScaleTitle title, ENHorizontalAlignment alignment)
+		{
+			title.RulerAlignment = alignment;
+
+			switch (alignment)
+			{
+				case ENHorizontalAlignment.Left:
+					title.ContentAlignment = ENContentAlignment.MiddleLeft;
+					break;
+				case ENHorizontalAlignment.Center:
+					title.ContentAlignment = ENContentAlignment.MiddleCenter;
+					break;
+				case ENHorizontalAlignment.Right:
+					title.ContentAlignment = ENContentAlignment.MiddleRight;
+					break;
+			}
 		}
 
 		#endregion
@@ -157,28 +170,6 @@ namespace Nevron.Nov.Examples.Chart
 		void OnYAlignmentComboSelectedIndexChanged(NValueChangeEventArgs arg)
 		{
 			SetAlignment(m_Chart.Axes[ENCartesianAxis.PrimaryY].Scale.Title, (ENHorizontalAlignment)((NComboBox)arg.TargetNode).SelectedIndex);
-		}
-
-		#endregion
-
-		#region Implementation
-
-		private static void SetAlignment(NScaleTitle title, ENHorizontalAlignment alignment)
-		{
-			title.RulerAlignment = alignment;
-
-			switch (alignment)
-			{
-				case ENHorizontalAlignment.Left:
-					title.ContentAlignment = ENContentAlignment.MiddleLeft;
-					break;
-				case ENHorizontalAlignment.Center:
-					title.ContentAlignment = ENContentAlignment.MiddleCenter;
-					break;
-				case ENHorizontalAlignment.Right:
-					title.ContentAlignment = ENContentAlignment.MiddleRight;
-					break;
-			}
 		}
 
 		#endregion

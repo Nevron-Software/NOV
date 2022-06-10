@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Kagi Example
 	/// </summary>
-	public class NKagiExample : NChartExampleBase
+	public class NKagiExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,20 +26,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NKagiExample()
 		{
-			NKagiExampleSchema = NSchema.Create(typeof(NKagiExample), NChartExampleBase.NChartExampleBaseSchema);
+			NKagiExampleSchema = NSchema.Create(typeof(NKagiExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Kagi";
@@ -72,10 +69,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -90,10 +83,15 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="KagiSeries"></param>
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates the functionality of the kagi series.</p>";
+		}
+
+		#endregion
+
+		#region Implementation
+
 		private void GenerateData(NKagiSeries KagiSeries)
 		{
 			NStockDataGenerator dataGenerator = new NStockDataGenerator(new NRange(50, 350), 0.002, 2);
@@ -107,14 +105,6 @@ namespace Nevron.Nov.Examples.Chart
 
 				dt = dt.AddDays(1);
 			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		protected override string GetExampleDescription()
-		{
-			return @"<p>This example demonstrates the functionality of the kagi series.</p>";
 		}
 
 		#endregion
@@ -134,7 +124,7 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NKagiExampleSchema;
 

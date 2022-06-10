@@ -1,7 +1,6 @@
 ﻿using System;
 
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
@@ -28,7 +27,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -156,6 +155,8 @@ namespace Nevron.Nov.Examples.UI
 					m_ToolBar.Items.Add(CreateButton(buttonType, buttonText));
 				}
 			}
+
+			m_ToolBar.Items.Add(new NMenuDropDown("Test"));
 		}
 
 		#endregion

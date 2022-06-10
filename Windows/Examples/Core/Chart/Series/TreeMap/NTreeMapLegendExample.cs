@@ -13,7 +13,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// TreeMap Legend Example
 	/// </summary>
-	public class NTreeMapLegendExample : NChartExampleBase
+	public class NTreeMapLegendExample : NExampleBase
 	{
 		#region Constructors
 
@@ -22,24 +22,20 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		public NTreeMapLegendExample()
 		{
-			
+
 		}
 		/// <summary>
 		/// Static constructor
 		/// </summary>
 		static NTreeMapLegendExample()
 		{
-			NTreeMapLegendExampleSchema = NSchema.Create(typeof(NTreeMapLegendExample), NChartExampleBase.NChartExampleBaseSchema);
+			NTreeMapLegendExampleSchema = NSchema.Create(typeof(NTreeMapLegendExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreateTreeMapView();
@@ -84,7 +80,7 @@ namespace Nevron.Nov.Examples.Chart
 				treeMapSeries.Label = industry.GetAttributeValue("Name");
 				treeMapSeries.Tooltip = new NTooltip(treeMapSeries.Label);
 
-				for (int j = 0; j  < industry.ChildrenCount; j++)
+				for (int j = 0; j < industry.ChildrenCount; j++)
 				{
 					NXmlElement company = (NXmlElement)industry.GetChildAt(j);
 
@@ -103,15 +99,11 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
 			NUniSizeBoxGroup group = new NUniSizeBoxGroup(stack);
-			
+
 			NComboBox legendModeComboBox = new NComboBox();
 			legendModeComboBox.FillFromEnum<ENTreeMapNodeLegendMode>();
 			legendModeComboBox.SelectedIndexChanged += OnLegendModeComboBoxSelectedIndexChanged;
@@ -120,10 +112,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to control the treemap legend.</p>";
@@ -163,6 +151,17 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NTreeMapLegendExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreateTreeMapView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.TreeMap);
+			return chartView;
+		}
 
 		#endregion
 	}

@@ -1,15 +1,15 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
+using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Gauge
 {
-    /// <summary>
+	/// <summary>
 	/// This example demonstrates how to add indicators to a linear gauge 
-    /// </summary>
-	public class NLinearGaugeIndicatorsExample : NInstrumentationExampleBase
+	/// </summary>
+	public class NLinearGaugeIndicatorsExample : NExampleBase
     {
         #region Constructors
 
@@ -24,23 +24,23 @@ namespace Nevron.Nov.Examples.Gauge
         /// </summary>
         static NLinearGaugeIndicatorsExample()
         {
-			NLinearGaugeIndicatorsExampleSchema = NSchema.Create(typeof(NLinearGaugeIndicatorsExample), NInstrumentationExampleBase.NInstrumentationExampleBaseSchema);
+			NLinearGaugeIndicatorsExampleSchema = NSchema.Create(typeof(NLinearGaugeIndicatorsExample), NExampleBaseSchema);
         }
 
         #endregion
 
-        #region Protected Overrides - Example
+        #region Example
 
         protected override NWidget CreateExampleContent()
 		{
 			NStackPanel stack = new NStackPanel();
-			stack.HorizontalPlacement = Layout.ENHorizontalPlacement.Left;
+			stack.HorizontalPlacement = ENHorizontalPlacement.Left;
 
 			// create a linear gauge
 			m_LinearGauge = new NLinearGauge();
 			stack.Add(m_LinearGauge);
 			m_LinearGauge.CapEffect = new NGelCapEffect();
-			m_LinearGauge.Border = base.CreateBorder();
+			m_LinearGauge.Border = CreateBorder();
 			m_LinearGauge.Padding = new NMargins(20);
 			m_LinearGauge.BorderThickness = new NMargins(6);
 			m_LinearGauge.BackgroundFill = new NStockGradientFill(NColor.Gray, NColor.Black);
@@ -92,7 +92,6 @@ namespace Nevron.Nov.Examples.Gauge
 
 			return stack;
 		}
-
         protected override NWidget CreateExampleControls()
         {
 			NStackPanel stack = new NStackPanel();
@@ -146,12 +145,10 @@ namespace Nevron.Nov.Examples.Gauge
 
             return stack;
         }
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>The example demonstrates how to create range and marker gauge indicators.</p>";
 		}
-
 
 		#endregion 
 
@@ -293,13 +290,18 @@ namespace Nevron.Nov.Examples.Gauge
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NLinearGaugeIndicatorsExampleSchema;
 
-        #endregion
+		#endregion
 
-		#region Default Values
+		#region Static Methods
+
+		protected NBorder CreateBorder()
+		{
+			return NBorder.CreateThreeColorBorder(NColor.LightGray, NColor.White, NColor.DarkGray, 10, 10);
+		}
 
 		#endregion
 	}

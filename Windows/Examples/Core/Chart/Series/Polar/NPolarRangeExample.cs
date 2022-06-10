@@ -1,16 +1,16 @@
-﻿using Nevron.Nov.Chart;
+﻿using System;
+
+using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Chart
 {
 	/// <summary>
 	/// Polar range example
 	/// </summary>
-	public class NPolarRangeExample : NChartExampleBase
+	public class NPolarRangeExample : NExampleBase
 	{
 		#region Constructors
 
@@ -26,17 +26,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NPolarRangeExample()
 		{
-			NPolarRangeExampleSchema = NSchema.Create(typeof(NPolarRangeExample), NChartExampleBase.NChartExampleBaseSchema);
+			NPolarRangeExampleSchema = NSchema.Create(typeof(NPolarRangeExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreatePolarChartView();
@@ -103,10 +99,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -116,10 +108,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a polar range chart.</p>";
@@ -203,9 +191,20 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static
+		#region Schema
 
 		public static readonly NSchema NPolarRangeExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreatePolarChartView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Polar);
+			return chartView;
+		}
 
 		#endregion
 	}

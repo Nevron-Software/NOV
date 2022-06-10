@@ -1,8 +1,10 @@
-﻿using Nevron.Nov.Dom;
+﻿using Nevron.Nov.Diagram;
+using Nevron.Nov.Dom;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-    public class NVisioDrawingImportExample : NDiagramExampleBase
+    public class NVisioDrawingImportExample : NExampleBase
     {
         #region Constructors
 
@@ -18,25 +20,54 @@ namespace Nevron.Nov.Examples.Diagram
         /// </summary>
         static NVisioDrawingImportExample()
         {
-            NVisioDrawingImportExampleSchema = NSchema.Create(typeof(NVisioDrawingImportExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+            NVisioDrawingImportExampleSchema = NSchema.Create(typeof(NVisioDrawingImportExample), NExampleBaseSchema);
         }
 
         #endregion
 
         #region Protected Overrides
 
-        protected override void InitDiagram()
+        protected override NWidget CreateExampleContent()
+        {
+            // Create a simple drawing
+            NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+            m_DrawingView = drawingViewWithRibbon.View;
+
+            m_DrawingView.Document.HistoryService.Pause();
+            try
+            {
+                InitDiagram(m_DrawingView.Document);
+            }
+            finally
+            {
+                m_DrawingView.Document.HistoryService.Resume();
+            }
+
+            return drawingViewWithRibbon;
+        }
+        protected override NWidget CreateExampleControls()
+        {
+            return null;
+        }
+        protected override string GetExampleDescription()
+        {
+            return @"<p>Demonstrates how to import a Visio drawing (in VSDX format) to NOV Diagram.</p>";
+        }
+
+        private void InitDiagram(NDrawingDocument drawingDocument)
         {
             // Import a Visio diagram
             m_DrawingView.LoadFromResource(NResources.RBIN_VSDX_CorporateDiagramShapes_vsdx);
 
             // Hide ports
-            m_DrawingView.Drawing.ScreenVisibility.ShowPorts = false;
+            drawingDocument.Content.ScreenVisibility.ShowPorts = false;
         }
-        protected override string GetExampleDescription()
-        {
-            return @"<p>Demonstrates how to import a Visio drawing (in VSDX format) to Nevron Diagram.</p>";
-        }
+
+        #endregion
+
+        #region Fields
+
+        private NDrawingView m_DrawingView;
 
         #endregion
 

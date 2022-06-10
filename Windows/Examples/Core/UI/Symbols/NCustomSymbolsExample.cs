@@ -30,18 +30,7 @@ namespace Nevron.Nov.Examples.UI
 
 		#endregion
 
-		#region Public Overrides - Example
-
-		public override void Initialize()
-		{
-			base.Initialize();
-
-			RecreateSymbols();
-		}
-
-		#endregion
-
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -54,6 +43,8 @@ namespace Nevron.Nov.Examples.UI
 			m_SymbolsTable.Padding = new NMargins(NDesign.HorizontalSpacing, NDesign.VerticalSpacing,
 				NDesign.HorizontalSpacing * 6, NDesign.VerticalSpacing);
 
+			RecreateSymbols();
+
 			NScrollContent scrollContent = new NScrollContent(m_SymbolsTable);
 			scrollContent.HorizontalPlacement = ENHorizontalPlacement.Left;
 			return scrollContent;
@@ -64,7 +55,7 @@ namespace Nevron.Nov.Examples.UI
 			
 			// Create the color box
 			m_ColorBox = new NColorBox();
-			m_ColorBox.SelectedColor = NColor.MediumBlue;
+			m_ColorBox.SelectedColor = DefaultSymbolColor;
 			m_ColorBox.SelectedColorChanged += OnColorBoxSelectedColorChanged;
 			stack.Add(NPairBox.Create("Color:", m_ColorBox));
 
@@ -105,8 +96,8 @@ namespace Nevron.Nov.Examples.UI
 
 		private void RecreateSymbols()
 		{
-			NColor color = m_ColorBox.SelectedColor;
-			double length = InitialSize * Math.Pow(2, m_RadioGroup.SelectedIndex);
+			NColor color = m_ColorBox != null ? m_ColorBox.SelectedColor : DefaultSymbolColor;
+			double length = InitialSize * Math.Pow(2, m_RadioGroup != null ? m_RadioGroup.SelectedIndex : 0);
 			NSize size = new NSize(length, length);
 
 			m_SymbolsTable.Clear();
@@ -179,6 +170,7 @@ namespace Nevron.Nov.Examples.UI
 		#region Constants
 
 		private const double InitialSize = 16;
+		private static readonly NColor DefaultSymbolColor = NColor.MediumBlue;
 
 		#endregion
 	}

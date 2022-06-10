@@ -1,9 +1,10 @@
-﻿
+﻿using Nevron.Nov.Diagram;
 using Nevron.Nov.Dom;
+using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Diagram
 {
-	public class NCrowsFootDatabaseShapesExample : NDiagramExampleBase
+	public class NCrowsFootDatabaseShapesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -19,19 +20,35 @@ namespace Nevron.Nov.Examples.Diagram
 		/// </summary>
 		static NCrowsFootDatabaseShapesExample()
 		{
-			NCrowsFootDatabaseShapesExampleSchema = NSchema.Create(typeof(NCrowsFootDatabaseShapesExample), NDiagramExampleBase.NDiagramExampleBaseSchema);
+			NCrowsFootDatabaseShapesExampleSchema = NSchema.Create(typeof(NCrowsFootDatabaseShapesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Overrides
+		#region Example
 
-		protected override void InitDiagram()
+		protected override NWidget CreateExampleContent()
 		{
-			base.InitDiagram();
-			//m_DrawingView.LoadFromResource(NResources.RBIN_NDX_PersonAdventureWorks_ndx);
-		}
+			// Create a simple drawing
+			NDrawingViewWithRibbon drawingViewWithRibbon = new NDrawingViewWithRibbon();
+			m_DrawingView = drawingViewWithRibbon.View;
 
+			m_DrawingView.Document.HistoryService.Pause();
+			try
+			{
+				InitDiagram(m_DrawingView.Document);
+			}
+			finally
+			{
+				m_DrawingView.Document.HistoryService.Resume();
+			}
+
+			return drawingViewWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
 		protected override string GetExampleDescription()
 		{
 			return @"
@@ -40,6 +57,17 @@ namespace Nevron.Nov.Examples.Diagram
 </p>
 ";
 		}
+
+		private void InitDiagram(NDrawingDocument drawingDocument)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		#endregion
+
+		#region Fields
+
+		private NDrawingView m_DrawingView;
 
 		#endregion
 

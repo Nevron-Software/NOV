@@ -1,6 +1,5 @@
 ﻿using Nevron.Nov.Chart;
 using Nevron.Nov.Dom;
-using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.UI;
 
@@ -9,7 +8,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Standard Area Example
 	/// </summary>
-	public class NStandardAreaExample : NChartExampleBase
+	public class NStandardAreaExample : NExampleBase
 	{
 		#region Constructors
 
@@ -25,20 +24,17 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStandardAreaExample()
 		{
-			NStandardAreaExampleSchema = NSchema.Create(typeof(NStandardAreaExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStandardAreaExampleSchema = NSchema.Create(typeof(NStandardAreaExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
-			NChartView chartView = CreateCartesianChartView();
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.Cartesian);
 
 			// configure title
 			chartView.Surface.Titles[0].Text = "Standard Area";
@@ -87,10 +83,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -107,7 +99,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return boxGroup;
 		}
-
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a standard area chart.</p>";
@@ -135,16 +126,16 @@ namespace Nevron.Nov.Examples.Chart
 
 		#endregion
 
-		#region Static Fields
+		#region Schema
 
-		internal static double[] monthValues = new double[] { 16, 19, 16, 15, 18, 19, 24, 21, 22, 17, 19, 15 };
-		internal static string[] monthLetters = new string[] { "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D" };
+		public static readonly NSchema NStandardAreaExampleSchema;
 
 		#endregion
 
-		#region Static
+		#region Constants
 
-		public static readonly NSchema NStandardAreaExampleSchema;
+		internal static readonly double[] monthValues = new double[] { 16, 19, 16, 15, 18, 19, 24, 21, 22, 17, 19, 15 };
+		internal static readonly string[] monthLetters = new string[] { "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D" };
 
 		#endregion
 	}

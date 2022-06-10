@@ -5,7 +5,7 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Text
 {
-	public class NInlineStylesExample : NTextExampleBase
+	public class NInlineStylesExample : NExampleBase
 	{
 		#region Constructors
 
@@ -21,14 +21,36 @@ namespace Nevron.Nov.Examples.Text
 		/// </summary>
 		static NInlineStylesExample()
 		{
-			NInlineStylesExampleSchema = NSchema.Create(typeof(NInlineStylesExample), NTextExampleBase.NTextExampleBaseSchema);
+			NInlineStylesExampleSchema = NSchema.Create(typeof(NInlineStylesExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		protected override void PopulateRichText()
+		protected override NWidget CreateExampleContent()
+		{
+			// Create the rich text
+			NRichTextViewWithRibbon richTextWithRibbon = new NRichTextViewWithRibbon();
+			m_RichText = richTextWithRibbon.View;
+			m_RichText.AcceptsTab = true;
+			m_RichText.Content.Sections.Clear();
+
+			// Populate the rich text
+			PopulateRichText();
+
+			return richTextWithRibbon;
+		}
+		protected override NWidget CreateExampleControls()
+		{
+			return null;
+		}
+		protected override string GetExampleDescription()
+		{
+			return @"<p>This example demonstrates how to create and apply inline styles.</p>";
+		}
+
+		private void PopulateRichText()
 		{
 			NDocumentBlock documentBlock = m_RichText.Content;
 			NSection section = new NSection();
@@ -57,14 +79,12 @@ namespace Nevron.Nov.Examples.Text
 			style2.Rule.FontStyle = ENFontStyle.Italic;
 			style2.Apply(inline2);
 		}
-		protected override string GetExampleDescription()
-		{
-			return @"
-<p>
-	This example demonstrates how to create and apply inline styles.
-</p>
-";
-		}
+
+		#endregion
+
+		#region Fields
+
+		private NRichTextView m_RichText;
 
 		#endregion
 

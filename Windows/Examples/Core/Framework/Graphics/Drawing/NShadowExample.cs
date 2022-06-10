@@ -1,10 +1,11 @@
-﻿using Nevron.Nov.DataStructures;
-using Nevron.Nov.Editors;
+﻿using System;
+
+using Nevron.Nov.DataStructures;
 using Nevron.Nov.Dom;
+using Nevron.Nov.Editors;
 using Nevron.Nov.Graphics;
 using Nevron.Nov.Layout;
 using Nevron.Nov.UI;
-using System;
 
 namespace Nevron.Nov.Examples.Framework
 {
@@ -28,7 +29,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -70,7 +71,7 @@ namespace Nevron.Nov.Examples.Framework
 
 				// Create a canvas to draw in
 				NCanvas canvas = new NCanvas();
-				canvas.PreferredSize = new NSize(defaultCanvasWidth, defaultCanvasHeight);
+				canvas.PreferredSize = new NSize(DefaultCanvasWidth, DefaultCanvasHeight);
 				canvas.Tag = delegates[i];
 				canvas.BackgroundFill = new NColorFill(NColor.White);
 				canvas.PrePaint += new Function<NCanvasPaintEventArgs>(OnCanvasPrePaint);
@@ -287,10 +288,10 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Contants
+		#region Constants
 
-		const int defaultCanvasWidth = 220;
-		const int defaultCanvasHeight = 220;
+		private const int DefaultCanvasWidth = 220;
+		private const int DefaultCanvasHeight = 220;
 
 		#endregion
 

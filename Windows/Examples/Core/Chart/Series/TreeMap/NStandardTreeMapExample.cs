@@ -13,7 +13,7 @@ namespace Nevron.Nov.Examples.Chart
 	/// <summary>
 	/// Standard TreeMap Example
 	/// </summary>
-	public class NStandardTreeMapExample : NChartExampleBase
+	public class NStandardTreeMapExample : NExampleBase
 	{
 		#region Constructors
 
@@ -29,17 +29,13 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NStandardTreeMapExample()
 		{
-			NStandardTreeMapExampleSchema = NSchema.Create(typeof(NStandardTreeMapExample), NChartExampleBase.NChartExampleBaseSchema);
+			NStandardTreeMapExampleSchema = NSchema.Create(typeof(NStandardTreeMapExample), NExampleBaseSchema);
 		}
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleContent()
 		{
 			NChartView chartView = CreateTreeMapView();
@@ -100,10 +96,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return chartView;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override NWidget CreateExampleControls()
 		{
 			NStackPanel stack = new NStackPanel();
@@ -129,10 +121,6 @@ namespace Nevron.Nov.Examples.Chart
 
 			return group;
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
 		protected override string GetExampleDescription()
 		{
 			return @"<p>This example demonstrates how to create a standard treemap chart.</p>";
@@ -168,6 +156,17 @@ namespace Nevron.Nov.Examples.Chart
 		#region Schema
 
 		public static readonly NSchema NStandardTreeMapExampleSchema;
+
+		#endregion
+
+		#region Static Methods
+
+		private static NChartView CreateTreeMapView()
+		{
+			NChartView chartView = new NChartView();
+			chartView.Surface.CreatePredefinedChart(ENPredefinedChartType.TreeMap);
+			return chartView;
+		}
 
 		#endregion
 	}

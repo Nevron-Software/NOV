@@ -45,7 +45,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -125,12 +125,12 @@ namespace Nevron.Nov.Examples.Framework
 
 		private void OnAddChildItemButtonClick(NEventArgs arg)
 		{
-			NTopLevelWindow dialog = NApplication.CreateTopLevelWindow(NWindow.GetFocusedWindowIfNull(OwnerWindow));
+			NTopLevelWindow dialog = NApplication.CreateTopLevelWindow(NWindow.GetFocusedWindowIfNull(DisplayWindow));
 			dialog.SetupDialogWindow("Enter element's name", false);
 
 			NTextBox textBox = new NTextBox();
 			NButtonStrip buttonStrip = new NButtonStrip();
-			buttonStrip.InitOKCancelButtonStrip();
+			buttonStrip.AddOKCancelButtons();
 
 			NPairBox pairBox = new NPairBox(textBox, buttonStrip, ENPairBoxRelation.Box1AboveBox2);
 			pairBox.Spacing = NDesign.VerticalSpacing;
@@ -158,8 +158,11 @@ namespace Nevron.Nov.Examples.Framework
 		}
 		private void OnRemoveSelectedItemButtonClick(NEventArgs arg)
 		{
-			NMessageBox.Show("Remove the selected tree view item", "Question", ENMessageBoxButtons.YesNo, ENMessageBoxIcon.Question,
-				delegate(NMessageBox msgBox, ENWindowResult result) {
+			NMessageBox.Show(
+				NLoc.Get("Remove the selected tree view item"), 
+				NLoc.Get("Question"), 
+				ENMessageBoxButtons.YesNo, 
+				ENMessageBoxIcon.Question).Then(delegate(ENWindowResult result) {
 					if (result == ENWindowResult.Yes)
 					{
 						NTreeViewItem item = m_TreeView.SelectedItem;
@@ -202,7 +205,7 @@ namespace Nevron.Nov.Examples.Framework
 			table.Add(new NWidget());
 
 			NButtonStrip buttonStrip = new NButtonStrip();
-			buttonStrip.InitOKCancelButtonStrip();
+			buttonStrip.AddOKCancelButtons();
 			table.Add(buttonStrip);
 
 			dialog.Content = table;
@@ -243,7 +246,7 @@ namespace Nevron.Nov.Examples.Framework
 			}
 
 			NButtonStrip buttonStrip = new NButtonStrip();
-			buttonStrip.InitOKCancelButtonStrip();
+			buttonStrip.AddOKCancelButtons();
 
 			NPairBox pairBox = new NPairBox(listBox, buttonStrip, ENPairBoxRelation.Box1AboveBox2);
 			pairBox.Spacing = NDesign.VerticalSpacing;

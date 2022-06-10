@@ -22,31 +22,7 @@ namespace Nevron.Nov.Examples.Framework
 
 		#endregion
 
-		#region Public Overrides - Example
-
-		public override void Initialize()
-		{
-			base.Initialize();
-
-			// Add 3 circles
-			NGraphicsPath path = new NGraphicsPath();
-			path.AddCircle(100, 100, 100);
-			m_InputPaths.Add(path);
-
-			//path = new NGraphicsPath();
-			//path.AddCircle(175, 175, 100);
-			//m_InputPaths.Add(path);
-
-			path = new NGraphicsPath();
-			path.AddCircle(250, 100, 100);
-			m_InputPaths.Add(path);
-
-			UpdateOuputPath();
-		}
-
-		#endregion
-
-		#region Protected Overrides - Example
+		#region Example
 
 		protected override NWidget CreateExampleContent()
 		{
@@ -61,6 +37,15 @@ namespace Nevron.Nov.Examples.Framework
 
 			NScrollContent scrollContent = new NScrollContent();
 			scrollContent.Content = m_Canvas;
+
+			// Add 3 circles
+			NGraphicsPath path = new NGraphicsPath();
+			path.AddCircle(100, 100, 100);
+			m_InputPaths.Add(path);
+
+			path = new NGraphicsPath();
+			path.AddCircle(250, 100, 100);
+			m_InputPaths.Add(path);
 
 			return scrollContent;
 		}
@@ -115,6 +100,8 @@ namespace Nevron.Nov.Examples.Framework
 			m_ShowOutputPathInterior.Checked = true;
 			m_ShowOutputPathInterior.CheckedChanged += new Function<NValueChangeEventArgs>(OnShowInputPathInteriorsCheckedChanged);
 			stack.Add(m_ShowOutputPathInterior);
+
+			UpdateOuputPath();
 
 			return stack;
 		}
