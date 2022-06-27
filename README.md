@@ -16,7 +16,7 @@
 <p>After cloning or downloading the repository open either "Windows" or "Mac" folder depending on your platform, then open "Examples" folder</p><br />
 <p><b>For Windows:</b></p>
 <p>The solution with the examples for Windows Forms is located in "WinForm" folder.</p>
-<p>The solution with the examples for Windows Presentation Foundation is located in "WPF" folder.</p><br />
+<p>The solution with the examples for Windows Presentation Foundation is located in "WPF" folder.</p>
 <p>The solution with the examples for Blazor WebAssembly is located in "WebAssembly" folder.</p><br />
 <p><b>For MacOS:</b></p>
 <p>The solution with the examples for MacOS is located in "Mac" folder.</p> 
