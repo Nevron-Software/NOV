@@ -1,4 +1,4 @@
-![Nevron Software](images/Banner.png?raw=true)
+![Nevron Software](Images/Banner.png?raw=true)
 
 # About
 <p>Nevron Open Vision is a suite of advanced desktop UI controls that aims to streamline the development of feature-rich Desktop Applications by providing developers with quality UI<sup>*</sup> controls that also work on multiple operating systems.</p>
