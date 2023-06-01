@@ -366,7 +366,7 @@ namespace Nevron.Nov.Examples.UI
 			pageHome.Groups.Add(group);
 
 			NRibbonSplitButton pasteSplitButton = NRibbonSplitButton.CreateLarge("Paste", NResources.Image_Ribbon_32x32_clipboard_paste_png);
-			pasteSplitButton.CollapseToMedium = ENCollapseCondition.Never;
+            pasteSplitButton.CollapseToMedium = ENCollapseCondition.Never;
 			pasteSplitButton.CollapseToSmall = ENCollapseCondition.Never;
 
 			NMenu pasteMenu = new NMenu();

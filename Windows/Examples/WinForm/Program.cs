@@ -28,10 +28,13 @@ namespace Nevron.Nov.Examples.WinForm
 		{
             try
             {
-                // In .NET core apps high dpi awareness is controlled from code
+                // In .NET core apps high dpi awareness is controlled via code
                 Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+
+                // Use this to Enable/Disable GPU rendering of all NOV Content
+                NApplication.EnableGPURendering = true;
 
 				// Install Nevron Open Vision for Windows Forms
 				NNovApplicationInstaller.Install(
@@ -42,20 +45,15 @@ namespace Nevron.Nov.Examples.WinForm
 					NGridModule.Instance,
                     NBarcodeModule.Instance);
 
-                // use this to Enable/Disable GPU rendering of all NOV Content
-                NApplication.EnableGPURendering = true;
-
-#if !DEBUG
 				// Change the Resources folder to the one where the NOV installer places the resources, which is by default:
-				// C:\Program Files (x86)\Nevron Software\Nevron Open Vision 2021.1\Resources
-                string resourcesPath = NPath.Current.Normalize(NPath.Current.Combine(NApplication.ResourcesFolder.Path, @"..\..\..\..\..\Resources"));
+				// C:\Program Files (x86)\Nevron Software\Nevron Open Vision [Version]\Resources
+                string resourcesPath = NPath.Current.Normalize(NPath.Current.Combine(NApplication.ResourcesFolder.Path, @"..\..\..\..\Resources"));
                 NApplication.ResourcesFolder = NFileSystem.Current.GetFolder(resourcesPath);
 
                 if (!Directory.Exists(resourcesPath))
                 {
                     Console.Write("Failed to locate resources path ["  + resourcesPath + "]");
                 }
-#endif
 
                 // show the main form
                 bool startWithNovWindow = false;
@@ -84,8 +82,6 @@ namespace Nevron.Nov.Examples.WinForm
                     // create a WinForms form  
                     Form form = new Form();
 
-                    var resourceUris = Assembly.GetEntryAssembly().GetCustomAttributes();
-
                     // set form icon
                     try
                     {
@@ -100,7 +96,7 @@ namespace Nevron.Nov.Examples.WinForm
                     }
                     catch (Exception ex)
                     {
-                        NTrace.WriteLine("Failed to load application icon.");
+                        NTrace.WriteException("Failed to load application icon.", ex);
                     }
 
                     // set form title and state

@@ -67,7 +67,7 @@ namespace Nevron.Nov.Examples.Chart
 			m_RadarLine1.DataLabelStyle = new NDataLabelStyle(false);
 			NMarkerStyle markerStyle1 = new NMarkerStyle();
 			markerStyle1.Visible = true;
-			markerStyle1.Shape = ENPointShape.Ellipse;
+			markerStyle1.Shape = ENPointShape3D.Ellipse;
 			markerStyle1.Size = new NSize(10, 10);
 			m_RadarLine1.MarkerStyle = markerStyle1;
 
@@ -78,7 +78,7 @@ namespace Nevron.Nov.Examples.Chart
 			m_RadarLine2.DataLabelStyle = new NDataLabelStyle(false);
 			NMarkerStyle markerStyle2 = new NMarkerStyle();
 			markerStyle2.Visible = true;
-			markerStyle2.Shape = ENPointShape.Ellipse;
+			markerStyle2.Shape = ENPointShape3D.Ellipse;
 			markerStyle2.Size = new NSize(10, 10);
 			m_RadarLine2.MarkerStyle = markerStyle2;
 

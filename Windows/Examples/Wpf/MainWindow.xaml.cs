@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
-
 using Nevron.Nov.Windows;
+using Nevron.Nov.Windows.Wpf;
 
 namespace Nevron.Nov.Examples.Wpf
 {

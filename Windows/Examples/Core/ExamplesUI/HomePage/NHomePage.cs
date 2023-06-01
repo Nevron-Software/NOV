@@ -107,7 +107,7 @@ namespace Nevron.Nov.Examples
 			NXmlElement rootElement = (NXmlElement)xmlDocument.GetChildAt(0);
 
 			// Process the head
-			NXmlElement titleElement = (NXmlElement)rootElement.GetFirstChild("title");
+			NXmlElement titleElement = (NXmlElement)rootElement.GetFirstChild(NExamplesXml.Attribute.Title);
 			m_HeaderLabel.Text = ((NXmlTextNode)titleElement.GetChildAt(0)).Text;
 
 			NXmlElement statusColorsElement = (NXmlElement)rootElement.GetFirstChild("statusColors");
@@ -119,16 +119,19 @@ namespace Nevron.Nov.Examples
 
 			for (int i = 0, count = categoriesElement.ChildrenCount; i < count; i++)
 			{
-				NXmlElement child = categoriesElement.GetChildAt(i) as NXmlElement;
-				if (child == null)
+				NXmlElement childElement = categoriesElement.GetChildAt(i) as NXmlElement;
+				if (childElement == null)
 					continue;
 
-				if (child.Name != "category")
+				if (childElement.Name != NExamplesXml.Element.Category)
 					throw new Exception("The body element can contain only category elements");
 
 				// Create a widget and add it to the categories panel
-				NWidget category = CreateCategory(child);
-				m_PagePanel.Add(category);
+				NWidget category = CreateCategory(childElement);
+                if (category != null)
+                {
+                    m_PagePanel.Add(category);
+                }
 			}
 
 			// Init the search box
@@ -275,17 +278,21 @@ namespace Nevron.Nov.Examples
 		/// <returns></returns>
 		private NWidget CreateCategory(NXmlElement categoryXmlElement)
 		{
-			string categoryName = categoryXmlElement.GetAttributeValue("name");
-			NColor color = NColor.ParseHex(categoryXmlElement.GetAttributeValue("color"));
+            if (!NExamplesXml.IsSupportedForTheCurrentPlatform(categoryXmlElement))
+                return null;
+
+			string categoryName = categoryXmlElement.GetAttributeValue(NExamplesXml.Attribute.Name);
+			NColor color = NColor.ParseHex(categoryXmlElement.GetAttributeValue(NExamplesXml.Attribute.Color));
 			NColor lightColor = color.Lighten(0.6f);
 
 			// Create the header label
 			NExampleCategoryHeader categoryHeader = new NExampleCategoryHeader(categoryName);
 			categoryHeader.BackgroundFill = new NColorFill(color);
-			categoryHeader.Status = categoryXmlElement.GetAttributeValue("status");
+			categoryHeader.Status = categoryXmlElement.GetAttributeValue(NExamplesXml.Attribute.Status);
 
 			// Create a stack panel for the category widgets
 			NStackPanel stack = new NStackPanel();
+			stack.Padding = new NMargins(0, 0, 0, ItemVerticalSpacing);
 			stack.VerticalSpacing = ItemVerticalSpacing;
 			stack.BackgroundFill = new NColorFill(lightColor);
 			stack.Tag = categoryName;
@@ -300,11 +307,14 @@ namespace Nevron.Nov.Examples
 				if (row == null)
 					continue;
 
-				if (row.Name != "row")
+				if (row.Name != NExamplesXml.Element.Row)
 					throw new Exception("Category elements should contain only rows");
 
 				NStackPanel rowStack = CreateRow(row, color);
-				stack.Add(rowStack);
+                if (rowStack != null)
+                {
+                    stack.Add(rowStack);
+                }
 			}
 
 			return stack;
@@ -319,11 +329,14 @@ namespace Nevron.Nov.Examples
 		/// <returns></returns>
 		private NWidget CreateGroup(NXmlElement group, NColor borderColor)
 		{
+            if (!NExamplesXml.IsSupportedForTheCurrentPlatform(group))
+                return null;
+
 			// Create a table panel
 			NTableFlowPanel tablePanel = CreateTablePanel(group, borderColor);
 
 			// Get the group title
-			string groupTitle = group.GetAttributeValue("name");
+			string groupTitle = group.GetAttributeValue(NExamplesXml.Attribute.Name);
 			if (String.IsNullOrEmpty(groupTitle))
 				return tablePanel;
 
@@ -377,8 +390,11 @@ namespace Nevron.Nov.Examples
 		/// <returns></returns>
 		private NWidget CreateTile(NXmlElement element, string categoryNamespace)
 		{
-			string tileTitle = element.GetAttributeValue("name");
-			string iconName = element.GetAttributeValue("icon");
+            if (!NExamplesXml.IsSupportedForTheCurrentPlatform(element))
+                return null;
+
+			string tileTitle = element.GetAttributeValue(NExamplesXml.Attribute.Name);
+			string iconName = element.GetAttributeValue(NExamplesXml.Attribute.Icon);
 
 			// Get the icon for the tile
 			NImage icon = null;
@@ -415,7 +431,7 @@ namespace Nevron.Nov.Examples
 			// Create and configure the tile
 			NExampleTile tile = new NExampleTile(icon, tileTitle);
 			tile.HorizontalPlacement = ENHorizontalPlacement.Left;
-			tile.Status = element.GetAttributeValue("status");
+			tile.Status = element.GetAttributeValue(NExamplesXml.Attribute.Status);
 			tile.Tag = new NExampleTileInfo(element);
 
 			// Add the examples of the current tile to the examples map
@@ -423,7 +439,7 @@ namespace Nevron.Nov.Examples
 			while (iter.MoveNext())
 			{
 				NXmlElement exampleElement = iter.Current as NXmlElement;
-				if (exampleElement == null)
+				if (exampleElement == null || !NExamplesXml.IsSupportedForTheCurrentPlatform(exampleElement))
 					continue;
 
 				string examplePath = NExamplesUiHelpers.GetExamplePath(exampleElement);
@@ -433,7 +449,7 @@ namespace Nevron.Nov.Examples
 				}
 
 				NExampleTile example = new NExampleTile(icon, examplePath);
-				example.Status = exampleElement.GetAttributeValue("status");
+				example.Status = exampleElement.GetAttributeValue(NExamplesXml.Attribute.Status);
 				example.Tag = new NExampleTileInfo(exampleElement);
 
 				if (m_ExamplesMap.Contains(examplePath) == false)
@@ -465,6 +481,9 @@ namespace Nevron.Nov.Examples
 		/// <returns></returns>
 		private NStackPanel CreateRow(NXmlElement row, NColor categoryColor)
 		{
+            if (!NExamplesXml.IsSupportedForTheCurrentPlatform(row))
+                return null;
+
 			NStackPanel stack = new NStackPanel();
 			stack.Direction = ENHVDirection.LeftToRight;
 			stack.FillMode = ENStackFillMode.Equal; // FIX: make this a setting
@@ -473,17 +492,21 @@ namespace Nevron.Nov.Examples
 
 			for (int i = 0, count = row.ChildrenCount; i < count; i++)
 			{
-				NXmlElement child = row.GetChildAt(i) as NXmlElement;
-				if (child == null)
+                NXmlElement childElement = row.GetChildAt(i) as NXmlElement;
+				if (childElement == null)
 					continue;
 
-				switch (child.Name)
+				switch (childElement.Name)
 				{
-					case "group":
-						stack.Add(CreateGroup(child, categoryColor));
+					case NExamplesXml.Element.Group:
+                        NWidget group = CreateGroup(childElement, categoryColor);
+                        if (group != null)
+                        {
+                            stack.Add(group);
+                        }
 						break;
-					case "label":
-						stack.Add(CreateLabel(child));
+					case NExamplesXml.Element.Label:
+						stack.Add(CreateLabel(childElement));
 						break;
 					default:
 						throw new Exception("Unsuppoted row child element");
@@ -501,9 +524,9 @@ namespace Nevron.Nov.Examples
 		private NTableFlowPanel CreateTablePanel(NXmlElement owner, NColor borderColor)
 		{
 			int maxRows;
-			if (TryGetInt(owner, "maxRows", out maxRows) == false)
+			if (TryGetInt(owner, NExamplesXml.Attribute.MaxRows, out maxRows) == false)
 			{
-				maxRows = defaultMaxRows;
+				maxRows = DefaultMaxRows;
 			}
 
 			// Create a table flow panel for the items
@@ -524,19 +547,25 @@ namespace Nevron.Nov.Examples
 			{
 				NXmlElement child = owner.GetChildAt(i) as NXmlElement;
 				if (child == null)
-				{
 					continue;
-				}
 
 				switch (child.Name)
 				{
-					case "tile":
-						table.Add(CreateTile(child, categoryNamespace));
+					case NExamplesXml.Element.Tile:
+                        NWidget tile = CreateTile(child, categoryNamespace);
+                        if (tile != null)
+                        {
+                            table.Add(tile);
+                        }
 						break;
-					case "group":
-						table.Add(CreateGroup(child, borderColor));
+					case NExamplesXml.Element.Group:
+                        NWidget group = CreateGroup(child, borderColor);
+                        if (group != null)
+                        {
+                            table.Add(group);
+                        }
 						break;
-					case "label":
+					case NExamplesXml.Element.Label:
 						table.Add(CreateLabel(child));
 						break;
 					default:
@@ -564,16 +593,16 @@ namespace Nevron.Nov.Examples
 			for (int i = 0, count = styleElement.ChildrenCount; i < count; i++)
 			{
 				NXmlElement child = styleElement.GetChildAt(i) as NXmlElement;
-				if (child == null || child.Name != "status")
+				if (child == null || child.Name != NExamplesXml.Attribute.Status)
 					continue;
 
 				// Get the status name
-				string name = child.GetAttributeValue("name");
+				string name = child.GetAttributeValue(NExamplesXml.Attribute.Name);
 				if (name == null)
 					continue;
 
 				// Parse the status color
-				string colorStr = child.GetAttributeValue("color");
+				string colorStr = child.GetAttributeValue(NExamplesXml.Attribute.Color);
 				NColor color;
 				if (NColor.TryParse(colorStr, out color) == false)
 					continue;
@@ -774,7 +803,7 @@ namespace Nevron.Nov.Examples
 			string result;
 			do
 			{
-				result = element.GetAttributeValue("namespace");
+				result = element.GetAttributeValue(NExamplesXml.Attribute.Namespace);
 				element = element.Parent as NXmlElement;
 			}
 			while ((result == null || result.Length == 0) && element != null);
@@ -813,7 +842,11 @@ namespace Nevron.Nov.Examples
 		private const double ItemHorizontalSpacing = 20;
 		private const double ItemVerticalSpacing = 10;
 
-		private const int defaultMaxRows = 15;
+        #endregion
+
+        #region Default Values
+
+        private const int DefaultMaxRows = 15;
 
 		#endregion
 	}

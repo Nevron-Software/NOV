@@ -152,6 +152,10 @@ namespace Nevron.Nov.Examples
 
 		#region Implementation - Example Loading
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="xmlElement"></param>
 		private void LoadExample(NXmlElement xmlElement)
 		{
 			string groupNamespace = NHomePage.GetNamespace(xmlElement);
@@ -198,6 +202,9 @@ namespace Nevron.Nov.Examples
 				m_Splitter.Pane2.Content = new NErrorPanel("Failed to load example. Exception was: " + ex.Message);
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
 		private void CloseExample()
 		{
 			NExampleBase oldExample = m_Splitter.Pane2.Content as NExampleBase;
@@ -214,10 +221,18 @@ namespace Nevron.Nov.Examples
 
 		#region Event Handlers - Header
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="exampleXmlElement"></param>
 		private void OnExampleMenuItemClick(NXmlElement exampleXmlElement)
 		{
 			NavigateToExample(exampleXmlElement);
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="favoriteAdded"></param>
 		private void OnFavoriteAddedOrRemoved(bool favoriteAdded)
 		{
 			if (favoriteAdded)
@@ -229,6 +244,10 @@ namespace Nevron.Nov.Examples
 				NExamplesOptions.Instance.RemoveFavoriteExample(CurrentExamplePath);
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="arg"></param>
 		private void OnNextExampleButtonClick(NEventArgs arg)
 		{
 			NXmlElement current = m_CurrentExampleXmlElement;
@@ -256,6 +275,10 @@ namespace Nevron.Nov.Examples
 				NavigateToExample(next);
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="arg"></param>
 		private void OnPreviousExampleButtonClick(NEventArgs arg)
 		{
 			NXmlElement current = m_CurrentExampleXmlElement;
@@ -288,6 +311,10 @@ namespace Nevron.Nov.Examples
 
 		#region Event Handlers - Navigation
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="arg"></param>
 		private void OnTreeViewSelectedPathChanged(NValueChangeEventArgs arg)
 		{
 			// Close the old example
@@ -305,6 +332,10 @@ namespace Nevron.Nov.Examples
 				}
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="arg"></param>
 		private void OnBreadcrumbButtonClick(NEventArgs arg)
 		{
 			// Load the new example
@@ -321,6 +352,10 @@ namespace Nevron.Nov.Examples
 				examplesContent.NavigateToHomePageWelcomeScreen();
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="arg"></param>
 		private void OnSearchBoxItemSelected(NEventArgs arg)
 		{
 			if (arg.Cancel)

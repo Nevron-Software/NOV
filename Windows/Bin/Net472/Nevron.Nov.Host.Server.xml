@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nevron.Nov.Host.Server</name>
+    </assembly>
+    <members>
+        <member name="M:Nevron.Nov.Server.NNovApplicationInstaller.Install(Nevron.Nov.NModule[])">
+            <summary>
+            Installs the services needed for an application server.
+            </summary>
+            <param name="modules"></param>
+        </member>
+        <member name="M:Nevron.Nov.Internal.QtGG.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
+            <summary>
+            Overriden to return null - native bitmap encoding is not currently supported by the server host.
+            </summary>
+            <param name="rtGG"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.QtGG.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
+            <summary>
+            Overriden to return null - native JPEG encoding is not currently supported by the server host.
+            </summary>
+            <param name="StGG"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.QtGG.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
+            <summary>
+            Overriden to return null - native PNG encoding is not currently supported by the server host.
+            </summary>
+            <param name="UtGG"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.QtGG.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
+            <summary>
+            Overriden to return null - native TIFF encoding is not currently supported by the server host.
+            </summary>
+            <param name="WtGG"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.QtGG.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
+            <summary>
+            Overriden to return null - native image decoding is not currently supported by the server host.
+            </summary>
+            <param name="xtGG"></param>
+            <param name="YtGG"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

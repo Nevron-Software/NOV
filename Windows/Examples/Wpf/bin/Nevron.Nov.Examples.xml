@@ -835,17 +835,17 @@
             Static constructor
             </summary>
         </member>
-        <member name="T:Nevron.Nov.Examples.Chart.NImageExportExample">
+        <member name="T:Nevron.Nov.Examples.Chart.NLightModelExample">
             <summary>
-            Image Export Example
+            Chart Light Model Example
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Chart.NImageExportExample.#ctor">
+        <member name="M:Nevron.Nov.Examples.Chart.NLightModelExample.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Chart.NImageExportExample.#cctor">
+        <member name="M:Nevron.Nov.Examples.Chart.NLightModelExample.#cctor">
             <summary>
             Static constructor
             </summary>
@@ -880,6 +880,16 @@
             Static constructor
             </summary>
         </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NRasterImageExportExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NRasterImageExportExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NSerializationExample">
             <summary>
             Serialization Example
@@ -898,6 +908,16 @@
         <member name="M:Nevron.Nov.Examples.Chart.NSerializationExample.FillRandomData">
             <summary>
             
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NSvgExportExample.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NSvgExportExample.#cctor">
+            <summary>
+            Static constructor.
             </summary>
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NAxisCursorToolExample">
@@ -1167,6 +1187,21 @@
             
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NStackedArea3DExample">
+            <summary>
+            Stacked Area 3D Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStackedArea3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStackedArea3DExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStackedAreaExample">
             <summary>
             Stacked Area Example
@@ -1181,6 +1216,33 @@
             <summary>
             Static constructor
             </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NStandard3DAreaExample">
+            <summary>
+            Standard 3D Area Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandard3DAreaExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandard3DAreaExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandard3DAreaExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandard3DAreaExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStandardAreaExample">
             <summary>
@@ -1278,6 +1340,27 @@
             Static constructor
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NManhattanBarExample">
+            <summary>
+            Standard Bar Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NManhattanBarExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NManhattanBarExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NManhattanBarExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStackedBarExample">
             <summary>
             Stacked Bar Example
@@ -1297,13 +1380,6 @@
             <summary>
             Creates a new data label style object
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.Chart.NStackedBarExample.GetFormatStringFromIndex(System.Int32)">
-            <summary>
-            Gets a format string from the specified index
-            </summary>
-            <param name="index"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NStackedBarExample.CreateLabelFormatComboBox">
@@ -1346,6 +1422,27 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NStandard3DBarExample">
+            <summary>
+            Standard Bar Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandard3DBarExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandard3DBarExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandard3DBarExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStandardBarExample">
             <summary>
             Standard Bar Example
@@ -1385,6 +1482,48 @@
         <member name="M:Nevron.Nov.Examples.Chart.NXYScatterBarExample.CreateExampleControls">
             <summary>
             
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NXYZScatterClusterStackBarExample">
+            <summary>
+            Scatter Cluster Bar Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterClusterStackBarExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterClusterStackBarExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterClusterStackBarExample.CreateDataLabelStyle">
+            <summary>
+            Creates a new data label style object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NXYZScatterStackBarExample">
+            <summary>
+            Cluster Bar Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterStackBarExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterStackBarExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterStackBarExample.CreateDataLabelStyle">
+            <summary>
+            Creates a new data label style object
             </summary>
             <returns></returns>
         </member>
@@ -1445,6 +1584,45 @@
             Static constructor
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NXYZScatterBubbleExample">
+            <summary>
+            Standard Bubble Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterBubbleExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterBubbleExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterBubbleExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterBubbleExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterBubbleExample.GetExampleDescription">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterBubbleExample.OnChangeDataButtonClick(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NComboChartExample">
             <summary>
             Combo Chart Example
@@ -1475,6 +1653,42 @@
             Static constructor
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NXYZErrorBarExample">
+            <summary>
+            Error Bar Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZErrorBarExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZErrorBarExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZErrorBarExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NScatterFunnel3DExample">
+            <summary>
+            Scatter Funnel Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NScatterFunnel3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NScatterFunnel3DExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NScatterFunnelExample">
             <summary>
             Scatter Funnel Example
@@ -1489,6 +1703,39 @@
             <summary>
             Static constructor
             </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NStandardFunnel3DExample">
+            <summary>
+            Standard Funnel 3D Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardFunnel3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardFunnel3DExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardFunnel3DExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardFunnel3DExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardFunnel3DExample.GetExampleDescription">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStandardFunnelExample">
             <summary>
@@ -1520,6 +1767,38 @@
             Static constructor
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NContourLabelsExample">
+            <summary>
+            Controur Labels Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NContourLabelsExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NContourLabelsExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NContourLabelsExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NContourLabelsExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NContourLabelsExample.GenerateData">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStandardHeatMapExample">
             <summary>
             Standard HeatMap Example
@@ -1546,6 +1825,21 @@
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NWaferChartExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NHighLow3DExample">
+            <summary>
+            HighLow 3D Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NHighLow3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NHighLow3DExample.#cctor">
             <summary>
             Static constructor
             </summary>
@@ -1595,6 +1889,21 @@
             Static constructor
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NMultiSeriesLineExample">
+            <summary>
+            Multi Series Line Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NMultiSeriesLineExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NMultiSeriesLineExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NSmoothLineExample">
             <summary>
             Standard Line Example
@@ -1610,28 +1919,96 @@
             Static constructor
             </summary>
         </member>
-        <member name="T:Nevron.Nov.Examples.Chart.NStackedLineExample">
+        <member name="T:Nevron.Nov.Examples.Chart.NStackedLine2DExample">
             <summary>
             Stacked Line Example
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Chart.NStackedLineExample.#ctor">
+        <member name="M:Nevron.Nov.Examples.Chart.NStackedLine2DExample.#ctor">
             <summary>
             Default constructor
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Chart.NStackedLineExample.#cctor">
+        <member name="M:Nevron.Nov.Examples.Chart.NStackedLine2DExample.#cctor">
             <summary>
             Static constructor
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Chart.NStackedLineExample.CreateLineSeries(System.String,Nevron.Nov.Chart.ENMultiLineMode)">
+        <member name="M:Nevron.Nov.Examples.Chart.NStackedLine2DExample.CreateLineSeries(System.String,Nevron.Nov.Chart.ENMultiLineMode)">
             <summary>
             Creates a new line series
             </summary>
             <param name="name"></param>
             <param name="multiLineMode"></param>
             <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NStackedLine3DExample">
+            <summary>
+            Stacked Line 3D Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStackedLine3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStackedLine3DExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStackedLine3DExample.CreateLineSeries(System.String,Nevron.Nov.Chart.ENMultiLineMode)">
+            <summary>
+            Creates a new line series
+            </summary>
+            <param name="name"></param>
+            <param name="multiLineMode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NStandardLine3DExample">
+            <summary>
+            Standard 3D Line Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardLine3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardLine3DExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardLine3DExample.OnLineDepthScrollBarValueChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardLine3DExample.OnLineSizeScrollBarValueChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardLine3DExample.OnLineFillButtonClick(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardLine3DExample.OnLineStrokeButtonClick(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardLine3DExample.OnLineStyleComboSelectedIndexChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStandardLineExample">
             <summary>
@@ -1647,6 +2024,27 @@
             <summary>
             Static constructor
             </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NStepLine3DExample">
+            <summary>
+            Step Line 3D Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStepLine3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStepLine3DExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStepLine3DExample.OnLineStyleComboSelectedIndexChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStepLineExample">
             <summary>
@@ -1678,6 +2076,26 @@
             Static constructor
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NXYZScatterLineExample">
+            <summary>
+            XY Scatter Line Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterLineExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterLineExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterLineExample.ChangeData">
+            <summary>
+            Called when windings / complexity changes
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStockDataGenerator">
             <summary>
             Helper class that generates sample data for stock/financial series
@@ -1702,6 +2120,21 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NDoughnutPie3DExample">
+            <summary>
+            Doughnut Pie Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NDoughnutPie3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NDoughnutPie3DExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NDoughnutPieExample">
             <summary>
             Doughnut Pie Example
@@ -1713,6 +2146,21 @@
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NDoughnutPieExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NStandardPie3DExample">
+            <summary>
+            Standard 3D Pie Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardPie3DExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NStandardPie3DExample.#cctor">
             <summary>
             Static constructor
             </summary>
@@ -1743,6 +2191,21 @@
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NPointAndFigureExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.N3DPointDropLinesExample">
+            <summary>
+            Point Drop Lines Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.N3DPointDropLinesExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.N3DPointDropLinesExample.#cctor">
             <summary>
             Static constructor
             </summary>
@@ -1788,6 +2251,21 @@
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NXYScatterPointExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NXYZScatterPointExample">
+            <summary>
+            XYZ Scatter Point Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterPointExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZScatterPointExample.#cctor">
             <summary>
             Static constructor
             </summary>
@@ -1999,6 +2477,21 @@
             Static constructor
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NXYZRangeExample">
+            <summary>
+            XYZ Range Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZRangeExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZRangeExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NRenkoExample">
             <summary>
             Three Renko Example
@@ -2100,6 +2593,21 @@
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NStandardVectorExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NXYZVectorExample">
+            <summary>
+            Standard Vector Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZVectorExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NXYZVectorExample.#cctor">
             <summary>
             Static constructor
             </summary>
@@ -2332,6 +2840,21 @@
         <member name="F:Nevron.Nov.Examples.Diagram.NBarcodesInDiagramExample.NBarcodesInDiagramExampleSchema">
             <summary>
             Schema associated with NBarcodesInDiagramExample.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Diagram.NChartsInDiagramExample.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Diagram.NChartsInDiagramExample.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.Diagram.NChartsInDiagramExample.NChartsInDiagramExampleSchema">
+            <summary>
+            Schema associated with NChartsInDiagramExample.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Diagram.NGeometryArrowheadsExample.#ctor">
@@ -3568,15 +4091,24 @@
             Static constructor
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Diagram.NCalloutShapesExample.GetExampleDescription">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
         <member name="F:Nevron.Nov.Examples.Diagram.NCalloutShapesExample.NCalloutShapesExampleSchema">
             <summary>
             Schema associated with NCalloutShapesExample.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Diagram.NCauseAndEffectShapesExample.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Diagram.NCauseAndEffectShapesExample.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.Diagram.NCauseAndEffectShapesExample.NCauseAndEffectShapesExampleSchema">
+            <summary>
+            Schema associated with NCauseAndEffectShapesExample.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Diagram.NConnectorShapesExample.#ctor">
@@ -3712,21 +4244,6 @@
         <member name="F:Nevron.Nov.Examples.Diagram.NEPCShapesExample.NEPCShapesExampleSchema">
             <summary>
             Schema associated with NEPCShapesExample.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.Diagram.NFishboneShapesExample.#ctor">
-            <summary>
-            Default constructor.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.Diagram.NFishboneShapesExample.#cctor">
-            <summary>
-            Static constructor.
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.Diagram.NFishboneShapesExample.NFishboneShapesExampleSchema">
-            <summary>
-            Schema associated with NFishboneShapesExample.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Diagram.NFloorPlanShapesExample.#ctor">
@@ -4009,14 +4526,6 @@
             Schema associated with NFileDialogsCustomizationExample.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Diagram.NFileDialogsCustomizationExample.CustomOpenCommandAction.Execute(Nevron.Nov.Dom.NNode,System.Object)">
-            <summary>
-            Executes the command action.
-            </summary>
-            <param name="target"></param>
-            <param name="parameter"></param>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:Nevron.Nov.Examples.Diagram.NFileDialogsCustomizationExample.CustomSaveAsCommandAction.Execute(Nevron.Nov.Dom.NNode,System.Object)" -->
         <member name="M:Nevron.Nov.Examples.Diagram.NRibbonAndCommandBarsExample.#ctor">
             <summary>
             Default constructor.
@@ -4325,72 +4834,64 @@
         </member>
         <member name="M:Nevron.Nov.Examples.Diagram.NGraphTemplate.#ctor">
             <summary>
-            Default constructor
+            Default constructor.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Diagram.NGraphTemplate.#ctor(System.String)">
             <summary>
-            Initializer constructor
+            Initializing constructor.
             </summary>
-            <param name="name">template name</param>
+            <param name="name">Template name.</param>
         </member>
         <member name="M:Nevron.Nov.Examples.Diagram.NGraphTemplate.#cctor">
             <summary>
             Static constructor.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.VerticesSize">
+        <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.VertexSize">
             <summary>
-            Gets or sets the size of the vertices constructed by this template
+            Gets or sets the size of the vertices constructed by this template.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.VerticesShape">
+        <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.VertexShape">
             <summary>
-            Gets or sets the shape of the vertices constructed by this template
+            Gets or sets the shape of the vertices constructed by this template. By default set to
+            <see cref="F:Nevron.Nov.Diagram.Shapes.ENBasicShape.Rectangle"/>.
             </summary>
-            <remarks>
-            By default set to Rectangle
-            </remarks>
         </member>
         <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.HorizontalSpacing">
             <summary>
-            Gets or sets the horizontal spacing between vertices
+            Gets or sets the horizontal spacing between vertices.
             </summary>
         </member>
         <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.VerticalSpacing">
             <summary>
-            Gets or sets the vertical spacing between vertices
+            Gets or sets the vertical spacing between vertices.
             </summary>
         </member>
         <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.VerticesUserClass">
             <summary>
-            Specifies the default style applied to vertices
+            Specifies the user class for vertices.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.EdgesUserClass">
+        <member name="P:Nevron.Nov.Examples.Diagram.NGraphTemplate.EdgeUserClass">
             <summary>
-            Specifies the default style applied to edges
+            Specifies the user class for edges.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Diagram.NGraphTemplate.CreateEdge(Nevron.Nov.Diagram.Shapes.ENConnectorShape)">
             <summary>
-            Creates a new connector from the specified type
+            Creates a new edge shape of the specified type.
             </summary>
-            <remarks>
-            The new connector style uses a copy of EdgesUserClass style
-            </remarks>
             <param name="type"></param>
-            <returns>new connector</returns> 
+            <returns>A new edge shape.</returns> 
         </member>
         <member name="M:Nevron.Nov.Examples.Diagram.NGraphTemplate.CreateVertex(Nevron.Nov.Diagram.Shapes.ENBasicShape)">
             <summary>
-            Creates a new graph vertex with the specified predefined shape
+            Creates a new vertex shape of the specified type.
             </summary>
-            <remarks>
-            The new graph vertex style is a copy of the VerticesUserClass style
-            </remarks>
-            <param name="shape">predefined shape</param>
-            <returns>new graph vertex</returns>
+            <param name="shape">A predefined basic shape.</param>
+            <returns>A new vertex shape.</returns>
         </member>
         <member name="T:Nevron.Nov.Examples.Diagram.NTemplate">
             <summary>
@@ -4609,11 +5110,6 @@
         <member name="F:Nevron.Nov.Examples.Diagram.NThemeBasedShapesExample.NThemeBasedShapesExampleSchema">
             <summary>
             Schema associated with NThemeBasedShapesExample.
-            </summary>
-        </member>
-        <member name="T:Nevron.Nov.Examples.ENProgrammingLanguage">
-            <summary>
-            Enumerates the programming languages supported by NOV examples.
             </summary>
         </member>
         <member name="T:Nevron.Nov.Examples.NExampleBreadcrumb">
@@ -4869,6 +5365,59 @@
             <summary>
             Gets the current example path.
             </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.LoadExample(Nevron.Nov.Xml.NXmlElement)">
+            <summary>
+            
+            </summary>
+            <param name="xmlElement"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.CloseExample">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.OnExampleMenuItemClick(Nevron.Nov.Xml.NXmlElement)">
+            <summary>
+            
+            </summary>
+            <param name="exampleXmlElement"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.OnFavoriteAddedOrRemoved(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="favoriteAdded"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.OnNextExampleButtonClick(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.OnPreviousExampleButtonClick(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.OnTreeViewSelectedPathChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.OnBreadcrumbButtonClick(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplePage.OnSearchBoxItemSelected(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
         </member>
         <member name="F:Nevron.Nov.Examples.NExamplePage.NExamplePageSchema">
             <summary>
@@ -5267,7 +5816,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Examples.NExampleBase.GetExampleSource(Nevron.Nov.Examples.ENProgrammingLanguage)">
+        <member name="M:Nevron.Nov.Examples.NExampleBase.GetExampleSource(Nevron.Nov.Text.ENProgrammingLanguage)">
             <summary>
             Gets a rich text view that shows the syntax highlighted source code of the example.
             </summary>
@@ -5433,6 +5982,30 @@
             </summary>
             <param name="data"></param>
         </member>
+        <member name="M:Nevron.Nov.Examples.NExamplesOptions.SaveToBytes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplesOptions.SaveToStream(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplesOptions.LoadFromBytes(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="bytes"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplesOptions.LoadFromStream(System.IO.Stream)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+        </member>
         <member name="F:Nevron.Nov.Examples.NExamplesOptions.NExamplesOptionsSchema">
             <summary>
             Schema associated with NExamplesOptions.
@@ -5546,6 +6119,39 @@
         <member name="F:Nevron.Nov.Examples.NExamplesUiHelpers.NevronEmail">
             <summary>
             The Nevron email address.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.NExamplesXml">
+            <summary>
+            Contains constants and helpers for working with the examples' XML.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplesXml.IsSupportedForTheCurrentPlatform(Nevron.Nov.Xml.NXmlElement)">
+            <summary>
+            Gets whether the given XML element (category, row, group, tile or example) is supported
+            for the current platform by analyzing the "platforms" attribute of the XML element.
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+            <remarks>
+            The "platforms" attribute should contain comma-separated values from the <see cref="T:Nevron.Nov.ENIntegrationPlatform"/>
+            enumeration. If not set, the element is considered supported on all platforms.
+            </remarks>
+        </member>
+        <member name="T:Nevron.Nov.Examples.NExamplesXml.Element">
+            <summary>
+            Contains example XML element names.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.NExamplesXml.Attribute">
+            <summary>
+            Contains example XML attribute names.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NExamplesXml.Attribute.Platforms">
+            <summary>
+            Name of the attribute that lists the supported platforms as comma-separated values from
+            the <see cref="T:Nevron.Nov.ENIntegrationPlatform"/> enumeration.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.NSourceCodeDecompressor.GetSourceCodeStream">
@@ -5860,20 +6466,6 @@
             <param name="newHintPath">The new hint path.</param>
             <returns>True if the reference hint path should be updated.</returns>
         </member>
-        <member name="P:Nevron.Nov.Examples.NSyntaxHighlighter.InlineStyles">
-            <summary>
-            Determines whether the CSS styles should be inlined in "style" attributes
-            or not. By default set to false.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NSyntaxHighlighter.Highlight(System.IO.Stream)">
-            <summary>
-            Analyzes the given source code stream, highlights its syntax and returns
-            the resulting HTML and CSS code as a stream.
-            </summary>
-            <param name="sourceCodeStream"></param>
-            <returns></returns>
-        </member>
         <member name="M:Nevron.Nov.Examples.Framework.NCategoryEditorsExample.#ctor">
             <summary>
             Default constructor.
@@ -5952,6 +6544,11 @@
         <member name="P:Nevron.Nov.Examples.Framework.NSimpleNode.ComboBoxEnum">
             <summary>
             Gets or sets the value of the ComboBoxEnum property.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.Framework.NSimpleNode.ComboBoxMaskedEnum">
+            <summary>
+            Gets or sets the value of the ComboBoxMaskedEnumValue property.
             </summary>
         </member>
         <member name="P:Nevron.Nov.Examples.Framework.NSimpleNode.HRadioGroupEnum">
@@ -6072,6 +6669,11 @@
         <member name="F:Nevron.Nov.Examples.Framework.NSimpleNode.ComboBoxEnumValueProperty">
             <summary>
             Reference to the ComboBoxEnum property.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.Framework.NSimpleNode.ComboBoxMaskedEnumProperty">
+            <summary>
+            Reference to the ComboBoxMaskedEnum property.
             </summary>
         </member>
         <member name="F:Nevron.Nov.Examples.Framework.NSimpleNode.HRadioGroupEnumProperty">
@@ -6735,6 +7337,21 @@
             For more information: http://entropymine.com/jason/bmpsuite/
             </summary>
         </member>
+        <member name="M:Nevron.Nov.Examples.Framework.NIcoDecoderExample.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Framework.NIcoDecoderExample.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.Framework.NIcoDecoderExample.NIcoDecoderExampleSchema">
+            <summary>
+            Schema associated with NIcoDecoderExample.
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Examples.Framework.NPngDecoderExample">
             <summary>
             The PNG images displayed in this example are created by Willem van Schaik (willem@schaik.com).
@@ -6799,13 +7416,16 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Framework.NCLRSerializationExample.PersonInfo.#ctor(System.String,System.String,System.Boolean,Nevron.Nov.Examples.Framework.NCLRSerializationExample.GenderSingleton,System.String)">
+        <member name="M:Nevron.Nov.Examples.Framework.NCLRSerializationExample.PersonInfo.#ctor(System.String,System.String,System.Boolean,Nevron.Nov.Examples.Framework.NCLRSerializationExample.GenderSingleton,Nevron.Nov.Examples.Framework.NCLRSerializationExample.Profession,System.String)">
             <summary>
             Initializer constructor
             </summary>
-            <param name="a"></param>
-            <param name="b"></param>
-            <param name="c"></param>
+            <param name="name"></param>
+            <param name="address"></param>
+            <param name="married"></param>
+            <param name="gender"></param>
+            <param name="profession"></param>
+            <param name="other"></param>
         </member>
         <member name="T:Nevron.Nov.Examples.Framework.NDomSerializationExample">
             <summary>
@@ -6885,6 +7505,21 @@
         <member name="F:Nevron.Nov.Examples.Framework.NZipDecompressionExample.NZipDecompressionExampleSchema">
             <summary>
             Schema associated with NZipDecompressionExample.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Framework.NApplicationSettingsExample.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Framework.NApplicationSettingsExample.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.Framework.NApplicationSettingsExample.NApplicationSettingsExampleSchema">
+            <summary>
+            Schema associated with NApplicationSettingsExample.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Framework.NCryptographyExample.#ctor">
@@ -6976,7 +7611,7 @@
             </summary>
             <param name="args"></param>
         </member>
-        <member name="M:Nevron.Nov.Examples.Framework.NHttpExample.NUriRequestItem.HandleHttpResponse(Nevron.Nov.Networking.NHttpResponse)">
+        <member name="M:Nevron.Nov.Examples.Framework.NHttpExample.NUriRequestItem.HandleHttpResponse(Nevron.Nov.Networking.NHttpWebResponse)">
             <summary>
             Handles an HTTP response
             </summary>
@@ -7556,6 +8191,76 @@
             Schema associated with NSelectionExample.
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NNumericLedDisplayExample">
+            <summary>
+            This example demonstrates the functionality of the NNumericDisplayPanel.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NNumericLedDisplayExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NNumericLedDisplayExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NTextLedDisplayExample">
+            <summary>
+            This example demonstrates the functionality of the NTextLedDisplayExample.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NTextLedDisplayExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NTextLedDisplayExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NAutoAdjustScaleExample">
+            <summary>
+            This example demonstrates how to control the size of the gauge axes
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NAutoAdjustScaleExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NAutoAdjustScaleExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NAutoAdjustScaleExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NAutoAdjustScaleExample.GetExampleDescription">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NAutoAdjustScaleExample.AdjustRandomRange(System.Boolean)">
+            <summary>
+            Randomly adjust the axis range with range of 50 and step 20.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NAutoAdjustScaleExample.SetNeedleValueWithinRange(System.Double,System.Double)">
+            <summary>
+            The m_StepCounter tracks  how many steps the needle has taken, and the m_StepThreshold  
+            determines how many steps should be taken before the range is adjusted. 
+            </summary>
+            <param name="m_CurBegin"></param>
+            <param name="m_CurEnd"></param>
+        </member>
         <member name="T:Nevron.Nov.Examples.Gauge.NAxisDockingExample">
             <summary>
             This example demonstrates how to control the size of the gauge axes
@@ -7640,9 +8345,157 @@
             </summary>
             <param name="gauge"></param>
         </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NPointerDampeningExample">
+            <summary>
+            This example demonstrates dampening of a pointer, which simulates a fluid-filled gauge.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.OnValueIndicatorComboBoxIndexChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.UpdateDampeingIntervalUpAndDown(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.UpdateDampeingStepsUpAndDown(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.OnEnableDampeningCheckBoxCheckedChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+             Set whether dampening is on or off.
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.OnTimerTick">
+            <summary>
+            Handles timer's click as evaluating random value and set it on the indicators. 
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.SetValueIndicator(Nevron.Nov.Dom.NProperty,System.Double)">
+            <summary>
+            Set the value of specified properties of the indicators
+            </summary>
+            <param name="indicatorProperty"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerDampeningExample.OnToggleTimerButtonClick(Nevron.Nov.Dom.NEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NPointerScaleAssociationExample">
+            <summary>
+            This example demonstrates how pointers and ranges can be associated with different scales.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerScaleAssociationExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NPointerScaleAssociationExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NScaleMultiplierExample">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScaleMultiplierExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScaleMultiplierExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NScalesAppearanceExample">
+            <summary>
+            This example demonstrates variuos appearance-related properties of the scale bar.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesAppearanceExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesAppearanceExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NScalesCustomLabelsExample">
+            <summary>
+            This example demonstrates how to add a custom labels to a scale.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesCustomLabelsExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesCustomLabelsExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesCustomLabelsExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesCustomLabelsExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesCustomLabelsExample.OnTimerTick">
+            <summary>
+            Timer tick event
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesCustomLabelsExample.AddCustomLabels(Nevron.Nov.Chart.NLinearScale)">
+            <summary>
+            Adds custom labels to the scle
+            </summary>
+            <param name="scale"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesCustomLabelsExample.CreateCustomLabel(System.Double,System.String)">
+            <summary>
+            Creates a custom label give the specified value and text
+            </summary>
+            <param name="value"></param>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
         <member name="T:Nevron.Nov.Examples.Gauge.NScaleSectionsExample">
             <summary>
-            This example demonstrates how to control the size of the gauge axes
+            
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Gauge.NScaleSectionsExample.#ctor">
@@ -7702,6 +8555,131 @@
             
             </summary>
             <param name="gauge"></param>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NScalesLogarithmicExample">
+            <summary>
+             This example demonstrates how to use logarithmic and reversed scales. 
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesLogarithmicExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesLogarithmicExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample">
+            <summary>
+             This exaple demonstrates how to set the min, max and interval values of a scale.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample.OnUpDownRangeMinimumChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample.OnUpDownRangeMaximumChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample.OnCustomIntervalCheckBoxValueChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample.OnUpDownIntervalChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
+            <summary>
+             Get the new interval value. The value should be between 10 and 50
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample.UpdateAxisRange(System.Int32,System.Int32)">
+            <summary> 
+            Updates axis range of the radial gauge
+            </summary>
+            <param name="newMinimum"> The new minimum value for the axis range </param>
+            <param name="newMaximum"> The new maximum value for the axis range </param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesMinMaxExample.ChangeFontSize(System.Int32)">
+            <summary>
+            Changes the font size of the scale labels based on the new maximum value
+            </summary>
+            <param name="newMaximum"></param>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NScalesOffPositionExample">
+            <summary>
+            This example demonstrated how to use a minimum scale pin to define pointer's "Off Poisition"
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesOffPositionExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesOffPositionExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesOffPositionExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScalesOffPositionExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NScaleTickMarksExample">
+            <summary>
+            This example demonstrates properties relating to the major and minor tick marks
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScaleTickMarksExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NScaleTickMarksExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NValueIndicatorsStyleExample">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NValueIndicatorsStyleExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NValueIndicatorsStyleExample.#cctor">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Nevron.Nov.Examples.Gauge.NIndicatorPaintOrderExample">
             <summary>
@@ -7830,17 +8808,91 @@
             
             </summary>
         </member>
-        <member name="T:Nevron.Nov.Examples.Gauge.NNumericLedDisplayExample">
+        <member name="T:Nevron.Nov.Examples.Gauge.NCarDashboardExample">
             <summary>
-            This example demonstrates the functionality of the NNumericDisplayPanel.
+            This example demonstrates how to use state indicators in combination with other gauges
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Gauge.NNumericLedDisplayExample.#ctor">
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.#ctor">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Gauge.NNumericLedDisplayExample.#cctor">
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.GetExampleDescription">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.OnUnregistered">
+            <summary>
+            Called when the example is unloaded
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.CreateGaugePanel(System.String,Nevron.Nov.Graphics.NRange,Nevron.Nov.Graphics.NRange,Nevron.Nov.Chart.NNeedleValueIndicator@,Nevron.Nov.Chart.NNumericLedDisplay@,Nevron.Nov.Chart.NStateIndicator@)">
+            <summary>
+            
+            </summary>
+            <param name="text"></param>
+            <param name="needleValueIndicator"></param>
+            <param name="numericLedDisplay"></param>
+            <param name="stateIndicator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.CreateAdvancedGradient">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.ConfigureScale(Nevron.Nov.Chart.NStandardScale,Nevron.Nov.Graphics.NRange)">
+            <summary>
+            
+            </summary>
+            <param name="scale"></param>
+            <param name="redRange"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.CreateRangeIndicator(System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="minValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NCarDashboardExample.GetSpeedFromRotation">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Gauge.NStateIndicatorStyleAppearanceExample">
+            <summary>
+            This example demonstrates various styles and appearance properties of state indicator
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NStateIndicatorStyleAppearanceExample.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Gauge.NStateIndicatorStyleAppearanceExample.#cctor">
             <summary>
             
             </summary>
@@ -7865,6 +8917,9 @@
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_FishBowl_wmf">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_Print_ico">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_SampleImage_png">
@@ -8008,747 +9063,6 @@
         <member name="P:Nevron.Nov.Examples.NResources.Image_Buildings_ZifengTower_emf">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ad_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ae_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_af_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ag_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ai_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_al_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_am_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_an_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ao_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ar_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_as_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_at_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_au_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_aw_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ax_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_az_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ba_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bb_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bd_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_be_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bf_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bh_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bi_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bj_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bo_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_br_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bs_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bt_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bv_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bw_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_by_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_bz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ca_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_catalonia_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cc_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cd_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cf_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ch_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ci_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ck_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cl_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_co_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cs_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cu_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cv_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cx_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cy_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_cz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_de_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_dj_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_dk_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_dm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_do_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_dz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ec_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ee_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_eg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_eh_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_england_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_er_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_es_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_et_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_europeanunion_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_fam_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_fi_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_fj_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_fk_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_fm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_fo_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_fr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ga_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gb_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gd_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ge_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gf_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gh_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gi_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gl_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gp_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gq_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gs_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gt_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gu_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gw_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_gy_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_hk_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_hm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_hn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_hr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ht_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_hu_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_id_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ie_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_il_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_in_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_io_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_iq_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ir_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_is_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_it_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_jm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_jo_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_jp_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ke_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_kg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_kh_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ki_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_km_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_kn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_kp_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_kr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_kw_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ky_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_kz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_la_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_lb_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_lc_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_li_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_lk_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_lr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ls_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_lt_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_lu_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_lv_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ly_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ma_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mc_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_md_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_me_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mh_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mk_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ml_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mo_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mp_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mq_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ms_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mt_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mu_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mv_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mw_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mx_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_my_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_mz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_na_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_nc_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ne_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_nf_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ng_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ni_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_nl_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_no_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_np_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_nr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_nu_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_nz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_om_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pa_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pe_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pf_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ph_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pk_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pl_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ps_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pt_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_pw_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_py_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_qa_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_re_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ro_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_rs_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ru_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_rw_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sa_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sb_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sc_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_scotland_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sd_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_se_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sh_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_si_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sj_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sk_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sl_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_so_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_st_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sv_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sy_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_sz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tc_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_td_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tf_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_th_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tj_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tk_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tl_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_to_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tr_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tt_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tv_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tw_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_tz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ua_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ug_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_um_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_us_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_uy_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_uz_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_va_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_vc_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ve_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_vg_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_vi_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_vn_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_vu_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_wales_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_wf_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ws_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_ye_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_yt_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_za_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_zm_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_CountryFlags_zw_png">
-            <summary></summary>
-        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_Documentation_PreviewResults_png">
             <summary></summary>
         </member>
@@ -8789,6 +9103,9 @@
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Chart_ComboSeries_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Chart_Effects_png">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Chart_ErrorBarSeries_png">
@@ -8893,6 +9210,9 @@
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Diagram_BusinessProcess_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Diagram_CauseAndEffect_png">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Diagram_Connector_png">
             <summary></summary>
         </member>
@@ -8921,9 +9241,6 @@
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Diagram_FamilyTree_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Diagram_Fishbone_png">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Diagram_FlowchartingEPC_png">
@@ -9094,6 +9411,21 @@
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_Http_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ImageFormatApng_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ImageFormatBmp_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ImageFormatGif_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ImageFormatJpeg_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ImageFormatPng_png">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_Images_png">
             <summary></summary>
         </member>
@@ -9137,6 +9469,9 @@
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Gauge_NumericLedDisplay_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Gauge_StateIndicators_png">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Grid_AlternatingRows_png">
@@ -10513,9 +10848,6 @@
         <member name="F:Nevron.Nov.Examples.NResources.RBIN_EPUB_GeographyOfBliss_epub">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RBIN_NDX_FishboneDiagram_ndx">
-            <summary></summary>
-        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_CS_NovXamarinMacProject_zip">
             <summary></summary>
         </member>
@@ -10568,6 +10900,9 @@
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_FishBowl_wmf">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_Print_ico">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_SampleImage_png">
@@ -10711,747 +11046,6 @@
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_Buildings_ZifengTower_emf">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ad_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ae_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_af_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ag_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ai_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_al_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_am_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_an_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ao_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ar_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_as_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_at_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_au_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_aw_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ax_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_az_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ba_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bb_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bd_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_be_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bf_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bh_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bi_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bj_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bo_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_br_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bs_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bt_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bv_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bw_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_by_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_bz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ca_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_catalonia_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cc_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cd_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cf_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ch_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ci_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ck_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cl_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_co_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cs_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cu_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cv_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cx_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cy_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_cz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_de_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_dj_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_dk_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_dm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_do_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_dz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ec_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ee_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_eg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_eh_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_england_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_er_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_es_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_et_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_europeanunion_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_fam_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_fi_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_fj_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_fk_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_fm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_fo_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_fr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ga_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gb_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gd_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ge_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gf_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gh_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gi_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gl_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gp_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gq_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gs_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gt_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gu_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gw_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_gy_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_hk_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_hm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_hn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_hr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ht_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_hu_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_id_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ie_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_il_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_in_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_io_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_iq_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ir_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_is_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_it_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_jm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_jo_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_jp_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ke_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_kg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_kh_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ki_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_km_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_kn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_kp_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_kr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_kw_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ky_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_kz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_la_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_lb_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_lc_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_li_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_lk_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_lr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ls_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_lt_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_lu_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_lv_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ly_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ma_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mc_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_md_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_me_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mh_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mk_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ml_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mo_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mp_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mq_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ms_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mt_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mu_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mv_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mw_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mx_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_my_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_mz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_na_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_nc_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ne_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_nf_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ng_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ni_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_nl_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_no_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_np_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_nr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_nu_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_nz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_om_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pa_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pe_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pf_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ph_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pk_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pl_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ps_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pt_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_pw_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_py_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_qa_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_re_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ro_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_rs_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ru_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_rw_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sa_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sb_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sc_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_scotland_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sd_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_se_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sh_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_si_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sj_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sk_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sl_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_so_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_st_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sv_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sy_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_sz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tc_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_td_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tf_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_th_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tj_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tk_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tl_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_to_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tr_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tt_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tv_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tw_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_tz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ua_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ug_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_um_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_us_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_uy_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_uz_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_va_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_vc_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ve_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_vg_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_vi_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_vn_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_vu_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_wales_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_wf_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ws_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_ye_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_yt_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_za_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_zm_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_CountryFlags_zw_png">
-            <summary></summary>
-        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_Documentation_PreviewResults_png">
             <summary></summary>
         </member>
@@ -11492,6 +11086,9 @@
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Chart_ComboSeries_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Chart_Effects_png">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Chart_ErrorBarSeries_png">
@@ -11596,6 +11193,9 @@
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Diagram_BusinessProcess_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Diagram_CauseAndEffect_png">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Diagram_Connector_png">
             <summary></summary>
         </member>
@@ -11624,9 +11224,6 @@
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Diagram_FamilyTree_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Diagram_Fishbone_png">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Diagram_FlowchartingEPC_png">
@@ -11797,6 +11394,21 @@
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_Http_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ImageFormatApng_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ImageFormatBmp_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ImageFormatGif_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ImageFormatJpeg_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ImageFormatPng_png">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_Images_png">
             <summary></summary>
         </member>
@@ -11840,6 +11452,9 @@
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Gauge_NumericLedDisplay_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Gauge_StateIndicators_png">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Grid_AlternatingRows_png">
@@ -13194,36 +12809,6 @@
             Singleton instance.
             </summary>
         </member>
-        <member name="T:Nevron.Nov.Examples.NResourcesData1">
-            <summary>
-            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
-            </summary>
-        </member>
-        <member name="T:Nevron.Nov.Examples.NResourcesData2">
-            <summary>
-            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
-            </summary>
-        </member>
-        <member name="T:Nevron.Nov.Examples.NResourcesData3">
-            <summary>
-            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
-            </summary>
-        </member>
-        <member name="T:Nevron.Nov.Examples.NResourcesData4">
-            <summary>
-            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
-            </summary>
-        </member>
-        <member name="T:Nevron.Nov.Examples.NResourcesData5">
-            <summary>
-            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
-            </summary>
-        </member>
-        <member name="T:Nevron.Nov.Examples.NResourcesData6">
-            <summary>
-            DO NOT MODIFY MANUALLY. Automatically generated by NResourceMaker.
-            </summary>
-        </member>
         <member name="M:Nevron.Nov.Examples.Schedule.NCustomAppointmentsExample.#ctor">
             <summary>
             Default constructor.
@@ -13641,9 +13226,9 @@
             Static constructor.
             </summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.Schedule.NInteractivityExample.NReadOnlyOrDisabledScheduleViewExampleSchema">
+        <member name="F:Nevron.Nov.Examples.Schedule.NInteractivityExample.NInteractivityExampleSchema">
             <summary>
-            Schema associated with NReadOnlyOrDisabledScheduleViewExample.
+            Schema associated with NInteractivityExample.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Schedule.NOccurrencesModificationExample.#ctor">
@@ -15074,6 +14659,32 @@
             <param name="labels"></param>
             <returns></returns>
         </member>
+        <member name="T:Nevron.Nov.Examples.Text.NSampleReport3Example">
+            <summary>
+            The example demonstrates how to programmatically manipulate text documents, find content etc.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Text.NSampleReport3Example.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Text.NSampleReport3Example.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Text.NSampleReport3Example.CreateBarChart(System.Boolean,Nevron.Nov.Graphics.NSize,System.String,System.Double[],System.String[])">
+            <summary>
+            Creates a sample bar chart given title, values and labels
+            </summary>
+            <param name="area"></param>
+            <param name="size"></param>
+            <param name="title"></param>
+            <param name="values"></param>
+            <param name="labels"></param>
+            <returns></returns>
+        </member>
         <member name="T:Nevron.Nov.Examples.Text.NMultiRangeSelectionExample">
             <summary>
             The example demonstrates how to programmatically create paragraphs with different inline formatting.
@@ -15352,20 +14963,6 @@
             </summary>
             <param name="color"></param>
             <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.Text.NFileDialogsCustomizationExample.CustomOpenCommandAction.Execute(Nevron.Nov.Dom.NNode,System.Object)">
-            <summary>
-            Executes the command action.
-            </summary>
-            <param name="target"></param>
-            <param name="parameter"></param>
-        </member>
-        <member name="M:Nevron.Nov.Examples.Text.NFileDialogsCustomizationExample.CustomSaveAsCommandAction.Execute(Nevron.Nov.Dom.NNode,System.Object)">
-            <summary>
-            Executes this command action.
-            </summary>
-            <param name="target"></param>
-            <param name="parameter"></param>
         </member>
         <member name="M:Nevron.Nov.Examples.Text.NRibbonAndCommandBarsExample.#ctor">
             <summary>
@@ -15818,21 +15415,6 @@
             Schema associated with NMultiSplitterExample.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.UI.NUniSizeBoxExample.#ctor">
-            <summary>
-            Default constructor.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.UI.NUniSizeBoxExample.#cctor">
-            <summary>
-            Static constructor.
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.UI.NUniSizeBoxExample.NUniSizeBoxExampleSchema">
-            <summary>
-            Schema associated with NUniSizeBoxExample.
-            </summary>
-        </member>
         <member name="M:Nevron.Nov.Examples.UI.NPairBoxExample.#ctor">
             <summary>
             Default constructor.
@@ -15881,6 +15463,21 @@
         <member name="T:Nevron.Nov.Examples.UI.NTransformContentExample.NDynamicContentTooltip">
             <summary>
             A tooltip that shows as content the current date and time
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.UI.NUniSizeBoxExample.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.UI.NUniSizeBoxExample.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.UI.NUniSizeBoxExample.NUniSizeBoxExampleSchema">
+            <summary>
+            Schema associated with NUniSizeBoxExample.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.UI.NContextMenuExample.#ctor">
@@ -16040,6 +15637,21 @@
         <member name="F:Nevron.Nov.Examples.UI.NTaskDialogExample.NTaskDialogExampleSchema">
             <summary>
             Schema associated with NTaskDialogExample.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.UI.NImageBoxDpiScalingExample.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.UI.NImageBoxDpiScalingExample.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.UI.NImageBoxDpiScalingExample.NImageBoxDpiScalingExampleSchema">
+            <summary>
+            Schema associated with NImageBoxDpiScalingExample.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.UI.NImageBoxFirstLookExample.#ctor">

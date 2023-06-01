@@ -41,8 +41,9 @@ namespace Nevron.Nov.Examples
 		/// <returns></returns>
 		public static bool IsSingleExampleTile(NXmlElement element)
 		{
-			return element.Name == "tile" && element.ChildrenCount == 1 &&
-				element.GetChildAt(0).Name == "example";
+			return element.Name == NExamplesXml.Element.Tile &&
+                element.ChildrenCount == 1 &&
+				element.GetChildAt(0).Name == NExamplesXml.Element.Example;
 		}
 		/// <summary>
 		/// Escapes the invalid URL characters from the given path.
@@ -58,7 +59,6 @@ namespace Nevron.Nov.Examples
 				.Replace("&", "&amp;")
 				.Replace(">", "&gt;")
 				.Replace("<", "&lt;");
-
 		}
 
 		/// <summary>
@@ -74,7 +74,7 @@ namespace Nevron.Nov.Examples
 				if (IsSingleExampleTile(xmlElement) == false)
 				{
 					// The current XML element is not a tile with a single example
-					string name = xmlElement.GetAttributeValue("name");
+					string name = xmlElement.GetAttributeValue(NExamplesXml.Attribute.Name);
 					if (!String.IsNullOrEmpty(name))
 					{
 						// The current XML element has a "name" attribute value, so process the element

@@ -65,7 +65,7 @@ namespace Nevron.Nov.Examples
 			m_ExamplesMap.Clear();
 
 			NXmlNode categoriesNode = xmlDocument.GetFirstDescendant("categories");
-			NList<NXmlNode> categories = categoriesNode.GetChildren(CategoryElement);
+			NList<NXmlNode> categories = categoriesNode.GetChildren(NExamplesXml.Element.Category);
 
 			for (int i = 0; i < categories.Count; i++)
 			{
@@ -89,17 +89,17 @@ namespace Nevron.Nov.Examples
 		{
 			switch (xmlElement.Name)
 			{
-				case ExampleElement:
+				case NExamplesXml.Element.Example:
 					break;
 
-				case TileElement:
+				case NExamplesXml.Element.Tile:
 					xmlElement = GetExampleXmlElement(xmlElement);
 					break;
 
-				case CategoryElement:
+				case NExamplesXml.Element.Category:
 					// Navigate to an example's category on the home screen
 					NExamplesContent examplesContent = GetFirstAncestor<NExamplesContent>();
-					examplesContent.NavigateToHomePageCategory(xmlElement.GetAttributeValue(NameAttribute));
+					examplesContent.NavigateToHomePageCategory(xmlElement.GetAttributeValue(NExamplesXml.Attribute.Name));
 					return null;
 			}
 
@@ -131,8 +131,8 @@ namespace Nevron.Nov.Examples
 
 		private NWidget CreateSectionHeader(NXmlElement category)
 		{
-			string name = category.GetAttributeValue(NameAttribute);
-			NImage icon = GetCategoryIcon(category.GetAttributeValue(NamespaceAttribute));
+			string name = category.GetAttributeValue(NExamplesXml.Attribute.Name);
+			NImage icon = GetCategoryIcon(category.GetAttributeValue(NExamplesXml.Attribute.Namespace));
 
 			NPairBox sectionHeader = NPairBox.Create(icon, name);
 			return sectionHeader;
@@ -181,6 +181,9 @@ namespace Nevron.Nov.Examples
 		}
 		private NTreeViewItem CreateTreeViewItem(NXmlElement xmlElement)
 		{
+            if (!NExamplesXml.IsSupportedForTheCurrentPlatform(xmlElement))
+                return null;
+
 			if (NExamplesUiHelpers.IsSingleExampleTile(xmlElement))
 			{
 				// This is a tile with a single example, so create only the example tree view item
@@ -188,21 +191,21 @@ namespace Nevron.Nov.Examples
 			}
 
 			NImage icon;
-			string name = xmlElement.GetAttributeValue(NameAttribute);
+			string name = xmlElement.GetAttributeValue(NExamplesXml.Attribute.Name);
 			if (String.IsNullOrEmpty(name))
 				return null;
 
 			switch (xmlElement.Name)
 			{
-				case TileElement:
-				case GroupElement:
+				case NExamplesXml.Element.Tile:
+				case NExamplesXml.Element.Group:
 					icon = NResources.Image__16x16_Folders_png;
 					break;
 
-				case ExampleElement:
+				case NExamplesXml.Element.Example:
 					// Get an icon for the example, which is grayscale version of the example's category icon
-					NXmlElement categoryXmlElement = (NXmlElement)xmlElement.GetFirstAncestor(CategoryElement);
-					string categoryNamespace = categoryXmlElement.GetAttributeValue(NamespaceAttribute);
+					NXmlElement categoryXmlElement = (NXmlElement)xmlElement.GetFirstAncestor(NExamplesXml.Element.Category);
+					string categoryNamespace = categoryXmlElement.GetAttributeValue(NExamplesXml.Attribute.Namespace);
 					icon = GetExampleIcon(categoryNamespace);
 					break;
 
@@ -212,7 +215,7 @@ namespace Nevron.Nov.Examples
 
 			NExampleTile tile = new NExampleTile(icon, name);
 			tile.Box1.Padding = new NMargins(0, 1, 0, 1);
-			tile.Status = xmlElement.GetAttributeValue(StatusAttribute);
+			tile.Status = xmlElement.GetAttributeValue(NExamplesXml.Attribute.Status);
 			tile.Box2.VerticalPlacement = ENVerticalPlacement.Center;
 			tile.Spacing = NDesign.HorizontalSpacing;
 
@@ -220,7 +223,7 @@ namespace Nevron.Nov.Examples
 			string examplePath = NExamplesUiHelpers.GetExamplePath(xmlElement);
 			m_ExamplesMap.Add(examplePath, treeViewItem);
 
-			if (xmlElement.Name == ExampleElement)
+			if (xmlElement.Name == NExamplesXml.Element.Example)
 			{
 				// This is an example element
 				treeViewItem.Tag = xmlElement;
@@ -247,7 +250,7 @@ namespace Nevron.Nov.Examples
 			NTreeViewItem newSelectedItem = GetTreeViewItem(treeView, (NDomPath)arg.NewValue);
 
 			if (oldSelectedItem != null &&
-				oldSelectedItem.Tag is NXmlElement oldXmlElement && oldXmlElement.Name == ExampleElement)
+				oldSelectedItem.Tag is NXmlElement oldXmlElement && oldXmlElement.Name == NExamplesXml.Element.Example)
 			{
 				// Convert the image of the old selected tree view item to grayscale
 				NImageBox imageBox = oldSelectedItem.GetFirstDescendant<NImageBox>();
@@ -256,7 +259,7 @@ namespace Nevron.Nov.Examples
 			}
 
 			if (newSelectedItem != null &&
-				newSelectedItem.Tag is NXmlElement newXmlElement && newXmlElement.Name == ExampleElement)
+				newSelectedItem.Tag is NXmlElement newXmlElement && newXmlElement.Name == NExamplesXml.Element.Example)
 			{
 				// Set a colored image to the new selected tree view image
 				NImageBox imageBox = newSelectedItem.GetFirstDescendant<NImageBox>();
@@ -382,7 +385,7 @@ namespace Nevron.Nov.Examples
 		/// <returns></returns>
 		private static NXmlElement GetExampleXmlElement(NXmlElement tileXmlElement)
 		{
-			NList<NXmlNode> exampleXmlNodes = tileXmlElement.GetChildren(ExampleElement);
+			NList<NXmlNode> exampleXmlNodes = tileXmlElement.GetChildren(NExamplesXml.Element.Example);
 			if (exampleXmlNodes.Count == 0)
 			{
 				NDebug.Assert(false, "Empty XML tile element found");
@@ -392,7 +395,7 @@ namespace Nevron.Nov.Examples
 			for (int i = 0; i < exampleXmlNodes.Count; i++)
 			{
 				NXmlElement exampleXmlElement = (NXmlElement)exampleXmlNodes[i];
-				if (exampleXmlElement.GetAttributeValue("default") == "true")
+				if (exampleXmlElement.GetAttributeValue(NExamplesXml.Attribute.Default) == "true")
 					return exampleXmlElement;
 			}
 
@@ -405,17 +408,6 @@ namespace Nevron.Nov.Examples
 		#region Constants
 
 		private static readonly NMap<string, NImage> ExampleIconMap;
-
-		// XML Elements
-		private const string CategoryElement = "category";
-		private const string GroupElement = "group";
-		private const string TileElement = "tile";
-		private const string ExampleElement = "example";
-
-		// XML Attributes
-		private const string NameAttribute = "name";
-		private const string NamespaceAttribute = "namespace";
-		private const string StatusAttribute = "status";
 
 		#endregion
 	}
