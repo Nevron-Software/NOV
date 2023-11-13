@@ -59,6 +59,9 @@
             Static constructor.
             </summary>
         </member>
+        <member name="M:Nevron.Nov.Examples.Barcode.NCode39BarcodeExample.GetExampleDescription">
+            
+        </member>
         <member name="F:Nevron.Nov.Examples.Barcode.NCode39BarcodeExample.NCode39BarcodeExampleSchema">
             <summary>
             Schema associated with NCode39BarcodeExample.
@@ -835,6 +838,48 @@
             Static constructor
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NAxisViewRangeExample">
+            <summary>
+            Axis View Range Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NAxisViewRangeExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NAxisViewRangeExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NSynchronizedAxesExample">
+            <summary>
+            Axis View Range Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NSynchronizedAxesExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NSynchronizedAxesExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NSynchronizedAxesExample.CreateExampleControls">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NSynchronizedAxesExample.GetExampleDescription">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Nevron.Nov.Examples.Chart.NLightModelExample">
             <summary>
             Chart Light Model Example
@@ -1030,6 +1075,65 @@
             <summary>
             Static constructor
             </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample">
+            <summary>
+            Custom Legend Items Example
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.#cctor">
+            <summary>
+            Static constructor
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.CreateExampleContent">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.CreateExampleControls">
+            <summary>
+            Creates the example controls
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.GetExampleDescription">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.CreateCustomLegend1(Nevron.Nov.UI.NDockPanel)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.CreateCustomLegend2(Nevron.Nov.UI.NDockPanel)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.CreateCustomLegend3(Nevron.Nov.UI.NDockPanel)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.Chart.NCustomLegendItemsExample.CreateLegend(Nevron.Nov.UI.NDockPanel,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
+            <param name="title"></param>
+            <returns></returns>
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NInteractiveLegendExample">
             <summary>
@@ -1831,7 +1935,7 @@
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NHighLow3DExample">
             <summary>
-            HighLow 3D Example
+            HighLow 3D Example.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NHighLow3DExample.#ctor">
@@ -1842,6 +1946,11 @@
         <member name="M:Nevron.Nov.Examples.Chart.NHighLow3DExample.#cctor">
             <summary>
             Static constructor
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.Chart.NHighLow3DExample.NHighLow3DExampleSchema">
+            <summary>
+            Schema associated with NHighLow3DExample.
             </summary>
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStandardHighLowExample">
@@ -1926,12 +2035,12 @@
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NStackedLine2DExample.#ctor">
             <summary>
-            Default constructor
+            Default constructor.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NStackedLine2DExample.#cctor">
             <summary>
-            Static constructor
+            Static constructor.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Chart.NStackedLine2DExample.CreateLineSeries(System.String,Nevron.Nov.Chart.ENMultiLineMode)">
@@ -1941,6 +2050,11 @@
             <param name="name"></param>
             <param name="multiLineMode"></param>
             <returns></returns>
+        </member>
+        <member name="F:Nevron.Nov.Examples.Chart.NStackedLine2DExample.NStackedLine2DExampleSchema">
+            <summary>
+            Schema associated with NStackedLine2DExample.
+            </summary>
         </member>
         <member name="T:Nevron.Nov.Examples.Chart.NStackedLine3DExample">
             <summary>
@@ -5401,24 +5515,6 @@
             </summary>
             <param name="arg"></param>
         </member>
-        <member name="M:Nevron.Nov.Examples.NExamplePage.OnTreeViewSelectedPathChanged(Nevron.Nov.Dom.NValueChangeEventArgs)">
-            <summary>
-            
-            </summary>
-            <param name="arg"></param>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NExamplePage.OnBreadcrumbButtonClick(Nevron.Nov.Dom.NEventArgs)">
-            <summary>
-            
-            </summary>
-            <param name="arg"></param>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NExamplePage.OnSearchBoxItemSelected(Nevron.Nov.Dom.NEventArgs)">
-            <summary>
-            
-            </summary>
-            <param name="arg"></param>
-        </member>
         <member name="F:Nevron.Nov.Examples.NExamplePage.NExamplePageSchema">
             <summary>
             Schema associated with NExamplePage.
@@ -5476,56 +5572,41 @@
             Schema associated with NExamplesAccordion.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.NExamplesAccordion.GetCategoryIcon(System.String)">
+        <member name="M:Nevron.Nov.Examples.NExamplesAccordion.GetComponentIcon(System.String,Nevron.Nov.Examples.NExamplesAccordion.ENImageStyle)">
             <summary>
-            Gets a category icon. Category icons are used in the accordion items.
+            Gets a component icon. Component icons are used in the accordion items.
             </summary>
-            <param name="productName"></param>
+            <param name="componentName"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Examples.NExamplesAccordion.GetExampleIcon(System.String)">
+        <member name="M:Nevron.Nov.Examples.NExamplesAccordion.GetCategoryName(Nevron.Nov.Xml.NXmlElement)">
             <summary>
-            Gets a grayscale icon for an example. Example icons are used in the tree views hosted in accordion items.
+            Gets the category name of the given XML element.
             </summary>
-            <param name="productName"></param>
+            <param name="xmlElement"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Examples.NExamplesAccordion.GetExampleXmlElement(Nevron.Nov.Xml.NXmlElement)">
+        <member name="M:Nevron.Nov.Examples.NExamplesAccordion.GetTreeViewItem(Nevron.Nov.UI.NTreeView,Nevron.Nov.Dom.NDomPath)">
+            <summary>
+            Gets the tree view item at the given DOM path.
+            </summary>
+            <param name="treeView"></param>
+            <param name="domPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NExamplesAccordion.GetExampleXmlElementForTile(Nevron.Nov.Xml.NXmlElement)">
             <summary>
             Gets the default "example" XML element for the given "tile" XML element.
             </summary>
             <param name="tileXmlElement"></param>
             <returns></returns>
         </member>
-        <member name="T:Nevron.Nov.Examples.NComponentImageBox">
+        <member name="M:Nevron.Nov.Examples.NExamplesAccordion.IsExample(Nevron.Nov.UI.NTreeViewItem)">
             <summary>
-            Represents the image box for a NOV component.
+            Checks whether the given tree view item represents an example.
             </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NComponentImageBox.#ctor">
-            <summary>
-            Default constructor.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NComponentImageBox.#cctor">
-            <summary>
-            Static constructor.
-            </summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NComponentImageBox.Status">
-            <summary>
-            Gets/Sets the status of the component this image box is representing.
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NComponentImageBox.NComponentImageBoxSchema">
-            <summary>
-            Schema associated with NComponentImageBox.
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NComponentImageBox.StatusProperty">
-            <summary>
-            Reference to the Status property.
-            </summary>
+            <param name="treeViewItem"></param>
+            <returns></returns>
         </member>
         <member name="T:Nevron.Nov.Examples.NEmfDecompressor">
             <summary>
@@ -5550,53 +5631,9 @@
             <param name="name"></param>
             <returns></returns>
         </member>
-        <member name="T:Nevron.Nov.Examples.NExampleCategoryHeader">
+        <member name="F:Nevron.Nov.Examples.NEmfDecompressor.m_ImageMap">
             <summary>
-            Represents the header of an example category.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NExampleCategoryHeader.#ctor">
-            <summary>
-            Default constructor.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NExampleCategoryHeader.#ctor(System.String)">
-            <summary>
-            Initializing constructor.
-            </summary>
-            <param name="content"></param>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NExampleCategoryHeader.#cctor">
-            <summary>
-            Static constructor.
-            </summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NExampleCategoryHeader.Status">
-            <summary>
-            Gets/Sets the status of this example tile, e.g. "NEW", "BETA", "UPD", etc.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NExampleCategoryHeader.GetPadding">
-            <summary>
-            Gets the padding of the element.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NExampleCategoryHeader.OnPostPaint(Nevron.Nov.Dom.NPaintVisitor)">
-            <summary>
-            Performs the element post-children custom paint. Overriden to paint the status
-            of this category header's group (if it has one) in the top-right corner of the header.
-            </summary>
-            <param name="visitor"></param>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NExampleCategoryHeader.NExampleCategoryHeaderSchema">
-            <summary>
-            Schema associated with NExampleCategoryHeader.
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NExampleCategoryHeader.StatusProperty">
-            <summary>
-            Reference to the Status property.
+            A map with image names (without the extension) and images.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.NExampleTile.#ctor">
@@ -5640,7 +5677,7 @@
         </member>
         <member name="T:Nevron.Nov.Examples.NHomePage">
             <summary>
-            Represents the home page of the examples.
+            The home page of the NOV examples.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.NHomePage.#ctor">
@@ -5660,59 +5697,18 @@
             <param name="name"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Examples.NHomePage.CreateCategory(Nevron.Nov.Xml.NXmlElement)">
+        <member name="M:Nevron.Nov.Examples.NHomePage.RaiseTileSelected(Nevron.Nov.Xml.NXmlElement)">
             <summary>
-            Creates a widget for the given category element.
-            Category elements can contain only row elements.
+            Raises the <see cref="E:Nevron.Nov.Examples.NHomePage.TileSelected"/> event.
             </summary>
-            <param name="categoryXmlElement"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NHomePage.CreateGroup(Nevron.Nov.Xml.NXmlElement,Nevron.Nov.Graphics.NColor)">
-            <summary>
-            Creates a group box for the given group element or a directly a table panel if the
-            given group element does not have a name. Group elements can contain only tile
-            elements, label elements and other group elements.
-            </summary>
-            <param name="group"></param>
-            <param name="borderColor"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NHomePage.CreateLabel(Nevron.Nov.Xml.NXmlNode)">
-            <summary>
-            Creates a label. Label elements can contain only text.
-            </summary>
-            <param name="labelElement"></param>
-            <returns></returns>
+            <param name="xmlElement"></param>
         </member>
         <member name="M:Nevron.Nov.Examples.NHomePage.CreateTile(Nevron.Nov.Xml.NXmlElement,System.String)">
             <summary>
-            Creates a tile. Tile elements can contain only examples.
+            Creates a tile for the given example element.
             </summary>
-            <param name="element"></param>
+            <param name="tileElement"></param>
             <param name="categoryNamespace"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NHomePage.CreateWelcomePanel">
-            <summary>
-            Creates the welcome panel.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NHomePage.CreateRow(Nevron.Nov.Xml.NXmlElement,Nevron.Nov.Graphics.NColor)">
-            <summary>
-            Creates a stack panel for the given row element. Row elements can contain only
-            group elements and label elements.
-            </summary>
-            <param name="row"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NHomePage.CreateTablePanel(Nevron.Nov.Xml.NXmlElement,Nevron.Nov.Graphics.NColor)">
-            <summary>
-            Creates a table panel, which is the content of a group.
-            </summary>
-            <param name="owner"></param>
-            <param name="borderColor"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Examples.NHomePage.ParseStatusColors(Nevron.Nov.Xml.NXmlElement)">
@@ -5726,69 +5722,100 @@
             Schema associated with NHomePage.
             </summary>
         </member>
-        <member name="T:Nevron.Nov.Examples.NWelcomePanel">
-            <summary>
-            The welcome panel of the examples application, which includes a NOV description
-            and an icon for each of the NOV components.
-            </summary>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.#ctor">
+        <member name="M:Nevron.Nov.Examples.NHomePageContent.#ctor">
             <summary>
             Default constructor.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.#cctor">
+        <member name="M:Nevron.Nov.Examples.NHomePageContent.#cctor">
             <summary>
             Static constructor.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.Initialize(Nevron.Nov.Xml.NXmlElement)">
+        <member name="M:Nevron.Nov.Examples.NHomePageContent.AddCategory(Nevron.Nov.Xml.NXmlElement)">
             <summary>
-            Initializes the panel and creates its content.
+            Adds a category to the tab of this widget.
             </summary>
+            <param name="categoryElement"></param>
         </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.CreateHeaderLabel">
+        <member name="M:Nevron.Nov.Examples.NHomePageContent.NavigateToCategory(System.String)">
             <summary>
-            Creates the NOV description label placed in the header.
+            Navigates to the category with the given name.
+            </summary>
+            <param name="categoryName"></param>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NHomePageContent.CreateTabPageHeader(Nevron.Nov.Xml.NXmlElement,System.Boolean)">
+            <summary>
+            Creates a tab page header.
+            </summary>
+            <param name="categoryElement"></param>
+            <param name="selected"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NHomePageContent.CreateTabPageContent(Nevron.Nov.Xml.NXmlElement)">
+            <summary>
+            Creates the content of a tab page.
+            </summary>
+            <param name="categoryElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NHomePageContent.CreateDescriptionLabel(Nevron.Nov.Xml.NXmlNode)">
+            <summary>
+            Creates the component description label.
+            </summary>
+            <param name="labelElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NHomePageContent.CreatePlatformsPanel">
+            <summary>
+            Creates the platforms panel.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.CreateProductGroupsStack(Nevron.Nov.Xml.NXmlElement)">
+        <member name="F:Nevron.Nov.Examples.NHomePageContent.NHomePageContentSchema">
             <summary>
-            Creates the product groups stack panel.
-            </summary>
-            <param name="root"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.CreateLicenseGroupBracket(Nevron.Nov.Graphics.NColor)">
-            <summary>
-            Creates the bracket of a license group.
-            </summary>
-            <param name="color"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.CreateFooterLabel">
-            <summary>
-            Creates the footer label.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.CreatePlatformsStack">
-            <summary>
-            Creates the platforms stack panel, placed in the footer.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NWelcomePanel.NWelcomePanelSchema">
-            <summary>
-            Schema associated with NWelcomePanel.
+            Schema associated with NHomePageContent.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.NWelcomePanel.CreateProductGroupStack">
+        <member name="M:Nevron.Nov.Examples.NHomePageHeader.#ctor">
             <summary>
-            Creates a new products group stack panel.
+            Default constructor.
             </summary>
-            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NHomePageHeader.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NHomePageHeader.SearchBox">
+            <summary>
+            Gets the examples search box.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NHomePageHeader.NHomePageHeaderSchema">
+            <summary>
+            Schema associated with NHomePageHeader.
+            </summary>
+        </member>
+        <member name="T:Nevron.Nov.Examples.NHomePageRootWidget">
+            <summary>
+            Base class for NOV examples home page panels like the home page header and the home page content.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NHomePageRootWidget.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Examples.NHomePageRootWidget.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NHomePageRootWidget.NHomePageRootWidgetSchema">
+            <summary>
+            Schema associated with NHomePageRootWidget.
+            </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.NExampleBase.#ctor">
             <summary>
@@ -6038,7 +6065,7 @@
         </member>
         <member name="T:Nevron.Nov.Examples.NExamplesSearchBox">
             <summary>
-            Represents the examples' search box, that searches through all examples.
+            Represents the examples' search box, which searches through all examples.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.NExamplesSearchBox.#ctor">
@@ -6085,6 +6112,14 @@
             <param name="path"></param>
             <returns></returns>
         </member>
+        <member name="M:Nevron.Nov.Examples.NExamplesUiHelpers.CopyExampleLinkToClipboard(Nevron.Nov.Xml.NXmlElement,System.String)">
+            <summary>
+            Copies a link to the given example to the clipboard.
+            </summary>
+            <param name="xmlElement">The example's XML element.</param>
+            <param name="examplesUrl">Optional URL to the examples. Used only by Blazor WebAssembly examples.</param>
+            <returns>The link to the given example that was copied to the clipboard.</returns>
+        </member>
         <member name="M:Nevron.Nov.Examples.NExamplesUiHelpers.BuildExamplePath(Nevron.Nov.Xml.NXmlElement,Nevron.Nov.Examples.NExamplesUiHelpers.NExamplesPathBuilder)">
             <summary>
             Builds example path for the given XML element using the specified path builder.
@@ -6126,10 +6161,10 @@
             Contains constants and helpers for working with the examples' XML.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.NExamplesXml.IsSupportedForTheCurrentPlatform(Nevron.Nov.Xml.NXmlElement)">
+        <member name="M:Nevron.Nov.Examples.NExamplesXml.IsSupportedOnTheCurrentPlatform(Nevron.Nov.Xml.NXmlElement)">
             <summary>
             Gets whether the given XML element (category, row, group, tile or example) is supported
-            for the current platform by analyzing the "platforms" attribute of the XML element.
+            on the current platform by analyzing the "platforms" attribute of the XML element.
             </summary>
             <param name="element"></param>
             <returns></returns>
@@ -8047,10 +8082,11 @@
             A static class for creating dummy data sources used in the grid examples.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Examples.Grid.NDummyDataSource.CreateCompanySalesDataSource">
+        <member name="M:Nevron.Nov.Examples.Grid.NDummyDataSource.CreateCompanySalesDataSource(System.Int32)">
             <summary>
             
             </summary>
+            <param name="count"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Examples.Grid.NDummyDataSource.CreateProductsDataSource">
@@ -8925,6 +8961,9 @@
         <member name="P:Nevron.Nov.Examples.NResources.Image_SampleImage_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_Tiger_svg">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_AnimatedPNGs_BouncingBeachBall_png">
             <summary></summary>
         </member>
@@ -9414,9 +9453,6 @@
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ImageFormatApng_png">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ImageFormatBmp_png">
-            <summary></summary>
-        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ImageFormatGif_png">
             <summary></summary>
         </member>
@@ -9438,6 +9474,9 @@
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_Paths_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_RasterImages_png">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_Shadow_png">
             <summary></summary>
         </member>
@@ -9451,6 +9490,9 @@
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_ValueEdit_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_VectorImages_png">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_Framework_Xml_png">
@@ -9834,13 +9876,52 @@
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExampleIcons_UI_WrappableToolbar_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Backgrounds_HomeContentBackground_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Backgrounds_HomeHeaderBackground_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_Barcode_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_Chart_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_Diagram_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_Framework_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_Gauge_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_Grid_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_Schedule_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_Text_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Collages_UI_png">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_CsProject_png">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Favorites_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Favorites_svg">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_FavoritesEmpty_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Folder_emf">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Home_png">
@@ -9849,73 +9930,97 @@
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_HomeLight_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Link_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Mail_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Recent_svg">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Search_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Search_svg">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_VbProject_png">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Barcode_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_Barcode_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Chart_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_BarcodeSelected_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Diagram_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_Chart_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Framework_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_ChartSelected_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Gauge_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_Diagram_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Grid_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_DiagramSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_Framework_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_FrameworkSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_Gauge_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_GaugeSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_Grid_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_GridSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_Schedule_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_ScheduleSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_Text_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_TextSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_UI_svg">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Icons_Products_UISelected_svg">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Nevron_emf">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_OpenVision_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Nevron_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_OpenVisionLarge_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_NOV_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Schedule_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Platforms_Blazor_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Text_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Platforms_WinForms_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_UI_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Platforms_Wpf_svg">
             <summary></summary>
         </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_Barcode_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_Chart_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_Diagram_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_Framework_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_Gauge_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_Grid_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_Schedule_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_Text_png">
-            <summary></summary>
-        </member>
-        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_ProductIcons_UI_png">
+        <member name="P:Nevron.Nov.Examples.NResources.Image_ExamplesUI_Logos_Platforms_Xamarin_svg">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.Examples.NResources.Image_GifSuite_Gears_gif">
@@ -10827,7 +10932,7 @@
         <member name="P:Nevron.Nov.Examples.NResources.String_HtmlSuite_TextStyles_html">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RBIN_HomePageEmfs_zip">
+        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ComponentIcons_zip">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RBIN_DOCX_CompatibilityTest_docx">
@@ -10857,10 +10962,10 @@
         <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_CS_Net472_NovWpfProject_zip">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_CS_Net50_NovWinFormsProject_zip">
+        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_CS_Net70_NovWinFormsProject_zip">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_CS_Net50_NovWpfProject_zip">
+        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_CS_Net70_NovWpfProject_zip">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_VB_Net472_NovWinFormsProject_zip">
@@ -10869,10 +10974,13 @@
         <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_VB_Net472_NovWpfProject_zip">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_VB_Net50_NovWinFormsProject_zip">
+        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_VB_Net70_Form1_vb">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_VB_Net50_NovWpfProject_zip">
+        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_VB_Net70_NovWinFormsProject_zip">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RBIN_ProjectTemplates_VB_Net70_NovWpfProject_zip">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RBIN_SourceCode_CSharp_zip">
@@ -10906,6 +11014,9 @@
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_SampleImage_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_Tiger_svg">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_AnimatedPNGs_BouncingBeachBall_png">
@@ -11397,9 +11508,6 @@
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ImageFormatApng_png">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ImageFormatBmp_png">
-            <summary></summary>
-        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ImageFormatGif_png">
             <summary></summary>
         </member>
@@ -11421,6 +11529,9 @@
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_Paths_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_RasterImages_png">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_Shadow_png">
             <summary></summary>
         </member>
@@ -11434,6 +11545,9 @@
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_ValueEdit_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_VectorImages_png">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_Framework_Xml_png">
@@ -11817,13 +11931,52 @@
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExampleIcons_UI_WrappableToolbar_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Backgrounds_HomeContentBackground_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Backgrounds_HomeHeaderBackground_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_Barcode_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_Chart_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_Diagram_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_Framework_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_Gauge_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_Grid_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_Schedule_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_Text_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Collages_UI_png">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_CsProject_png">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Favorites_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Favorites_svg">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_FavoritesEmpty_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Folder_emf">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Home_png">
@@ -11832,73 +11985,97 @@
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_HomeLight_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Link_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Mail_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Recent_svg">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Search_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Search_svg">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_VbProject_png">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Barcode_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_Barcode_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Chart_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_BarcodeSelected_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Diagram_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_Chart_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Framework_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_ChartSelected_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Gauge_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_Diagram_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Grid_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_DiagramSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_Framework_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_FrameworkSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_Gauge_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_GaugeSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_Grid_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_GridSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_Schedule_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_ScheduleSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_Text_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_TextSelected_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_UI_svg">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Icons_Products_UISelected_svg">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Nevron_emf">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_OpenVision_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Nevron_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_OpenVisionLarge_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_NOV_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Schedule_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Platforms_Blazor_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Text_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Platforms_WinForms_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_UI_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Platforms_Wpf_svg">
             <summary></summary>
         </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_Barcode_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_Chart_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_Diagram_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_Framework_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_Gauge_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_Grid_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_Schedule_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_Text_png">
-            <summary></summary>
-        </member>
-        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_ProductIcons_UI_png">
+        <member name="F:Nevron.Nov.Examples.NResources.RIMG_ExamplesUI_Logos_Platforms_Xamarin_svg">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.Examples.NResources.RIMG_GifSuite_Gears_gif">
@@ -14429,7 +14606,7 @@
         </member>
         <member name="T:Nevron.Nov.Examples.Text.NCustomClipboardFormatExample.NCustomClipboardFormat">
             <summary>
-            Represents a custom clipboard format
+            Represents a custom clipboard format.
             </summary>
         </member>
         <member name="M:Nevron.Nov.Examples.Text.NCustomClipboardFormatExample.NCustomClipboardFormat.#ctor(Nevron.Nov.Examples.Text.NCustomClipboardFormatExample)">

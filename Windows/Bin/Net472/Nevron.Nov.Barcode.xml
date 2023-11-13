@@ -770,300 +770,300 @@
             Singleton instance.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.WxGG.Type">
+        <member name="P:Nevron.Nov.Internal.bUhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.WxGG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.bUhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the Codabar algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.bYGG.Type">
+        <member name="P:Nevron.Nov.Internal.fUhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.bYGG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.fUhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the Code 11 algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.fYGG.Type">
+        <member name="P:Nevron.Nov.Internal.jUhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fYGG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.jUhG.Encode(System.String@)">
             <summary>
             Encodes the given barcode.
             </summary>
-            <param name="hYGG"></param>
+            <param name="lUhG"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.xAhG.Type">
+        <member name="P:Nevron.Nov.Internal.CWhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xAhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.CWhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the Code 39 algorithm.
             </summary>
-            <param name="AbhG"></param>
+            <param name="EWhG"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.KbhG.Type">
+        <member name="P:Nevron.Nov.Internal.OWhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.KbhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.OWhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the Code 93 algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.bChG.Type">
+        <member name="P:Nevron.Nov.Internal.fxhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.bChG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.fxhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the EAN-13 algorithm. Can include the checksum already.
             If it doesn't exist in the data then it will calculate it for you.
             Accepted data lengths are 12 + 1 checksum or just the 12 data digits.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.bChG.PaintBarcode(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor,System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.fxhG.PaintBarcode(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor,System.Boolean)">
             <summary>
             Paints the given encoded value using the paint rules of this symbology.
             </summary>
-            <param name="dChG"></param>
-            <param name="EChG"></param>
-            <param name="fChG"></param>
+            <param name="hxhG"></param>
+            <param name="IxhG"></param>
+            <param name="jxhG"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.bChG.PaintLabel(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.fxhG.PaintLabel(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Paints the given barcode label using the paint rules of this symbology.
             </summary>
-            <param name="GChG"></param>
-            <param name="hChG"></param>
+            <param name="KxhG"></param>
+            <param name="lxhG"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.bChG.GetLabelBounds(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.fxhG.GetLabelBounds(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Gets the bounds of the barcode label. Overriden to return empty rectangle, because the label
             of EAN 13 barcodes is painted differently.
             </summary>
-            <param name="IChG"></param>
-            <param name="jChG"></param>
+            <param name="MxhG"></param>
+            <param name="nxhG"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.UChG.Type">
+        <member name="P:Nevron.Nov.Internal.YxhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.UChG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.YxhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the EAN-8 algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CdhG.Type">
+        <member name="P:Nevron.Nov.Internal.GYhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.GdhG.Type">
+        <member name="P:Nevron.Nov.Internal.KYhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.GdhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.KYhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the Interleaved 2 of 5 algorithm.
             </summary>
-            <param name="hdhG"></param>
+            <param name="lYhG"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.MdhG.Type">
+        <member name="P:Nevron.Nov.Internal.QYhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.MdhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.QYhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the Bookland/ISBN algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.pdhG.Type">
+        <member name="P:Nevron.Nov.Internal.tYhG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.pdhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.tYhG.Encode(System.String@)">
             <summary>
             Encode the raw data using the ITF-14 algorithm.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.pdhG.PaintBarcode(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor,System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.tYhG.PaintBarcode(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor,System.Boolean)">
             <summary>
             Paints the given encoded value using the paint rules of this symbology.
             </summary>
-            <param name="rdhG"></param>
-            <param name="SdhG"></param>
-            <param name="tdhG"></param>
+            <param name="vYhG"></param>
+            <param name="WYhG"></param>
+            <param name="xYhG"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.YdhG.Type">
+        <member name="P:Nevron.Nov.Internal.dAIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.YdhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.dAIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the JAN-13 algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CEhG.Type">
+        <member name="P:Nevron.Nov.Internal.GAIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.CEhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.GAIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the MSI algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.lEhG.Type">
+        <member name="P:Nevron.Nov.Internal.pAIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.lEhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.pAIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the Pharmacode algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rEhG.Type">
+        <member name="P:Nevron.Nov.Internal.vAIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.rEhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.vAIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the PostNet algorithm.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.rEhG.PaintBarcode(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor,System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.vAIG.PaintBarcode(Nevron.Nov.Barcode.NLinearBarcodePainter,Nevron.Nov.Dom.NPaintVisitor,System.Boolean)">
             <summary>
             Paints the given encoded value using the paint rules of this symbology.
             </summary>
-            <param name="tEhG"></param>
-            <param name="UEhG"></param>
-            <param name="vEhG"></param>
+            <param name="xAIG"></param>
+            <param name="YAIG"></param>
+            <param name="AbIG"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.YEhG.Type">
+        <member name="P:Nevron.Nov.Internal.dbIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.YEhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.dbIG.Encode(System.String@)">
             <summary>
             Encodes the raw data using the Standard 2 of 5 algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.dfhG.Type">
+        <member name="P:Nevron.Nov.Internal.hbIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dfhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.hbIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the Telepen algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.GGhG.Type">
+        <member name="P:Nevron.Nov.Internal.KCIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.GGhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.KCIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the UPC-A algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.OGhG.Type">
+        <member name="P:Nevron.Nov.Internal.SCIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.OGhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.SCIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the UPC-E algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.YGhG.Type">
+        <member name="P:Nevron.Nov.Internal.ddIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.YGhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.ddIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the UPC Supplemental 2-digit algorithm.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.dhhG.Type">
+        <member name="P:Nevron.Nov.Internal.hdIG.Type">
             <summary>
             Gets the type of this barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dhhG.Encode(System.String@)">
+        <member name="M:Nevron.Nov.Internal.hdIG.Encode(System.String@)">
             <summary>
             Encode the raw data using the UPC Supplemental 5-digit algorithm.
             </summary>
-            <param name="EhhG"></param>
+            <param name="IdIG"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.hhhG.Type">
+        <member name="P:Nevron.Nov.Internal.ldIG.Type">
             <summary>
             Gets the type of this matrix barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.hhhG.Encode(System.String,Nevron.Nov.Barcode.ENErrorCorrectionLevel)">
+        <member name="M:Nevron.Nov.Internal.ldIG.Encode(System.String,Nevron.Nov.Barcode.ENErrorCorrectionLevel)">
             <summary>
             Encodes the given barcode.
             </summary>
-            <param name="IhhG"></param>
-            <param name="jhhG"></param>
+            <param name="MdIG"></param>
+            <param name="ndIG"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.lhhG.Type">
+        <member name="P:Nevron.Nov.Internal.pdIG.Type">
             <summary>
             Gets the type of this matrix barcode symbology.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.lhhG.YScaleFactor">
+        <member name="P:Nevron.Nov.Internal.pdIG.YScaleFactor">
             <summary>
             Gets the Y scale factor. Overriden to return 3.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.lhhG.Encode(System.String,Nevron.Nov.Barcode.ENErrorCorrectionLevel)">
+        <member name="M:Nevron.Nov.Internal.pdIG.Encode(System.String,Nevron.Nov.Barcode.ENErrorCorrectionLevel)">
             <summary>
             Encodes the given barcode.
             </summary>
-            <param name="MhhG"></param>
-            <param name="nhhG"></param>
+            <param name="QdIG"></param>
+            <param name="rdIG"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.QhhG.Type">
+        <member name="P:Nevron.Nov.Internal.UdIG.Type">
             <summary>
             Gets the type of this matrix barcode symbology.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.QhhG.Encode(System.String,Nevron.Nov.Barcode.ENErrorCorrectionLevel)">
+        <member name="M:Nevron.Nov.Internal.UdIG.Encode(System.String,Nevron.Nov.Barcode.ENErrorCorrectionLevel)">
             <summary>
             Encodes the given barcode.
             </summary>
-            <param name="rhhG"></param>
-            <param name="ShhG"></param>
+            <param name="vdIG"></param>
+            <param name="WdIG"></param>
             <returns></returns>
         </member>
     </members>

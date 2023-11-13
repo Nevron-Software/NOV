@@ -1,0 +1,4 @@
+C:\Program Files (x86)\Nevron Software\Nevron Open Vision 2023.1\Examples\WebAssembly\obj\Release\net7.0\browser-wasm\PubTmp\Out\packages\microsoft.aspnetcore.components.webassembly.devserver\7.0.12\tools\blazor-devserver.deps.json
+C:\Program Files (x86)\Nevron Software\Nevron Open Vision 2023.1\Examples\WebAssembly\obj\Release\net7.0\browser-wasm\PubTmp\Out\packages\microsoft.aspnetcore.components.webassembly.devserver\7.0.12\tools\blazor-devserver.runtimeconfig.json
+C:\Program Files (x86)\Nevron Software\Nevron Open Vision 2023.1\Examples\WebAssembly\obj\Release\net7.0\browser-wasm\PubTmp\Out\packages\microsoft.aspnetcore.components.webassembly.devserver\7.0.12\tools\BlazorDebugProxy\BrowserDebugHost.runtimeconfig.json
+C:\Program Files (x86)\Nevron Software\Nevron Open Vision 2023.1\Examples\WebAssembly\obj\Release\net7.0\browser-wasm\PubTmp\Out\web.config

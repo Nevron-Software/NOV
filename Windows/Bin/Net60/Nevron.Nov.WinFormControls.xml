@@ -15,7 +15,7 @@
             </summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinearBarcodeControl.Symbology">
-            <Summary>Gets/Sets the symbology of this linear barcode.<para />Possible values are:<para /> - Codabar: Codabar symbology.<para /> - Code 11: Code 11 symbology.<para /> - Code 39: Code 39 symbology.<para /> - Code 39 Extended: Code 39 extended symbology.<para /> - Code 93: Code 93 symbology.<para /> - Code 128: Code 128 Auto symbology.<para /> - Code 128A: Code 128 subset A symbology.<para /> - Code 128B: Code 128 subset B symbology.<para /> - Code 128C: Code 128 subset C symbology.<para /> - EAN8: EAN8 symbology.<para /> - EAN13: EAN13 symbology.<para /> - FIM: Facing Identification Mark symbology.<para /> - Interleaved 2of 5: Interleaved 2 of 5 symbology.<para /> - ISBN: ISBN symbology.<para /> - ITF14: ITF14 symbology.<para /> - JAN13: JAN13 symbology.<para /> - MS I_ 2 Mod 10: MSI 2 modulo 10 symbology.<para /> - MS I_ Mod 10: MSI modulo 10 symbology.<para /> - MS I_ Mod 11: MSI modulo 11 symbology.<para /> - MS I_ Mod 1 1_ Mod 10: MSI modulo 11 / modulo 10 symbology.<para /> - Pharmacode: Pharmaceutical Binary Code (Pharmacode) symbology.<para /> - Post Net: PostNet symbology.<para /> - Standard 2of 5: Standard 2 of 5 symbology.<para /> - Telepen: Telepen symbology.<para /> - UPCA: Universal Product Code A (UPCA) symbology.<para /> - UPCE: Zero-suppressed Universal Product Code (UPCE) symbology.<para /> - UP C_ Supplemental_ 2 Digit: UPC-2 symbology - a 2-digit supplement to the UPC used to indicate the edition of a magazine or periodical.<para /> - UP C_ Supplemental_ 5 Digit: UPC-5 symbology - a 5-digit supplement to the UPC used to indicate suggested retail price for books.<para /></Summary>
+            <Summary>Gets/Sets the symbology of this linear barcode.<para />Possible values are:<para /> - Codabar: Codabar symbology.<para /> - Code 11: Code 11 symbology.<para /> - Code 39: Code 39 symbology.<para /> - Code 39Extended: Code 39 extended symbology.<para /> - Code 93: Code 93 symbology.<para /> - Code 128: Code 128 Auto symbology.<para /> - Code 128A: Code 128 subset A symbology.<para /> - Code 128B: Code 128 subset B symbology.<para /> - Code 128C: Code 128 subset C symbology.<para /> - EAN8: EAN8 symbology.<para /> - EAN13: EAN13 symbology.<para /> - FIM: Facing Identification Mark symbology.<para /> - Interleaved 2of 5: Interleaved 2 of 5 symbology.<para /> - ISBN: ISBN symbology.<para /> - ITF14: ITF14 symbology.<para /> - JAN13: JAN13 symbology.<para /> - MSI_ 2Mod 10: MSI 2 modulo 10 symbology.<para /> - MSI_ Mod 10: MSI modulo 10 symbology.<para /> - MSI_ Mod 11: MSI modulo 11 symbology.<para /> - MSI_ Mod 11_ Mod 10: MSI modulo 11 / modulo 10 symbology.<para /> - Pharmacode: Pharmaceutical Binary Code (Pharmacode) symbology.<para /> - Post Net: PostNet symbology.<para /> - Standard 2of 5: Standard 2 of 5 symbology.<para /> - Telepen: Telepen symbology.<para /> - UPCA: Universal Product Code A (UPCA) symbology.<para /> - UPCE: Zero-suppressed Universal Product Code (UPCE) symbology.<para /> - UPC_ Supplemental_ 2Digit: UPC-2 symbology - a 2-digit supplement to the UPC used to indicate the edition of a magazine or periodical.<para /> - UPC_ Supplemental_ 5Digit: UPC-5 symbology - a 5-digit supplement to the UPC used to indicate suggested retail price for books.<para /></Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinearBarcodeControl.SizeMode">
             <Summary>Determines the way the barcode is sized in its slot.<para />Possible values are:<para /> - Scale: The barcode size is calculated based on its Scale property.<para /> - Fit: The barcode is drawn with such scale so that it fits the bounds of the widget (the Scale property is not taken into account).<para /></Summary>
@@ -48,10 +48,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinearBarcodeControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinearBarcodeControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinearBarcodeControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -199,10 +199,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMatrixBarcodeControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMatrixBarcodeControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMatrixBarcodeControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -362,10 +362,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NChartViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NChartViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NChartViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -504,10 +504,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinearGaugeControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinearGaugeControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinearGaugeControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -669,6 +669,9 @@
         <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.CellGap">
             <Summary>Gets or sets the gap between cells contained in the display</Summary>
         </member>
+        <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.CellAlignment">
+            <Summary>Gets or sets the relative alignment of cells<para />Possible values are:<para /> - Top: The object is vertically top aligned<para /> - Center: The object is vertically center aligned<para /> - Bottom: The object is vertically bottom aligned<para /></Summary>
+        </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.CellCountMode">
             <Summary>Gets or sets the cell count mode of this display.<para />Possible values are:<para /> - Auto: The display will create as many cells as necessary to display the passed string<para /> - Fixed: The display will create a fixed number of cells<para /></Summary>
         </member>
@@ -683,6 +686,12 @@
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.SegmentGap">
             <Summary>Gets or sets the gap between segments</Summary>
+        </member>
+        <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.ContentAlignment">
+            <Summary>Gets or sets the content alignment<para />Possible values are:<para /> - Top Left: Top left.<para /> - Top Center: Top center.<para /> - Top Right: Top right.<para /> - Middle Left: Middle left.<para /> - Middle Center: Middle center.<para /> - Middle Right: Middle right.<para /> - Bottom Left: Bottom left.<para /> - Bottom Center: Bottom center.<para /> - Bottom Right: Bottom right.<para /></Summary>
+        </member>
+        <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.BoundsMode">
+            <Summary>Gets or sets the bounds mode<para />Possible values are:<para /> - None: The object will not try to align to the chart area.<para /> - Fit: The object will stretch along X and Y in order to fill as much as possible of the area preserving the object original proportions.<para /> - Stretch: The object will stretch along X and Y in order to fill as much as possible of the area without breaking outside. Does not preserve the object original proportions.<para /></Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.CapEffect">
             <Summary>Gets or sets the cap effect of the gauge</Summary>
@@ -709,10 +718,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericLedDisplayControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -863,10 +872,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRadialGaugeControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRadialGaugeControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRadialGaugeControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -977,6 +986,9 @@
             Default constructor.
             </summary>
         </member>
+        <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.WidgetText">
+            <Summary>Gets or sets the displayed text</Summary>
+        </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.DisplayStyle">
             <Summary>Gets or sets the style of the display segment cells<para />Possible values are:<para /> - Seven Segment Normal: Seven segment normal style<para /> - Seven Segment Rounded: Cell segments appear rounded<para /> - Seven Segment Rectangular: Cell segments appear rectangular<para /> - Fourteen Segment Normal: Normal style<para /> - Fourteen Segment Rectangular: Rectangular style<para /> - Fourteen Segment Inset: Inset style<para /> - Matrix Rectangle: Matrix rectangular style<para /> - Matrix Circle: Matrix circular style<para /></Summary>
         </member>
@@ -992,6 +1004,9 @@
         <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.CellGap">
             <Summary>Gets or sets the gap between cells contained in the display</Summary>
         </member>
+        <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.CellAlignment">
+            <Summary>Gets or sets the relative alignment of cells<para />Possible values are:<para /> - Top: The object is vertically top aligned<para /> - Center: The object is vertically center aligned<para /> - Bottom: The object is vertically bottom aligned<para /></Summary>
+        </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.CellCountMode">
             <Summary>Gets or sets the cell count mode of this display.<para />Possible values are:<para /> - Auto: The display will create as many cells as necessary to display the passed string<para /> - Fixed: The display will create a fixed number of cells<para /></Summary>
         </member>
@@ -1006,6 +1021,12 @@
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.SegmentGap">
             <Summary>Gets or sets the gap between segments</Summary>
+        </member>
+        <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.ContentAlignment">
+            <Summary>Gets or sets the content alignment<para />Possible values are:<para /> - Top Left: Top left.<para /> - Top Center: Top center.<para /> - Top Right: Top right.<para /> - Middle Left: Middle left.<para /> - Middle Center: Middle center.<para /> - Middle Right: Middle right.<para /> - Bottom Left: Bottom left.<para /> - Bottom Center: Bottom center.<para /> - Bottom Right: Bottom right.<para /></Summary>
+        </member>
+        <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.BoundsMode">
+            <Summary>Gets or sets the bounds mode<para />Possible values are:<para /> - None: The object will not try to align to the chart area.<para /> - Fit: The object will stretch along X and Y in order to fill as much as possible of the area preserving the object original proportions.<para /> - Stretch: The object will stretch along X and Y in order to fill as much as possible of the area without breaking outside. Does not preserve the object original proportions.<para /></Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.CapEffect">
             <Summary>Gets or sets the cap effect of the gauge</Summary>
@@ -1032,10 +1053,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextLedDisplayControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -1213,10 +1234,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -1349,10 +1370,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewWithCommandBarsControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewWithCommandBarsControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewWithCommandBarsControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -1485,10 +1506,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewWithRibbonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewWithRibbonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDrawingViewWithRibbonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -1636,10 +1657,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLibraryBrowserControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLibraryBrowserControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLibraryBrowserControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -1826,10 +1847,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLibraryViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLibraryViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLibraryViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -1971,10 +1992,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPanAndZoomViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPanAndZoomViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPanAndZoomViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -2137,10 +2158,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTableGridViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTableGridViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTableGridViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -2303,10 +2324,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTreeGridViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTreeGridViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTreeGridViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -2472,10 +2493,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -2608,10 +2629,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewWithCommandBarsControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewWithCommandBarsControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewWithCommandBarsControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -2744,10 +2765,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewWithRibbonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewWithRibbonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScheduleViewWithRibbonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -2940,10 +2961,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -3076,10 +3097,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewWithCommandBarsControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewWithCommandBarsControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewWithCommandBarsControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -3212,10 +3233,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewWithRibbonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewWithRibbonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRichTextViewWithRibbonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -3381,10 +3402,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NAutoCompleteBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NAutoCompleteBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NAutoCompleteBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -3580,10 +3601,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NBorderSplitButtonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NBorderSplitButtonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NBorderSplitButtonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -3725,10 +3746,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NButtonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NButtonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NButtonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -3894,10 +3915,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NCalendarControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NCalendarControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NCalendarControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -4054,10 +4075,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NCheckBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NCheckBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NCheckBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -4256,10 +4277,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NColorBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NColorBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NColorBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -4452,10 +4473,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NComboBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NComboBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NComboBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -4651,10 +4672,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDateTimeBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDateTimeBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDateTimeBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -4799,10 +4820,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDockPanelControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDockPanelControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NDockPanelControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -4998,10 +5019,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NFillSplitButtonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NFillSplitButtonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NFillSplitButtonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -5158,10 +5179,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NGroupBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NGroupBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NGroupBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -5303,10 +5324,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NHsbColorPickerControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NHsbColorPickerControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NHsbColorPickerControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -5460,10 +5481,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NHsbWheelColorPickerControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NHsbWheelColorPickerControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NHsbWheelColorPickerControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -5605,10 +5626,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NImageBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NImageBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NImageBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -5750,10 +5771,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLabelControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLabelControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLabelControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -5901,10 +5922,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinkLabelControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinkLabelControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NLinkLabelControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -6088,10 +6109,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NListBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NListBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NListBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -6284,10 +6305,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMenuBarControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMenuBarControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMenuBarControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -6468,10 +6489,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMenuSplitButtonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMenuSplitButtonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NMenuSplitButtonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -6622,10 +6643,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNavigationBarControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNavigationBarControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNavigationBarControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -6800,10 +6821,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericUpDownControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericUpDownControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NNumericUpDownControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -6915,7 +6936,7 @@
             </summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPairBoxControl.BoxesRelation">
-            <Summary>Gets or sets the pair box relation. By default set to Box1BeforeBox2.<para />Possible values are:<para /> - Overlay: Specifies that box1 and box2 share the same space.<para /> - Box 1 above Box 2: Specifies that box1 is displayed vertically above box2.<para /> - Box 2 above Box 1: Specifies that box2 is displayed vertically above box1.<para /> - Box 1 before Box 2: Specifies that box1 is displayed horizontally before box2.<para /> - Box 2 before Box 1: Specifies that box2 is displayed horizontally before box1.<para /></Summary>
+            <Summary>Gets or sets the pair box relation. By default set to Box1BeforeBox2.<para />Possible values are:<para /> - Overlay: Specifies that box1 and box2 share the same space.<para /> - Box 1Above Box 2: Specifies that box1 is displayed vertically above box2.<para /> - Box 2Above Box 1: Specifies that box2 is displayed vertically above box1.<para /> - Box 1Before Box 2: Specifies that box1 is displayed horizontally before box2.<para /> - Box 2Before Box 1: Specifies that box2 is displayed horizontally before box1.<para /></Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPairBoxControl.FillMode">
             <Summary>Gets or sets the fill mode of the stack layout the 2 boxes are layouted with. Has effect only if BoxesRelation is not set to Overlay.<para />Possible values are:<para /> - None: The stack does not attempt to fill the available area.<para /> - Equal: The stack increases the items size with equal amounts to fill the available area.<para /> - Proportional: The stack increases the items size with proportional amounts to fill the available area.<para /> - First: The stack increases the items size in forward order until the stack fills the available area.<para /> - Last: The stack increases the items size in reverse order until the stack fills the available area.<para /> - Justify: The stack increases the spacing between the items to fill the available area.<para /></Summary>
@@ -6948,10 +6969,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPairBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPairBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPairBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -7065,6 +7086,9 @@
         <member name="P:Nevron.Nov.WinFormControls.NPaletteColorPickerControl.Palette">
             <Summary>Gets or sets the color palette shown by the picker.</Summary>
         </member>
+        <member name="P:Nevron.Nov.WinFormControls.NPaletteColorPickerControl.MaxColumnCount">
+            <Summary>Gets or sets the maximum number of columns. By default set to 10.</Summary>
+        </member>
         <member name="P:Nevron.Nov.WinFormControls.NPaletteColorPickerControl.HorizontalSpacing">
             <Summary>Gets or sets the minimal horizontal spacing between the arranged items.</Summary>
         </member>
@@ -7099,10 +7123,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPaletteColorPickerControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPaletteColorPickerControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NPaletteColorPickerControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -7265,10 +7289,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NProgressBarControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NProgressBarControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NProgressBarControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -7419,10 +7443,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRadioButtonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRadioButtonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRadioButtonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -7594,10 +7618,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRangeSliderControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRangeSliderControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRangeSliderControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -7742,10 +7766,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRepeatButtonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRepeatButtonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRepeatButtonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -7878,10 +7902,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRibbonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRibbonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NRibbonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -8059,10 +8083,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScrollContentControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScrollContentControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NScrollContentControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -8228,10 +8252,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSliderControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSliderControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSliderControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -8373,10 +8397,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSplitterControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSplitterControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSplitterControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -8530,10 +8554,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NStackPanelControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NStackPanelControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NStackPanelControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -8729,10 +8753,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NStrokeSplitButtonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NStrokeSplitButtonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NStrokeSplitButtonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -8871,10 +8895,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSymbolBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSymbolBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NSymbolBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -9031,10 +9055,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTabControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTabControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTabControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -9200,10 +9224,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTableFlowPanelControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTableFlowPanelControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTableFlowPanelControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -9447,10 +9471,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextBoxControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextBoxControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTextBoxControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -9595,10 +9619,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NToggleButtonControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NToggleButtonControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NToggleButtonControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -9791,10 +9815,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NToolBarControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NToolBarControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NToolBarControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -9978,10 +10002,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTreeViewControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTreeViewControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NTreeViewControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>
@@ -10141,10 +10165,10 @@
             <Summary>Gets or sets the suggested height of the element. If the value of this property is NaN the default height and desired height of the box are automatically computed. Otherwise both the default height and the desired height are equal to this value. By default set to NaN.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NWrapFlowPanelControl.MinWidth">
-            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always smaller or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal width of the element. The box default and desired width is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NWrapFlowPanelControl.MinHeight">
-            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always larger or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
+            <Summary>Gets or sets the minimal height of the element. The box default and desired height is always greater than or equal to this value, except in the case when the element is collapsed. By default set to 0.</Summary>
         </member>
         <member name="P:Nevron.Nov.WinFormControls.NWrapFlowPanelControl.MaxWidth">
             <Summary>Gets or sets the max width of the element</Summary>

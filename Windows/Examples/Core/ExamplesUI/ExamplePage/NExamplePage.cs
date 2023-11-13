@@ -30,7 +30,7 @@ namespace Nevron.Nov.Examples
 		/// </summary>
 		static NExamplePage()
 		{
-			NExamplePageSchema = NSchema.Create(typeof(NExamplePage), NDockPanel.NDockPanelSchema);
+			NExamplePageSchema = NSchema.Create(typeof(NExamplePage), NDockPanelSchema);
 		}
 
 		#endregion
@@ -101,6 +101,21 @@ namespace Nevron.Nov.Examples
 
 		#endregion
 
+		#region Protected Overrides
+
+		protected override void OnRegistered()
+		{
+			base.OnRegistered();
+
+			if (OwnerDocument != null)
+			{
+				NStyleSheet styleSheet = CreateStyleSheet();
+				OwnerDocument.StyleSheets.Add(styleSheet);
+			}
+		}
+
+		#endregion
+
 		#region Implementation - UI
 
 		private void CreateContent(NStringMap<NWidget> searchBoxMap)
@@ -158,14 +173,13 @@ namespace Nevron.Nov.Examples
 		/// <param name="xmlElement"></param>
 		private void LoadExample(NXmlElement xmlElement)
 		{
-			string groupNamespace = NHomePage.GetNamespace(xmlElement);
+			string groupNamespace = NExamplesXml.GetNamespace(xmlElement);
 			string name = xmlElement.GetAttributeValue("name");
 			string type = groupNamespace + "." + xmlElement.GetAttributeValue("type");
 			string examplePath = NExamplesUiHelpers.GetExamplePath(xmlElement);
 
-			// Set example title
-			m_HeaderLane2.Title = NExamplesUiHelpers.ProcessHeaderText(name);
-			m_HeaderLane2.UpdateFavoriteButton(NExamplesOptions.Instance.FavoriteExamples.Contains(examplePath));
+			// Update the example title, favorites and copy link butons
+			m_HeaderLane2.Update(xmlElement);
 
 			try
 			{
@@ -311,31 +325,19 @@ namespace Nevron.Nov.Examples
 
 		#region Event Handlers - Navigation
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="arg"></param>
 		private void OnTreeViewSelectedPathChanged(NValueChangeEventArgs arg)
 		{
-			// Close the old example
-			CloseExample();
-
-			// Load the new example
 			NTreeViewItem selectedItem = ((NTreeView)arg.TargetNode).SelectedItem;
-			if (selectedItem != null)
+			if (selectedItem != null && selectedItem.Tag is NXmlElement xmlElement)
 			{
-				NXmlElement xmlElement = selectedItem.Tag as NXmlElement;
-				if (xmlElement != null)
-				{
-					m_HeaderLane2.Breadcrumb.InitFromXmlElement(xmlElement);
-					LoadExample(xmlElement);
-				}
+				// Close the old example
+				CloseExample();
+
+				// Load the new example
+				m_HeaderLane2.Breadcrumb.InitFromXmlElement(xmlElement);
+				LoadExample(xmlElement);
 			}
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="arg"></param>
 		private void OnBreadcrumbButtonClick(NEventArgs arg)
 		{
 			// Load the new example
@@ -352,10 +354,6 @@ namespace Nevron.Nov.Examples
 				examplesContent.NavigateToHomePageWelcomeScreen();
 			}
 		}
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="arg"></param>
 		private void OnSearchBoxItemSelected(NEventArgs arg)
 		{
 			if (arg.Cancel)
@@ -399,6 +397,49 @@ namespace Nevron.Nov.Examples
 		/// Schema associated with NExamplePage.
 		/// </summary>
 		public static readonly NSchema NExamplePageSchema;
+
+		#endregion
+
+		#region Static Methods - Styling
+
+		private static NStyleSheet CreateStyleSheet()
+		{
+			NColor purpleColor = new NColor(0xFF68348C);
+
+			NStyleSheet styleSheet = new NStyleSheet();
+
+			// Example tree view item
+			NRule rule = styleSheet.CreateRule(
+				delegate (NSelectorBuilder sb)
+				{
+					sb.Type(NExampleTile.NExampleTileSchema);
+					sb.ChildOf();
+					sb.ChildOf();
+					sb.Type(NTreeViewItem.NTreeViewItemSchema);
+					sb.DescendantOf();
+					sb.Type(NExamplesAccordion.NExamplesAccordionSchema);
+				}
+			);
+
+			rule.AddValueDeclaration(PaddingProperty, new NMargins(2));
+
+			// Active example tree view item - the item of the currently opened example
+			rule = styleSheet.CreateRule(
+				delegate(NSelectorBuilder sb)
+				{
+					sb.Type(NTreeViewItem.NTreeViewItemSchema);
+					sb.ValueEquals(NStylePropertyEx.IsHighlightedPropertyEx, true);
+					sb.DescendantOf();
+					sb.Type(NExamplesAccordion.NExamplesAccordionSchema);
+				}
+			);
+
+			rule.AddValueDeclaration(TextFillProperty, new NColorFill(purpleColor));
+			rule.AddValueDeclaration(FontProperty, new NFont(NFontDescriptor.DefaultSansFamilyName,
+				NUIThemeFontMap.DefaultFontSize, ENFontStyle.Bold));
+
+			return styleSheet;
+		}
 
 		#endregion
 

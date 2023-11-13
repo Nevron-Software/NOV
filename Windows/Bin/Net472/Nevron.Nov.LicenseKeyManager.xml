@@ -34,6 +34,9 @@
         <member name="P:Nevron.Nov.LicenseKeyManager.NResources.Image_Finish_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.LicenseKeyManager.NResources.Image_KeysListBackground_png">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.LicenseKeyManager.NResources.Image_LogIn_png">
             <summary></summary>
         </member>
@@ -47,6 +50,9 @@
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.LicenseKeyManager.NResources.Image_SelectRevokingMethod_png">
+            <summary></summary>
+        </member>
+        <member name="P:Nevron.Nov.LicenseKeyManager.NResources.Image_TitleBar_png">
             <summary></summary>
         </member>
         <member name="P:Nevron.Nov.LicenseKeyManager.NResources.Image_WizardBanner_png">
@@ -67,6 +73,9 @@
         <member name="F:Nevron.Nov.LicenseKeyManager.NResources.RIMG_Finish_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.LicenseKeyManager.NResources.RIMG_KeysListBackground_png">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.LicenseKeyManager.NResources.RIMG_LogIn_png">
             <summary></summary>
         </member>
@@ -80,6 +89,9 @@
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.LicenseKeyManager.NResources.RIMG_SelectRevokingMethod_png">
+            <summary></summary>
+        </member>
+        <member name="F:Nevron.Nov.LicenseKeyManager.NResources.RIMG_TitleBar_png">
             <summary></summary>
         </member>
         <member name="F:Nevron.Nov.LicenseKeyManager.NResources.RIMG_WizardBanner_png">

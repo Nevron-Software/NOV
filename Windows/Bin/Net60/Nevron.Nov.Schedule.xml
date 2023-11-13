@@ -3170,26 +3170,26 @@
             <summary>
             Determines whether the specified printRangeMode option is supported by the element.
             </summary>
-            <param name="IGAh"></param>
+            <param name="UCbh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPagedElement#BeginPrinting(Nevron.Nov.UI.NPagedContext)">
             <summary>
             Called when priting is about to start
             </summary>
-            <param name="jGAh"></param>
+            <param name="vCbh"></param>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPagedElement#QueryPageSettings(Nevron.Nov.UI.NPagedContext)">
             <summary>
             Called before printing a page.
             </summary>
-            <param name="KGAh"></param>
+            <param name="WCbh"></param>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPagedElement#PrintPage(Nevron.Nov.UI.NPagedContext)">
             <summary>
             Called when a print page needs to be displayed.
             </summary>
-            <param name="lGAh"></param>
+            <param name="xCbh"></param>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPagedElement#EndPrinting">
             <summary>
@@ -3200,14 +3200,14 @@
             <summary>
             Gets the context specific text representaton of the specified printRangeMode.
             </summary>
-            <param name="MGAh"></param>
+            <param name="YCbh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#GetSheetRangeModeSheetRange(Nevron.Nov.UI.ENSheetRangeMode)">
             <summary>
             Gets the range of sheets, which are going to be printed by the specified printRangeMode.
             </summary>
-            <param name="nGAh"></param>
+            <param name="Adbh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#CanHaveMultipleSheets">
@@ -3226,28 +3226,28 @@
             <summary>
             Gets the title of the page with the specified index.
             </summary>
-            <param name="OGAh"></param>
+            <param name="bdbh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#GetSheetPrintLayout(System.Int32)">
             <summary>
             Gets the print layout of the sheet with the specified index.
             </summary>
-            <param name="pGAh"></param>
+            <param name="Cdbh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#SetSheetPrintLayout(System.Int32,Nevron.Nov.UI.NPrintLayout)">
             <summary>
             Sets the print layout of the sheet with the specified index.
             </summary>
-            <param name="QGAh"></param>
-            <param name="rGAh"></param>
+            <param name="ddbh"></param>
+            <param name="Edbh"></param>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.Nevron#Nov#UI#INPrintLayoutElement#GetPrintLayoutTilingGridSet(Nevron.Nov.UI.ENSheetRangeMode)">
             <summary>
             Gets the set of tiling grids, for the current context print range mode.
             </summary>
-            <param name="SGAh"></param>
+            <param name="fdbh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Schedule.NSchedule.AccumulateDisplayChildren(Nevron.Nov.Dom.NDisplayVisitor,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NVisual})">
@@ -6234,7 +6234,7 @@
             <summary>
             Creates a split button.
             </summary>
-            <typeparam name="vbbh"></typeparam>
+            <typeparam name="Ixbh"></typeparam>
             <param name="image"></param>
             <param name="moreOptionsImage"></param>
             <param name="command"></param>
@@ -8222,100 +8222,100 @@
             Schema associated with NTagSplitButtonCommandSource.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fbYG.ToString">
+        <member name="M:Nevron.Nov.Internal.rWYG.ToString">
             <summary>
             Converts the value of this instance to string.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AEYG.Parse(System.Char[],System.Int32,System.Int32)">
+        <member name="M:Nevron.Nov.Internal.MAAh.Parse(System.Char[],System.Int32,System.Int32)">
             <summary>
             Parses the given characters and returns true on success.
             </summary>
-            <param name="CEYG"></param>
-            <param name="dEYG"></param>
-            <param name="EEYG"></param>
+            <param name="OAAh"></param>
+            <param name="pAAh"></param>
+            <param name="QAAh"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.OUxG.Name">
+        <member name="P:Nevron.Nov.Internal.brYG.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.OUxG.Extensions">
+        <member name="P:Nevron.Nov.Internal.brYG.Extensions">
             <summary>
             Gets the extnesion of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.OUxG.FileSignature">
+        <member name="P:Nevron.Nov.Internal.brYG.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.OUxG.Mime">
+        <member name="P:Nevron.Nov.Internal.brYG.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.AvxG.Name">
+        <member name="P:Nevron.Nov.Internal.MrYG.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.AvxG.Extensions">
+        <member name="P:Nevron.Nov.Internal.MrYG.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.AvxG.FileSignature">
+        <member name="P:Nevron.Nov.Internal.MrYG.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.AvxG.Mime">
+        <member name="P:Nevron.Nov.Internal.MrYG.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.AQYG.CompareTo(System.Object)">
+        <member name="M:Nevron.Nov.Internal.MMAh.CompareTo(System.Object)">
             <summary>
             Compares this appointment body to the given one by start and end time.
             </summary>
-            <param name="dQYG"></param>
+            <param name="pMAh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AQYG.CompareTo(Nevron.Nov.Internal.AQYG)">
+        <member name="M:Nevron.Nov.Internal.MMAh.CompareTo(Nevron.Nov.Internal.MMAh)">
             <summary>
             Compares this appointment body to the given one by start and end time.
             </summary>
-            <param name="EQYG"></param>
+            <param name="QMAh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.lQYG.UpdateBody2DFromObject(System.Object,Nevron.Nov.Layout.NBody2D)">
+        <member name="M:Nevron.Nov.Internal.xMAh.UpdateBody2DFromObject(System.Object,Nevron.Nov.Layout.NBody2D)">
             <summary>
             Updates the given body from the specified object.
             </summary>
-            <param name="nQYG"></param>
-            <param name="OQYG"></param>
+            <param name="AnAh"></param>
+            <param name="bnAh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.lQYG.TryGetBody2DProperty(System.Object,System.Int32,System.Object@)">
+        <member name="M:Nevron.Nov.Internal.xMAh.TryGetBody2DProperty(System.Object,System.Int32,System.Object@)">
             <summary>
             Reads a property of a 2D body
             </summary>
-            <param name="pQYG"></param>
-            <param name="QQYG"></param>
+            <param name="CnAh"></param>
+            <param name="dnAh"></param>
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.lQYG.UpdateObjectFromBody2D(System.Object,Nevron.Nov.Layout.NBody2D)">
+        <member name="M:Nevron.Nov.Internal.xMAh.UpdateObjectFromBody2D(System.Object,Nevron.Nov.Layout.NBody2D)">
             <summary>
             Updates an object from the specified 2D body.
             </summary>
-            <param name="rQYG"></param>
-            <param name="SQYG"></param>
+            <param name="EnAh"></param>
+            <param name="fnAh"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.WQYG.Item(System.Int32,System.Int32)">
+        <member name="P:Nevron.Nov.Internal.jnAh.Item(System.Int32,System.Int32)">
             <summary>
             Gets/Sets the appointment body at the specified address inthe grid.
             </summary>
@@ -8323,43 +8323,43 @@
             <param name="columnIndex"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.YrYG.Item(System.Int32)">
+        <member name="P:Nevron.Nov.Internal.lOAh.Item(System.Int32)">
             <summary>
             Gets the appointment body at the given cell index.
             </summary>
             <param name="index"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.KSYG.ArrangeBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
+        <member name="M:Nevron.Nov.Internal.WOAh.ArrangeBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
             <summary>
             Arranges the given bodies.
             </summary>
-            <param name="lSYG"></param>
-            <param name="MSYG"></param>
+            <param name="xOAh"></param>
+            <param name="YOAh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.KSYG.CreateBoxBody">
+        <member name="M:Nevron.Nov.Internal.WOAh.CreateBoxBody">
             <summary>
             Creates an appointment body.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.nSYG.MeasureBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
+        <member name="M:Nevron.Nov.Internal.ApAh.MeasureBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
             <summary>
             Returns NSize.Zero, because the appointment layout does not have desired size,
             but rather fits a set of appointments to a given area.
             </summary>
-            <param name="SSYG"></param>
-            <param name="tSYG"></param>
+            <param name="fpAh"></param>
+            <param name="GpAh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.nSYG.ArrangeBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
+        <member name="M:Nevron.Nov.Internal.ApAh.ArrangeBoxes(Nevron.Nov.Layout.NBoxBodyList,Nevron.Nov.Layout.NLayoutContext)">
             <summary>
             Layouts the boxes.
             </summary>
-            <param name="USYG"></param>
-            <param name="vSYG"></param>
+            <param name="hpAh"></param>
+            <param name="IpAh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.nSYG.CreateBoxBody">
+        <member name="M:Nevron.Nov.Internal.ApAh.CreateBoxBody">
             <summary>
             Creates an appointment body.
             </summary>

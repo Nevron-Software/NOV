@@ -10,8 +10,8 @@
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     <ApplicationIcon />
     <StartupObject />
-    <AssemblyVersion>23.5.29.12</AssemblyVersion>
-    <FileVersion>23.5.29.12</FileVersion>
+    <AssemblyVersion>23.11.6.12</AssemblyVersion>
+    <FileVersion>23.11.6.12</FileVersion>
     <Description>Nevron.Nov.Examples.WinForm</Description>
     <Configuration>Release</Configuration>
     <Company>Nevron Software</Company>

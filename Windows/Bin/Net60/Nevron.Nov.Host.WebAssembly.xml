@@ -456,70 +456,104 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.QdtI.IsReadOnly">
+        <member name="M:Nevron.Nov.Internal.jlUI.IsReadOnly">
             <summary>
             Returns true
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.QdtI.SetData(Nevron.Nov.UI.NDataFormat,System.Object)">
+        <member name="M:Nevron.Nov.Internal.jlUI.SetData(Nevron.Nov.UI.NDataFormat,System.Object)">
+            <summary>
+            Throws an exception, since this is a readonly data object
+            </summary>
+            <param name="MlUI"></param>
+            <param name="nlUI"></param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Nevron.Nov.Internal.jlUI.ContainsData(Nevron.Nov.UI.NDataFormat)">
+            <summary>
+            Queries whether data is present in the specified format.
+            </summary>
+            <param name="OlUI"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.jlUI.GetData(Nevron.Nov.UI.NDataFormat)">
+            <summary>
+            Get data in the specified format. 
+            </summary>
+            <param name="plUI"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.jlUI.GetFormats">
+            <summary>
+            Gets a list of the available formats
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.QOUI.IsReadOnly">
+            <summary>
+            Returns true
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.QOUI.SetData(Nevron.Nov.UI.NDataFormat,System.Object)">
             <summary>
             Throws an invalid operation exception
             </summary>
-            <param name="rdtI"></param>
-            <param name="SdtI"></param>
+            <param name="rOUI"></param>
+            <param name="SOUI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.QdtI.ContainsData(Nevron.Nov.UI.NDataFormat)">
+        <member name="M:Nevron.Nov.Internal.QOUI.ContainsData(Nevron.Nov.UI.NDataFormat)">
             <summary>
             Queries whether data can be obtained in the specified format.
             </summary>
-            <param name="tdtI"></param>
+            <param name="tOUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.QdtI.GetFormats">
+        <member name="M:Nevron.Nov.Internal.QOUI.GetFormats">
             <summary>
             Gets a list of the formats in which data can be obtained.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.QdtI.GetData(Nevron.Nov.UI.NDataFormat)">
+        <member name="M:Nevron.Nov.Internal.QOUI.GetData(Nevron.Nov.UI.NDataFormat)">
             <summary>
             Gets a data object in the specified format. 
             Returns null, if data in the specified format does not exists or its retrieval failed.  
             Returns a format specific object instance in case the data was successfully retrived.
             </summary>
-            <param name="UdtI"></param>
+            <param name="UOUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.IGtI.Dispose">
+        <member name="M:Nevron.Nov.Internal.IrUI.Dispose">
             <summary>
             Disposes the internally created bitmap
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.jKtI.GetFunctionIndex(System.String)">
+        <member name="M:Nevron.Nov.Internal.jvUI.GetFunctionIndex(System.String)">
             <summary>
             Calls the getFuncIndex client side function to obtain an index of the function with the specified name
             </summary>
-            <param name="KKtI"></param>
+            <param name="KvUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jKtI.Invoke``1(System.Boolean,Nevron.Nov.Interop.INInteropFunction,System.IO.MemoryStream)">
+        <member name="M:Nevron.Nov.Internal.jvUI.Invoke``1(System.Boolean,Nevron.Nov.Interop.INInteropFunction,System.IO.MemoryStream)">
             <summary>
             Overriden to perform an unmarshalled call of the nevron.invoke JS function.
             </summary>
-            <typeparam name="lKtI"></typeparam>
-            <param name="MKtI"></param>
-            <param name="nKtI"></param>
-            <param name="OKtI"></param>
+            <typeparam name="lvUI"></typeparam>
+            <param name="MvUI"></param>
+            <param name="nvUI"></param>
+            <param name="OvUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jKtI.InvokeBatch(System.IO.MemoryStream)">
+        <member name="M:Nevron.Nov.Internal.jvUI.InvokeBatch(System.IO.MemoryStream)">
             <summary>
             Overriden to perform an unmarshalled call of the nevron.invokeBatch JS function.
             </summary>
-            <param name="pKtI"></param>
+            <param name="pvUI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.brUI.CreateToArrayDelegateHelper``2(System.Reflection.MethodInfo)">
+        <member name="M:Nevron.Nov.Internal.GEWI.CreateToArrayDelegateHelper``2(System.Reflection.MethodInfo)">
             <summary>
             Helpers method for generics 
             </summary>
@@ -528,132 +562,142 @@
             <param name="method"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jMtI.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
+        <member name="M:Nevron.Nov.Internal.SxUI.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
             <summary>
             Overriden to return null - native bitmap encoding is not currently supported by the Web Assembly host.
             </summary>
-            <param name="KMtI"></param>
+            <param name="txUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jMtI.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
+        <member name="M:Nevron.Nov.Internal.SxUI.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
             <summary>
             Overriden to return null - native JPEG encoding is not currently supported by the Web Assembly host.
             </summary>
-            <param name="lMtI"></param>
+            <param name="UxUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jMtI.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
+        <member name="M:Nevron.Nov.Internal.SxUI.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
             <summary>
             Overriden to return null - native PNG encoding is not currently supported by the Web Assembly host.
             </summary>
-            <param name="nMtI"></param>
+            <param name="WxUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jMtI.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
+        <member name="M:Nevron.Nov.Internal.SxUI.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
             <summary>
             Overriden to return null - native TIFF encoding is not currently supported by the Web Assembly host.
             </summary>
-            <param name="pMtI"></param>
+            <param name="YxUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jMtI.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
+        <member name="M:Nevron.Nov.Internal.SxUI.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
             <summary>
             Overriden to return null - native image decoding is not currently supported by the Web Assmebly host.
             </summary>
-            <param name="QMtI"></param>
-            <param name="rMtI"></param>
+            <param name="AYUI"></param>
+            <param name="bYUI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xtUI.ToString">
+        <member name="M:Nevron.Nov.Internal.dhWI.ToString">
             <summary>
             Overriden to provide a CSS representation of this object.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xtUI.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.dhWI.Equals(System.Object)">
             <summary>
             Returns true if the objects are equal
             </summary>
-            <param name="CUUI"></param>
+            <param name="hhWI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xtUI.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.dhWI.GetHashCode">
             <summary>
             Returns the hash code of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AvUI.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.fIWI.Equals(System.Object)">
             <summary>
             Determintes whether this object is equal to the specified object
             </summary>
-            <param name="EvUI"></param>
+            <param name="jIWI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AvUI.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.fIWI.GetHashCode">
             <summary>
             Gets the hash code of the length
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AvUI.ToString">
+        <member name="M:Nevron.Nov.Internal.fIWI.ToString">
             <summary>
             Gets a string representation of this length, that is HTML compatible.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.MvUI.ToString">
+        <member name="M:Nevron.Nov.Internal.rIWI.ToString">
             <summary>
             Overriden to provide a CSS representation of this object.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.MvUI.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.rIWI.Equals(System.Object)">
             <summary>
             Returns true if the objects are equal
             </summary>
-            <param name="OvUI"></param>
+            <param name="tIWI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.MvUI.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.rIWI.GetHashCode">
             <summary>
             Returns the hash code of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.OAvI.OnClientSizeChanged(System.Double,System.Double)">
+        <member name="M:Nevron.Nov.Internal.tMWI.OnClientSizeChanged(System.Double,System.Double)">
             <summary>
             Updates the size of this HTML element. Called from JS when the size of the client size HTML element associated with this host has changed.
             </summary>
             <param name="clientWidth"></param>
             <param name="clientHeight"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xfvI.DeactivateActiveWindow">
+        <member name="M:Nevron.Nov.Internal.ISWI.DeactivateActiveWindow">
             <summary>
             Called from the client side, when an event was received by the HTML document that should deactivate the currently active window, if any.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xfvI.UpdateDevicePixelRatio(System.Double)">
+        <member name="M:Nevron.Nov.Internal.ISWI.UpdateDevicePixelRatio(System.Double)">
             <summary>
             Called from the client side, when the device pixel ratio has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xfvI.OnUnload">
+        <member name="M:Nevron.Nov.Internal.ISWI.OnApplicationIdle">
             <summary>
-            Called from the client side, when the window.unload is raised
+            Callback called from the requestApplicationIdle JS function.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xfvI.OnBeforeUnload">
+        <member name="M:Nevron.Nov.Internal.ISWI.OnWindowUnload">
             <summary>
-            Called from the client side, when the window.beforeunload is raised
+            Called from the client side, when the window.unload event is raised
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xfvI.OnApplicationIdle">
+        <member name="M:Nevron.Nov.Internal.ISWI.OnWindowBeforeUnload">
             <summary>
-            Called after requestApplicationIdle is called.
+            Called from the client side, when the window.beforeunload event is raised
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnPointerEnter(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
+        <member name="M:Nevron.Nov.Internal.ISWI.OnWindowFocus">
+            <summary>
+            Called from the client side, when the window.focus event is raised
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.ISWI.OnWindowBlur">
+            <summary>
+            Called from the client side, when the window.focus event is raised
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.QvWI.OnPointerEnter(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
             <summary>
             Notifies the element that the mouse has entered its boundaries.
             </summary>
@@ -663,7 +707,7 @@
             <param name="screenY"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnPointerLeave(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnPointerLeave(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
             <summary>
             Notifies the element that the mouse has entered its boundaries.
             </summary>
@@ -673,7 +717,7 @@
             <param name="screenY"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnPointerMove(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnPointerMove(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
             <summary>
             Notifies the element that the mouse is moved inside it.
             </summary>
@@ -683,7 +727,7 @@
             <param name="screenY"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnPointerDown(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnPointerDown(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Int32)">
             <summary>
             Notifies the element that a mouse button is down inside it.
             </summary>
@@ -694,7 +738,7 @@
             <param name="button"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnPointerUp(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnPointerUp(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Int32)">
             <summary>
             Notifies the element that a mouse button is up inside it.
             </summary>
@@ -705,7 +749,7 @@
             <param name="button"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnGotPointerCapture(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnGotPointerCapture(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
             <summary>
             Notifies the element that it received capture of the specified pointer.
             </summary>
@@ -717,7 +761,7 @@
             <param name="screenY"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnLostPointerCapture(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnLostPointerCapture(System.String,System.Int32,System.Double,System.Double,System.Double,System.Double)">
             <summary>
             Notifies the element that it lost capture of the specified pointer.
             </summary>
@@ -729,7 +773,7 @@
             <param name="screenY"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnWheel(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Double)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnWheel(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Double)">
             <summary>
             Notifies the element that the wheel is rotated inside it.
             </summary>
@@ -743,7 +787,7 @@
             <param name="deltaZ"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnKeyDown(System.String,System.String,System.Int32)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnKeyDown(System.String,System.String,System.Int32)">
             <summary>
             Notifies the element that a key is down
             </summary>
@@ -752,7 +796,7 @@
             <param name="location"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnKeyUp(System.String,System.String,System.Int32)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnKeyUp(System.String,System.String,System.Int32)">
             <summary>
             Notifies the element that a key is up
             </summary>
@@ -761,48 +805,48 @@
             <param name="location"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnKeyPress(System.String)">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnKeyPress(System.String)">
             <summary>
             Notifies the element that a key was pressed.
             </summary>
             <param name="keyChar"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnGotFocus">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnGotFocus">
             <summary>
             Notifies the element that it got focus
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.AjvI.OnLostFocus">
+        <member name="M:Nevron.Nov.Internal.QvWI.OnLostFocus">
             <summary>
             Notifies the element that it lost focus
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.EOvI.OnBeforePrint">
+        <member name="M:Nevron.Nov.Internal.WbxI.OnBeforePrint">
             <summary>
             Called when the frame window is about to be printed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.EOvI.OnAfterPrint">
+        <member name="M:Nevron.Nov.Internal.WbxI.OnAfterPrint">
             <summary>
             Called when the frame window has been printed.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rOvI.Item(System.Int32)">
+        <member name="P:Nevron.Nov.Internal.KCxI.Item(System.Int32)">
             <summary>
             Gets the PrintIFrame layer at the specified index
             </summary>
             <param name="index"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.GSvI.Item(System.Int32)">
+        <member name="P:Nevron.Nov.Internal.YfxI.Item(System.Int32)">
             <summary>
             Gets the window layer at the specified index
             </summary>
             <param name="index"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.vSvI`1.OnPaintAnimationFrame">
+        <member name="M:Nevron.Nov.Internal.OGxI`1.OnPaintAnimationFrame">
             <summary>
             Called to paint an animation frame 
             </summary>

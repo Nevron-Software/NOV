@@ -166,7 +166,7 @@ namespace Nevron.Nov.Examples.Chart
 		void OnSaveStateToFileButtonClick(NEventArgs arg)
 		{
             m_ChartView.SaveAsAsync();
-		}
+        }
 
 		void OnLoadStateFromStreamButtonClick(NEventArgs arg)
 		{

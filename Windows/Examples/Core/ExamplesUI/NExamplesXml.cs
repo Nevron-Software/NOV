@@ -13,7 +13,7 @@ namespace Nevron.Nov.Examples
 
         /// <summary>
         /// Gets whether the given XML element (category, row, group, tile or example) is supported
-        /// for the current platform by analyzing the "platforms" attribute of the XML element.
+        /// on the current platform by analyzing the "platforms" attribute of the XML element.
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
@@ -21,7 +21,7 @@ namespace Nevron.Nov.Examples
         /// The "platforms" attribute should contain comma-separated values from the <see cref="ENIntegrationPlatform"/>
         /// enumeration. If not set, the element is considered supported on all platforms.
         /// </remarks>
-        public static bool IsSupportedForTheCurrentPlatform(NXmlElement element)
+        public static bool IsSupportedOnTheCurrentPlatform(NXmlElement element)
         {
             string platforms = element.GetAttributeValue(Attribute.Platforms);
             if (String.IsNullOrEmpty(platforms))
@@ -29,22 +29,34 @@ namespace Nevron.Nov.Examples
             else
                 return platforms.IndexOf(NApplication.IntegrationPlatform.ToString(), StringComparison.OrdinalIgnoreCase) != -1;
         }
+		public static string GetNamespace(NXmlElement element)
+		{
+			string result;
+			do
+			{
+				result = element.GetAttributeValue(Attribute.Namespace);
+				element = element.Parent as NXmlElement;
+			}
+			while (String.IsNullOrEmpty(result) && element != null);
 
-        #endregion
+			return result;
+		}
 
-        #region XML Elements
+		#endregion
 
-        /// <summary>
-        /// Contains example XML element names.
-        /// </summary>
-        public static class Element
+		#region XML Elements
+
+		/// <summary>
+		/// Contains example XML element names.
+		/// </summary>
+		public static class Element
         {
             public const string Category = "category";
             public const string Row = "row";
             public const string Group = "group";
             public const string Tile = "tile";
             public const string Example = "example";
-            public const string Label = "label";
+            public const string Description = "description";
         }
 
         #endregion
@@ -69,6 +81,7 @@ namespace Nevron.Nov.Examples
             public const string Platforms = "platforms";
             public const string Status = "status";
             public const string Title = "title";
+			public const string Link = "link";
         }
 
         #endregion

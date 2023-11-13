@@ -62,7 +62,7 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_RadarLine1 = new NRadarLineSeries();
 			m_Chart.Series.Add(m_RadarLine1);
-			m_RadarLine1.Stroke = new NStroke(2, NChartTheme.BrightPalette[0]);
+			m_RadarLine1.Stroke = new NStroke(2, NChartPalette.BrightPalette[0]);
 			m_RadarLine1.Name = "Series 1";
 			m_RadarLine1.DataLabelStyle = new NDataLabelStyle(false);
 			NMarkerStyle markerStyle1 = new NMarkerStyle();
@@ -73,7 +73,7 @@ namespace Nevron.Nov.Examples.Chart
 
 			m_RadarLine2 = new NRadarLineSeries();
 			m_Chart.Series.Add(m_RadarLine2);
-			m_RadarLine2.Stroke = new NStroke(2, NChartTheme.BrightPalette[1]);
+			m_RadarLine2.Stroke = new NStroke(2, NChartPalette.BrightPalette[1]);
 			m_RadarLine2.Name = "Series 2";
 			m_RadarLine2.DataLabelStyle = new NDataLabelStyle(false);
 			NMarkerStyle markerStyle2 = new NMarkerStyle();

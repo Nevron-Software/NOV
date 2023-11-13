@@ -8,10 +8,10 @@ using Nevron.Nov.UI;
 
 namespace Nevron.Nov.Examples.Chart
 {
-	/// <summary>
-	/// HighLow 3D Example
-	/// </summary>
-	public class NHighLow3DExample : NExampleBase
+    /// <summary>
+    /// HighLow 3D Example.
+    /// </summary>
+    public class NHighLow3DExample : NExampleBase
 	{
 		#region Constructors
 
@@ -27,7 +27,7 @@ namespace Nevron.Nov.Examples.Chart
 		/// </summary>
 		static NHighLow3DExample()
 		{
-			NStandardHighLowExampleSchema = NSchema.Create(typeof(NHighLow3DExample), NExampleBaseSchema);
+            NHighLow3DExampleSchema = NSchema.Create(typeof(NHighLow3DExample), NExampleBaseSchema);
 		}
 
 		#endregion
@@ -137,11 +137,14 @@ namespace Nevron.Nov.Examples.Chart
 		NHighLowSeries m_HighLow;
 		NCartesianChart m_Chart;
 
-		#endregion
+        #endregion
 
-		#region Schema
+        #region Schema
 
-		public static readonly NSchema NStandardHighLowExampleSchema;
+        /// <summary>
+        /// Schema associated with NHighLow3DExample.
+        /// </summary>
+        public static readonly NSchema NHighLow3DExampleSchema;
 
 		#endregion
 	}

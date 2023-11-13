@@ -113,7 +113,8 @@ namespace Nevron.Nov.Examples.Chart
 				widthPercentScrollbar.Minimum = 0;
                 widthPercentScrollbar.Maximum = 100;
                 widthPercentScrollbar.ValueChanged += OnWidthPercentScrollbarValueChanged;
-				stack.Add(NPairBox.Create("Width %: ", widthPercentScrollbar));
+				widthPercentScrollbar.Value = 20;
+                stack.Add(NPairBox.Create("Width Gap %: ", widthPercentScrollbar));
 			}
 
             {
@@ -121,7 +122,8 @@ namespace Nevron.Nov.Examples.Chart
                 depthPercentScrollbar.Minimum = 0;
                 depthPercentScrollbar.Maximum = 100;
                 depthPercentScrollbar.ValueChanged += OnDepthPercentScrollbarValueChanged;
-                stack.Add(NPairBox.Create("Depth %: ", depthPercentScrollbar));
+				depthPercentScrollbar.Value = 20;
+                stack.Add(NPairBox.Create("Depth Gap %: ", depthPercentScrollbar));
             }
 
             return boxGroup;
@@ -155,12 +157,12 @@ namespace Nevron.Nov.Examples.Chart
 
         private void OnWidthPercentScrollbarValueChanged(NValueChangeEventArgs arg)
         {
-            m_Bar.Width = ((NHScrollBar)arg.TargetNode).Value / 100;
+            m_Bar.WidthGapFactor = ((NHScrollBar)arg.TargetNode).Value / 100;
         }
 
         private void OnDepthPercentScrollbarValueChanged(NValueChangeEventArgs arg)
         {
-            m_Bar.Depth = ((NHScrollBar)arg.TargetNode).Value / 100;
+            m_Bar.DepthGapFactor = ((NHScrollBar)arg.TargetNode).Value / 100;
         }
 
         #endregion

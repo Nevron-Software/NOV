@@ -56,7 +56,7 @@ namespace Nevron.Nov.Examples.Diagram
 		}
 		protected override string GetExampleDescription()
 		{
-			return @"<p>Demonstrates how to create and host barcodes in diagram shapes.</p>";
+			return @"<p>Demonstrates how to create and host charts in diagram shapes.</p>";
 		}
 
 		private void InitDiagram(NDrawingDocument drawingDocument)

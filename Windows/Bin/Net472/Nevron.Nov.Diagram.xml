@@ -949,20 +949,20 @@
             <param name="page"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Diagram.Batches.NBatchLayout.SQdh.Compare(Nevron.Nov.Diagram.NDiagramItem,Nevron.Nov.Diagram.NDiagramItem)">
+        <member name="M:Nevron.Nov.Diagram.Batches.NBatchLayout.lnEh.Compare(Nevron.Nov.Diagram.NDiagramItem,Nevron.Nov.Diagram.NDiagramItem)">
             <summary>
             Compares the X position of the a and b object bounds
             </summary>
-            <param name="tQdh"></param>
-            <param name="UQdh"></param>
+            <param name="MnEh"></param>
+            <param name="nnEh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Diagram.Batches.NBatchLayout.vQdh.Compare(Nevron.Nov.Diagram.NDiagramItem,Nevron.Nov.Diagram.NDiagramItem)">
+        <member name="M:Nevron.Nov.Diagram.Batches.NBatchLayout.OnEh.Compare(Nevron.Nov.Diagram.NDiagramItem,Nevron.Nov.Diagram.NDiagramItem)">
             <summary>
             Compares the Y position of the a and b object bounds
             </summary>
-            <param name="WQdh"></param>
-            <param name="xQdh"></param>
+            <param name="pnEh"></param>
+            <param name="QnEh"></param>
             <returns></returns>
         </member>
         <member name="T:Nevron.Nov.Diagram.Batches.NBatchOperation">
@@ -25651,26 +25651,26 @@
             <summary>
             Determines whether the specified sheetRangeMode option is supported by the element.
             </summary>
-            <param name="vSth"></param>
+            <param name="ltUh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPagedElement#BeginPrinting(Nevron.Nov.UI.NPagedContext)">
             <summary>
             Delegates the call to the active page BeginPrinting method.
             </summary>
-            <param name="WSth"></param>
+            <param name="MtUh"></param>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPagedElement#QueryPageSettings(Nevron.Nov.UI.NPagedContext)">
             <summary>
             Delegates the call to the active page QueryPageSettings method.
             </summary>
-            <param name="xSth"></param>
+            <param name="ntUh"></param>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPagedElement#PrintPage(Nevron.Nov.UI.NPagedContext)">
             <summary>
             Delegates the call to the active page PrintPage method.
             </summary>
-            <param name="YSth"></param>
+            <param name="OtUh"></param>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPagedElement#EndPrinting">
             <summary>
@@ -25681,14 +25681,14 @@
             <summary>
             Gets the context specific text representaton of the specified sheetRangeMode.
             </summary>
-            <param name="Atth"></param>
+            <param name="ptUh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPrintLayoutElement#GetSheetRangeModeSheetRange(Nevron.Nov.UI.ENSheetRangeMode)">
             <summary>
             Gets the range of sheets, which are going to be printed by the specified sheetRangeMode.
             </summary>
-            <param name="btth"></param>
+            <param name="QtUh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPrintLayoutElement#CanHaveMultipleSheets">
@@ -25707,28 +25707,28 @@
             <summary>
             Gets the title of the page with the specified index.
             </summary>
-            <param name="Ctth"></param>
+            <param name="rtUh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPrintLayoutElement#GetSheetPrintLayout(System.Int32)">
             <summary>
             Gets the print layout of the specified page
             </summary>
-            <param name="dtth"></param>
+            <param name="StUh"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPrintLayoutElement#SetSheetPrintLayout(System.Int32,Nevron.Nov.UI.NPrintLayout)">
             <summary>
             Sets the print layout of the specified page
             </summary>
-            <param name="Etth"></param>
-            <param name="ftth"></param>
+            <param name="ttUh"></param>
+            <param name="UtUh"></param>
         </member>
         <member name="M:Nevron.Nov.Diagram.NDrawing.Nevron#Nov#UI#INPrintLayoutElement#GetPrintLayoutTilingGridSet(Nevron.Nov.UI.ENSheetRangeMode)">
             <summary>
             Gets the set of tiling grids, for the current context print range mode.
             </summary>
-            <param name="Gtth"></param>
+            <param name="vtUh"></param>
             <returns></returns>
         </member>
         <member name="P:Nevron.Nov.Diagram.NDrawing.ViewSettings">
@@ -26068,8 +26068,8 @@
         <member name="M:Nevron.Nov.Diagram.NDrawingContextMenu.CreateElementSpecificCommands(Nevron.Nov.UI.NMenu,Nevron.Nov.Dom.NElement,Nevron.Nov.UI.NContextMenuBuilder)">
             <summary>
             Creates the menu items specific for the given element. The default implementation
-            checks whether the element implements the <see cref="T:Nevron.Nov.Internal.KUWC"/> interface
-            and if it does, calls its <see cref="M:Nevron.Nov.Internal.KUWC.AppendContextMenuItems(Nevron.Nov.UI.NMenu,System.Boolean)"/> method.
+            checks whether the element implements the <see cref="T:Nevron.Nov.Internal.vxWC"/> interface
+            and if it does, calls its <see cref="M:Nevron.Nov.Internal.vxWC.AppendContextMenuItems(Nevron.Nov.UI.NMenu,System.Boolean)"/> method.
             </summary>
             <param name="menu"></param>
             <param name="element"></param>
@@ -34619,18 +34619,6 @@
             <param name="propertyType"></param>
             <param name="value"></param>
         </member>
-        <member name="M:Nevron.Nov.Diagram.NShape.OnFocusIn(Nevron.Nov.UI.NFocusChangeEventArgs)">
-            <summary>
-            Default handler for the NKeyboard.FocusInEvent event.
-            </summary>
-            <param name="args"></param>
-        </member>
-        <member name="M:Nevron.Nov.Diagram.NShape.OnFocusOut(Nevron.Nov.UI.NFocusChangeEventArgs)">
-            <summary>
-            Default handler for the NKeyboard.FocusOutEvent event.
-            </summary>
-            <param name="args"></param>
-        </member>
         <member name="M:Nevron.Nov.Diagram.NShape.OnChildrenChanged(Nevron.Nov.Dom.NChildChangeData)">
             <summary>
             Updates any references or cache related to the visitor of the node children
@@ -37483,13 +37471,13 @@
             Default constructor.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Diagram.NPersonShape.rrAI.CreateStateEditor(Nevron.Nov.Dom.NNode,Nevron.Nov.Editors.NEditorContext)">
+        <member name="M:Nevron.Nov.Diagram.NPersonShape.GSbI.CreateStateEditor(Nevron.Nov.Dom.NNode,Nevron.Nov.Editors.NEditorContext)">
             <summary>
             Creates the state editor for the given node. Overriden to add an image selector to let
             users quickly select a photo for a person shape.
             </summary>
-            <param name="SrAI"></param>
-            <param name="trAI"></param>
+            <param name="hSbI"></param>
+            <param name="ISbI"></param>
             <returns></returns>
         </member>
         <member name="T:Nevron.Nov.Diagram.NPersonShapePart">
@@ -46357,7 +46345,7 @@
             <summary>
             Creates a split button. Overriden to accumulate the split button command sources.
             </summary>
-            <typeparam name="KAth"></typeparam>
+            <typeparam name="AbUh"></typeparam>
             <param name="image"></param>
             <param name="moreOptionsImage"></param>
             <param name="command"></param>
@@ -46438,7 +46426,7 @@
             <summary>
             Creates a split button. Overriden to accumulate the split button command sources.
             </summary>
-            <typeparam name="MAth"></typeparam>
+            <typeparam name="CbUh"></typeparam>
             <param name="image"></param>
             <param name="moreOptionsImage"></param>
             <param name="command"></param>
@@ -48324,17 +48312,17 @@
             Occurs when the informaiton property has changed.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Diagram.NLibrary.Nevron#Nov#Internal#KtAI#ViewSettings">
+        <member name="P:Nevron.Nov.Diagram.NLibrary.Nevron#Nov#Internal#YtbI#ViewSettings">
             <summary>
             Gets the view settings
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Diagram.NLibrary.Nevron#Nov#Internal#KtAI#SpellChecker">
+        <member name="P:Nevron.Nov.Diagram.NLibrary.Nevron#Nov#Internal#YtbI#SpellChecker">
             <summary>
             Gets the spellchecker for this drawing
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Diagram.NLibrary.Nevron#Nov#Internal#KtAI#MailMerge">
+        <member name="P:Nevron.Nov.Diagram.NLibrary.Nevron#Nov#Internal#YtbI#MailMerge">
             <summary>
             Gets the mail merge
             </summary>
@@ -52037,6 +52025,9 @@
         <member name="P:Nevron.Nov.Diagram.NResources.Image_MyDraw_Logos_MyDrawLogo_png">
             <summary></summary>
         </member>
+        <member name="P:Nevron.Nov.Diagram.NResources.Image_MyDraw_Logos_MyDrawLogo_svg">
+            <summary></summary>
+        </member>
         <member name="P:Nevron.Nov.Diagram.NResources.Image_MyDraw_Logos_MyDrawLogoBig_png">
             <summary></summary>
         </member>
@@ -53150,6 +53141,9 @@
         <member name="F:Nevron.Nov.Diagram.NResources.RIMG_MyDraw_Logos_MyDrawLogo_png">
             <summary></summary>
         </member>
+        <member name="F:Nevron.Nov.Diagram.NResources.RIMG_MyDraw_Logos_MyDrawLogo_svg">
+            <summary></summary>
+        </member>
         <member name="F:Nevron.Nov.Diagram.NResources.RIMG_MyDraw_Logos_MyDrawLogoBig_png">
             <summary></summary>
         </member>
@@ -54020,7 +54014,7 @@
             </summary>
             <param name="group"></param>
         </member>
-        <member name="M:Nevron.Nov.Diagram.Shapes.NBrainstormingShapeFactory.InitLights(Nevron.Nov.Diagram.NGroup,Nevron.Nov.Diagram.Shapes.NBrainstormingShapeFactory.WrQh)">
+        <member name="M:Nevron.Nov.Diagram.Shapes.NBrainstormingShapeFactory.InitLights(Nevron.Nov.Diagram.NGroup,Nevron.Nov.Diagram.Shapes.NBrainstormingShapeFactory.MSrh)">
             <summary>
             Inits the lights shape.
             </summary>
@@ -68847,905 +68841,903 @@
             </summary>
             <param name="node"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.SfEh.Extensions">
+        <member name="P:Nevron.Nov.Internal.lCfh.Extensions">
             <summary>
             Gets the extension of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.SfEh.Mime">
+        <member name="P:Nevron.Nov.Internal.lCfh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.SfEh.Name">
+        <member name="P:Nevron.Nov.Internal.lCfh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.SfEh.CanLoad">
+        <member name="P:Nevron.Nov.Internal.lCfh.CanLoad">
             <summary>
             Gets whether documents in this format can be loaded. Overriden to return false.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.SfEh.OnUse">
+        <member name="M:Nevron.Nov.Internal.lCfh.OnUse">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.SfEh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.lCfh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="tfEh"></param>
-            <param name="UfEh"></param>
-            <param name="vfEh"></param>
+            <param name="MCfh"></param>
+            <param name="nCfh"></param>
+            <param name="OCfh"></param>
             <returns></returns>
             <exception cref="T:System.NotSupportedException"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.SfEh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.lCfh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="WfEh"></param>
-            <param name="xfEh"></param>
-            <param name="YfEh"></param>
-            <param name="AGEh"></param>
+            <param name="pCfh"></param>
+            <param name="QCfh"></param>
+            <param name="rCfh"></param>
+            <param name="SCfh"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.vnKh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.pKlh.FileSignature">
             <summary>
             Gets the file signature of this file format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.xnKh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.rKlh.FileSignature">
             <summary>
             Gets the file signature of this file format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.AOKh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.tKlh.FileSignature">
             <summary>
             Gets the file signature of this file format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.hOKh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.bllh.FileSignature">
             <summary>
             Gets the file signature of this file format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KOKh.Extensions">
+        <member name="P:Nevron.Nov.Internal.Ellh.Extensions">
             <summary>
             Gets the file extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KOKh.Mime">
+        <member name="P:Nevron.Nov.Internal.Ellh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KOKh.Name">
+        <member name="P:Nevron.Nov.Internal.Ellh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KOKh.LossySaving">
+        <member name="P:Nevron.Nov.Internal.Ellh.LossySaving">
             <summary>
             Gets whether this drawing format may lead to loss of information when saving.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KOKh.CanLoad">
+        <member name="P:Nevron.Nov.Internal.Ellh.CanLoad">
             <summary>
             Gets whether documents in this format can be loaded. Overriden to return true.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.KOKh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Ellh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="MOKh"></param>
-            <param name="nOKh"></param>
-            <param name="OOKh"></param>
+            <param name="Gllh"></param>
+            <param name="hllh"></param>
+            <param name="Illh"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.vOKh.Extensions">
+        <member name="P:Nevron.Nov.Internal.pllh.Extensions">
             <summary>
             Gets the file extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.vOKh.Mime">
+        <member name="P:Nevron.Nov.Internal.pllh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.vOKh.Name">
+        <member name="P:Nevron.Nov.Internal.pllh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.bpKh.Extensions">
+        <member name="P:Nevron.Nov.Internal.Ullh.Extensions">
             <summary>
             Gets the file extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.bpKh.Mime">
+        <member name="P:Nevron.Nov.Internal.Ullh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.bpKh.Name">
+        <member name="P:Nevron.Nov.Internal.Ullh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KpKh.Name">
+        <member name="P:Nevron.Nov.Internal.EMlh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KpKh.Extensions">
+        <member name="P:Nevron.Nov.Internal.EMlh.Extensions">
             <summary>
             Gets the extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KpKh.Mime">
+        <member name="P:Nevron.Nov.Internal.EMlh.Mime">
             <summary>
             Gets the mime-type of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KpKh.CanSave">
+        <member name="P:Nevron.Nov.Internal.EMlh.CanSave">
             <summary>
             Returns true if the format can save a document to a stream.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.KpKh.OnUse">
+        <member name="M:Nevron.Nov.Internal.EMlh.OnUse">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.KpKh.LoadFromStreamCoreAsync(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.EMlh.LoadFromStreamCoreAsync(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="ppKh"></param>
-            <param name="QpKh"></param>
-            <param name="rpKh"></param>
+            <param name="jMlh"></param>
+            <param name="KMlh"></param>
+            <param name="lMlh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.KpKh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.EMlh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="SpKh"></param>
-            <param name="tpKh"></param>
-            <param name="UpKh"></param>
-            <returns></returns>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="M:Nevron.Nov.Internal.KpKh.SaveToStreamCoreAsync(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
-            <summary>
-            
-            </summary>
-            <param name="vpKh"></param>
-            <param name="WpKh"></param>
-            <param name="xpKh"></param>
-            <param name="YpKh"></param>
+            <param name="MMlh"></param>
+            <param name="nMlh"></param>
+            <param name="OMlh"></param>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.KpKh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.EMlh.SaveToStreamCoreAsync(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="AQKh"></param>
-            <param name="bQKh"></param>
-            <param name="CQKh"></param>
-            <param name="dQKh"></param>
+            <param name="pMlh"></param>
+            <param name="QMlh"></param>
+            <param name="rMlh"></param>
+            <param name="SMlh"></param>
+            <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.nQKh.OnClosed">
+        <member name="M:Nevron.Nov.Internal.EMlh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
+            <summary>
+            
+            </summary>
+            <param name="tMlh"></param>
+            <param name="UMlh"></param>
+            <param name="vMlh"></param>
+            <param name="WMlh"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Nevron.Nov.Internal.hnlh.OnClosed">
             <summary>
             Called when the window has been closed.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rGEh.Name">
+        <member name="P:Nevron.Nov.Internal.Kdfh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rGEh.Extensions">
+        <member name="P:Nevron.Nov.Internal.Kdfh.Extensions">
             <summary>
             Gets the extnesion of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rGEh.Mime">
+        <member name="P:Nevron.Nov.Internal.Kdfh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rGEh.PersistencyFormat">
+        <member name="P:Nevron.Nov.Internal.Kdfh.PersistencyFormat">
             <summary>
             Gets the persistency format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rGEh.DocumentFileName">
+        <member name="P:Nevron.Nov.Internal.Kdfh.DocumentFileName">
             <summary>
             Gets the document file name in the package.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UIEh.Name">
+        <member name="P:Nevron.Nov.Internal.nffh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UIEh.Extensions">
+        <member name="P:Nevron.Nov.Internal.nffh.Extensions">
             <summary>
             Gets the extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UIEh.Mime">
+        <member name="P:Nevron.Nov.Internal.nffh.Mime">
             <summary>
             Gets the mime-type of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UIEh.PersistencyFormat">
+        <member name="P:Nevron.Nov.Internal.nffh.PersistencyFormat">
             <summary>
             Gets the persistency format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UIEh.DocumentFileName">
+        <member name="P:Nevron.Nov.Internal.nffh.DocumentFileName">
             <summary>
             Gets the document file name in the package.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CjEh.Name">
+        <member name="P:Nevron.Nov.Internal.Uffh.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CjEh.Extensions">
+        <member name="P:Nevron.Nov.Internal.Uffh.Extensions">
             <summary>
             Gets the extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CjEh.Mime">
+        <member name="P:Nevron.Nov.Internal.Uffh.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.GjEh.Name">
+        <member name="P:Nevron.Nov.Internal.Yffh.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.GjEh.Extensions">
+        <member name="P:Nevron.Nov.Internal.Yffh.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.GjEh.Mime">
+        <member name="P:Nevron.Nov.Internal.Yffh.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.GjEh.CanLoad">
+        <member name="P:Nevron.Nov.Internal.Yffh.CanLoad">
             <summary>
             Returns true if the format can load a text document from stream
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.GjEh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Yffh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="pjEh"></param>
-            <param name="QjEh"></param>
-            <param name="rjEh"></param>
-            <param name="SjEh"></param>
+            <param name="IGfh"></param>
+            <param name="jGfh"></param>
+            <param name="KGfh"></param>
+            <param name="lGfh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.GjEh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Yffh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="tjEh"></param>
-            <param name="UjEh"></param>
-            <param name="vjEh"></param>
+            <param name="MGfh"></param>
+            <param name="nGfh"></param>
+            <param name="OGfh"></param>
             <returns></returns>
             <exception cref="T:System.NotSupportedException"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.Yjlh.ToString">
+        <member name="M:Nevron.Nov.Internal.YhMh.ToString">
             <summary>
             Returns a string that represents the current object.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.ndlh.ToString">
+        <member name="M:Nevron.Nov.Internal.nbMh.ToString">
             <summary>
             Returns a string that represents the current object.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.Yflh.ToString">
+        <member name="M:Nevron.Nov.Internal.YdMh.ToString">
             <summary>
             Returns a string that represents the current object.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.YIlh.ToString">
+        <member name="M:Nevron.Nov.Internal.YGMh.ToString">
             <summary>
             Gets the string representation of this object.
             </summary>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.WMKh.Name">
+        <member name="P:Nevron.Nov.Internal.Qjlh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.WMKh.Extensions">
+        <member name="P:Nevron.Nov.Internal.Qjlh.Extensions">
             <summary>
             Gets the extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.WMKh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.Qjlh.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.WMKh.Mime">
+        <member name="P:Nevron.Nov.Internal.Qjlh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.WMKh.CanLoad">
+        <member name="P:Nevron.Nov.Internal.Qjlh.CanLoad">
             <summary>
             Gets whether documents in this format can be loaded.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.WMKh.CanSave">
+        <member name="P:Nevron.Nov.Internal.Qjlh.CanSave">
             <summary>
             Gets whether documents in this format can be saved.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.WMKh.LossySaving">
+        <member name="P:Nevron.Nov.Internal.Qjlh.LossySaving">
             <summary>
             Gets whether this drawing format may lead to loss of information when saving.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.WMKh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Qjlh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
             <summary>
-            Loads the given stream as a Visio 2003 drawing.
+            Loads the given stream as a Visio 2003-2010 Drawing (VSD file).
             </summary>
-            <param name="xMKh"></param>
-            <param name="YMKh"></param>
-            <param name="AnKh"></param>
+            <param name="rjlh"></param>
+            <param name="Sjlh"></param>
+            <param name="tjlh"></param>
             <returns></returns>
-            <exception cref="T:System.NotSupportedException"></exception>
-            <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.WMKh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Qjlh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
             <summary>
-            Saves the given drawing document to stream. Overriden to throw an exception, because saving in the Visio 2003-2010 drawing
-            formats is currently not supported.
+            Saves the given drawing document to stream. Overriden to throw an exception, because saving in
+            the Visio 2003-2010 Drawing format is currently not supported.
             </summary>
-            <param name="bnKh"></param>
-            <param name="CnKh"></param>
-            <param name="dnKh"></param>
-            <param name="EnKh"></param>
+            <param name="Ujlh"></param>
+            <param name="vjlh"></param>
+            <param name="Wjlh"></param>
+            <param name="xjlh"></param>
             <exception cref="T:System.NotSupportedException"></exception>
         </member>
-        <member name="P:Nevron.Nov.Internal.jnKh.Name">
+        <member name="P:Nevron.Nov.Internal.dKlh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.jnKh.Extensions">
+        <member name="P:Nevron.Nov.Internal.dKlh.Extensions">
             <summary>
             Gets the extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.jnKh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.dKlh.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.jnKh.Mime">
+        <member name="P:Nevron.Nov.Internal.dKlh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.jnKh.CanLoad">
+        <member name="P:Nevron.Nov.Internal.dKlh.CanLoad">
             <summary>
             Gets whether documents in this format can be loaded.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.jnKh.CanSave">
+        <member name="P:Nevron.Nov.Internal.dKlh.CanSave">
             <summary>
             Gets whether documents in this format can be saved.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.jnKh.LossySaving">
+        <member name="P:Nevron.Nov.Internal.dKlh.LossySaving">
             <summary>
             Gets whether this drawing format may lead to loss of information when saving.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.jnKh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.dKlh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             Loads the given stream to a drawing document. Overriden to throw an exception, because loading from the Visio 2003-2010 XML drawing
             format is currently not supported.
             </summary>
-            <param name="KnKh"></param>
-            <param name="lnKh"></param>
-            <param name="MnKh"></param>
+            <param name="EKlh"></param>
+            <param name="fKlh"></param>
+            <param name="GKlh"></param>
             <returns></returns>
             <exception cref="T:System.NotSupportedException"></exception>
             <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.jnKh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.dKlh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             Saves the given drawing document to stream. Overriden to throw an exception, because saving in the Visio 2003-2010 drawing
             formats is currently not supported.
             </summary>
-            <param name="nnKh"></param>
-            <param name="OnKh"></param>
-            <param name="pnKh"></param>
-            <param name="QnKh"></param>
+            <param name="hKlh"></param>
+            <param name="IKlh"></param>
+            <param name="jKlh"></param>
+            <param name="KKlh"></param>
             <exception cref="T:System.NotSupportedException"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.MSIh.Filter(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.hpjh.Filter(Nevron.Nov.Dom.NNode)">
             <summary>
             Filters the given node.
             </summary>
-            <param name="QSIh"></param>
+            <param name="lpjh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.tSIh.Filter(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.Opjh.Filter(Nevron.Nov.Dom.NNode)">
             <summary>
             Filters the given node.
             </summary>
-            <param name="vSIh"></param>
+            <param name="Qpjh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.WSIh.Filter(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.rpjh.Filter(Nevron.Nov.Dom.NNode)">
             <summary>
             Filters the given node.
             </summary>
-            <param name="xSIh"></param>
+            <param name="Spjh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.fUIh.Filter(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.Arjh.Filter(Nevron.Nov.Dom.NNode)">
             <summary>
             Filters the given node.
             </summary>
-            <param name="MUIh"></param>
+            <param name="hrjh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dxGh`1.ToArray">
+        <member name="M:Nevron.Nov.Internal.xthh`1.ToArray">
             <summary>
             Converts this set to an array.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.Efjh.DeepCopyCore(Nevron.Nov.Dom.NNode,Nevron.Nov.Dom.NDomDeepCopyContext)">
+        <member name="M:Nevron.Nov.Internal.xbKh.DeepCopyCore(Nevron.Nov.Dom.NNode,Nevron.Nov.Dom.NDomDeepCopyContext)">
             <summary>
             Called to perform the actual deep copying of the source node.
             </summary>
-            <param name="WGjh"></param>
-            <param name="xGjh"></param>
+            <param name="QdKh"></param>
+            <param name="rdKh"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.KMKh.Name">
+        <member name="P:Nevron.Nov.Internal.Ejlh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KMKh.Extensions">
+        <member name="P:Nevron.Nov.Internal.Ejlh.Extensions">
             <summary>
             Gets the extensions of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KMKh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.Ejlh.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KMKh.Mime">
+        <member name="P:Nevron.Nov.Internal.Ejlh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KMKh.LossySaving">
+        <member name="P:Nevron.Nov.Internal.Ejlh.LossySaving">
             <summary>
             Gets whether this drawing format may lead to loss of information when saving.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.KMKh.OnUse">
+        <member name="M:Nevron.Nov.Internal.Ejlh.OnUse">
             <summary>
             Called when the format is used.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.KMKh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Ejlh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             Loads a document from from the specified stream.
             </summary>
-            <param name="lMKh"></param>
-            <param name="MMKh"></param>
-            <param name="nMKh"></param>
+            <param name="fjlh"></param>
+            <param name="Gjlh"></param>
+            <param name="hjlh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.KMKh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Ejlh.SaveToStreamCore(Nevron.Nov.Diagram.NDrawingDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NDrawingSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             Saves a document to the specified stream.
             </summary>
-            <param name="OMKh"></param>
-            <param name="pMKh"></param>
-            <param name="QMKh"></param>
-            <param name="rMKh"></param>
+            <param name="Ijlh"></param>
+            <param name="jjlh"></param>
+            <param name="Kjlh"></param>
+            <param name="ljlh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.OEph.ReduceCrossings">
+        <member name="M:Nevron.Nov.Internal.EfQh.ReduceCrossings">
             <summary>
             Reduces the edge crossings in the given bipartite graph and returns the
             number of crosings after the reduction.
             </summary>
             <returns>The total number of crossings after the reduction process.</returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SUOh.ToString">
+        <member name="M:Nevron.Nov.Internal.Ivph.ToString">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SUOh.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.Ivph.Equals(System.Object)">
             <summary>
             
             </summary>
-            <param name="KWOh"></param>
+            <param name="Axph"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SUOh.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.Ivph.GetHashCode">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.EAph.ToString">
+        <member name="M:Nevron.Nov.Internal.tAQh.ToString">
             <summary>
             Returns the string representation of the grid.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dCph.ToString">
+        <member name="M:Nevron.Nov.Internal.SCQh.ToString">
             <summary>
             Retusrns the string representation of the object.
             </summary>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.Sdph.Item(System.Int32)">
+        <member name="P:Nevron.Nov.Internal.IEQh.Item(System.Int32)">
             <summary>
             Indexer for the cells collection of the current row.
             </summary>
             <param name="index"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.Itnh.AccumulateForce(Nevron.Nov.Diagram.Layout.NForceDirectedVertexBody,Nevron.Nov.Diagram.Layout.NForceDirectedVertexBody,Nevron.Nov.Diagram.Layout.NForceDirectedEdgeBody)">
+        <member name="M:Nevron.Nov.Internal.StOh.AccumulateForce(Nevron.Nov.Diagram.Layout.NForceDirectedVertexBody,Nevron.Nov.Diagram.Layout.NForceDirectedVertexBody,Nevron.Nov.Diagram.Layout.NForceDirectedEdgeBody)">
             <summary>
             Accumulates the force acting on the specified pair of connected vertices
             </summary>
-            <param name="jtnh"></param>
-            <param name="Ktnh"></param>
-            <param name="ltnh"></param>
+            <param name="ttOh"></param>
+            <param name="UtOh"></param>
+            <param name="vtOh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.Otnh.AccumulateForce(Nevron.Nov.Diagram.Layout.NForceDirectedVertexBody,Nevron.Nov.Diagram.Layout.NForceDirectedVertexBody)">
+        <member name="M:Nevron.Nov.Internal.YtOh.AccumulateForce(Nevron.Nov.Diagram.Layout.NForceDirectedVertexBody,Nevron.Nov.Diagram.Layout.NForceDirectedVertexBody)">
             <summary>
             Accumulates the force acting on the specified pair of vertices
             </summary>
-            <param name="ptnh"></param>
-            <param name="Qtnh"></param>
+            <param name="AUOh"></param>
+            <param name="bUOh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.tGph.phph.Compare(Nevron.Nov.Internal.EGph,Nevron.Nov.Internal.EGph)">
+        <member name="M:Nevron.Nov.Internal.jhQh.fIQh.Compare(Nevron.Nov.Internal.tGQh,Nevron.Nov.Internal.tGQh)">
             <summary>
             
             </summary>
-            <param name="Qhph"></param>
-            <param name="rhph"></param>
+            <param name="GIQh"></param>
+            <param name="hIQh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.hOph.GetCount(System.Int32,System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.WOQh.GetCount(System.Int32,System.Boolean)">
             <summary>
             Gets the number of values equal to the given one in the specified row.
             </summary>
-            <param name="lOph"></param>
+            <param name="bpQh"></param>
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.hOph.SetBit(System.Int32,System.Int32,System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.WOQh.SetBit(System.Int32,System.Int32,System.Boolean)">
             <summary>
             Sets the bit on the specified location to the given value and returns
             true if the bit value has been changed (that is if it has a value different
             from the given one).
             </summary>
-            <param name="MOph"></param>
-            <param name="nOph"></param>
+            <param name="CpQh"></param>
+            <param name="dpQh"></param>
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.Srph.ToString">
+        <member name="M:Nevron.Nov.Internal.ISQh.ToString">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.Srph.TryGetBounds(Nevron.Nov.Graphics.NRectangle@)">
+        <member name="M:Nevron.Nov.Internal.ISQh.TryGetBounds(Nevron.Nov.Graphics.NRectangle@)">
             <summary>
             Tries to get the bounds of this feature
             </summary>
-            <param name="Urph"></param>
+            <param name="KSQh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.QSph.TryGetBounds(Nevron.Nov.Graphics.NRectangle@)">
+        <member name="M:Nevron.Nov.Internal.GtQh.TryGetBounds(Nevron.Nov.Graphics.NRectangle@)">
             <summary>
             
             </summary>
-            <param name="SSph"></param>
+            <param name="ItQh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.tSph.TryGetBounds(Nevron.Nov.Graphics.NRectangle@)">
+        <member name="M:Nevron.Nov.Internal.jtQh.TryGetBounds(Nevron.Nov.Graphics.NRectangle@)">
             <summary>
             Tries to get the bounds of this feature
             </summary>
-            <param name="vSph"></param>
+            <param name="ltQh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.OdQh.ToString">
+        <member name="M:Nevron.Nov.Internal.EErh.ToString">
             <summary>
             Gets the string representation of this region.
             </summary>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.dpth.IsPooledForArrange">
+        <member name="P:Nevron.Nov.Internal.SpUh.IsPooledForArrange">
             <summary>
             Gets whether the element is pooled for arrange validation.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.dpth.IsArrangeValid">
+        <member name="P:Nevron.Nov.Internal.SpUh.IsArrangeValid">
             <summary>
             Gets whether the arrange of the element is valid.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.InvalidateArrange(System.Object)">
+        <member name="M:Nevron.Nov.Internal.SpUh.InvalidateArrange(System.Object)">
             <summary>
             Invalidates the element arrange
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.ValidateArrange">
+        <member name="M:Nevron.Nov.Internal.SpUh.ValidateArrange">
             <summary>
             Called to arrange the element
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.InvalidateMeasureFromChild(Nevron.Nov.Dom.NElement,Nevron.Nov.Dom.ENLayoutParentInvalidationReason,System.Object)">
+        <member name="M:Nevron.Nov.Internal.SpUh.InvalidateMeasureFromChild(Nevron.Nov.Dom.NElement,Nevron.Nov.Dom.ENLayoutParentInvalidationReason,System.Object)">
             <summary>
             Called by child or descendant measure elements that consider this element as measure parent, and want to inform it to invalidate it's measure.
             </summary>
-            <param name="hpth"></param>
-            <param name="Ipth"></param>
-            <param name="jpth"></param>
+            <param name="WpUh"></param>
+            <param name="xpUh"></param>
+            <param name="YpUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.InvalidateArrangeFromChild(Nevron.Nov.Dom.NElement,Nevron.Nov.Dom.ENLayoutParentInvalidationReason,System.Object)">
+        <member name="M:Nevron.Nov.Internal.SpUh.InvalidateArrangeFromChild(Nevron.Nov.Dom.NElement,Nevron.Nov.Dom.ENLayoutParentInvalidationReason,System.Object)">
             <summary>
             Called by child or descendant arrange elements that consider this element as arrange parent, and want to inform it to invalidate it's arrange.
             </summary>
-            <param name="Kpth"></param>
-            <param name="lpth"></param>
-            <param name="Mpth"></param>
+            <param name="AQUh"></param>
+            <param name="bQUh"></param>
+            <param name="CQUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.CanTransform">
+        <member name="M:Nevron.Nov.Internal.SpUh.CanTransform">
             <summary>
             Gets whether the aid can be transformed.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.GetTransform">
+        <member name="M:Nevron.Nov.Internal.SpUh.GetTransform">
             <summary>
             Gets the transformation of the aid.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.CanClip">
+        <member name="M:Nevron.Nov.Internal.SpUh.CanClip">
             <summary>
             Overriden to return true.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.GetClip">
+        <member name="M:Nevron.Nov.Internal.SpUh.GetClip">
             <summary>
             Overriden to return the clip bounds.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.SpUh.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
             <summary>
             Overriden to update the reference to the page.
             </summary>
-            <param name="Qpth"></param>
+            <param name="GQUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.OnRegistered">
+        <member name="M:Nevron.Nov.Internal.SpUh.OnRegistered">
             <summary>
             Called after the document node is registered in its owner document
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dpth.OnUnregistered">
+        <member name="M:Nevron.Nov.Internal.SpUh.OnUnregistered">
             <summary>
             Called after the document node is unregistered from its owner document.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.KUWh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.Avxh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Paints the trackers
             </summary>
-            <param name="MUWh"></param>
+            <param name="Cvxh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.SUWh.HitTest(Nevron.Nov.Dom.NPointHitTestVisitor)">
+        <member name="M:Nevron.Nov.Internal.Ivxh.HitTest(Nevron.Nov.Dom.NPointHitTestVisitor)">
             <summary>
             
             </summary>
-            <param name="tUWh"></param>
+            <param name="jvxh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.YvWh.SkipBranchDisplayTraversal(Nevron.Nov.Dom.NDisplayVisitor)">
+        <member name="M:Nevron.Nov.Internal.OWxh.SkipBranchDisplayTraversal(Nevron.Nov.Dom.NDisplayVisitor)">
             <summary>
             Overriden to skip the branch traversal in preview paint mode
             </summary>
-            <param name="dWWh"></param>
+            <param name="SWxh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapePortsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapePortsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the ports count or ports properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapeGeometryChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapeGeometryChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapeTextBlockChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapeTextBlockChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapeControlsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapeControlsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapeBehaviorChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapeBehaviorChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the shape behavior has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapeSizeChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapeSizeChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapeProtectionChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapeProtectionChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the protection of the shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapeEndPointsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapeEndPointsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapeTransformChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapeTransformChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called when the transformation from local to parent coordinates of this shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnShapePageTransformChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnShapePageTransformChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called when the transformation from local to page coordinates of this shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.CanClip">
+        <member name="M:Nevron.Nov.Internal.UWxh.CanClip">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Overriden to paint outlines of the selected shapes.
             </summary>
-            <param name="jYWh"></param>
+            <param name="YYxh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.fWWh.OnPostPaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.UWxh.OnPostPaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Overriden to paint the trackers, only if the box is valid
             </summary>
-            <param name="KYWh"></param>
+            <param name="AAYh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapePortsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapePortsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the ports count or ports properties of the shape have changed.
             Raises the PortsChanged event.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapeGeometryChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapeGeometryChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             Raises the GeometriesChanged event.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapeTextBlockChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapeTextBlockChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the textblock root properties or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapeControlsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapeControlsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapeBehaviorChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapeBehaviorChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the shape behavior has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapeSizeChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapeSizeChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapeProtectionChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapeProtectionChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the protection of the shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapeEndPointsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapeEndPointsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapeTransformChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapeTransformChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called when the transformation from local to parent coordinates of this shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vCxh.OnShapePageTransformChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.ldYh.OnShapePageTransformChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called when the transformation from local to page coordinates of this shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.Qdxh`1.CanClip">
+        <member name="M:Nevron.Nov.Internal.GEYh`1.CanClip">
             <summary>
             Overriden to return true
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.Qdxh`1.GetClip">
+        <member name="M:Nevron.Nov.Internal.GEYh`1.GetClip">
             <summary>
             Overriden to return the bounds region of all contained trackers/
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.Qdxh`1.OnPostPaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.GEYh`1.OnPostPaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Paints the trackers
             </summary>
-            <param name="Sdxh"></param>
+            <param name="IEYh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.MGxh.OnPostPaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.ChYh.OnPostPaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Performs the element post-children custom paint.
             </summary>
-            <param name="phxh"></param>
+            <param name="fIYh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xfvh`1.AccumulateDisplayChildren(Nevron.Nov.Dom.NDisplayVisitor,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NVisual})">
+        <member name="M:Nevron.Nov.Internal.nGWh`1.AccumulateDisplayChildren(Nevron.Nov.Dom.NDisplayVisitor,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NVisual})">
             <summary>
             Overriden to remove the PreviewedItemHost child (if any) from the list of display children.
             </summary>
-            <param name="AGvh"></param>
-            <param name="bGvh"></param>
+            <param name="pGWh"></param>
+            <param name="QGWh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.pGvh.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.fhWh.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
             <summary>
             Updates any references or cache related to the context of the node ancestors
             </summary>
@@ -69753,724 +69745,744 @@
             Overriden to cache a reference to the owner preview manager
             </remarks>
         </member>
-        <member name="M:Nevron.Nov.Internal.IMxh.CanTransform">
+        <member name="M:Nevron.Nov.Internal.xMYh.CanTransform">
             <summary>
             Overriden to return true.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.IMxh.GetTransform">
+        <member name="M:Nevron.Nov.Internal.xMYh.GetTransform">
             <summary>
             Gets the matrix that transforms local to parent coordinates, 
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.WIbI.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.njCI.Equals(System.Object)">
             <summary>
             
             </summary>
-            <param name="AjbI"></param>
+            <param name="QjCI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.WIbI.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.njCI.GetHashCode">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.nQAI.GetValuePreviewText(System.Object,System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.CrbI.GetValuePreviewText(System.Object,System.Boolean)">
             <summary>
             Gets the value preview text.
             </summary>
             <param name="value"></param>
-            <param name="OQAI"></param>
+            <param name="drbI"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.KtAI.ViewSettings">
+        <member name="P:Nevron.Nov.Internal.YtbI.ViewSettings">
             <summary>
             Gets the view settings
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KtAI.Information">
+        <member name="P:Nevron.Nov.Internal.YtbI.Information">
             <summary>
             Gets the document information
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KtAI.SpellChecker">
+        <member name="P:Nevron.Nov.Internal.YtbI.SpellChecker">
             <summary>
             Gets the spell checker
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.KtAI.MailMerge">
+        <member name="P:Nevron.Nov.Internal.YtbI.MailMerge">
             <summary>
             Gets the mail merge
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.Uvth.OnActivePageChanged">
+        <member name="M:Nevron.Nov.Internal.KWUh.OnActivePageChanged">
             <summary>
             Called when the active page has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.Uvth.OnDocumentChanged">
+        <member name="M:Nevron.Nov.Internal.KWUh.OnDocumentChanged">
             <summary>
             Called when the document has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapePortsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapePortsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the ports count or ports properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapeGeometryChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapeGeometryChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapeTextBlockChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapeTextBlockChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the textblock root properties or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapeControlsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapeControlsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapeBehaviorChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapeBehaviorChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the shape behavior has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapeSizeChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapeSizeChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapeProtectionChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapeProtectionChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the protection of the shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapeEndPointsChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapeEndPointsChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called whenever the geometries count or properties of the shape have changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapeTransformChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapeTransformChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called when the transformation from local to parent coordinates of this shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vvth.OnShapePageTransformChanged(Nevron.Nov.Diagram.NShape)">
+        <member name="M:Nevron.Nov.Internal.lWUh.OnShapePageTransformChanged(Nevron.Nov.Diagram.NShape)">
             <summary>
             Called when the transformation from local to page coordinates of this shape has changed.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.bOYh.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.pOAI.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
             <summary>
             Updates any references or cache related to the context of the node ancestors
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CSMh.Name">
+        <member name="P:Nevron.Nov.Internal.MSnh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CSMh.Extensions">
+        <member name="P:Nevron.Nov.Internal.MSnh.Extensions">
             <summary>
             Gets the extension of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CSMh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.MSnh.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CSMh.Mime">
+        <member name="P:Nevron.Nov.Internal.MSnh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.CSMh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibraryLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.MSnh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibraryLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="ESMh"></param>
-            <param name="fSMh"></param>
-            <param name="GSMh"></param>
+            <param name="OSnh"></param>
+            <param name="pSnh"></param>
+            <param name="QSnh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CSMh.SaveToStreamCore(Nevron.Nov.Diagram.NLibraryDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibrarySaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.MSnh.SaveToStreamCore(Nevron.Nov.Diagram.NLibraryDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibrarySaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="hSMh"></param>
-            <param name="ISMh"></param>
-            <param name="jSMh"></param>
-            <param name="KSMh"></param>
+            <param name="rSnh"></param>
+            <param name="SSnh"></param>
+            <param name="tSnh"></param>
+            <param name="USnh"></param>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="P:Nevron.Nov.Internal.pSMh.Name">
+        <member name="P:Nevron.Nov.Internal.Atnh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.pSMh.Extensions">
+        <member name="P:Nevron.Nov.Internal.Atnh.Extensions">
             <summary>
             Gets the extnesion of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.pSMh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.Atnh.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.pSMh.Mime">
+        <member name="P:Nevron.Nov.Internal.Atnh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.pSMh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibraryLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Atnh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibraryLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="rSMh"></param>
-            <param name="SSMh"></param>
-            <param name="tSMh"></param>
+            <param name="Ctnh"></param>
+            <param name="dtnh"></param>
+            <param name="Etnh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.pSMh.SaveToStreamCore(Nevron.Nov.Diagram.NLibraryDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibrarySaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Atnh.SaveToStreamCore(Nevron.Nov.Diagram.NLibraryDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibrarySaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="USMh"></param>
-            <param name="vSMh"></param>
-            <param name="WSMh"></param>
-            <param name="xSMh"></param>
+            <param name="ftnh"></param>
+            <param name="Gtnh"></param>
+            <param name="htnh"></param>
+            <param name="Itnh"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.ftMh.Extensions">
+        <member name="P:Nevron.Nov.Internal.ptnh.Extensions">
             <summary>
             Gets the extnesion of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.ftMh.Mime">
+        <member name="P:Nevron.Nov.Internal.ptnh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.ftMh.Name">
+        <member name="P:Nevron.Nov.Internal.ptnh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.ftMh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.ptnh.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.ftMh.CanLoad">
+        <member name="P:Nevron.Nov.Internal.ptnh.CanLoad">
             <summary>
             Gets whether documents in this format can be loaded.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.ftMh.CanSave">
+        <member name="P:Nevron.Nov.Internal.ptnh.CanSave">
             <summary>
             Gets whether documents in this format can be saved.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rtMh.Extensions">
+        <member name="M:Nevron.Nov.Internal.ptnh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibraryLoadSettings,Nevron.Nov.NProgress)">
+            <summary>
+            Loads the given stream as a Visio 2003-2010 Stencil (VSS file).
+            </summary>
+            <param name="Qtnh"></param>
+            <param name="rtnh"></param>
+            <param name="Stnh"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nevron.Nov.Internal.ptnh.SaveToStreamCore(Nevron.Nov.Diagram.NLibraryDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibrarySaveSettings,Nevron.Nov.NProgress)">
+            <summary>
+            Saves the given drawing document to stream. Overriden to throw an exception, because saving in
+            the Visio 2003-2010 Stencil format is currently not supported.
+            </summary>
+            <param name="ttnh"></param>
+            <param name="Utnh"></param>
+            <param name="vtnh"></param>
+            <param name="Wtnh"></param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="P:Nevron.Nov.Internal.CUnh.Extensions">
             <summary>
             Gets the extnesion of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rtMh.Name">
+        <member name="P:Nevron.Nov.Internal.CUnh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.vtMh.Extensions">
+        <member name="P:Nevron.Nov.Internal.GUnh.Extensions">
             <summary>
             Gets the extnesion of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.vtMh.Mime">
+        <member name="P:Nevron.Nov.Internal.GUnh.Mime">
             <summary>
             Gets the mime type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.vtMh.Name">
+        <member name="P:Nevron.Nov.Internal.GUnh.Name">
             <summary>
             Gets the name of the format.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.vtMh.FileSignature">
+        <member name="P:Nevron.Nov.Internal.GUnh.FileSignature">
             <summary>
             Gets the file signature of this document format.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vtMh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibraryLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.GUnh.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibraryLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="WtMh"></param>
-            <param name="xtMh"></param>
-            <param name="YtMh"></param>
+            <param name="hUnh"></param>
+            <param name="IUnh"></param>
+            <param name="jUnh"></param>
             <returns></returns>
             <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.vtMh.SaveToStreamCore(Nevron.Nov.Diagram.NLibraryDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibrarySaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.GUnh.SaveToStreamCore(Nevron.Nov.Diagram.NLibraryDocument,System.IO.Stream,Nevron.Nov.Diagram.Formats.NLibrarySaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="AUMh"></param>
-            <param name="bUMh"></param>
-            <param name="CUMh"></param>
-            <param name="dUMh"></param>
+            <param name="KUnh"></param>
+            <param name="lUnh"></param>
+            <param name="MUnh"></param>
+            <param name="nUnh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.GQWh.UpdateBody2DFromObject(System.Object,Nevron.Nov.Layout.NBody2D)">
+        <member name="M:Nevron.Nov.Internal.vQxh.UpdateBody2DFromObject(System.Object,Nevron.Nov.Layout.NBody2D)">
             <summary>
             Updates a 2D body from the specified object
             </summary>
-            <param name="jQWh"></param>
-            <param name="KQWh"></param>
+            <param name="YQxh"></param>
+            <param name="Arxh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.GQWh.TryGetBody2DProperty(System.Object,System.Int32,System.Object@)">
+        <member name="M:Nevron.Nov.Internal.vQxh.TryGetBody2DProperty(System.Object,System.Int32,System.Object@)">
             <summary>
             Reads a property of a 2D body
             </summary>
-            <param name="lQWh"></param>
-            <param name="MQWh"></param>
+            <param name="brxh"></param>
+            <param name="Crxh"></param>
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.GQWh.UpdateObjectFromBody2D(System.Object,Nevron.Nov.Layout.NBody2D)">
+        <member name="M:Nevron.Nov.Internal.vQxh.UpdateObjectFromBody2D(System.Object,Nevron.Nov.Layout.NBody2D)">
             <summary>
             Updates an object from the specified 2D body
             </summary>
-            <param name="nQWh"></param>
-            <param name="OQWh"></param>
+            <param name="drxh"></param>
+            <param name="Erxh"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.SCUh.EnumType">
+        <member name="P:Nevron.Nov.Internal.Idvh.EnumType">
             <summary>
             Gets the enum type to convert
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.SCUh.TryGetOldNameToNewName(System.String,System.String@)">
+        <member name="M:Nevron.Nov.Internal.Idvh.TryGetOldNameToNewName(System.String,System.String@)">
             <summary>
             Translated the old name to the new name
             </summary>
-            <param name="tCUh"></param>
-            <param name="UCUh"></param>
+            <param name="jdvh"></param>
+            <param name="Kdvh"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.WCUh.EnumType">
+        <member name="P:Nevron.Nov.Internal.Mdvh.EnumType">
             <summary>
             Gets the enum type to convert
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.WCUh.TryGetOldNameToNewName(System.String,System.String@)">
+        <member name="M:Nevron.Nov.Internal.Mdvh.TryGetOldNameToNewName(System.String,System.String@)">
             <summary>
             Translated the old name to the new name
             </summary>
-            <param name="xCUh"></param>
-            <param name="YCUh"></param>
+            <param name="ndvh"></param>
+            <param name="Odvh"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.bdUh.SourceType">
+        <member name="P:Nevron.Nov.Internal.Qdvh.SourceType">
             <summary>
             Gets the source type.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.bdUh.TargetType">
+        <member name="P:Nevron.Nov.Internal.Qdvh.TargetType">
             <summary>
             Gets the target type.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.bdUh.ConvertValue(System.Object)">
+        <member name="M:Nevron.Nov.Internal.Qdvh.ConvertValue(System.Object)">
             <summary>
             Converts the value from the source type to the target type.
             </summary>
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CdUh.GetGeometryBounds">
+        <member name="M:Nevron.Nov.Internal.rdvh.GetGeometryBounds">
             <summary>
             Overriden to return the bounds of the geometry.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CdUh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.rdvh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Overriden to paint the graphics path.
             </summary>
-            <param name="GdUh"></param>
+            <param name="vdvh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.jdUh.GetGeometryBounds">
+        <member name="M:Nevron.Nov.Internal.Ydvh.GetGeometryBounds">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jdUh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.Ydvh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             
             </summary>
-            <param name="MdUh"></param>
+            <param name="CEvh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.MYpb.Execute(Nevron.Nov.Dom.NNode,System.Object)">
+        <member name="M:Nevron.Nov.Internal.pbQb.Execute(Nevron.Nov.Dom.NNode,System.Object)">
             <summary>
             Executes this command action.
             </summary>
-            <param name="nYpb"></param>
-            <param name="OYpb"></param>
+            <param name="QbQb"></param>
+            <param name="rbQb"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AWpb.LoadFromFileAsync(Nevron.Nov.IO.NFile,Nevron.Nov.Diagram.Formats.NDrawingFormat,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,System.Boolean,System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.fYpb.LoadFromFileAsync(Nevron.Nov.IO.NFile,Nevron.Nov.Diagram.Formats.NDrawingFormat,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings,System.Boolean,System.Boolean)">
             <summary>
             Loads the view document from the specified local file.
             </summary>
-            <param name="CWpb">file from which to load the view document</param>
-            <param name="dWpb">The document format to use. If null, the format will be determined automatically.</param>
-            <param name="EWpb">optional load settings, can be null</param>
-            <param name="fWpb">whether errors should be reported to the user</param>
-            <param name="GWpb">whether the user should be prompted to save changes to the document, if it is modified</param>
+            <param name="hYpb">file from which to load the view document</param>
+            <param name="IYpb">The document format to use. If null, the format will be determined automatically.</param>
+            <param name="jYpb">optional load settings, can be null</param>
+            <param name="KYpb">whether errors should be reported to the user</param>
+            <param name="lYpb">whether the user should be prompted to save changes to the document, if it is modified</param>
             <returns>a promise which resolves to true, if document was successfully loaded, otherwise false</returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AWpb.OnDocumentLoaded(Nevron.Nov.Diagram.NDrawingDocument,Nevron.Nov.Diagram.Formats.NDrawingFormat,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings)">
+        <member name="M:Nevron.Nov.Internal.fYpb.OnDocumentLoaded(Nevron.Nov.Diagram.NDrawingDocument,Nevron.Nov.Diagram.Formats.NDrawingFormat,Nevron.Nov.Diagram.Formats.NDrawingLoadSettings)">
             <summary>
             Called when a document has been loaded from the specified format and was loaded in the view
             </summary>
-            <param name="hWpb"></param>
-            <param name="IWpb"></param>
-            <param name="jWpb"></param>
+            <param name="MYpb"></param>
+            <param name="nYpb"></param>
+            <param name="OYpb"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AWpb.BuildCommander(Nevron.Nov.UI.NCommander)">
+        <member name="M:Nevron.Nov.Internal.fYpb.BuildCommander(Nevron.Nov.UI.NCommander)">
             <summary>
             Builds the MyDraw commander by adding specific MyDraw command actions.
             </summary>
-            <param name="KWpb"></param>
+            <param name="pYpb"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AWpb.CreateNewDocument">
+        <member name="M:Nevron.Nov.Internal.fYpb.CreateNewDocument">
             <summary>
             Creates a new document.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AWpb.OnRegistered">
+        <member name="M:Nevron.Nov.Internal.fYpb.OnRegistered">
             <summary>
             Called after the document node is registered in its owner document.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.AWpb.OnUnregistered">
+        <member name="M:Nevron.Nov.Internal.fYpb.OnUnregistered">
             <summary>
             Called after the document node is unregistered from its owner document.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.AWpb.CloneDocument(Nevron.Nov.Diagram.NDrawingDocument)">
+        <member name="M:Nevron.Nov.Internal.fYpb.CloneDocument(Nevron.Nov.Diagram.NDrawingDocument)">
             <summary>
             Clones the given document. This method is called when the document is going to be saved on another thread.
             </summary>
-            <param name="lWpb"></param>
+            <param name="QYpb"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AWpb.CreateOrSelectNewDocumentAsync">
+        <member name="M:Nevron.Nov.Internal.fYpb.CreateOrSelectNewDocumentAsync">
             <summary>
             Overriden to show the template selector.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.rfQb.Create">
+        <member name="M:Nevron.Nov.Internal.vhQb.Create">
             <summary>
             Creates MyDraw's "File" menu.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.rfQb.AddItems(Nevron.Nov.UI.NMenuItemCollection)">
+        <member name="M:Nevron.Nov.Internal.vhQb.AddItems(Nevron.Nov.UI.NMenuItemCollection)">
             <summary>
             Adds the menu items.
             </summary>
-            <param name="SfQb"></param>
+            <param name="WhQb"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.EGQb.OnOpened">
+        <member name="M:Nevron.Nov.Internal.IIQb.OnOpened">
             <summary>
             Called when the window is opened. Overriden to subscribe to licensing service events and
             focus the dialog so that the user can close it by pressing Esc from the keyboard.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.EGQb.OnClosed">
+        <member name="M:Nevron.Nov.Internal.IIQb.OnClosed">
             <summary>
             Called when the window is closed. Overriden to unsubscribe from licensing service events.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.rjQb.OnOpened">
+        <member name="M:Nevron.Nov.Internal.vlQb.OnOpened">
             <summary>
             Called when the window opens. Overriden to focus the "Username" or the "Password" text box.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.rjQb.OnClosed">
+        <member name="M:Nevron.Nov.Internal.vlQb.OnClosed">
             <summary>
             Called when the window is closed. Overriden to unsubscribe from licensing service events.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.bOQb.ArrangeContent(Nevron.Nov.Graphics.NRectangle)">
+        <member name="M:Nevron.Nov.Internal.fQQb.ArrangeContent(Nevron.Nov.Graphics.NRectangle)">
             <summary>
             Overriden to make the content occupy the content area.
             </summary>
-            <param name="IOQb"></param>
+            <param name="nQQb"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.nrQb.HelpButtonCommand">
+        <member name="P:Nevron.Nov.Internal.WtQb.HelpButtonCommand">
             <summary>
             Gets the command that should be associated with the help button of the ribbon.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.KjQh.IKQh.Compare(Nevron.Nov.Internal.nKQh,Nevron.Nov.Internal.nKQh)">
+        <member name="M:Nevron.Nov.Internal.AKrh.xKrh.Compare(Nevron.Nov.Internal.dlrh,Nevron.Nov.Internal.dlrh)">
             <summary>
             
             </summary>
-            <param name="KKQh"></param>
-            <param name="lKQh"></param>
+            <param name="Alrh"></param>
+            <param name="blrh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.tUrh.CreateColorBox">
+        <member name="M:Nevron.Nov.Internal.jvSh.CreateColorBox">
             <summary>
             Creates a theme color box that uses the current drawing theme
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.tUrh.CreatePaletteColorPicker">
+        <member name="M:Nevron.Nov.Internal.jvSh.CreatePaletteColorPicker">
             <summary>
             Creates a theme color picker that uses the current drawing theme
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.tUrh.CreateAdvancedColorPicker">
+        <member name="M:Nevron.Nov.Internal.jvSh.CreateAdvancedColorPicker">
             <summary>
             Creates a theme advanced color picker that uses the current drawing theme.
             </summary>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.hYrh.Menu">
+        <member name="P:Nevron.Nov.Internal.WYSh.Menu">
             <summary>
             Gets the menu shown in the popup window of this drop down.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.hYrh.CreatePopupWindow">
+        <member name="M:Nevron.Nov.Internal.WYSh.CreatePopupWindow">
             <summary>
             Creates the popup window of this drop down.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jYrh.OnClick">
+        <member name="M:Nevron.Nov.Internal.YYSh.OnClick">
             <summary>
             Called when the button is clicked. Overriden to prevent it from unchecking
             after a mouse click.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.fASh.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.UAth.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
             <summary>
             Called when the node ancestors chain has changed.
             </summary>
-            <param name="hASh"></param>
+            <param name="WAth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.vASh.OnKeyDown(Nevron.Nov.UI.NKeyEventArgs)">
+        <member name="M:Nevron.Nov.Internal.lbth.OnKeyDown(Nevron.Nov.UI.NKeyEventArgs)">
             <summary>
             Called when a key is down
             </summary>
-            <param name="xASh"></param>
+            <param name="nbth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AbSh.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.pbth.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             Performs the element pre-children custom paint.
             </summary>
-            <param name="vbSh"></param>
+            <param name="lCth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AbSh.ArrangeContent(Nevron.Nov.Graphics.NRectangle)">
+        <member name="M:Nevron.Nov.Internal.pbth.ArrangeContent(Nevron.Nov.Graphics.NRectangle)">
             <summary>
             Arranges the presentation stops
             </summary>
-            <param name="WbSh"></param>
+            <param name="MCth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AbSh.OnMouseMove(Nevron.Nov.UI.NMouseEventArgs)">
+        <member name="M:Nevron.Nov.Internal.pbth.OnMouseMove(Nevron.Nov.UI.NMouseEventArgs)">
             <summary>
             Default handler for the NMouse.MoveEvent event.
             </summary>
-            <param name="xbSh"></param>
+            <param name="nCth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AbSh.OnMouseOut(Nevron.Nov.UI.NMouseOverChangeEventArgs)">
+        <member name="M:Nevron.Nov.Internal.pbth.OnMouseOut(Nevron.Nov.UI.NMouseOverChangeEventArgs)">
             <summary>
             Default handler for the NMouse.OutEvent event.
             </summary>
-            <param name="YbSh"></param>
+            <param name="OCth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AbSh.OnMouseDown(Nevron.Nov.UI.NMouseButtonEventArgs)">
+        <member name="M:Nevron.Nov.Internal.pbth.OnMouseDown(Nevron.Nov.UI.NMouseButtonEventArgs)">
             <summary>
             Default handler for the NMouse.DownEvent event.
             </summary>
-            <param name="ACSh"></param>
+            <param name="pCth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xYSh.AddRibbonGroupItems(Nevron.Nov.UI.NRibbonGroupItemCollection)">
+        <member name="M:Nevron.Nov.Internal.nAUh.AddRibbonGroupItems(Nevron.Nov.UI.NRibbonGroupItemCollection)">
             <summary>
             Adds the ribbon group items.
             </summary>
-            <param name="YYSh"></param>
+            <param name="OAUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.AAth.AddRibbonGroupItems(Nevron.Nov.UI.NRibbonGroupItemCollection)">
+        <member name="M:Nevron.Nov.Internal.pAUh.AddRibbonGroupItems(Nevron.Nov.UI.NRibbonGroupItemCollection)">
             <summary>
             Adds the ribbon group items.
             </summary>
-            <param name="bAth"></param>
+            <param name="QAUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.CAth.AddRibbonGroupItems(Nevron.Nov.UI.NRibbonGroupItemCollection)">
+        <member name="M:Nevron.Nov.Internal.rAUh.AddRibbonGroupItems(Nevron.Nov.UI.NRibbonGroupItemCollection)">
             <summary>
             Adds the ribbon group items.
             </summary>
-            <param name="dAth"></param>
+            <param name="SAUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.EAth.AddRibbonGroupItems(Nevron.Nov.UI.NRibbonGroupItemCollection)">
+        <member name="M:Nevron.Nov.Internal.tAUh.AddRibbonGroupItems(Nevron.Nov.UI.NRibbonGroupItemCollection)">
             <summary>
             Adds the ribbon group items.
             </summary>
-            <param name="fAth"></param>
+            <param name="UAUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.EAth.CreateMenuSplitButton(Nevron.Nov.UI.NCommand)">
+        <member name="M:Nevron.Nov.Internal.tAUh.CreateMenuSplitButton(Nevron.Nov.UI.NCommand)">
             <summary>
             Creates a menu split button and associates it with the given command.
             </summary>
-            <param name="GAth"></param>
+            <param name="vAUh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dbth.AttachToSource(Nevron.Nov.Dom.NElement)">
+        <member name="M:Nevron.Nov.Internal.SbUh.AttachToSource(Nevron.Nov.Dom.NElement)">
             <summary>
             Attaches the command source to the specified element
             </summary>
-            <param name="fbth"></param>
+            <param name="UbUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dbth.DetachFromSource(Nevron.Nov.Dom.NElement)">
+        <member name="M:Nevron.Nov.Internal.SbUh.DetachFromSource(Nevron.Nov.Dom.NElement)">
             <summary>
             Detaches the command source to the specified element
             </summary>
-            <param name="Gbth"></param>
+            <param name="vbUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dbth.GetUpdateMask(Nevron.Nov.UI.ENCommandSourceUpdateReason)">
+        <member name="M:Nevron.Nov.Internal.SbUh.GetUpdateMask(Nevron.Nov.UI.ENCommandSourceUpdateReason)">
             <summary>
             Gets the mask that defines the aspects of the owner element that need to be updated at update timer ticks and after command execution.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dbth.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
+        <member name="M:Nevron.Nov.Internal.SbUh.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
             <summary>
             Updates the owner element core
             </summary>
-            <param name="jbth"></param>
+            <param name="YbUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.vjSh`2.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.lKth`2.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
             <summary>
             Overriden to update a reference to the property browser.
             </summary>
-            <param name="xMSh"></param>
+            <param name="nnth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.vESh.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
+        <member name="M:Nevron.Nov.Internal.lfth.OnAncestorsChanged(Nevron.Nov.Dom.NNode)">
             <summary>
             Overriden to store a reference to the owner side bar.
             </summary>
-            <param name="AfSh"></param>
+            <param name="pfth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.fOSh.GetUpdateMask(Nevron.Nov.UI.ENCommandSourceUpdateReason)">
+        <member name="M:Nevron.Nov.Internal.UOth.GetUpdateMask(Nevron.Nov.UI.ENCommandSourceUpdateReason)">
             <summary>
             Gets the mask that defines the aspects of the owner element that need to be updated at update timer ticks and after command execution.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.fOSh.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
+        <member name="M:Nevron.Nov.Internal.UOth.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
             <summary>
             Updates the owner element core
             </summary>
-            <param name="hOSh"></param>
+            <param name="WOth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xQSh`1.AttachToSource(Nevron.Nov.Dom.NElement)">
+        <member name="M:Nevron.Nov.Internal.nrth`1.AttachToSource(Nevron.Nov.Dom.NElement)">
             <summary>
             Attaches the command source to the specified element
             </summary>
-            <param name="ArSh"></param>
+            <param name="prth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xQSh`1.DetachFromSource(Nevron.Nov.Dom.NElement)">
+        <member name="M:Nevron.Nov.Internal.nrth`1.DetachFromSource(Nevron.Nov.Dom.NElement)">
             <summary>
             Detaches the command source to the specified element
             </summary>
-            <param name="brSh"></param>
+            <param name="Qrth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xQSh`1.GetUpdateMask(Nevron.Nov.UI.ENCommandSourceUpdateReason)">
+        <member name="M:Nevron.Nov.Internal.nrth`1.GetUpdateMask(Nevron.Nov.UI.ENCommandSourceUpdateReason)">
             <summary>
             Gets the mask that defines the aspects of the owner element that need to be updated at update timer ticks and after command execution.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xQSh`1.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
+        <member name="M:Nevron.Nov.Internal.nrth`1.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
             <summary>
             Updates the owner element core
             </summary>
-            <param name="ErSh"></param>
+            <param name="trth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dtSh`1.OnChanged(Nevron.Nov.Dom.NChangeData)">
+        <member name="M:Nevron.Nov.Internal.Stth`1.OnChanged(Nevron.Nov.Dom.NChangeData)">
             <summary>
             
             </summary>
-            <param name="EtSh"></param>
+            <param name="ttth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dGSh.GetUpdateMask(Nevron.Nov.UI.ENCommandSourceUpdateReason)">
+        <member name="M:Nevron.Nov.Internal.SGth.GetUpdateMask(Nevron.Nov.UI.ENCommandSourceUpdateReason)">
             <summary>
             Gets the mask that defines the aspects of the owner element that need to be updated
             at update timer ticks and after command execution.
             </summary>
-            <param name="fGSh"></param>
+            <param name="UGth"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dGSh.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
+        <member name="M:Nevron.Nov.Internal.SGth.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
             <summary>
             Overriden to update the command source element.
             </summary>
-            <param name="GGSh"></param>
+            <param name="vGth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.SUSh.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
+        <member name="M:Nevron.Nov.Internal.Ivth.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
             <summary>
             Overriden to update the command source element selected style.
             </summary>
-            <param name="UUSh"></param>
+            <param name="Kvth"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.SUSh.GetParameter(Nevron.Nov.UI.NTablePickerCell)">
+        <member name="M:Nevron.Nov.Internal.Ivth.GetParameter(Nevron.Nov.UI.NTablePickerCell)">
             <summary>
             Gets the parameter associated with the given cell.
             </summary>
-            <param name="vUSh"></param>
+            <param name="lvth"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SUSh.ParametersEqual(System.Object,System.Object)">
+        <member name="M:Nevron.Nov.Internal.Ivth.ParametersEqual(System.Object,System.Object)">
             <summary>
             Checks whether the given parameters are equal.
             </summary>
-            <param name="WUSh"></param>
-            <param name="xUSh"></param>
+            <param name="Mvth"></param>
+            <param name="nvth"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.KYSh.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
+        <member name="M:Nevron.Nov.Internal.AAUh.UpdateOwnerElementCore(Nevron.Nov.UI.NUpdateCommandSourceEventArgs)">
             <summary>
             Overriden to update the command source element.
             </summary>
-            <param name="MYSh"></param>
+            <param name="CAUh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.KYSh.GetParameter(Nevron.Nov.UI.NTablePickerCell)">
+        <member name="M:Nevron.Nov.Internal.AAUh.GetParameter(Nevron.Nov.UI.NTablePickerCell)">
             <summary>
             Gets the parameter associated with the given cell.
             </summary>
-            <param name="nYSh"></param>
+            <param name="dAUh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.KYSh.ParametersEqual(System.Object,System.Object)">
+        <member name="M:Nevron.Nov.Internal.AAUh.ParametersEqual(System.Object,System.Object)">
             <summary>
             Checks whether the given parameters are equal.
             </summary>
-            <param name="OYSh"></param>
-            <param name="pYSh"></param>
+            <param name="EAUh"></param>
+            <param name="fAUh"></param>
             <returns></returns>
         </member>
         <member name="T:Nevron.Nov.Office.Draw.NDrawOptions">

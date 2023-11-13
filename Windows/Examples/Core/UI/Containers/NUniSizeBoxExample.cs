@@ -40,12 +40,10 @@ namespace Nevron.Nov.Examples.UI
 			{
 				NPairBox pairBox = new NPairBox(new NLabel(Texts[i * 2]), new NLabel(Texts[i * 2 + 1]), true);
 				
-				pairBox.Box1.Border = NBorder.CreateFilledBorder(NColor.Blue);
-				pairBox.Box1.BorderThickness = new NMargins(1);
-				pairBox.Box2.Border = NBorder.CreateFilledBorder(NColor.Red);
-				pairBox.Box2.BorderThickness = new NMargins(1);
+				pairBox.Box1.SetBorder(1, NColor.Blue);
+                pairBox.Box2.SetBorder(1, NColor.Red);
 
-				m_PairBoxes[i] = pairBox;
+                m_PairBoxes[i] = pairBox;
 				stack.Add(pairBox);
 			}
 

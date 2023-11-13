@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "XfMc3jex4T3wd75OeOk8W6n375AV7GFcw5e4UymuTIzdFehqNkR1q//S0sfQ1Md3SSUPpPlcq8TO6/SBWw5C/A==",
+  "success": true,
+  "projectFilePath": "C:\\Program Files (x86)\\Nevron Software\\Nevron Open Vision 2023.1\\Examples\\Core\\Nevron.Nov.Examples.csproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

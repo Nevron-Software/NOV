@@ -35,7 +35,7 @@ namespace Nevron.Nov.Examples.UI
 			m_ImageBox = new NImageBox(NResources.Image_SampleImage_png);
 			m_ImageBox.HorizontalPlacement = ENHorizontalPlacement.Left;
 			m_ImageBox.VerticalPlacement = ENVerticalPlacement.Top;
-			m_ImageBox.SetBorder(NColor.Red, new NMargins(1));
+			m_ImageBox.SetBorder(1, NColor.Red);
 
 			return m_ImageBox;
 		}

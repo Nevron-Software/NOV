@@ -241,7 +241,7 @@
             
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.YWQI.ToString">
+        <member name="M:Nevron.Nov.Internal.bISI.ToString">
             <summary>
             Returns a string that represents this NFileDialogCustomPlace instance.
             </summary>
@@ -249,7 +249,7 @@
             A string that represents this NFileDialogCustomPlace instance.
             </returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.EIrI.ToString">
+        <member name="M:Nevron.Nov.Internal.GSSI.ToString">
             <summary>
             Provides a string version of this object.
             </summary>
@@ -257,117 +257,117 @@
             A string version of this object.
             </returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.UGKI.Dispose">
+        <member name="M:Nevron.Nov.Internal.MhlI.Dispose">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.dfKI.Dispose">
+        <member name="M:Nevron.Nov.Internal.UflI.Dispose">
             <summary>
             Disposes the internally created bitmap
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vdCI.Dispose">
+        <member name="M:Nevron.Nov.Internal.lEdI.Dispose">
             <summary>
             
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.pECI.ErrorCode">
+        <member name="P:Nevron.Nov.Internal.ffdI.ErrorCode">
             <summary>
             Gets the HRESULT of the error.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.CAOI.IsReadOnly">
+        <member name="M:Nevron.Nov.Internal.SApI.IsReadOnly">
             <summary>
             Returns true
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CAOI.SetData(Nevron.Nov.UI.NDataFormat,System.Object)">
+        <member name="M:Nevron.Nov.Internal.SApI.SetData(Nevron.Nov.UI.NDataFormat,System.Object)">
             <summary>
             Throws an invalid operation exception
             </summary>
-            <param name="EAOI"></param>
-            <param name="fAOI"></param>
+            <param name="UApI"></param>
+            <param name="vApI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.CAOI.ContainsData(Nevron.Nov.UI.NDataFormat)">
+        <member name="M:Nevron.Nov.Internal.SApI.ContainsData(Nevron.Nov.UI.NDataFormat)">
             <summary>
             Queries whether data can be obtained in the specified format.
             </summary>
-            <param name="GAOI"></param>
+            <param name="WApI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CAOI.GetFormats">
+        <member name="M:Nevron.Nov.Internal.SApI.GetFormats">
             <summary>
             Gets a list of the formats in which data can be obtained.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CAOI.GetData(Nevron.Nov.UI.NDataFormat)">
+        <member name="M:Nevron.Nov.Internal.SApI.GetData(Nevron.Nov.UI.NDataFormat)">
             <summary>
             Gets a data object in the specified format. 
             Returns null, if data in the specified format does not exists or its retrieval failed.  
             Returns a format specific object instance in case the data was successfully retrived.
             </summary>
-            <param name="hAOI"></param>
+            <param name="xApI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.hhGG.Dispose">
+        <member name="M:Nevron.Nov.Internal.KdhG.Dispose">
             <summary>
             
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UvrI.IntegratedSecurity">
+        <member name="P:Nevron.Nov.Internal.WGtI.IntegratedSecurity">
             <summary>
             Gets/Sets a boolean value that indicates whether UserId and Password are specified in the connection(when false) 
             or whether the current Windows account credentials are used for authentication (when true).
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UvrI.UserID">
+        <member name="P:Nevron.Nov.Internal.WGtI.UserID">
             <summary>
             Gets or sets the user ID to be used when connecting to SQL Server.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UvrI.Password">
+        <member name="P:Nevron.Nov.Internal.WGtI.Password">
             <summary>
             Gets or sets the password for the SQL Server account.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UvrI.DataSource">
+        <member name="P:Nevron.Nov.Internal.WGtI.DataSource">
             <summary>
             Gets or sets the name or network address of the instance of SQL Server to connect to.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.UvrI.InitialCatalog">
+        <member name="P:Nevron.Nov.Internal.WGtI.InitialCatalog">
             <summary>
             Gets or sets the name of the database associated with the connection.
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.xtrI`1.IsOpen">
+        <member name="P:Nevron.Nov.Internal.AftI`1.IsOpen">
             <summary>
             Checks whether the connection is opened.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.xtrI`1.GetSchema(System.String)">
+        <member name="M:Nevron.Nov.Internal.AftI`1.GetSchema(System.String)">
             <summary>
             
             </summary>
-            <param name="AUrI"></param>
+            <param name="CftI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xtrI`1.Close">
+        <member name="M:Nevron.Nov.Internal.AftI`1.Close">
             <summary>
             Closes the connection.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.hIQI.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.xIrI.Equals(System.Object)">
             <summary>
             Overriden to check whether two cursor definititions are equal or not
             </summary>
-            <param name="jIQI"></param>
+            <param name="AjrI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.hIQI.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.xIrI.GetHashCode">
             <summary>
             Overriden because equal was overriden
             </summary>

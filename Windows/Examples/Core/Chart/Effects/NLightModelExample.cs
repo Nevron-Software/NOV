@@ -118,6 +118,9 @@ namespace Nevron.Nov.Examples.Chart
             NStackPanel stack = new NStackPanel();
             NUniSizeBoxGroup boxGroup = new NUniSizeBoxGroup(stack);
 
+            NRadioButtonGroup radioButtonGroup = new NRadioButtonGroup();
+            radioButtonGroup.Content = boxGroup;
+
             // Custom light model group
             NRadioButton useCustomLightModelRadioButton = new NRadioButton("Use Custom Light Model");
             stack.Add(useCustomLightModelRadioButton);
@@ -144,11 +147,10 @@ namespace Nevron.Nov.Examples.Chart
             usePredefinedLightModelRadioButton.CheckedChanged += UsePredefinedLightModelRadioButton_CheckedChanged;
 
             useCustomLightModelRadioButton.Checked = true;
-            m_CustomLightModelComboBox.SelectedIndex = 0;
+            OnCustomLightModelComboBoxSelectedIndexChanged(null);
 
-            return boxGroup;
+            return radioButtonGroup;
         }
-
 
         protected override string GetExampleDescription()
         {

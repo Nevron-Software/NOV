@@ -11,7 +11,7 @@
     <DocumentationFile>Nevron.Nov.Examples.xml</DocumentationFile>
   </PropertyGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="&quot;$(ProjectDir)\NResourceMaker.exe&quot; &quot;$(ProjectDir)\Resources&quot; Resources.xml ResourcesLog.txt" />
+    <Exec Command="mono &quot;$(ProjectDir)\NResourceMaker.exe&quot; &quot;$(ProjectDir)Resources&quot; Resources.xml ResourcesLog.txt" />
   </Target>
   <ItemGroup>
     <Compile Remove="_Internal\AreaTest_Internal.cs" />
@@ -74,5 +74,8 @@
       <HintPath>..\..\Bin\Net70\Nevron.Nov.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Images\ExamplesUI\Backgrounds\" />
   </ItemGroup>
 </Project>

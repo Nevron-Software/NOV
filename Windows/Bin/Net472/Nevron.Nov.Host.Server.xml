@@ -10,40 +10,40 @@
             </summary>
             <param name="modules"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.QtGG.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
+        <member name="M:Nevron.Nov.Internal.UphG.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
             <summary>
             Overriden to return null - native bitmap encoding is not currently supported by the server host.
             </summary>
-            <param name="rtGG"></param>
+            <param name="vphG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.QtGG.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
+        <member name="M:Nevron.Nov.Internal.UphG.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
             <summary>
             Overriden to return null - native JPEG encoding is not currently supported by the server host.
             </summary>
-            <param name="StGG"></param>
+            <param name="WphG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.QtGG.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
+        <member name="M:Nevron.Nov.Internal.UphG.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
             <summary>
             Overriden to return null - native PNG encoding is not currently supported by the server host.
             </summary>
-            <param name="UtGG"></param>
+            <param name="YphG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.QtGG.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
+        <member name="M:Nevron.Nov.Internal.UphG.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
             <summary>
             Overriden to return null - native TIFF encoding is not currently supported by the server host.
             </summary>
-            <param name="WtGG"></param>
+            <param name="bQhG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.QtGG.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
+        <member name="M:Nevron.Nov.Internal.UphG.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
             <summary>
             Overriden to return null - native image decoding is not currently supported by the server host.
             </summary>
-            <param name="xtGG"></param>
-            <param name="YtGG"></param>
+            <param name="CQhG"></param>
+            <param name="dQhG"></param>
             <returns></returns>
         </member>
     </members>

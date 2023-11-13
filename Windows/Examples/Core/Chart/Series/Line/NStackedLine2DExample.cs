@@ -15,18 +15,18 @@ namespace Nevron.Nov.Examples.Chart
 		#region Constructors
 
 		/// <summary>
-		/// Default constructor
+		/// Default constructor.
 		/// </summary>
 		public NStackedLine2DExample()
 		{
-			
 		}
+
 		/// <summary>
-		/// Static constructor
+		/// Static constructor.
 		/// </summary>
 		static NStackedLine2DExample()
 		{
-			NStackedLineExampleSchema = NSchema.Create(typeof(NStackedLine2DExample), NExampleBaseSchema);
+            NStackedLine2DExampleSchema = NSchema.Create(typeof(NStackedLine2DExample), NExampleBaseSchema);
 		}
 
 		#endregion
@@ -159,11 +159,14 @@ namespace Nevron.Nov.Examples.Chart
 		NLineSeries m_Line2;
 		NLineSeries m_Line3;
 
-		#endregion
+        #endregion
 
-		#region Schema
+        #region Schema
 
-		public static readonly NSchema NStackedLineExampleSchema;
+        /// <summary>
+        /// Schema associated with NStackedLine2DExample.
+        /// </summary>
+        public static readonly NSchema NStackedLine2DExampleSchema;
 
 		#endregion
 	}

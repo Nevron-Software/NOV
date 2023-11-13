@@ -2691,14 +2691,64 @@
             Default constructor
             </summary>
         </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.SeriesRange">
+            <summary>
+            Gets the axis series range
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.SeriesRangeBegin">
+            <summary>
+            Gets the series range begin
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.SeriesRangeEnd">
+            <summary>
+            Gets the series range end
+            </summary>
+        </member>
         <member name="P:Nevron.Nov.Chart.NChartAxis.ContentRange">
             <summary>
             Gets the axis content range
             </summary>
         </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.ContentRangeBegin">
+            <summary>
+            Gets the content range begin
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.ContentRangeEnd">
+            <summary>
+            Gets the content range end
+            </summary>
+        </member>
         <member name="P:Nevron.Nov.Chart.NChartAxis.ViewRange">
             <summary>
             Gets the axis view range
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.ViewRangeBegin">
+            <summary>
+            Gets the view range begin
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.ViewRangeEnd">
+            <summary>
+            Gets the view range end
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.PageRange">
+            <summary>
+            Gets the axis view range
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.PageRangeBegin">
+            <summary>
+            Gets the page range begin
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartAxis.PageRangeEnd">
+            <summary>
+            Gets the page range end
             </summary>
         </member>
         <member name="P:Nevron.Nov.Chart.NChartAxis.ViewRangeMode">
@@ -2714,11 +2764,6 @@
         <member name="P:Nevron.Nov.Chart.NChartAxis.MinPageRangeLength">
             <summary>
             Gets or sets the minimum page range length
-            </summary>
-        </member>
-        <member name="P:Nevron.Nov.Chart.NChartAxis.PageRange">
-            <summary>
-            Gets or sets the page range
             </summary>
         </member>
         <member name="P:Nevron.Nov.Chart.NChartAxis.MinViewRangeValue">
@@ -2819,11 +2864,6 @@
             Reference to the EnablePageRange property
             </summary>
         </member>
-        <member name="F:Nevron.Nov.Chart.NChartAxis.PageRangeProperty">
-            <summary>
-            Reference to the PageRange property
-            </summary>
-        </member>
         <member name="F:Nevron.Nov.Chart.NChartAxis.RulerRangeProperty">
             <summary>
             Reference to the RulerRange property
@@ -2882,6 +2922,46 @@
         <member name="F:Nevron.Nov.Chart.NChartAxis.ReferenceLinesChild">
             <summary>
             Reference to the reference lines child
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NChartAxis.SeriesRangeBeginProperty">
+            <summary>
+            Series range begin property
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NChartAxis.SeriesRangeEndProperty">
+            <summary>
+            Series range end property
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NChartAxis.ContentRangeBeginProperty">
+            <summary>
+            Reference to the content range begin property
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NChartAxis.ContentRangeEndProperty">
+            <summary>
+            Reference to the content range end property
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NChartAxis.ViewRangeBeginProperty">
+            <summary>
+            Reference to the view range begin property
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NChartAxis.ViewRangeEndProperty">
+            <summary>
+            Reference to the view range end property
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NChartAxis.PageRangeBeginProperty">
+            <summary>
+            Reference to the PageRangeBegin property
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NChartAxis.PageRangeEndProperty">
+            <summary>
+            Reference to the PageRangeEnd property
             </summary>
         </member>
         <member name="T:Nevron.Nov.Chart.NChartElement">
@@ -3845,11 +3925,6 @@
         <member name="F:Nevron.Nov.Chart.NCartesianSeries.DepthAxisRefProperty">
             <summary>
             ScaleAxisRef to the depth axis ref property
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NCartesianSeries.SeriesBoxClippingProperty">
-            <summary>
-            Reference to the SeriesBoxClip property
             </summary>
         </member>
         <member name="T:Nevron.Nov.Chart.NCartesianSeriesCollection">
@@ -8164,7 +8239,7 @@
             Gets or sets the origin index
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Chart.NSeries.RegardsAxisClipping">
+        <member name="P:Nevron.Nov.Chart.NSeries.RegardAxisClipping">
             <summary>
             Whether the series regards axis clipping. 
             </summary>
@@ -8282,7 +8357,7 @@
             Reference to the OriginIndex property
             </summary>
         </member>
-        <member name="F:Nevron.Nov.Chart.NSeries.RegardsAxisClippingProperty">
+        <member name="F:Nevron.Nov.Chart.NSeries.RegardAxisClippingProperty">
             <summary>
             Reference to the RegardsAxisClipping property
             </summary>
@@ -10479,6 +10554,83 @@
             Schema associated with NChartDocument.
             </summary>
         </member>
+        <member name="T:Nevron.Nov.Chart.NChartPalette">
+            <summary>
+            Represents a theme for a chart.
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Chart.NChartPalette.GetColors(Nevron.Nov.Chart.ENChartPalette)">
+            <summary>
+            Gets the colors associated with the specified palette
+            </summary>
+            <param name="palette"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.NevronPalette">
+            <summary>
+            Nevron
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.WinterPalette">
+            <summary>
+            Winter
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.AutumnPalette">
+            <summary>
+            Autumn
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.BrightPalette">
+            <summary>
+            Bright
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.CoolPalette">
+            <summary>
+            Cool
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.DarkPalette">
+            <summary>
+            Dark
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.NaturePalette">
+            <summary>
+            Nature
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.PalePalette">
+            <summary>
+            Pale
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.PastelPalette">
+            <summary>
+            Pastel
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.RosePalette">
+            <summary>
+            Rose
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.WhitePalette">
+            <summary>
+            White
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.BlackPalette">
+            <summary>
+            Black
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NChartPalette.FreshPalette">
+            <summary>
+            Fresh
+            </summary>
+        </member>
         <member name="T:Nevron.Nov.Chart.NChartPrintLayout">
             <summary>
             Represents a chart print layout.
@@ -10557,71 +10709,6 @@
         <member name="M:Nevron.Nov.Chart.NChartTheme.CreateAxisRules">
             <summary>
             Creates the default scale rules
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.NevronPalette">
-            <summary>
-            Nevron
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.WinterPalette">
-            <summary>
-            Winter
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.AutumnPalette">
-            <summary>
-            Autumn
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.BrightPalette">
-            <summary>
-            Bright
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.CoolPalette">
-            <summary>
-            Cool
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.DarkPalette">
-            <summary>
-            Dark
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.NaturePalette">
-            <summary>
-            Nature
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.PalePalette">
-            <summary>
-            Pale
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.PastelPalette">
-            <summary>
-            Pastel
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.RosePalette">
-            <summary>
-            Rose
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.WhitePalette">
-            <summary>
-            White
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.BlackPalette">
-            <summary>
-            Black
-            </summary>
-        </member>
-        <member name="F:Nevron.Nov.Chart.NChartTheme.FreshPalette">
-            <summary>
-            Fresh
             </summary>
         </member>
         <member name="F:Nevron.Nov.Chart.NChartTheme.NChartThemeSchema">
@@ -10787,14 +10874,14 @@
             <summary>
             Gets the context specific text representaton of the specified printRangeMode.
             </summary>
-            <param name="tvKG"></param>
+            <param name="bSlG"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Chart.NChartViewSurface.Nevron#Nov#UI#INPrintLayoutElement#GetSheetRangeModeSheetRange(Nevron.Nov.UI.ENSheetRangeMode)">
             <summary>
             Gets the range of sheets, which are going to be printed by the specified printRangeMode.
             </summary>
-            <param name="UvKG"></param>
+            <param name="CSlG"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Chart.NChartViewSurface.Nevron#Nov#UI#INPrintLayoutElement#CanHaveMultipleSheets">
@@ -10813,28 +10900,28 @@
             <summary>
             Gets the title of the page with the specified index.
             </summary>
-            <param name="vvKG"></param>
+            <param name="dSlG"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Chart.NChartViewSurface.Nevron#Nov#UI#INPrintLayoutElement#GetSheetPrintLayout(System.Int32)">
             <summary>
             Gets the print layout of the sheet with the specified index.
             </summary>
-            <param name="WvKG"></param>
+            <param name="ESlG"></param>
             <returns></returns>
         </member>
         <member name="M:Nevron.Nov.Chart.NChartViewSurface.Nevron#Nov#UI#INPrintLayoutElement#SetSheetPrintLayout(System.Int32,Nevron.Nov.UI.NPrintLayout)">
             <summary>
             Sets the print layout of the sheet with the specified index.
             </summary>
-            <param name="xvKG"></param>
-            <param name="YvKG"></param>
+            <param name="fSlG"></param>
+            <param name="GSlG"></param>
         </member>
         <member name="M:Nevron.Nov.Chart.NChartViewSurface.Nevron#Nov#UI#INPrintLayoutElement#GetPrintLayoutTilingGridSet(Nevron.Nov.UI.ENSheetRangeMode)">
             <summary>
             Gets the set of tiling grids, for the current context print range mode.
             </summary>
-            <param name="AWKG"></param>
+            <param name="hSlG"></param>
             <returns></returns>
         </member>
         <member name="P:Nevron.Nov.Chart.NChartViewSurface.PrintLayout">
@@ -15915,11 +16002,11 @@
             </summary>
             <param name="decimalSeparator"></param>
         </member>
-        <member name="M:Nevron.Nov.Chart.NCharacterDecimalPositionFilter.Nevron#Nov#DataStructures#INFilter{Nevron#Nov#Internal#vUrG}#Filter(Nevron.Nov.Internal.vUrG)">
+        <member name="M:Nevron.Nov.Chart.NCharacterDecimalPositionFilter.Nevron#Nov#DataStructures#INFilter{Nevron#Nov#Internal#GrSG}#Filter(Nevron.Nov.Internal.GrSG)">
             <summary>
             Overriden to return true if the specified char token is placed relate to the string decimal position
             </summary>
-            <param name="WtrG">char token (NCharToken)</param>
+            <param name="hQSG">char token (NCharToken)</param>
             <returns></returns>
         </member>
         <member name="T:Nevron.Nov.Chart.NCellDisplay">
@@ -16726,6 +16813,18 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="M:Nevron.Nov.Chart.NLegend.CreateLegendSymbol(Nevron.Nov.Chart.ENLegendMarkShape,Nevron.Nov.Graphics.NSize,Nevron.Nov.Graphics.NMargins,Nevron.Nov.Graphics.NFill,Nevron.Nov.Graphics.NStroke,Nevron.Nov.Graphics.NStroke)">
+            <summary>
+            Creates a legend symbol
+            </summary>
+            <param name="markShape"></param>
+            <param name="markSize"></param>
+            <param name="symbolMargins"></param>
+            <param name="markFill"></param>
+            <param name="markStroke"></param>
+            <param name="lineStroke"></param>
+            <returns></returns>
         </member>
         <member name="F:Nevron.Nov.Chart.NLegend.NLegendSchema">
             <summary>
@@ -22355,6 +22454,16 @@
             Gets / sets the axis scale 
             </summary>
         </member>
+        <member name="P:Nevron.Nov.Chart.NAxisBase.RulerRangeBegin">
+            <summary>
+            Gets the page range begin
+            </summary>
+        </member>
+        <member name="P:Nevron.Nov.Chart.NAxisBase.RulerRangeEnd">
+            <summary>
+            Gets the page range end
+            </summary>
+        </member>
         <member name="M:Nevron.Nov.Chart.NAxisBase.InvalidateMeasure(System.Object)">
             <summary>
             Invalidates teh measure
@@ -22391,334 +22500,344 @@
             Reference to the VisibilityModeProperty
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.SEtG.IsGreaterThan(Nevron.Nov.Internal.YCtG,Nevron.Nov.Internal.YCtG)">
+        <member name="F:Nevron.Nov.Chart.NAxisBase.RulerRangeBeginProperty">
+            <summary>
+            Reference to the RulerRangeBegin property
+            </summary>
+        </member>
+        <member name="F:Nevron.Nov.Chart.NAxisBase.RulerRangeEndProperty">
+            <summary>
+            Reference to the RulerRangeEnd property
+            </summary>
+        </member>
+        <member name="M:Nevron.Nov.Internal.dbUG.IsGreaterThan(Nevron.Nov.Internal.jYtG,Nevron.Nov.Internal.jYtG)">
             <summary>
             
             </summary>
-            <param name="tEtG"></param>
-            <param name="UEtG"></param>
+            <param name="EbUG"></param>
+            <param name="fbUG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.KKlG.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.UGMG.Equals(System.Object)">
             <summary>
             Returns true if the objects are equal
             </summary>
-            <param name="pllG"></param>
+            <param name="AIMG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.KKlG.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.UGMG.GetHashCode">
             <summary>
             Overriden to avoid warnings
             </summary>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.YGWG.Item(System.Int32)">
+        <member name="P:Nevron.Nov.Internal.jdxG.Item(System.Int32)">
             <summary>
             Gets or sets the point at index
             </summary>
             <param name="index"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SCpG.GetGeometryBounds">
+        <member name="M:Nevron.Nov.Internal.dYpG.GetGeometryBounds">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SCpG.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.dYpG.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             
             </summary>
-            <param name="WCpG"></param>
+            <param name="hYpG"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.GdpG.GetGeometryBounds">
+        <member name="M:Nevron.Nov.Internal.QYpG.GetGeometryBounds">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.GdpG.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
+        <member name="M:Nevron.Nov.Internal.QYpG.OnPrePaint(Nevron.Nov.Dom.NPaintVisitor)">
             <summary>
             
             </summary>
-            <param name="jdpG"></param>
+            <param name="tYpG"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.vWKG.Name">
+        <member name="P:Nevron.Nov.Internal.dtlG.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.vWKG.Extensions">
+        <member name="P:Nevron.Nov.Internal.dtlG.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.vWKG.Mime">
+        <member name="P:Nevron.Nov.Internal.dtlG.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vWKG.OnUse">
+        <member name="M:Nevron.Nov.Internal.dtlG.OnUse">
             <summary>
             Called when the format is used
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.vWKG.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Chart.Formats.NChartLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.dtlG.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Chart.Formats.NChartLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             Loads the document from the specified stream.
             </summary>
-            <param name="bxKG"></param>
-            <param name="CxKG"></param>
-            <param name="dxKG"></param>
+            <param name="ItlG"></param>
+            <param name="jtlG"></param>
+            <param name="KtlG"></param>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.vWKG.SaveToStreamCore(Nevron.Nov.Chart.NChartDocument,System.IO.Stream,Nevron.Nov.Chart.Formats.NChartSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.dtlG.SaveToStreamCore(Nevron.Nov.Chart.NChartDocument,System.IO.Stream,Nevron.Nov.Chart.Formats.NChartSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             Saves the document to the specified stream.
             </summary>
-            <param name="ExKG"></param>
-            <param name="fxKG"></param>
-            <param name="GxKG"></param>
-            <param name="hxKG"></param>
+            <param name="ltlG"></param>
+            <param name="MtlG"></param>
+            <param name="ntlG"></param>
+            <param name="OtlG"></param>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="P:Nevron.Nov.Internal.jxKG.Name">
+        <member name="P:Nevron.Nov.Internal.QtlG.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.jxKG.Extensions">
+        <member name="P:Nevron.Nov.Internal.QtlG.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.jxKG.Mime">
+        <member name="P:Nevron.Nov.Internal.QtlG.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.jxKG.OnUse">
+        <member name="M:Nevron.Nov.Internal.QtlG.OnUse">
             <summary>
             Called when the format is used
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.jxKG.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Chart.Formats.NChartLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.QtlG.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Chart.Formats.NChartLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="lxKG"></param>
-            <param name="MxKG"></param>
-            <param name="nxKG"></param>
+            <param name="StlG"></param>
+            <param name="ttlG"></param>
+            <param name="UtlG"></param>
             <returns></returns>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.jxKG.SaveToStreamCore(Nevron.Nov.Chart.NChartDocument,System.IO.Stream,Nevron.Nov.Chart.Formats.NChartSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.QtlG.SaveToStreamCore(Nevron.Nov.Chart.NChartDocument,System.IO.Stream,Nevron.Nov.Chart.Formats.NChartSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="OxKG"></param>
-            <param name="pxKG"></param>
-            <param name="QxKG"></param>
-            <param name="rxKG"></param>
+            <param name="vtlG"></param>
+            <param name="WtlG"></param>
+            <param name="xtlG"></param>
+            <param name="YtlG"></param>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Nevron.Nov.Internal.OKpG.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.YGQG.Equals(System.Object)">
             <summary>
             Returns true if the objects are equal
             </summary>
-            <param name="tKpG"></param>
+            <param name="EhQG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.OKpG.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.YGQG.GetHashCode">
             <summary>
             Overriden to avoid warnings
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.WKpG.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.hhQG.Equals(System.Object)">
             <summary>
             Returns true if the objects are equal
             </summary>
-            <param name="blpG"></param>
+            <param name="lhQG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.WKpG.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.hhQG.GetHashCode">
             <summary>
             Overriden to avoid warnings
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.flpG.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.phQG.Equals(System.Object)">
             <summary>
             Returns true if the objects are equal
             </summary>
-            <param name="llpG"></param>
+            <param name="vhQG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.flpG.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.phQG.GetHashCode">
             <summary>
             Overriden to avoid warnings
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.YtrG.Nevron#Nov#DataStructures#INFilter{Nevron#Nov#Internal#vUrG}#Filter(Nevron.Nov.Internal.vUrG)">
+        <member name="M:Nevron.Nov.Internal.jQSG.Nevron#Nov#DataStructures#INFilter{Nevron#Nov#Internal#GrSG}#Filter(Nevron.Nov.Internal.GrSG)">
             <summary>
             Overriden to return true if the specified char token falls in the character set ranges
             </summary>
-            <param name="CUrG">char token (NCharToken)</param>
+            <param name="MQSG">char token (NCharToken)</param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.OAlG.Nevron#Nov#DataStructures#INGreaterThanComparer{Nevron#Nov#NKeyValuePair{Nevron#Nov#Internal#rAlG,Nevron#Nov#Internal#IYKG}}#IsGreaterThan(Nevron.Nov.NKeyValuePair{Nevron.Nov.Internal.rAlG,Nevron.Nov.Internal.IYKG},Nevron.Nov.NKeyValuePair{Nevron.Nov.Internal.rAlG,Nevron.Nov.Internal.IYKG})">
+        <member name="M:Nevron.Nov.Internal.vvlG.Nevron#Nov#DataStructures#INGreaterThanComparer{Nevron#Nov#NKeyValuePair{Nevron#Nov#Internal#YvlG,Nevron#Nov#Internal#pUlG}}#IsGreaterThan(Nevron.Nov.NKeyValuePair{Nevron.Nov.Internal.YvlG,Nevron.Nov.Internal.pUlG},Nevron.Nov.NKeyValuePair{Nevron.Nov.Internal.YvlG,Nevron.Nov.Internal.pUlG})">
             <summary>
             Returns true if a is greater than b
             </summary>
-            <param name="pAlG"></param>
-            <param name="QAlG"></param>
+            <param name="WvlG"></param>
+            <param name="xvlG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.ChMG.Filter(System.Double)">
+        <member name="M:Nevron.Nov.Internal.MdnG.Filter(System.Double)">
             <summary>
             Returns true if the object is in the specified double range
             </summary>
-            <param name="fhMG"></param>
+            <param name="pdnG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.MhMG.Filter(System.Int64)">
+        <member name="M:Nevron.Nov.Internal.WdnG.Filter(System.Int64)">
             <summary>
             Returns true if the object is in the specified double range
             </summary>
-            <param name="phMG"></param>
+            <param name="AEnG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xhMG.Filter(System.Int64)">
+        <member name="M:Nevron.Nov.Internal.IEnG.Filter(System.Int64)">
             <summary>
             Filters the specified object
             </summary>
-            <param name="bIMG"></param>
+            <param name="lEnG"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.pnSG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.AKtG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.UnSG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.fKtG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.nSpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.xOQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.ftpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.ppQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.OtpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.YpQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CUpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.MQQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.pUpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.ArQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.dvpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.nrQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.lvpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.vrQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.IWpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.SSQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.OWpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.YSQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.vWpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.GtQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.jxpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.ttQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.vxpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.GUQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.fYpG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.pUQG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.AdvG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.KYvG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CfvG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.MbWG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.OhvG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.YdWG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SIvG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.dfWG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.WjvG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.hGWG.DeepClone">
             <summary>
             Creates an exact replica of this object
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.MtSG.DeepClone">
+        <member name="M:Nevron.Nov.Internal.WptG.DeepClone">
             <summary>
             
             </summary>

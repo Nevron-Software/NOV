@@ -137,7 +137,7 @@ namespace Nevron.Nov.Examples.Chart
 		{
 			NChartPdfExporter pdfExporter = new NChartPdfExporter(m_ChartView.Content);
 			pdfExporter.SaveAsPdf();
-		}
+        }
 		private void ShowPdfExportDialog_Click(NEventArgs arg)
 		{
 			NChartPdfExporter pdfExporter = new NChartPdfExporter(m_ChartView.Content);

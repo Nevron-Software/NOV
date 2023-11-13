@@ -117,10 +117,11 @@
             </summary>
             <param name="modules"></param>
         </member>
-        <member name="M:Nevron.Nov.Windows.Forms.NNovApplicationInstaller.InstallServer(Nevron.Nov.NModule[])">
+        <member name="M:Nevron.Nov.Windows.Forms.NNovApplicationInstaller.InstallServer(Nevron.Nov.ENProductGroup,Nevron.Nov.NModule[])">
             <summary>
             Installs the services needed for a WPF application server.
             </summary>
+            <param name="productGroup"></param>
             <param name="modules"></param>
         </member>
         <member name="T:Nevron.Nov.Windows.Forms.NResources">
@@ -336,125 +337,125 @@
             </summary>
             <param name="e"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.EtQb.Dispose(System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.MvQb.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
-            <param name="xtQb">true if managed resources should be disposed; otherwise, false.</param>
+            <param name="GWQb">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:Nevron.Nov.Internal.hUQb`1.OnLoad(System.EventArgs)">
+        <member name="M:Nevron.Nov.Internal.pWQb`1.OnLoad(System.EventArgs)">
             <summary>
             Called when the form is first loaded.
             </summary>
-            <param name="IUQb"></param>
+            <param name="QWQb"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.hUQb`1.OnShown(System.EventArgs)">
+        <member name="M:Nevron.Nov.Internal.pWQb`1.OnShown(System.EventArgs)">
             <summary>
             Called after the form has been shown.
             </summary>
-            <param name="jUQb"></param>
+            <param name="rWQb"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.hUQb`1.OnClosing(System.ComponentModel.CancelEventArgs)">
+        <member name="M:Nevron.Nov.Internal.pWQb`1.OnClosing(System.ComponentModel.CancelEventArgs)">
             <summary>
             Called when the form is about to be closed.
             </summary>
-            <param name="KUQb"></param>
+            <param name="SWQb"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.hUQb`1.OnLocationChanged(System.EventArgs)">
+        <member name="M:Nevron.Nov.Internal.pWQb`1.OnLocationChanged(System.EventArgs)">
             <summary>
             Called when the location of the form has changed.
             </summary>
-            <param name="lUQb"></param>
+            <param name="tWQb"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.SxrI.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
+        <member name="M:Nevron.Nov.Internal.UItI.NativeDecodeImageData(System.Byte[],Nevron.Nov.Graphics.NImageFormat)">
             <summary>
             Decodes the specified image data, using GDI+ image decoders.
             </summary>
-            <param name="txrI">Encoded image data.</param>
-            <param name="UxrI">The format of the data in the byte array - not used, because GDI+ performs its own format recognition.</param>
+            <param name="vItI">Encoded image data.</param>
+            <param name="WItI">The format of the data in the byte array - not used, because GDI+ performs its own format recognition.</param>
             <returns>Returns a raster that contains the decoded image data. Returns null if the decoding was not successful.</returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SxrI.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
+        <member name="M:Nevron.Nov.Internal.UItI.NativeEncodeBitmap(Nevron.Nov.Graphics.NRaster)">
             <summary>
             Encodes a raster into BMP image format, using the GDI+ image encoder.
             </summary>
-            <param name="vxrI">The raster to be encoded.</param>
+            <param name="xItI">The raster to be encoded.</param>
             <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SxrI.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
+        <member name="M:Nevron.Nov.Internal.UItI.NativeEncodePng(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NPngEncoderSettings)">
             <summary>
             Encodes a raster into PNG image format, using the GDI+ image encoder.
             </summary>
-            <param name="WxrI">The raster to be encoded.</param>
-            <param name="xxrI">PNG encoder settings.</param>
+            <param name="YItI">The raster to be encoded.</param>
+            <param name="AjtI">PNG encoder settings.</param>
             <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SxrI.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
+        <member name="M:Nevron.Nov.Internal.UItI.NativeEncodeJpg(Nevron.Nov.Graphics.NRaster,Nevron.Nov.Graphics.NJpegEncoderSettings)">
             <summary>
             Encodes a raster into JPEG image format, using the GDI+ image encoder.
             </summary>
-            <param name="YxrI">The raster to be encoded.</param>
-            <param name="AYrI">JPEG encoder settings.</param>
+            <param name="bjtI">The raster to be encoded.</param>
+            <param name="CjtI">JPEG encoder settings.</param>
             <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.SxrI.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
+        <member name="M:Nevron.Nov.Internal.UItI.NativeEncodeTiff(Nevron.Nov.Graphics.NRaster)">
             <summary>
             Encodes a raster into TIFF image format, using the image encoding capabilities of the underlying platform.
             Must be implemented in the image service of a platform host.
             </summary>
-            <param name="bYrI">The raster to be encoded.</param>
+            <param name="djtI">The raster to be encoded.</param>
             <returns>A byte array containing the encoded image data. Returns null if the encoding fails.</returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.WASI.Nevron#Nov#Dom#INEventHandler#Invoke(Nevron.Nov.Dom.NEventArgs)">
+        <member name="M:Nevron.Nov.Internal.YKtI.Nevron#Nov#Dom#INEventHandler#Invoke(Nevron.Nov.Dom.NEventArgs)">
             <summary>
             Called when the measure of the child window has changed.
             </summary>
-            <param name="YASI"></param>
+            <param name="bltI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xGSI`1.Dispose(System.Boolean)">
+        <member name="M:Nevron.Nov.Internal.ArtI`1.Dispose(System.Boolean)">
             <summary>
             Disposes this surface
             </summary>
-            <param name="IhSI"></param>
+            <param name="KrtI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xGSI`1.IsInputKey(System.Windows.Forms.Keys)">
+        <member name="M:Nevron.Nov.Internal.ArtI`1.IsInputKey(System.Windows.Forms.Keys)">
             <summary>
             Overriden to return true
             </summary>
-            <param name="jhSI"></param>
+            <param name="lrtI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xGSI`1.IsInputChar(System.Char)">
+        <member name="M:Nevron.Nov.Internal.ArtI`1.IsInputChar(System.Char)">
             <summary>
             Overriden to return true
             </summary>
-            <param name="KhSI"></param>
+            <param name="MrtI"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.xGSI`1.OnHandleCreated(System.EventArgs)">
+        <member name="M:Nevron.Nov.Internal.ArtI`1.OnHandleCreated(System.EventArgs)">
             <summary>
             Called when the native window handle is created.
             </summary>
-            <param name="lhSI"></param>
+            <param name="nrtI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xGSI`1.OnHandleDestroyed(System.EventArgs)">
+        <member name="M:Nevron.Nov.Internal.ArtI`1.OnHandleDestroyed(System.EventArgs)">
             <summary>
             
             </summary>
-            <param name="MhSI"></param>
+            <param name="OrtI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xGSI`1.OnClientSizeChanged(System.EventArgs)">
+        <member name="M:Nevron.Nov.Internal.ArtI`1.OnClientSizeChanged(System.EventArgs)">
             <summary>
             Overriden to request a repaint of the surface
             </summary>
-            <param name="nhSI"></param>
+            <param name="prtI"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.xGSI`1.OnDpiChangedBeforeParent(System.EventArgs)">
+        <member name="M:Nevron.Nov.Internal.ArtI`1.OnDpiChangedBeforeParent(System.EventArgs)">
             <summary>
             Called when the DPI has changed, and the parent was not yet notified about it
             </summary>
-            <param name="OhSI"></param>
+            <param name="QrtI"></param>
         </member>
         <member name="T:Nevron.Nov.Office.NSplashScreenForm">
             <summary>

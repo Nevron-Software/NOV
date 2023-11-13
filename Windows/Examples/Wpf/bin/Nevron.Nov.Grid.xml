@@ -11317,17 +11317,17 @@
             <summary>
             Called by child or descendant measure elements that consider this element as measure parent, and want to inform it to invalidate it's measure.
             </summary>
-            <param name="YfCh"></param>
-            <param name="AGCh"></param>
-            <param name="bGCh"></param>
+            <param name="lCdh"></param>
+            <param name="MCdh"></param>
+            <param name="nCdh"></param>
         </member>
         <member name="M:Nevron.Nov.Grid.NDefaultRowMeasure`2.Nevron#Nov#Dom#INArrangeElementParent#InvalidateArrangeFromChild(Nevron.Nov.Dom.NElement,Nevron.Nov.Dom.ENLayoutParentInvalidationReason,System.Object)">
             <summary>
             Called by child or descendant arrange elements that consider this element as arrange parent, and want to inform it to invalidate it's arrange.
             </summary>
-            <param name="CGCh"></param>
-            <param name="dGCh"></param>
-            <param name="EGCh"></param>
+            <param name="OCdh"></param>
+            <param name="pCdh"></param>
+            <param name="QCdh"></param>
         </member>
         <member name="P:Nevron.Nov.Grid.NDefaultRowMeasure`2.Cells">
             <summary>
@@ -13661,156 +13661,156 @@
             Singleton instance.
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.hrCh.GetHashCode">
+        <member name="M:Nevron.Nov.Internal.xndh.GetHashCode">
             <summary>
             Gets the hash code of this item.
             Note: Must be called only for groups.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.hrCh.Equals(System.Object)">
+        <member name="M:Nevron.Nov.Internal.xndh.Equals(System.Object)">
             <summary>
             Gets whether the items are equal.
             Note: Must be called only for groups.
             </summary>
-            <param name="MrCh"></param>
+            <param name="dOdh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.pjdh.Compare(System.Int32,System.Int32)">
+        <member name="M:Nevron.Nov.Internal.hGEh.Compare(System.Int32,System.Int32)">
             <summary>
             Comparers rows a and b
             </summary>
-            <param name="tjdh"></param>
-            <param name="Ujdh"></param>
+            <param name="lGEh"></param>
+            <param name="MGEh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.pjdh.Compare(Nevron.Nov.Internal.xrCh,Nevron.Nov.Internal.xrCh)">
+        <member name="M:Nevron.Nov.Internal.hGEh.Compare(Nevron.Nov.Internal.OOdh,Nevron.Nov.Internal.OOdh)">
             <summary>
             Comparers tree data members a and b
             </summary>
-            <param name="vjdh"></param>
-            <param name="Wjdh"></param>
+            <param name="nGEh"></param>
+            <param name="OGEh"></param>
             <returns></returns>
         </member>
-        <member name="P:Nevron.Nov.Internal.CWCh`2.Name">
+        <member name="P:Nevron.Nov.Internal.SSdh`2.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CWCh`2.Extensions">
+        <member name="P:Nevron.Nov.Internal.SSdh`2.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.CWCh`2.Mime">
+        <member name="P:Nevron.Nov.Internal.SSdh`2.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.CWCh`2.OnUse">
+        <member name="M:Nevron.Nov.Internal.SSdh`2.OnUse">
             <summary>
             Called when the format is used
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.CWCh`2.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.SSdh`2.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="hWCh"></param>
-            <param name="IWCh"></param>
-            <param name="jWCh"></param>
+            <param name="xSdh"></param>
+            <param name="YSdh"></param>
+            <param name="Atdh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CWCh`2.SaveToStreamCore(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.SSdh`2.SaveToStreamCore(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="KWCh"></param>
-            <param name="lWCh"></param>
-            <param name="MWCh"></param>
-            <param name="nWCh"></param>
+            <param name="btdh"></param>
+            <param name="Ctdh"></param>
+            <param name="dtdh"></param>
+            <param name="Etdh"></param>
         </member>
-        <member name="P:Nevron.Nov.Internal.rWCh`2.Name">
+        <member name="P:Nevron.Nov.Internal.Itdh`2.Name">
             <summary>
             Gets the name of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rWCh`2.Extensions">
+        <member name="P:Nevron.Nov.Internal.Itdh`2.Extensions">
             <summary>
             Gets the extnesion of the format
             </summary>
         </member>
-        <member name="P:Nevron.Nov.Internal.rWCh`2.Mime">
+        <member name="P:Nevron.Nov.Internal.Itdh`2.Mime">
             <summary>
             Gets the mime type 
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.rWCh`2.OnUse">
+        <member name="M:Nevron.Nov.Internal.Itdh`2.OnUse">
             <summary>
             Called when the format is used
             </summary>
         </member>
-        <member name="M:Nevron.Nov.Internal.rWCh`2.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Itdh`2.LoadFromStreamCore(System.IO.Stream,Nevron.Nov.Grid.Formats.NGridLoadSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="tWCh"></param>
-            <param name="UWCh"></param>
-            <param name="vWCh"></param>
+            <param name="Ktdh"></param>
+            <param name="ltdh"></param>
+            <param name="Mtdh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.rWCh`2.SaveToStreamCore(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
+        <member name="M:Nevron.Nov.Internal.Itdh`2.SaveToStreamCore(`0,System.IO.Stream,Nevron.Nov.Grid.Formats.NGridSaveSettings,Nevron.Nov.NProgress)">
             <summary>
             
             </summary>
-            <param name="WWCh"></param>
-            <param name="xWCh"></param>
-            <param name="YWCh"></param>
-            <param name="AxCh"></param>
+            <param name="ntdh"></param>
+            <param name="Otdh"></param>
+            <param name="ptdh"></param>
+            <param name="Qtdh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.CUbh.Nevron#Nov#Formulas#INVariableProvider#GetVariableIndex(System.String)">
+        <member name="M:Nevron.Nov.Internal.OQCh.Nevron#Nov#Formulas#INVariableProvider#GetVariableIndex(System.String)">
             <summary>
             Gets a variable index for the specified string (used during parsing).  Returns
             -1 if the specified string is not a valid variable name.
             </summary>
-            <param name="lUbh"></param>
+            <param name="xQCh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CUbh.Nevron#Nov#Formulas#INVariableProvider#GetVariableValue(System.Int32)">
+        <member name="M:Nevron.Nov.Internal.OQCh.Nevron#Nov#Formulas#INVariableProvider#GetVariableValue(System.Int32)">
             <summary>
             Gets the variable value by a previously provided the variable index (used
             during evaluation).  Throws an exception if the specified index is not valid.
             </summary>
-            <param name="MUbh"></param>
+            <param name="YQCh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CUbh.Nevron#Nov#Formulas#INVariableProvider#CanSetVariableValue(System.Int32)">
+        <member name="M:Nevron.Nov.Internal.OQCh.Nevron#Nov#Formulas#INVariableProvider#CanSetVariableValue(System.Int32)">
             <summary>
             Determines whether the variable value for the specified index can be set.
             </summary>
-            <param name="nUbh"></param>
+            <param name="ArCh"></param>
             <returns></returns>
         </member>
-        <member name="M:Nevron.Nov.Internal.CUbh.Nevron#Nov#Formulas#INVariableProvider#SetVariableValue(System.Int32,Nevron.Nov.NVariant)">
+        <member name="M:Nevron.Nov.Internal.OQCh.Nevron#Nov#Formulas#INVariableProvider#SetVariableValue(System.Int32,Nevron.Nov.NVariant)">
             <summary>
             Sets the value of the specified variable.
             </summary>
-            <param name="OUbh"></param>
+            <param name="brCh"></param>
             <param name="var"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dldh.AccumulateMonitoredNodeAggregatedNodes(Nevron.Nov.Dom.NNode,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NNode})">
+        <member name="M:Nevron.Nov.Internal.UhEh.AccumulateMonitoredNodeAggregatedNodes(Nevron.Nov.Dom.NNode,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NNode})">
             <summary>
             
             </summary>
-            <param name="Eldh"></param>
-            <param name="fldh"></param>
+            <param name="vhEh"></param>
+            <param name="WhEh"></param>
         </member>
-        <member name="M:Nevron.Nov.Internal.dldh.AccumulateMonitoredNodeChildren(Nevron.Nov.Dom.NNode,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NNode})">
+        <member name="M:Nevron.Nov.Internal.UhEh.AccumulateMonitoredNodeChildren(Nevron.Nov.Dom.NNode,Nevron.Nov.DataStructures.NList{Nevron.Nov.Dom.NNode})">
             <summary>
             
             </summary>
-            <param name="Gldh"></param>
-            <param name="hldh"></param>
+            <param name="xhEh"></param>
+            <param name="YhEh"></param>
         </member>
     </members>
 </doc>

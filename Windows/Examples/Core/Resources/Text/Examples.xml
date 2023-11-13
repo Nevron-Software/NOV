@@ -9,12 +9,12 @@
   </statusColors>
   <categories>
     <!--Chart-->
-    <category name="Chart" namespace="Chart" license="Commercial" color="68348C">
+    <category name="Chart" namespace="Chart" color="68348C" link="https://www.nevron.com/products-open-vision-nov-chart-control-overview">
       <row>
-        <label>
-					NOV Chart allows for the visualization of business, scientific, financial and presentation charts.<br />
+        <description>
+					NOV Chart allows for the visualization of business, scientific, financial and presentation charts.<br /><br />
 					The control features numerous charting types, advanced axes, support for zooming and scrolling, serialization, image export and others.
-				</label>
+				</description>
       </row>
       <row>
         <group name="Axes">
@@ -57,6 +57,10 @@
             <example name="Automatic Scale Breaks" type="NAutomaticScaleBreaksExample" />
             <example name="Custom Scale Breaks" type="NCustomScaleBreaksExample" />
             <example name="Scale Break Appearance" type="NScaleBreakAppearanceExample" />
+          </tile>
+          <tile name="View Range" icon="ScaleBreaks.png">
+            <example name="View Range" type="NAxisViewRangeExample" />
+            <example name="Synchronized Axes" type="NSynchronizedAxesExample" />
           </tile>
         </group>
         <group name="Series" maxRows="8">
@@ -200,6 +204,7 @@
             <example name="Series Legend View" type="NSeriesLegendViewExample" />
             <example name="Interactive Legend" type="NInteractiveLegendExample" />
             <example name="Multiple Legends" type="NMultipleLegendsExample" />
+            <example name="Custom Legend Items" type="NCustomLegendItemsExample" />
           </tile>
           <tile name="Layout" icon="Layout.png">
             <example name="Aligning Chart Areas" type="NAligningChartAreasExample" />
@@ -220,12 +225,12 @@
       </row>
     </category>
     <!--Diagram-->
-    <category name="Diagram" namespace="Diagram" license="Commercial" color="68348C">
+    <category name="Diagram" namespace="Diagram" color="68348C" link="https://www.nevron.com/products-open-vision-nov-diagram-control-overview">
       <row>
-        <label>
+        <description>
 					NOV Diagram for .NET is a fully managed, extensible and powerful diagramming framework, which can help you
 					create feature rich diagramming solutions.
-				</label>
+				</description>
       </row>
       <row>
         <group name="Demo Apps and Diagrams">
@@ -272,7 +277,7 @@
             <example name="End Points Glue" type="NEndPointsGlueExample" />
             <example name="Connector with Multiple Labels" type="NConnectorWithMultipleLabelsExample" />
           </tile>
-          <tile name="TextNBarSeriess" icon="Texts.png">
+          <tile name="Rich Texts" icon="Texts.png">
             <example name="Rich Text Formatting" type="NRichTextFormattingExample" />
             <example name="Paragraphs" type="NParagraphsExample" />
             <example name="Bullet lists" type="NBulletListsExample" />
@@ -452,11 +457,11 @@
       </row>
     </category>
     <!--Grid-->
-    <category name="Grid" namespace="Grid" license="Commercial" color="68348C">
+    <category name="Grid" namespace="Grid" color="68348C" link="https://www.nevron.com/products-open-vision-nov-grid-control-overview">
       <row>
-        <label>
+        <description>
 					NOV Grid for .NET represents a powerful framework for displaying and editing tabular data in versatile ways.
-				</label>
+				</description>
       </row>
       <row>
         <group name="Data Processing">
@@ -540,11 +545,11 @@
       </row>
     </category>
     <!--Rich Text Editor-->
-    <category name="Rich Text Editor" namespace="Text" license="Commercial" color="68348C">
+    <category name="Rich Text Editor" namespace="Text" color="68348C" link="https://www.nevron.com/products-open-vision-nov-rich-text-editor-control-overview">
       <row>
-        <label>
+        <description>
 					NOV Text Editor for .NET helps you embed state-of-art, Microsoft Word-like abilities in your .NET applications.
-				</label>
+				</description>
       </row>
       <row>
         <group name="Model">
@@ -652,12 +657,12 @@
       </row>
     </category>
     <!--Schedule-->
-    <category name="Schedule" namespace="Schedule" license="Commercial" color="68348C">
+    <category name="Schedule" namespace="Schedule" color="68348C" link="https://www.nevron.com/products-open-vision-nov-schedule-control-overview">
       <row>
-        <label>
+        <description>
 					NOV Schedule is a widget for showing and organizing appointments and recurring events.<br />
 					It provides all the features of Microsoft Outlook Calendar and Google Calendar plus many more.
-				</label>
+				</description>
       </row>
       <row>
         <group name="Model">
@@ -729,12 +734,12 @@
       </row>
     </category>
     <!--Gauge-->
-    <category name="Gauge" namespace="Gauge" license="Commercial" color="68348C">
+    <category name="Gauge" namespace="Gauge" color="68348C" link="https://www.nevron.com/products-open-vision-nov-gauge-control-overview">
       <row>
-        <label>
+        <description>
 					NOV Gauge for .NET has extensive support for instrumentation widgets such as radial (circular)<br />
 					and linear gauges, knobs, indicators and numeric displays.
-				</label>
+				</description>
       </row>
       <row>
         <group>
@@ -779,12 +784,12 @@
       </row>
     </category>
     <!--Barcode-->
-    <category name="Barcode" namespace="Barcode" license="Commercial" color="68348C">
+    <category name="Barcode" namespace="Barcode" color="68348C" link="https://www.nevron.com/products-open-vision-nov-barcode-control-overview">
       <row>
-        <label>
+        <description>
 					NOV Barcode for .NET helps you embed barcodes in your .NET applications quickly and easily.<br />
 					The solution is fully customizable and provides support for all industry standard barcode formats.
-				</label>
+				</description>
       </row>
       <row>
         <group name="1D Barcodes" maxRows="10">
@@ -871,12 +876,12 @@
       </row>
     </category>
     <!--User Interface-->
-    <category name="User Interface" namespace="UI" license="Free!" color="53A4DA">
+    <category name="User Interface" namespace="UI" color="53A4DA" link="https://www.nevron.com/products-open-vision-nov-ui-widgets-overview">
       <row>
-        <label>
-					NOV UI for .NET contains a complete and feature-rich set of cross-platform User Interface elements (widgets),<br />
-					which completely eliminates the need to use any platform specific controls.
-				</label>
+        <description>
+					NOV UI for .NET contains a complete and feature-rich set of cross-platform User Interface elements (widgets),
+          which completely eliminates the need to use any platform-specific controls.
+				</description>
       </row>
       <row>
         <group name="Appearance">
@@ -1141,7 +1146,12 @@
       </row>
     </category>
     <!--Framework-->
-    <category name="Framework" namespace="Framework" license="Free!" color="53A4DA">
+    <category name="Framework" namespace="Framework" color="53A4DA" link="https://www.nevron.com/products-open-vision">
+      <row>
+        <description>
+          NOV Framework provides the foundation on which all NOV components are built.
+        </description>
+      </row>
       <row>
         <group name="Editors">
           <tile name="Category Editors" icon="CategoryEdit.png">
@@ -1195,23 +1205,18 @@
           <tile name="Painting Images" icon="Images.png">
             <example name="Painting Images" type="NPaintingImagesExample" />
           </tile>
-          <tile name="BMP Decoder" icon="ImageFormatBmp.png">
-            <example name="BMP Decoder" type="NBmpDecoderExample" />
+          <tile name="Raster Images" icon="RasterImages.png">
+            <example name="Bitmap (BMP)" type="NBmpDecoderExample" />
+            <example name="Joint Photographic Experts Group (JPEG)" type="NJpegDecoderExample" />
+            <example name="Portable Network Graphics (PNG)" type="NPngDecoderExample" />
+            <example name="Icon (ICO)" type="NIcoDecoderExample" />
+            <example name="Animated GIF" type="NGifDecoderExample" />
+            <example name="Animated PNG" type="NApngDecoderExample" />
           </tile>
-          <tile name="JPEG Decoder" icon="ImageFormatJpeg.png">
-            <example name="JPEG Decoder" type="NJpegDecoderExample" />
-          </tile>
-          <tile name="PNG Decoder" icon="ImageFormatPng.png">
-            <example name="PNG Decoder" type="NPngDecoderExample" />
-          </tile>
-          <tile name="ICO Decoder" icon="Images.png">
-            <example name="ICO Decoder" type="NIcoDecoderExample" />
-          </tile>
-          <tile name="Animated PNG Decoder" icon="ImageFormatApng.png">
-            <example name="Animated PNG Decoder" type="NApngDecoderExample" />
-          </tile>
-          <tile name="GIF Decoder" icon="ImageFormatGif.png">
-            <example name="GIF Decoder" type="NGifDecoderExample" />
+          <tile name="Vector Images" icon="VectorImages.png">
+            <example name="Scalable Vector Graphics (SVG)" type="NSvgDecoderExample" />
+            <example name="Windows Metafiles (EMF, WMF)" type="NMetafileDecoderExample" />
+            <example name="AutoCAD Drawing Interchange (DXF)" type="NDxfDecoderExample" />
           </tile>
         </group>
         <group name="IO &amp; Misc">

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 
 using Nevron.Nov.Barcode;
@@ -18,7 +17,7 @@ using Nevron.Nov.Windows.Forms;
 
 namespace Nevron.Nov.Examples.WinForm
 {
-	static class Program
+    static class Program
 	{
 		/// <summary>
 		/// The main item point for the application.
@@ -36,8 +35,8 @@ namespace Nevron.Nov.Examples.WinForm
                 // Use this to Enable/Disable GPU rendering of all NOV Content
                 NApplication.EnableGPURendering = true;
 
-				// Install Nevron Open Vision for Windows Forms
-				NNovApplicationInstaller.Install(
+                // Install Nevron Open Vision for Windows Forms
+                NNovApplicationInstaller.Install(
 					NTextModule.Instance,
 					NChartModule.Instance,
 					NDiagramModule.Instance,

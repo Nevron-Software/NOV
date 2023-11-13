@@ -62,12 +62,38 @@ namespace Nevron.Nov.Examples
 		}
 
 		/// <summary>
-		/// Builds example path for the given XML element using the specified path builder.
+		/// Copies a link to the given example to the clipboard.
 		/// </summary>
-		/// <param name="xmlElement"></param>
-		/// <param name="pathBuilder"></param>
-		/// <returns></returns>
-		private static void BuildExamplePath(NXmlElement xmlElement, NExamplesPathBuilder pathBuilder)
+		/// <param name="xmlElement">The example's XML element.</param>
+		/// <param name="examplesUrl">Optional URL to the examples. Used only by Blazor WebAssembly examples.</param>
+		/// <returns>The link to the given example that was copied to the clipboard.</returns>
+		public static string CopyExampleLinkToClipboard(NXmlElement xmlElement, string examplesUrl = null)
+		{
+            string exampleLink;
+            if (NApplication.IntegrationPlatform == ENIntegrationPlatform.WebAssembly)
+            {
+                exampleLink = examplesUrl + "?example=" + xmlElement.GetAttributeValue("type");
+            }
+            else
+            {
+                exampleLink = NExamplesUiHelpers.GetExamplePath(xmlElement);
+            }
+
+            // Copy the example link to clipboard
+            NDataObject dataObject = new NDataObject();
+            dataObject.SetData(NDataFormat.TextFormatString, exampleLink);
+            NClipboard.SetDataObject(dataObject);
+
+			return exampleLink;
+        }
+
+        /// <summary>
+        /// Builds example path for the given XML element using the specified path builder.
+        /// </summary>
+        /// <param name="xmlElement"></param>
+        /// <param name="pathBuilder"></param>
+        /// <returns></returns>
+        private static void BuildExamplePath(NXmlElement xmlElement, NExamplesPathBuilder pathBuilder)
 		{
 			while (xmlElement.Name != "document")
 			{
@@ -153,11 +179,11 @@ namespace Nevron.Nov.Examples
 			return text.ToUpper();*/
 		}
 
-		#endregion
+        #endregion
 
-		#region Nested Types - Example Path
+        #region Nested Types - Example Path
 
-		private abstract class NExamplesPathBuilder
+        private abstract class NExamplesPathBuilder
 		{
 			public abstract void ProcessElement(NXmlElement element);
 		}
